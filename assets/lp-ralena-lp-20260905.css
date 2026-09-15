@@ -1,0 +1,2253 @@
+
+/* ============================================================
+   共通の器（この案件のコンテンツ幅）
+   背景・帯は画面幅いっぱい。その内側のコンテンツを max-width:1000px にする。
+   1000px は現行LPの画像幅に合わせた値で、共通ルールの3段階（680/760/880）に対する本案件の例外。
+   ============================================================ */
+.lp-wrapper { overflow-x: hidden; }
+.lp-wrapper .rp-inner{ max-width: 1000px; margin: 0 auto; }
+
+/* ダーク面の見出しは色を継承任せにしない（Shopifyのテーマに負けて黒くなる） */
+.lp-wrapper h1, .lp-wrapper h2, .lp-wrapper h3,
+.lp-wrapper h4, .lp-wrapper h5, .lp-wrapper h6 { color: inherit; }
+
+/* ------------------------------------------------------------
+   足場（data-忠実再現="未" の章）。HTML化が済んだ章からこの指定は消えていく。
+   元画像のスライスを原寸比で敷くだけなので、実物と1pxも違わない。
+   ------------------------------------------------------------ */
+.lp-wrapper section[data-忠実再現="未"]{ padding: 0; }
+.lp-wrapper section[data-忠実再現="未"] .rp-slice{
+  display: block; width: 100%; max-width: 1000px; margin: 0 auto; height: auto;
+}
+
+/* ============================================================
+   #sec-fv ファーストビュー（元 01_ra-le-na.jpg y0-1500・1000x1500）
+   ★書体は明朝。方式A（font-family指定のみ）を採用。
+     RaLe-Naのテーマは既に Noto Serif Japanese W300 を読み込んでいるので、
+     本番Shopifyでは Android でも明朝になる（外部CDNを足さずに済む）。
+     単体HTMLをAndroidで開いた場合だけゴシックへ落ちる＝既知の制約。
+   ★写真は Figma 制作原本の原寸（4096px）から、実測した切り取り
+     (400,40)-(3093,4080) を使用。本番ページの画像は文字が焼き込まれていて使えない。
+   実測（元画像・白文字 min(RGB)>200・行の画素数しきい値つき）:
+     主婦500人と2年をかけて  x228-771 幅544 y104-144 高41 中央500.0 ink20.0
+     究極のまな板            x240-766 幅527 y189-268 高80 中央503.5 ink22.0
+     完成しました。          x258-756 幅499 y297-365 高69 中央507.5 ink14.7
+     Ra Le-Na               x308-691 幅384 y724-795 高72 中央500.0 ink24.9
+     ラレーナ                x450-551 幅102 y834-848 高15 中央501.0
+   ============================================================ */
+.lp-wrapper #sec-fv{ padding: 0; }
+.lp-wrapper #sec-fv .fv{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+              aspect-ratio: 1000 / 1500; overflow: hidden; }
+.lp-wrapper #sec-fv .fv-bg{ position: absolute; inset: 0; width: 100%; height: 100%;
+                 object-fit: cover; display: block; }
+.lp-wrapper #sec-fv .fv h1,  .lp-wrapper #sec-fv .fv p{
+  position: absolute; left: 0; right: 0; margin: 0; text-align: center;
+  color: #fff; line-height: 1; font-weight: 300; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN', 'ヒラギノ明朝 ProN', 'Noto Serif JP',
+               'Noto Serif Japanese', 'Yu Mincho', YuMincho, serif;
+}
+.lp-wrapper #sec-fv .fv-l1{ top: min(10.2vw, 102px); font-size: min(4.3vw, 43px); letter-spacing: 0.134em;
+                   transform: translateX(0.30%); }
+.lp-wrapper #sec-fv .fv-l2{ top: min(18.2vw, 182px); font-size: min(8.6vw, 86px); letter-spacing: 0.043em;
+                   transform: translateX(0.35%); }
+/* 「。」の送り幅ぶん、中央そろえだと左へ寄る。元画像は右へ寄せてあるので戻す（落とし穴#2） */
+.lp-wrapper #sec-fv .fv-l3{ top: min(29.4vw, 294px); font-size: min(7.3vw, 73px); letter-spacing: 0.092em;
+                   transform: translateX(3.30%); }
+.lp-wrapper #sec-fv .fv-sub{ top: min(83.0vw, 830px); font-size: min(2.0vw, 20px); letter-spacing: 0.525em;
+                   transform: translateX(0.45%); }
+/* 🔴 ロゴは本番のロゴPNG（白版）に差し替え＝市山さん指示 2026-09-10（元画像は焼き込みの文字だった）。ガイドライン#03 で K0%＝白は濃い背景での正式な使い方 */
+.lp-wrapper #sec-fv .fv img.fv-logo{ position: absolute; top: min(72.4vw,724px); left: min(30.8vw,308px);
+  width: min(38.4vw,384px); height: auto; display: block; }
+
+/* ============================================================
+   #sec-review 楽天レビュー・18冠（元 01_ra-le-na.jpg y1500-4910・1000x3410）
+   実測（地 #FFF9ED から外れた画素の帯）:
+     楽天市場のお客様に      y114-162  高49  x267-727 幅461 中央497.5
+     使いやすさが評価されて   y207-268  高62  x134-856 幅723 中央495.5
+     18冠バッジ            y341-992  高652 x125-871 幅747 中央498.5
+     ランキング9行          y1044から 高94  送り128（9行とも同じ）x50-948 幅899
+       1列の内訳: 葉28 / 文字x94から / 「1位」x353-431（1は高89・位は高42で下そろえ）/ 葉28
+     楽天市場のお客様からの   y2359-2406 高48 x216-780 幅565
+     レビュー評価           y2453-2512 高60 x313-697 幅385
+     4.61の行             y2649-2757 高109 x129-794
+     罫線                 y2793 高2  x34-965 幅932
+     円グラフの行           y2869-3246 高378 x46-424が円 / x478-923が文
+   色: 円=#84B28B（Figma変数 Green と完全一致）／数字=#D75A41（Orange）／文字=#3D3935（Black）
+   月桂冠の葉: Figma の行SVGから単一パスを取り出し、金のグラデーションを当てた（右は反転）
+   ============================================================ */
+.lp-wrapper #sec-review{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-review .rv{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+                  aspect-ratio: 1000 / 3410; }
+.lp-wrapper #sec-review .rv > *{ position: absolute; left: 0; right: 0; margin: 0; text-align: center; }
+.lp-wrapper #sec-review .rv p,  .lp-wrapper #sec-review .rv h2{
+  color: #3D3935; line-height: 1; font-weight: 300; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN', 'ヒラギノ明朝 ProN', 'Noto Serif JP',
+               'Noto Serif Japanese', 'Yu Mincho', YuMincho, serif; }
+.lp-wrapper #sec-review .rv-h1{ top: min(11.0vw, 110px); font-size: min(5.2vw, 52px); letter-spacing: 0.004em; }
+.lp-wrapper #sec-review .rv-h2{ top: min(20.2vw, 202px); font-size: min(6.7vw, 67px); letter-spacing: 0.0016em; }
+.lp-wrapper #sec-review .rv-h3{ top: min(235.5vw, 2355px); font-size: min(5.1vw, 51px); letter-spacing: 0.0216em; }
+.lp-wrapper #sec-review .rv-h4{ top: min(244.8vw, 2448px); font-size: min(6.5vw, 65px); letter-spacing: 0.050em; }
+.lp-wrapper #sec-review .rv-badge{ top: min(33.5vw, 335px); width: min(78vw, 780px); height: auto;
+                        left: 50%; right: auto; transform: translateX(-50%); }
+
+/* ---- ランキング 9行×2列 ---- */
+.lp-wrapper #sec-review .rk{ top: min(104.4vw, 1044px); width: min(89.9vw, 899px); left: 50%; right: auto;
+                  transform: translateX(-50%); }
+.lp-wrapper #sec-review .rk-row{ display: flex; justify-content: space-between; height: min(9.4vw, 94px);
+                      margin-bottom: min(3.4vw, 34px); }
+.lp-wrapper #sec-review .rk-row:last-child{ margin-bottom: 0; }
+.lp-wrapper #sec-review .rk-i{ display: flex; align-items: center; width: min(42.6vw, 426px); }
+.lp-wrapper #sec-review .rk-lf{ width: min(2.83vw, 28.3px); height: min(9.38vw, 93.8px); flex: none; }
+.lp-wrapper #sec-review .rk-lf-r{ transform: scaleX(-1); margin-left: min(1.6vw, 16px); }
+/* 1列426pxの内訳（実測）: 葉28 ｜16｜ 文字246 ｜13｜ 1位79 ｜16｜ 葉28 */
+.lp-wrapper #sec-review .rk-tx{ flex: none; width: min(24.6vw, 246px); margin-left: min(1.6vw, 16px);
+  text-align: left;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; color: #3D3935; }
+/* 見出し行は長体。元画像 249px ÷ ヒラギノ角ゴ素の338px = 0.737（実測・2026-09-05） */
+/* 見出し行の大きさ: 元のインク高は31〜32px。fs32・scaleX0.737 だと 27px にしかならない。
+   2026-09-08 実測で fs38・scaleX0.6206（幅は同じ・高さが元と一致）に直した */
+/* ランキング18行の太さ: 元のインク率は見出し19.3%・カテゴリ20.2%。w400では14.2%/13.8%で
+   明らかに細い（原寸で見ると元は太字）。w600で20.4%/18.0%。章の画素差は 10.58→11.00 と
+   わずかに悪くなるが、これは長体0.6206をかけた字形の食い違いが太さで増幅されるため（2026-09-08） */
+.lp-wrapper #sec-review .rk-ttl{ display: inline-block; font-size: min(3.8vw, 38px); font-weight: 600;
+  line-height: 1; margin-top: min(1.2vw, 12px);
+  transform: scaleX(0.6206); transform-origin: left center; white-space: nowrap; }
+/* カテゴリ行は箱(266px)に収まるまで文字を小さくする（元画像がそうなっている）。
+   基準 29px。長いものだけ小さくなる＝生成時に1行ずつ計算して style で入れてある */
+/* カテゴリ名の太さ: 元のインク率 35.3% に対し w600=43.3 / w500=37.9 / w400=35.3 / w300=32.9。
+   2026-09-08 実測で w400 が完全一致 */
+.lp-wrapper #sec-review .rk-cat{ display: inline-block; font-weight: 600; line-height: 1; white-space: nowrap;
+  margin-top: min(0.7vw, 7px); transform-origin: left center; }
+/* 「1位」= 大きい数字（ink高89）＋小さい「位」（ink高42）を下そろえ。箱は実測の79x94 */
+.lp-wrapper #sec-review .rk-no{ flex: none; position: relative; margin-left: min(1.3vw, 13px);
+  width: min(7.9vw, 79px); height: min(9.4vw, 94px);
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+/* 金は1文字ずつに掛ける（親に掛けても子のテキストには乗らない） */
+.lp-wrapper #sec-review .rk-no i,  .lp-wrapper #sec-review .rk-no b{ position: absolute; bottom: 0; line-height: .72;
+  font-style: normal; font-weight: 600; white-space: nowrap;
+  background: linear-gradient(180deg,#DED4B9 0%,#E0B767 28%,#BA8B39 62%,#775A20 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lp-wrapper #sec-review .rk-no i{ left: min(-1.0vw,-10px); font-size: min(12.4vw, 124px); }
+.lp-wrapper #sec-review .rk-no b{ right: min(-0.6vw,-6px); font-size: min(4.4vw, 44px); line-height: .88; }
+
+/* ---- レビュー評価 4.61 ---- */
+/* 4.61の行は中央そろえではない。元画像 x129–794（中央461.5）＝版面中央より左 */
+.lp-wrapper #sec-review .rv-score{ top: min(264.9vw, 2649px); display: flex; align-items: flex-end;
+  justify-content: flex-start; left: min(12.9vw, 129px); right: auto; transform: none;
+  width: min(66.6vw, 666px); }
+.lp-wrapper #sec-review .rv-lab{ width: min(20.4vw, 204px); }
+.lp-wrapper #sec-review .rv-num{ margin-left: min(2.3vw, 23px); }
+.lp-wrapper #sec-review .rv-cnt{ margin-left: min(3.6vw, 36px); }
+.lp-wrapper #sec-review .rv-lab{ font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; color: #3D3935;
+  font-size: min(2.9vw, 29px); line-height: 1.5; text-align: center; }
+.lp-wrapper #sec-review .rv-stars{ display: block; color: #E1922F; font-size: min(4.0vw, 44px); letter-spacing: 0; }
+.lp-wrapper #sec-review .rv-stars i{ font-style: normal;
+  background: linear-gradient(90deg,#E1922F 0 50%,#DCD0BC 50% 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lp-wrapper #sec-review .rv-num{ color: #D75A41; font-size: min(14.6vw, 146px); line-height: .78; font-weight: 300;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; letter-spacing: -0.01em; }
+.lp-wrapper #sec-review .rv-cnt{ font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; color: #3D3935;
+  font-size: min(2.4vw, 24px); line-height: 1.35; text-align: left; white-space: nowrap;
+  padding-bottom: min(0.4vw,4px); }
+.lp-wrapper #sec-review .rv-rule{ top: min(279.3vw, 2793px); border: 0; height: 2px; background: #DCD2C2;
+  width: min(93.2vw, 932px); left: 50%; right: auto; transform: translateX(-50%); }
+
+/* ---- 円グラフ 96.3% ---- */
+.lp-wrapper #sec-review .rv-pie{ top: min(286.9vw, 2869px); display: flex; align-items: center;
+  gap: min(5.4vw, 54px); width: min(87.8vw, 878px); left: min(4.6vw, 46px); right: auto; }
+.lp-wrapper #sec-review .rv-circle{ flex: none; width: min(37.9vw, 379px); height: min(37.9vw, 379px);
+  border-radius: 50%; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; color: #fff; line-height: 1;
+  background: conic-gradient(#EDE7DA 0 3.7%, #84B28B 3.7% 100%);
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-review .rv-c1{ font-size: min(3.0vw, 30px); margin-bottom: min(1.2vw, 12px); letter-spacing: .04em; }
+.lp-wrapper #sec-review .rv-c2{ font-size: min(9.6vw, 96px); font-weight: 600; }
+.lp-wrapper #sec-review .rv-c2 i{ font-style: normal; font-size: min(4.4vw, 44px); }
+.lp-wrapper #sec-review p.rv-txt{ margin-bottom: min(3.8vw, 38px); text-align: left; color: #3D3935; font-size: min(4.8vw, 48px); line-height: 1.82;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-review p.rv-txt em{ font-style: normal; color: #84B28B; }
+
+/* ============================================================
+   .pt-head 「特徴」の番号つき見出し ★静間さんデザインの署名的な型
+   11本すべて同じ寸法で組まれている（実測・2026-09-05 / 9本が完全一致）:
+     章の上余白 149px（特徴1のみ146）
+     オレンジの箱 124 x 170px・#D85A41（Figma変数 Orange #D75A41）・角丸 約4px
+     箱の中の連番「01」= 白・明朝・ink 70x57・箱の中央
+     手書きの "point" = 箱の上端をまたいで載る（箱の外へはみ出す）
+     右の2行 = 小さい導入行（ink高36〜44）＋大きい主行（ink高67〜70）・間隔 約82px
+     箱＋文字の全体は版面の中央より 約5px 左（実測 494・494・497.5・494.5）
+   ============================================================ */
+.lp-wrapper .pt-head{ display: flex; align-items: flex-start; justify-content: center;
+           transform: translateX(0.65%); }
+.lp-wrapper .pt-head .pt-badge{ position: relative; flex: none;
+  width: min(12.4vw, 124px); height: min(17.0vw, 170px); border-radius: min(0.4vw, 4px);
+  background: #D75A41; display: flex; align-items: center; justify-content: center; }
+.lp-wrapper .pt-head .pt-badge b{ font-weight: 300; color: #fff; line-height: 1;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  font-size: min(7.6vw, 76px); letter-spacing: -0.026em; padding-left: .026em; }
+/* "point" は手書き風。元は箱の上端をまたいで載っている */
+.lp-wrapper .pt-head .pt-badge i{ position: absolute; top: min(-0.6vw, -6px); left: min(1.0vw, 10px);
+  font-style: italic; color: #F0A48F; white-space: nowrap;
+  font-family: 'Snell Roundhand', 'Apple Chancery', 'Segoe Script', cursive;
+  font-size: min(4.4vw, 44px); letter-spacing: 0.10em; }
+.lp-wrapper .pt-head .pt-tx{ display: block; margin-left: min(5.6vw, 56px); color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',
+               'Noto Serif Japanese','Yu Mincho',YuMincho,serif; font-weight: 300; }
+.lp-wrapper .pt-head .pt-l1{ display: block; line-height: 1; white-space: nowrap;
+  font-size: min(3.9vw, 39px); letter-spacing: 0.080em; padding-top: min(0.5vw, 5px); }
+.lp-wrapper .pt-head .pt-l2{ display: block; line-height: 1; white-space: nowrap;
+  font-size: min(7.0vw, 70px); letter-spacing: 0.053em; margin-top: min(4.5vw, 45px); }
+
+.lp-wrapper #sec-f01-head{ padding: min(14.6vw,146px) 0 min(6.6vw,66px); background: #F4EAE0; }
+
+/* ---- .pt-head を使う残り8本（大きさは元画像の文字幅から逆算・2026-09-05実測） ---- */
+.lp-wrapper #sec-f02-head{ padding: min(14.9vw,149px) 0 min(9.4vw,94px); background: #FEF9ED; }
+.lp-wrapper #sec-f02-head .pt-l1{ font-size: min(4.57vw,45.7px); }
+.lp-wrapper #sec-f02-head .pt-l2{ font-size: min(7.43vw,74.3px); }
+.lp-wrapper #sec-f04-head{ padding: min(23.6vw,236px) 0 min(7.3vw,73px); background: #FEF9ED; }
+.lp-wrapper #sec-f05-head{ padding: min(14.9vw,149px) 0 min(5.8vw,58px); background: #FEF9ED; }
+.lp-wrapper #sec-f05-head .pt-l1{ font-size: min(3.90vw,39.0px); letter-spacing: 0.0525em; }
+.lp-wrapper #sec-f05-head .pt-l2{ font-size: min(7.10vw,71.0px); letter-spacing: 0.092em; }
+.lp-wrapper #sec-f05-head .pt-tx{ margin-left: min(5.3vw,53px); }
+.lp-wrapper #sec-f05-head .pt-head{ transform: translateX(0.92%); }
+.lp-wrapper #sec-f04-head .pt-l1{ font-size: min(3.89vw,38.9px); }
+.lp-wrapper #sec-f04-head .pt-l2{ font-size: min(7.35vw,73.5px); }
+.lp-wrapper #sec-f06-head{ padding: min(14.9vw,149px) 0 min(6.3vw,63px); background: #FEF9ED; }
+.lp-wrapper #sec-f06-head .pt-l1{ font-size: min(3.96vw,39.6px); letter-spacing: 0.0547em; }
+.lp-wrapper #sec-f06-head .pt-l2{ font-size: min(5.89vw,58.9px); }
+.lp-wrapper #sec-f07-head{ padding: min(14.9vw,149px) 0 min(8.3vw,83px); background: #FEF9ED; }
+.lp-wrapper #sec-f07-head .pt-l1{ font-size: min(3.78vw,37.8px); }
+.lp-wrapper #sec-f07-head .pt-l2{ font-size: min(7.40vw,74.0px); }
+.lp-wrapper #sec-f08-head{ padding: min(14.9vw,149px) 0 min(8.3vw,83px); background: #FEF9ED; }
+.lp-wrapper #sec-f08-head .pt-l1{ font-size: min(3.69vw,36.9px); }
+.lp-wrapper #sec-f08-head .pt-l2{ font-size: min(7.52vw,75.2px); }
+.lp-wrapper #sec-f09-head{ padding: min(14.9vw,149px) 0 min(6.9vw,69px); background: #FEF9ED; }
+.lp-wrapper #sec-f09-head .pt-l1{ font-size: min(3.87vw,38.7px); }
+.lp-wrapper #sec-f09-head .pt-l2{ font-size: min(5.67vw,56.7px); letter-spacing: 0.0129em; }
+.lp-wrapper #sec-f10-head{ padding: min(14.9vw,149px) 0 min(8.1vw,81px); background: #FEF9ED; }
+.lp-wrapper #sec-f10-head .pt-l1{ font-size: min(3.89vw,38.9px); }
+.lp-wrapper #sec-f10-head .pt-l2{ font-size: min(7.33vw,73.3px); letter-spacing: 0.0311em; }
+.lp-wrapper #sec-f11-head{ padding: min(14.9vw,149px) 0 min(6.0vw,60px); background: #FEF9ED; }
+.lp-wrapper #sec-f11-head .pt-l1{ font-size: min(3.88vw,38.8px); }
+.lp-wrapper #sec-f11-head .pt-l2{ font-size: min(7.54vw,75.4px); letter-spacing: 0.0356em; }
+
+/* 主行の字間は章ごとに実測で微調整（英数字が混じる章は字送りが違う） */
+.lp-wrapper #sec-f06-head .pt-l2{ font-size: min(7.19vw,71.9px); letter-spacing: 0.0345em; position: relative; left: max(-2.3vw,-23px); }
+.lp-wrapper #sec-f06-head .pt-l2 .pn{ margin-right: max(-3.3vw,-33px); }
+/* 元は読点のうしろを詰めている */
+.lp-wrapper #sec-f06-head .pt-l1{ letter-spacing: 0.061em; padding-top: min(0.4vw,4px); }
+.lp-wrapper #sec-f09-head .pt-l2{ font-size: min(7.40vw,74.0px); letter-spacing: 0.038em; }
+.lp-wrapper #sec-f04-head .pt-l2{ letter-spacing: 0.036em; }
+.lp-wrapper #sec-f07-head .pt-l2{ letter-spacing: 0.028em; }
+.lp-wrapper #sec-f08-head .pt-l2{ letter-spacing: 0.029em; }
+.lp-wrapper #sec-f10-head .pt-l2{ letter-spacing: 0.0463em; }
+.lp-wrapper #sec-f11-head .pt-l2{ letter-spacing: 0.0522em; }
+/* 群の左右位置は章ごとに数pxずれている（元画像がそうなっている） */
+.lp-wrapper #sec-f06-head .pt-head{ transform: translateX(0.87%); }
+.lp-wrapper #sec-f09-head .pt-head{ transform: translateX(-0.15%); }
+
+/* ============================================================
+   .ral-mov 元がGIFだった動画（6本）
+   ★autoplay は付けない（CLAUDE.md Don'ts・2026-08-08実測でLCPの主因）。
+     preload="none" + data-src + poster にして、画面に入ってから読み込んで再生する。
+   元GIF 48MB → MP4 2.4MB（コマ数は元のまま 28/29/30/74/36/44）
+   ============================================================ */
+.lp-wrapper section:has(> .ral-mov){ padding: 0; }
+.lp-wrapper .ral-mov{ display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; }
+/* 全幅の写真の帯（文字が乗っていない章） */
+.lp-wrapper section:has(> .ral-band){ padding: 0; }
+.lp-wrapper .ral-band{ display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; }
+
+/* ============================================================
+   .st-body 読み物の本文（開発物語）★Figma変数 `Story Text` の実装
+   実測（#52・元 24_ra-le-na.jpg y2831-4399・1000x1568）:
+     本文15行すべて 行送り76px・ink高35px・左端x62・器の右端x932（＝幅870px）
+     ＝ Hiragino Sans W3 38px / line-height 2.0 / 字間 約0.058em
+     強調2行（理想なモノがないなら／自分で作ってみよう）は ink高52・55・約58px
+     段落の間: 本文→強調 155px ／ 強調→本文 74px ／ 本文→本文 118px
+   ★字間は Figma の「5」を **percent** と読む（pxと読むと51px広くなり実測と合わない）
+   ============================================================ */
+/* 縦の積み上げ（実測から逆算）:
+     行の箱の高さ = 38 x 2.0 = 76 ／ ink は箱の中央に来るので上に (76-35)/2 = 20.5 の余り
+     1行目の ink上端 68 → 箱の上端 47.5 ＝ padding-top 47
+     強調（58px・行送り1.72）の ink上端 484 → 箱の上端 460 ＝ 直前の段落の下端351 から 109
+     段落の間: 強調→本文 34 ／ 本文→本文 76 ／ 章の下 114 */
+.lp-wrapper #sec-story-2{ padding: min(4.7vw,47px) 0 min(11.4vw,114px); background: #FFF7EC; }
+.lp-wrapper .st-body{ margin-left: min(6.2vw, 62px);
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  font-weight: 300; color: #3D3935; }
+/* 改行位置は元画像のまま（忠実再現）。器の幅で折り返させない＝nowrap。
+   文字は min(vw,px) で比例縮小するので、狭い画面でもはみ出さない */
+.lp-wrapper .st-body p{ margin: 0; font-size: min(3.8vw, 38px); line-height: 2.0; letter-spacing: 0.058em;
+             white-space: nowrap; }
+.lp-wrapper .st-body p + p{ margin-top: min(7.6vw, 76px); }
+.lp-wrapper .st-body .st-em{ font-size: min(5.8vw, 58px); line-height: 1.72; letter-spacing: 0.05em;
+  margin-top: min(10.9vw, 109px); }
+.lp-wrapper .st-body .st-em + p{ margin-top: min(3.4vw, 34px); }
+
+/* ============================================================
+   #sec-features-intro 11個の特徴（導入）元 02_ra-le-na.jpg y0-681
+   実測: 導入行 y228-272 高45 x124 幅747 中央497.5
+         主行 y378-534 ＝ 3つの大きさが1行に同居する
+           「11」 x164-337 幅174 高154（各73幅・送り101）
+           「個の」x357-520 幅164 高81
+           「特徴」x540-846 幅307 高144
+         全体 x164-846 幅683 中央505.5・下そろえ
+   ============================================================ */
+.lp-wrapper #sec-features-intro{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-features-intro .fi{ text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',
+               'Noto Serif Japanese','Yu Mincho',YuMincho,serif; color: #3D3935; }
+.lp-wrapper #sec-features-intro .fi-l1{ margin: 0; padding-top: min(22.6vw, 226px); line-height: 1;
+  font-size: min(4.8vw, 48px); letter-spacing: 0.050em; font-weight: 300; white-space: nowrap; }
+.lp-wrapper #sec-features-intro .fi-l2{ margin: 0; padding-top: min(8.9vw, 89px); padding-bottom: min(13.4vw, 134px);
+  display: flex; align-items: flex-end; justify-content: center; line-height: 1;
+  font-weight: 300; transform: translateX(-0.65%); }
+.lp-wrapper #sec-features-intro .fi-l2 i{ font-style: normal; font-size: min(18.3vw, 183px); letter-spacing: 0; }
+.lp-wrapper #sec-features-intro .fi-l2 small{ font-size: min(8.8vw, 88px); letter-spacing: 0;
+  margin: 0 min(0.2vw,2px) 0 min(0.5vw,5px); }
+.lp-wrapper #sec-features-intro .fi-l2 b{ font-weight: 300; font-size: min(15.6vw, 156px); letter-spacing: 0;
+  margin-left: min(0.5vw, 5px); }
+/* 背景の透かし「Ra Le-Na」: 実測 y160-322・x66-933（868x163）・色 #F8F0E1（2026-09-08 追加）／
+   「11」はオレンジ #D75A41（元の実測。実装は黒だった） */
+.lp-wrapper #sec-features-intro .fi{ position: relative; }
+.lp-wrapper #sec-features-intro .fi-l1,  .lp-wrapper #sec-features-intro .fi-l2{ position: relative; z-index: 1; }
+.lp-wrapper #sec-features-intro img.fi-wm{ position: absolute; z-index: 0; top: 23.529%; left: 6.6%;
+  width: 86.8%; height: auto; display: block; }
+/* 🔴 ロゴはロゴ画像で＝市山さん指示 2026-09-11。背景の透かしも文字で組んでいたのを ralena-logo.png の形に。
+   色は元画像の実測 #F8F0E1（logo-ralena-wm.png）。インク実測 x66-933(幅868)・y160-322(高163) に合わせた */
+.lp-wrapper #sec-features-intro .fi-l2 i{ color: #D75A41; }
+
+/* ============================================================
+   #sec-scraper スクレーパーのご案内（元 29_ra-le-na.jpg y0-932・1000x932）
+   実測: 地 #E5F1E7（Figma変数 Green の淡い版）
+     導入 y68 高29 幅871 中央503.5 ／ y131 高28 幅710 中央503
+     クリームの円 y222–580（直径359）中心x 161 / 496 / 837（となりと少し重なる）
+     円の見出し y329–366 高38 色#4E8958 ／ 説明 y399・y453（送り54）
+     締め y642 高36 幅624 ／ y720 高36 幅856（送り78）
+   ============================================================ */
+.lp-wrapper #sec-scraper{ padding: 0; background: #E5F1E7; }
+.lp-wrapper #sec-scraper .sc{ position: relative; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  color: #3D3935; text-align: center; }
+.lp-wrapper #sec-scraper .sc p{ margin: 0; line-height: 1; white-space: nowrap; font-weight: 300; }
+.lp-wrapper #sec-scraper .sc-i1{ padding-top: min(6.8vw, 68px); font-size: min(3.0vw, 30px); letter-spacing: 0.079em; }
+.lp-wrapper #sec-scraper .sc-i2{ padding-top: min(3.3vw, 33px); font-size: min(3.0vw, 30px); letter-spacing: 0.088em; }
+.lp-wrapper #sec-scraper .sc-circles{ position: relative; height: min(35.9vw, 359px); margin-top: min(6.4vw, 64px); }
+.lp-wrapper #sec-scraper .sc-c{ position: absolute; top: 0; transform: translateX(-50%);
+  width: min(35.9vw, 359px); height: min(35.9vw, 359px); border-radius: 50%;
+  background: #FFF9EB; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; }
+/* テーマCSSの書体指定に左右されないよう、この要素に直接指定する（2026-09-07・引き継ぎ書「未決8」） */
+/* 見出しの太さ: 地の色からの距離で測ると 元30.4% ／ w600=35.6 w500=31.7 w400=28.3 w300=25.5。
+   2026-09-08 実測で w500 が元にいちばん近い（明暗だけのマスクで測ると逆の答えが出るので注意） */
+.lp-wrapper #sec-scraper .sc-c h3{ position: relative; top: min(1.4vw,14px); margin: 0 0 min(3.3vw,33px); font-weight: 500; color: #4E8958;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-size: min(3.9vw, 39px); letter-spacing: 0.071em; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-scraper .sc-c p{ font-size: min(3.0vw, 30px); letter-spacing: 0.009em; line-height: 1.8; }
+.lp-wrapper #sec-scraper .sc-e1,  .lp-wrapper #sec-scraper .sc-e2{
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  font-size: min(3.7vw, 37px); }
+.lp-wrapper #sec-scraper .sc-e1{ padding-top: min(5.5vw, 55px); letter-spacing: 0.101em; }
+.lp-wrapper #sec-scraper .sc-e2{ padding-top: min(4.1vw, 41px); padding-bottom: min(17.7vw, 177px);
+  letter-spacing: 0.098em; }
+
+/* ============================================================
+   #sec-f05-body 特徴5 2.8倍・3つの利点（元 11_ra-le-na.jpg y1215-2637・1000x1422）
+   実測（地 #F4ECDF）:
+     導入4行 ink上端 69/135/202/267（送り66＝33px×2.0）左 x57-62（箱 x55）
+     茶色の円 中心(790.5, 134) 直径350 色#6D6359（Figma変数 Grey）
+       ★円は章の上端より41px 上へはみ出し、上の写真帯に重なっている（元画像もそう）
+       2.8 x702-819 高74 ／ 倍 x839-885 高47 ／ 傷つきにくい y148-181 幅238 ／ ※自社調べ y224-246 幅137
+       いずれも明朝。小さい2行は字間がとても広い（約0.15em）
+     緑の帯3本 高100・左端x0・幅 643/434/642・色#84B28B（Figma変数 Green）
+       帯の文字は白の太ゴシック 39px・字間0.078em・左 x30・帯の中で上下中央
+     本文 33px・送り64・左 x50（太字の行あり）
+   ============================================================ */
+.lp-wrapper #sec-f05-body{ padding: 0; background: #F4ECDF; }
+.lp-wrapper #sec-f05-body .f5{ position: relative; }
+.lp-wrapper #sec-f05-body .f5 p,  .lp-wrapper #sec-f05-body .f5 h3{ margin: 0; white-space: nowrap; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-f05-body .f5 p.f5-lead{ padding-top: min(5.15vw,51.5px); margin-left: min(5.5vw,55px);
+  font-weight: 500; font-size: min(3.3vw,33px); line-height: 2.0; letter-spacing: 0.048em; }
+/* 茶色の円 */
+.lp-wrapper #sec-f05-body .f5 .f5-circle{ position: absolute; top: max(-4.1vw,-41px); left: min(61.55vw,615.5px);
+  width: min(35.0vw,350px); height: min(35.0vw,350px); border-radius: 50%; background: #6D6358; }
+.lp-wrapper #sec-f05-body .f5-circle p{ position: absolute; left: 0; right: 0; text-align: center;
+  color: #fff; line-height: 1; font-weight: 400;
+  font-family: 'YuMincho','游明朝','Yu Mincho','Hiragino Mincho ProN',serif; }
+.lp-wrapper #sec-f05-body .f5-circle p.f5-c1{ top: min(7.1vw,71px); font-size: min(10.0vw,100px); letter-spacing: 0;
+  transform: translateX(min(0.45vw,4.5px)); }
+.lp-wrapper #sec-f05-body .f5-circle p.f5-c1 span{ position: relative; top: max(-0.4vw,-4px);
+  font-size: 0.50em; letter-spacing: 0; margin-left: min(1.3vw,13px); }
+.lp-wrapper #sec-f05-body .f5-circle p.f5-c2{ top: min(18.7vw,187px); font-size: min(3.6vw,36px); letter-spacing: 0.147em;
+  padding-left: 0.147em; }
+.lp-wrapper #sec-f05-body .f5-circle p.f5-c3{ top: min(26.4vw,264px); font-size: min(2.5vw,25px); letter-spacing: 0.161em;
+  padding-left: 0.161em; }
+/* 緑の帯 */
+.lp-wrapper #sec-f05-body .f5 h3.f5-bar{ display: flex; align-items: center; height: min(10.0vw,100px);
+  background: #84B28B; color: #fff; font-weight: 700; font-size: min(3.9vw,39px);
+  letter-spacing: 0.078em; padding-left: min(3.0vw,30px); line-height: 1; }
+.lp-wrapper #sec-f05-body .f5 h3.f5-bar1{ width: min(64.3vw,643px); margin-top: min(6.15vw,61.5px); }
+.lp-wrapper #sec-f05-body .f5 h3.f5-bar2{ width: min(43.4vw,434px); margin-top: min(5.0vw,50px); }
+.lp-wrapper #sec-f05-body .f5 h3.f5-bar3{ width: min(64.2vw,642px); margin-top: min(5.0vw,50px); }
+/* 本文 */
+.lp-wrapper #sec-f05-body .f5 p.f5-tx{ margin-left: min(5.0vw,50px); font-weight: 500;
+  font-size: min(3.3vw,33px); line-height: 1.94; letter-spacing: 0.02em; padding-top: min(3.2vw,32px); }
+.lp-wrapper #sec-f05-body .f5 p.f5-tx b{ font-weight: 700; }
+.lp-wrapper #sec-f05-body .f5 p.f5-tx .f5-w{ letter-spacing: -0.026em; }
+.lp-wrapper #sec-f05-body .f5 p.f5-tx3{ padding-top: min(2.4vw,24px); padding-bottom: min(17.2vw,172px);
+  letter-spacing: -0.017em; }
+
+/* ============================================================
+   #sec-f06-body 特徴6 重さのちょうどよさ（元 12_ra-le-na.jpg y1238-2498・1000x1260／2026-09-10 更新）
+   実測（地 #FFF9ED）:
+     見出し1 ink y82-123 高42 x196-801 幅606（中央）／ オレンジは x534以降＝「とは限らない」
+     細い罫線 y166 と y881・x69-930 幅862（1pxの線がJPEGでぼけている＝実効2px相当）
+     本文 ink高31-33・送り68（34px×2.0）・箱の左 x59・字間0.05em（Figma変数 Text と一致）
+     見出し2 ink y800-843 高44 x292-710 幅419 ／ オレンジは x563以降＝「1,060g」
+   ★静間さんの型: 見出し（太ゴシック・2色）＋細い罫線＋本文。1章に2回くり返す
+   ============================================================ */
+.lp-wrapper #sec-f06-body{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-f06-body .f6 p,  .lp-wrapper #sec-f06-body .f6 h3{ margin: 0; color: #3D3935; white-space: nowrap;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-f06-body .f6 h3.f6-h{ text-align: center; font-weight: 700; line-height: 1; }
+.lp-wrapper #sec-f06-body .f6 h3.f6-h1{ padding-top: min(7.8vw,78px); font-size: min(4.4vw,44px); letter-spacing: 0.0735em;
+  padding-left: 0.070em; }
+.lp-wrapper #sec-f06-body .f6 h3.f6-h2{ padding-top: min(18.85vw,188.5px); font-size: min(4.4vw,44px); letter-spacing: 0.0625em;
+  padding-left: 0.052em; }
+.lp-wrapper #sec-f06-body .f6 .f6-o{ color: #D75A41; }
+.lp-wrapper #sec-f06-body .f6 p.f6-tx{ margin-left: min(5.9vw,59px); font-weight: 500; font-size: min(3.4vw,34px);
+  line-height: 2.0; letter-spacing: 0.05em; }
+.lp-wrapper #sec-f06-body .f6 p.f6-tx b{ font-weight: 700; }
+.lp-wrapper #sec-f06-body .f6 p.f6-t1{ padding-top: min(3.7vw,37px); }
+.lp-wrapper #sec-f06-body .f6 p.f6-t1 .l1{ letter-spacing: 0.0577em; }
+.lp-wrapper #sec-f06-body .f6 p.f6-t1 .l2{ letter-spacing: 0.0206em; }
+/* 元は行ごとに字間が違う（実測2026-09-10） */
+.lp-wrapper #sec-f06-body .f6 p.f6-t2{ padding-top: min(6.7vw,67px); }
+.lp-wrapper #sec-f06-body .f6 p.f6-t3{ padding-top: min(3.65vw,36.5px); padding-bottom: min(6.85vw,68.5px); }
+/* 細い罫線（この章に2本。全LPで使い回せるよう .ral-rule として置く） */
+.lp-wrapper .ral-rule{ width: min(86.2vw,862px); height: 2px; background: #CE8872; margin: 0 auto; border: 0; }
+.lp-wrapper #sec-f06-body .f6 .ral-rule1{ margin-top: min(3.95vw,39.5px); }
+.lp-wrapper #sec-f06-body .f6 .ral-rule2{ margin-top: min(4.0vw,40px); }
+
+/* ============================================================
+   #sec-size サイズ（元 20_ra-le-na.jpg y0-969・1000x969）
+   ★上の寸法図（y0-583）は画像のまま置く。赤い点線の引き出し線が写真の角に触れていて、
+     切ると壊れる（パイプライン §3「どこを画像として切り出すか」の判断）。
+     画像からは「Ra Le-Na Mサイズ」のピルだけ地の色で消し、HTMLで描き直している。
+   実測: ピル y559-643 x294-706（413x85・#898178・完全な丸み）／白文字 ink y587-616 幅322（中央）
+         本文 ink y715/785 高33 送り70（35px×2.0）字間0.05em ／ 注記 ink y862 高23（25px）
+   ⚠ ピルの丸み 42.5px は社内3段階（8/16/24）に無い。忠実再現のため実測のまま。要判定
+   ============================================================ */
+.lp-wrapper #sec-size{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-size .sz{ position: relative; }
+.lp-wrapper #sec-size .sz img.sz-fig{ display: block; width: 100%; height: auto; }
+.lp-wrapper #sec-size .sz p{ margin: 0; white-space: nowrap; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500; }
+.lp-wrapper #sec-size .sz p.sz-pill{ position: absolute; top: min(55.9vw,559px); left: min(29.4vw,294px);
+  width: min(41.3vw,413px); height: min(8.5vw,85px); border-radius: min(4.25vw,42.5px);
+  background: #898178; color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: min(3.4vw,34px); letter-spacing: 0.060em; padding-left: 0.060em; line-height: 1; font-weight: 700; }
+.lp-wrapper #sec-size .sz p.sz-tx{ margin-left: min(5.6vw,56px); padding-top: min(11.35vw,113.5px);
+  font-size: min(3.5vw,35px); line-height: 2.0; letter-spacing: 0.05em; }
+.lp-wrapper #sec-size .sz p.sz-tx b{ font-weight: 700; }
+.lp-wrapper #sec-size .sz p.sz-note{ margin-left: min(5.6vw,56px); padding-top: min(2.45vw,24.5px);
+  padding-bottom: min(8.2vw,82px); font-size: min(2.6vw,26px); line-height: 1; letter-spacing: 0.05em; }
+
+/* ============================================================
+   #sec-f08-body 特徴8 滑り防止・ひと拭き（元 16_ra-le-na.jpg y402-1797・1000x1395）
+   実測: 写真 2枚 500x500（y0-499）／色帯 y500-587 高88（左#84B28B 右#D85A41・白文字34px 太字 字間0.04em）
+         色パネル y588-1063 高476（左#F2F7F3 右#FCEEED）
+           見出し ink y631-665 高35（38px 太字 字間0.05em・中央／左は緑 右はオレンジ）
+           本文 ink y716から 送り64（33px×1.94）箱の左 x45（両パネルとも同じ）
+         下のクリーム y1064-1394 ／ 本文 ink y1138から 送り70（35px×2.0）箱の左 x66
+   ★静間型: 2つの面を「色で対にする」（緑＝滑り／オレンジ＝汚れ）。まとめの文でも同じ色を使い回す
+   ============================================================ */
+.lp-wrapper #sec-f08-body{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-f08-body .c8 p,  .lp-wrapper #sec-f08-body .c8 h3{ margin: 0; white-space: nowrap; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-f08-body .c8-row{ display: flex; }
+.lp-wrapper #sec-f08-body .c8-row > *{ width: 50%; }
+.lp-wrapper #sec-f08-body .c8 img.c8-ph{ display: block; width: 100%; height: auto; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-bar{ height: min(8.8vw,88px); display: flex; align-items: center;
+  justify-content: center; color: #fff; font-weight: 700; font-size: min(3.4vw,34px);
+  letter-spacing: 0.04em; padding-left: 0.04em; line-height: 1; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-bar-g{ background: #84B28B; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-bar-o{ background: #D75A41; }
+.lp-wrapper #sec-f08-body .c8-pane{ padding: min(4.1vw,41px) 0 min(4.5vw,45px); }
+.lp-wrapper #sec-f08-body .c8-pane-g{ background: #F2F7F3; }
+.lp-wrapper #sec-f08-body .c8-pane-o{ background: #FCEEED; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-ph3{ text-align: center; font-weight: 700; font-size: min(3.8vw,38px);
+  letter-spacing: 0.05em; padding-left: 0.05em; line-height: 1; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-ph3-g{ color: #84B28B; }
+.lp-wrapper #sec-f08-body .c8 h3.c8-ph3-o{ color: #D75A41; }
+.lp-wrapper #sec-f08-body .c8 p.c8-tx{ margin-left: min(4.5vw,45px); padding-top: min(3.2vw,32px);
+  font-weight: 500; font-size: min(3.3vw,33px); line-height: 1.94; letter-spacing: 0; }
+.lp-wrapper #sec-f08-body .c8 p.c8-tx b{ font-weight: 700; }
+.lp-wrapper #sec-f08-body .c8 p.c8-tx .c8-w{ letter-spacing: 0.028em; }
+.lp-wrapper #sec-f08-body .c8 p.c8-sum{ margin-left: min(6.6vw,66px); padding-top: min(5.6vw,56px);
+  padding-bottom: min(6.4vw,64px); font-weight: 500; font-size: min(3.5vw,35px);
+  line-height: 2.0; letter-spacing: 0.02em; }
+.lp-wrapper #sec-f08-body .c8 p.c8-sum .c8-l1{ letter-spacing: 0.047em; }
+.lp-wrapper #sec-f08-body .c8 p.c8-sum b{ font-weight: 700; }
+.lp-wrapper #sec-f08-body .c8 p.c8-sum .c8-g{ color: #84B28B; }
+.lp-wrapper #sec-f08-body .c8 p.c8-sum .c8-o{ color: #D75A41; }
+
+/* ============================================================
+   #sec-filartech フィラールテック（元 23_ra-le-na.jpg y2630-3700・1000x1070）
+   実測（地 #FBE9DD）:
+     ピル y130-187 高58 x284-715 幅432（#D85A41・完全な丸み）白文字 ink y147-171 幅307（28px 字間0.056em）
+     見出し「フィラールテック」ink y230-311 高82 x168-829 幅662 色#D75A41 明朝
+       ⚠ 手元の明朝と字形が合わない（原本の書体名は不明・要確認）。
+         ヒラギノ明朝W3 97px を **scaleX 0.896 の長体** にして寸法だけ合わせている
+     本文1 ink y432-467 幅485（40px・字間0.05em）／ 本文2 ink y919-954 幅895（37.5px・字間0.05em）
+       ＝**同じ章の中で本文の大きさが違う**（送りの実測 42 と 38.9）
+     クリームの円3つ 直径319・中心 x208.5/499.5/787.5・y686（**28pxずつ重なる**）色#FFF9ED
+     ラベル ink高46（50px 太字・オレンジ）円の中央
+   ============================================================ */
+.lp-wrapper #sec-filartech{ padding: 0; background: #FBE9DD; }
+.lp-wrapper #sec-filartech .fl{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(106.9vw,1069px); }
+.lp-wrapper #sec-filartech .fl p,  .lp-wrapper #sec-filartech .fl h3{ position: absolute; margin: 0; white-space: nowrap;
+  line-height: 1; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-filartech .fl p.fl-pill{ top: min(13.0vw,130px); left: min(28.4vw,284px);
+  width: min(43.2vw,432px); height: min(5.8vw,58px); border-radius: min(2.9vw,29px);
+  background: #D75A41; color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: min(2.8vw,28px); letter-spacing: 0.056em; padding-left: 0.056em; }
+.lp-wrapper #sec-filartech .fl h3.fl-h{ top: min(22.1vw,221px); left: 0; right: 0; text-align: center;
+  color: #D75A41; font-weight: 300; font-size: min(9.7vw,97px); letter-spacing: 0.02em;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  transform: scaleX(0.896); }
+.lp-wrapper #sec-filartech .fl p.fl-t1{ top: min(43.1vw,431px); left: 0; right: 0; text-align: center;
+  color: #3D3935; font-weight: 500; font-size: min(4.0vw,40px); letter-spacing: 0.05em; padding-left: 0.05em; }
+.lp-wrapper #sec-filartech .fl p.fl-t2{ top: min(91.9vw,919px); left: 0; right: 0; text-align: center;
+  color: #3D3935; font-weight: 500; font-size: min(3.75vw,37.5px); letter-spacing: 0.05em; padding-left: 0.05em; }
+.lp-wrapper #sec-filartech .fl .fl-c{ position: absolute; top: min(52.65vw,526.5px);
+  width: min(31.9vw,319px); height: min(31.9vw,319px); border-radius: 50%; background: #FEF9ED;
+  display: flex; align-items: center; justify-content: center; }
+.lp-wrapper #sec-filartech .fl .fl-c1{ left: min(4.9vw,49px); }
+.lp-wrapper #sec-filartech .fl .fl-c2{ left: min(34.0vw,340px); }
+.lp-wrapper #sec-filartech .fl .fl-c3{ left: min(62.8vw,628px); }
+/* テーマCSSの書体指定に左右されないよう、この要素に直接指定する（2026-09-07・引き継ぎ書「未決8」） */
+.lp-wrapper #sec-filartech .fl .fl-c b{ position: relative; top: min(0.3vw,3px); color: #D75A41; font-weight: 700; font-size: min(5.0vw,50px);
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0.03em; padding-left: 0.03em; line-height: 1; }
+
+/* ============================================================
+   #sec-filartech-3 硬度・クッション性（元 23_ra-le-na.jpg y3700-4542・1000x842）
+   ★章の切れ目を y4650 → y4542 へ動かした（3本目の濃い帯が章をまたいでいた・2026-09-06）
+   実測（地 #FBE9DD）:
+     濃い帯 #6D6359（Figma変数 Grey）高108・左端x0・幅は文字ぶん（790／659）
+       白の太ゴシック45px 字間0.026em・左 x48・帯の中で上下中央
+     クリームのパネル #FFF9ED は**帯より下・右にずれて重なる**（左x47・右は版面の端まで）
+       帯の下端がパネルの上端より下＝帯がパネルに食い込む形
+     本文 34px×2.0（送り68）字間0.05em・箱の左 x107（＝パネルの左47＋60）
+   ============================================================ */
+.lp-wrapper #sec-filartech-3{ padding: 0; background: #FBE9DD; }
+.lp-wrapper #sec-filartech-3 .f3{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(84.1vw,841px); }
+.lp-wrapper #sec-filartech-3 .f3 > *{ position: absolute; }
+.lp-wrapper #sec-filartech-3 .f3 p,  .lp-wrapper #sec-filartech-3 .f3 h3{ margin: 0; white-space: nowrap; line-height: 1;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-filartech-3 .f3 .f3-pane{ background: #FEF9ED; right: 0; }
+/* 帯の白文字は w700 だと元より太い（元のインク率15.1% / w700は19.8% / w500は13.6%）。
+   2026-09-08 に w500 へ。ヒラギノは w500以下が同じ太さなので、これがいちばん近い段 */
+.lp-wrapper #sec-filartech-3 .f3 h3.f3-bar{ left: 0; height: min(10.8vw,108px); background: #6D6358;
+  color: #fff; font-weight: 700; font-size: min(4.5vw,45px); letter-spacing: 0.026em;
+  display: flex; align-items: center; padding-left: min(4.8vw,48px); }
+.lp-wrapper #sec-filartech-3 .f3 p.f3-tx{ left: min(10.7vw,107px); color: #3D3935; font-weight: 500;
+  font-size: min(3.4vw,34px); line-height: 2.0; letter-spacing: 0.05em; }
+.lp-wrapper #sec-filartech-3 .f3 p.f3-tx .f3-o{ color: #D75A41; font-weight: 700; }
+
+/* ============================================================
+   #sec-design-support 抗菌剤＋素材とデザインが支えています（元 23_ra-le-na.jpg y4542-5712・1000x1170）
+   ★章の切れ目を y4650→y4542（前）と y5906→y5712（後）へ動かした
+     （濃い帯と、下の写真＋緑帯が、それぞれ章をまたいでいた・2026-09-06）
+   実測（地 #FBE9DD 一様）:
+     濃い帯 y0-107 x0-904（幅905）#6D6359 白45px 字間0.026em 左x48
+     クリームのパネル y56-309 左x47〜版面の端（帯より下・右にずれて重なる）
+     クリームの円4つ 直径321・中心 x127/375.5/623/871・y639（**版面の左右へはみ出して切れる**）
+       ラベルは42px 太字オレンジ・円の中央・2行のものは送り66
+     まとめ2行 46px（字間0.073em）／ 2行目だけ太字
+   ============================================================ */
+.lp-wrapper #sec-design-support{ padding: 0; background: #FBE9DD; }
+.lp-wrapper #sec-design-support .d8{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(116.9vw,1169px); overflow: hidden; }
+.lp-wrapper #sec-design-support .d8 > *{ position: absolute; }
+.lp-wrapper #sec-design-support .d8 p,  .lp-wrapper #sec-design-support .d8 h3{ margin: 0; white-space: nowrap; line-height: 1;
+  color: #3D3935; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-design-support .d8 h3.d8-bar{ top: 0; left: 0; width: min(90.5vw,905px); height: min(10.8vw,108px);
+  background: #6D6358; color: #fff; font-weight: 500; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-size: min(4.5vw,45px);
+  letter-spacing: 0.026em; display: flex; align-items: center; padding-left: min(4.8vw,48px); }
+.lp-wrapper #sec-design-support .d8 .d8-pane{ top: min(5.6vw,56px); left: min(4.7vw,47px); right: 0;
+  height: min(25.4vw,254px); background: #FEF9ED; }
+.lp-wrapper #sec-design-support .d8 p.d8-p1{ top: min(15.9vw,159px); left: min(10.7vw,107px);
+  font-weight: 500; font-size: min(3.4vw,34px); letter-spacing: 0.044em; }
+.lp-wrapper #sec-design-support .d8 p.d8-p2{ top: min(21.9vw,219px); left: min(10.7vw,107px);
+  font-weight: 500; font-size: min(2.6vw,26px); letter-spacing: 0.042em; }
+.lp-wrapper #sec-design-support .d8 .d8-o{ color: #D75A41; font-weight: 700; }
+.lp-wrapper #sec-design-support .d8 p.d8-mid{ top: min(37.7vw,377px); left: 0; right: 0; text-align: center;
+  font-weight: 500; font-size: min(4.0vw,40px); letter-spacing: 0.05em; padding-left: 0.05em; }
+.lp-wrapper #sec-design-support .d8 .d8-c{ top: min(47.85vw,478.5px); width: min(32.1vw,321px);
+  height: min(32.1vw,321px); border-radius: 50%; background: #FEF9ED;
+  display: flex; align-items: center; justify-content: center; }
+/* テーマCSSの書体指定に左右されないよう、この要素に直接指定する（2026-09-07・引き継ぎ書「未決8」） */
+.lp-wrapper #sec-design-support .d8 .d8-c b{ color: #D75A41; font-weight: 700; font-size: min(4.2vw,42px);
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0.036em; padding-left: 0.036em; line-height: 1.571; text-align: center;
+  white-space: nowrap; }
+.lp-wrapper #sec-design-support .d8 p.d8-e1{ top: min(86.6vw,866px); left: 0; right: 0; text-align: center;
+  font-weight: 500; font-size: min(4.6vw,46px); letter-spacing: 0.074em; padding-left: 0.074em; }
+.lp-wrapper #sec-design-support .d8 p.d8-e2{ top: min(95.9vw,959px); left: 0; right: 0; text-align: center;
+  font-weight: 700; font-size: min(4.6vw,46px); letter-spacing: 0.072em; padding-left: 0.072em; }
+
+/* ============================================================
+   #sec-spec 製品仕様（元 30_ra-le-na.jpg y0-1450・1000x1450）
+   ★背景はキッチン写真。見出し「製品仕様」は写真に焼き込まれているため、
+     写真＋見出しを1枚の画像として敷き、その上に**白いカードと表をHTMLで**置く。
+     カードの角丸は実測 約10px → 社内3段階に丸めて 8px（元より少し角が立つが、
+     元のカードを完全に覆うので写真側がはみ出さない）
+   実測: カード y277-1359 x50-949（900x1083）#F9F7F8
+         行の高さ82・罫線 x130-869（幅740・1px・#CAC8C9）
+         ラベル 31px 太字 #6D6358 左x130 ／ 値 31px #3D3935 左x340（＝カード内210）
+   ============================================================ */
+.lp-wrapper #sec-spec{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-spec .sp{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(144.9vw,1449px); }
+.lp-wrapper #sec-spec .sp img.sp-bg{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lp-wrapper #sec-spec .sp .sp-card{ position: absolute; top: min(27.7vw,277px); left: min(5.0vw,50px);
+  width: min(90.0vw,900px); height: min(108.3vw,1083px); background: #F9F7F8;
+  border-radius: min(0.8vw,8px); padding-top: min(3.9vw,39px); box-sizing: border-box; }
+.lp-wrapper #sec-spec .sp dl{ margin: 0 min(8.0vw,80px); }
+.lp-wrapper #sec-spec .sp .sp-row{ display: flex; align-items: center; height: min(8.2vw,82px);
+  border-bottom: 1px solid #CAC8C9; }
+.lp-wrapper #sec-spec .sp dt,  .lp-wrapper #sec-spec .sp dd{ margin: 0; white-space: nowrap; line-height: 1;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-spec .sp dt{ width: min(21.0vw,210px); flex: none; color: #6D6358; font-weight: 700;
+  font-size: min(3.1vw,31px); letter-spacing: 0.033em; }
+.lp-wrapper #sec-spec .sp dd.sp-w{ letter-spacing: 0.042em; }
+.lp-wrapper #sec-spec .sp dd{ color: #3D3935; font-weight: 500; font-size: min(3.1vw,31px); letter-spacing: 0.05em; }
+
+/* ============================================================
+   #sec-faq よくある質問（元 31_ra-le-na.jpg y0-4009・1000x4009）
+   実測（地 #FBF1E8 一様）:
+     見出し「よくある質問」ink y211 高72 幅469（明朝77px・字間0.069em・中央）
+     「Q&A」ink y324 高53 幅106（緑#8CA68B の筆記体。手元の書体は幅が広いので scaleX 0.72）
+     カード9枚 x19-980（962幅）角丸8px・白・間隔20px
+       Qの丸 直径86・カード左から50・上から53（#D75A41／白の明朝Q ink 30x35 中央）
+       質問 42px 太字 #D75A41・送り64・箱の左165（カード内）
+       答え 32px #3D3935・送り59.5・箱の左51（カード内）・字間0.028em
+   ★静間型: 1枚のカードに「丸バッジ＋オレンジの問い＋黒の答え」。問いが2行の札は上余白が14px狭い
+   ============================================================ */
+.lp-wrapper #sec-faq{ padding: 0; background: #FBF1E8; }
+.lp-wrapper #sec-faq .fq{ width: 100%; max-width: 1000px; margin: 0 auto; padding-bottom: min(8.6vw,86px); }
+.lp-wrapper #sec-faq .fq h2,  .lp-wrapper #sec-faq .fq p{ margin: 0; }
+.lp-wrapper #sec-faq .fq h2.fq-h{ padding-top: min(20.8vw,208px); text-align: center; color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(7.7vw,77px); letter-spacing: 0.069em; padding-left: 0.069em; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-faq .fq p.fq-sub{ margin-top: min(3.2vw,32px); text-align: center; color: #8CA68B;
+  font-family: 'Snell Roundhand','Apple Chancery',cursive; font-style: italic; font-weight: 400;
+  font-size: min(7.5vw,75px); letter-spacing: -0.06em; line-height: 1; white-space: nowrap;
+  transform: scaleX(0.58); }
+.lp-wrapper #sec-faq .fq .faq-card{ position: relative; background: #fff; border-radius: min(0.8vw,8px);
+  margin: min(2.0vw,20px) min(2.0vw,20px) 0 min(1.9vw,19px); box-sizing: border-box; overflow: hidden; }
+.lp-wrapper #sec-faq .fq .faq-card:first-of-type{ margin-top: min(7.4vw,74px); }
+.lp-wrapper #sec-faq .fq .faq-badge{ position: absolute; top: min(5.3vw,53px); left: min(5.0vw,50px);
+  width: min(8.6vw,86px); height: min(8.6vw,86px); border-radius: 50%; background: #D75A41;
+  color: #fff; display: flex; align-items: center; justify-content: center; line-height: 1;
+  font-family: 'YuMincho','游明朝','Yu Mincho',serif; font-size: min(4.8vw,48px); }
+.lp-wrapper #sec-faq .fq p.faq-q{ margin-left: min(16.5vw,165px); padding-top: min(5.0vw,50px);
+  color: #D75A41; font-weight: 700; font-size: min(4.2vw,42px); letter-spacing: 0.03em;
+  line-height: min(6.4vw,64px); white-space: nowrap;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-faq .fq p.faq-a{ margin-left: min(5.1vw,51px); padding-top: min(1.9vw,19px);
+  color: #3D3935; font-weight: 500; font-size: min(3.2vw,32px); letter-spacing: 0.028em;
+  line-height: min(5.95vw,59.5px); white-space: nowrap;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-faq .fq .faq-1 p.faq-q{ padding-top: min(6.4vw,64px); }
+.lp-wrapper #sec-faq .fq .faq-1 p.faq-a{ padding-top: min(3.2vw,32px); }
+
+/* ============================================================
+   #sec-story-1 開発物語1 理想の一枚がどこにもない（元 24_ra-le-na.jpg y1039-2831・1000x1792）
+   ★章の切れ目を y978→y1039 へ動かした（扉の写真が61px ぶん食い込んでいた・2026-09-06）
+   実測（地 #FCF1DF）:
+     小見出し「ある日のキッチン」ink y108 高48 幅476（54px・字間0.15em）
+     本文 ink高35・送り76 ＝ Figma変数 `Story Text`（Hiragino Sans W3 38px×2.0）・箱の左62
+       ⚠ 字間は #52 の 0.058em より少し詰まって **0.049em**（欧文の行だけさらに詰まる）
+     大見出し「理想の一枚が、どこにもない」ink y1056 高54 幅791（58px・字間0.0615em）
+     写真 y1182-1791（610px・全幅）
+   ============================================================ */
+.lp-wrapper #sec-story-1{ padding: 0; background: #FCF1DF; }
+.lp-wrapper #sec-story-1 .s1 p{ margin: 0; white-space: nowrap; color: #3D3935; font-weight: 300;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+.lp-wrapper #sec-story-1 .s1 p.s1-h{ padding-top: min(10.3vw,103px); margin-left: min(6.9vw,69px);
+  font-size: min(5.4vw,54px); line-height: 1; letter-spacing: 0.15em; }
+.lp-wrapper #sec-story-1 .s1 p.s1-tx{ margin-left: min(6.2vw,62px); padding-top: min(5.45vw,54.5px);
+  font-size: min(3.8vw,38px); line-height: 2.0; letter-spacing: 0.049em; }
+.lp-wrapper #sec-story-1 .s1 p.s1-tx .s1-w{ letter-spacing: 0.0216em; }
+.lp-wrapper #sec-story-1 .s1 p.s1-tx2{ margin-left: min(6.2vw,62px); padding-top: min(7.6vw,76px);
+  font-size: min(3.8vw,38px); line-height: 2.0; letter-spacing: 0.049em; }
+.lp-wrapper #sec-story-1 .s1 p.s1-big{ margin-left: min(6.2vw,62px); padding-top: min(15.75vw,157.5px);
+  font-size: min(5.8vw,58px); line-height: 1; letter-spacing: 0.0615em; }
+.lp-wrapper #sec-story-1 img.s1-ph{ display: block; width: 100%; max-width: 1000px; height: auto;
+  margin: min(7.0vw,70px) auto 0; }
+
+/* ============================================================
+   #sec-name-body Ra Le-Na の由来（元 25_ra-le-na.jpg y1000-2908・1000x1908）
+   実測:
+     外の地は金の縦グラデーション（上 #FFF0DD → y900あたりが最も濃い #F5EDD8 → 下 #FDF4E3）
+     明るいパネル y0-1709 x51-940（890幅）#FCFBF6
+     ロゴ「Ra Le-Na」ink y99-189 幅482（幾何学サンセリフ124px・FVのロゴと同じ書体）
+     「ラレーナ」ink y260-295 幅192（ゴシック44px・字間0.20em）
+     ★**罫線つきの便箋**: 80px ごとに 2px の罫線（#E7E2DC・x118-882＝幅765）。
+       行は全16行で、うち3行（4・7・13行目）は**空行だが罫線だけ引かれている**。最後の行だけ罫線なし
+     本文 明朝37px・字間0.02em・箱の左118・罫線の上に載る
+   ============================================================ */
+.lp-wrapper #sec-name-body{ padding: 0; background: linear-gradient(180deg,
+  #FFF0DD 0%, #FAF2DF 8%, #F5EDD8 47%, #FAF2DF 63%, #FEF5E4 79%, #FDF4E3 100%); }
+.lp-wrapper #sec-name-body .rn{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(190.7vw,1907px); }
+.lp-wrapper #sec-name-body .rn-panel{ position: absolute; top: 0; left: min(5.1vw,51px);
+  width: min(89.0vw,890px); height: min(171.0vw,1710px); background: #FCFBF6; }
+.lp-wrapper #sec-name-body .rn p{ margin: 0; white-space: nowrap; color: #3D3935; }
+.lp-wrapper #sec-name-body .rn p.rn-logo{ padding-top: min(8.7vw,87px); text-align: center; line-height: 1;
+  font-family: 'Avenir Next','Avenir','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 400; font-size: min(12.4vw,124px); letter-spacing: 0; }
+.lp-wrapper #sec-name-body .rn p.rn-kana{ padding-top: min(4.4vw,44px); text-align: center; line-height: 1;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 300;
+  font-size: min(4.4vw,44px); letter-spacing: 0.132em; padding-left: 0.132em; }
+.lp-wrapper #sec-name-body .rn .rn-sheet{ padding-top: min(8.1vw,81px); margin: 0 min(6.7vw,67px); }
+.lp-wrapper #sec-name-body .rn p.rn-row{ height: min(8.0vw,80px); box-sizing: border-box;
+  border-bottom: 2px solid #E7E2DC; line-height: min(7.8vw,78px); padding-left: min(0.4vw,4px);
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  font-weight: 300; font-size: min(3.7vw,37px); letter-spacing: 0.02em; }
+.lp-wrapper #sec-name-body .rn p.rn-row:last-child{ border-bottom: 0; }
+
+/* ============================================================
+   #sec-campaign 新発売キャンペーン（元 27_ra-le-na.jpg y0-797・1000x797）
+   実測:
+     上の帯 y0-124 #7DAD84（元は漆喰のテクスチャ。**平らな色で置き換えている**＝唯一の意図的な差）
+       白文字 ink y45-79 幅375（明朝38px・字間0.136em）／ 5角の星13px×6個（#F5E5A9）
+       x206/235/265 と x722/752/782（左右対称・中心500）
+     帯の下に下向きの三角（幅18・高16・中心x501.5）
+     地 y125-703 #E3EFE5（同じくテクスチャを平らな色に置き換え）
+     "Present" の筆記体はオレンジ。**帯にまたがる**ので、元画像から
+       オレンジ度でアルファを作った透過PNG（script-present.png）にして重ねている
+     吹き出しアイコン 84x60 #A7D0AE＋左下のしっぽ／白いバー2本（4px）
+     囲み枠 x72-583 y336-456（2px #625B49）／中に「専用スクレパー」、外に「プレゼント」
+     下の濃い帯 x50-949 y704-（**画像の下端で切れている**）#6D6359・角丸は実測30px→社内3段階で24px
+   ============================================================ */
+.lp-wrapper #sec-campaign{ padding: 0; background: #E3EFE5; }
+.lp-wrapper #sec-campaign .cp{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(79.6vw,796px); overflow: hidden; }
+.lp-wrapper #sec-campaign .cp > *{ position: absolute; }
+.lp-wrapper #sec-campaign .cp p{ margin: 0; white-space: nowrap; line-height: 1; }
+.lp-wrapper #sec-campaign .cp .cp-band{ top: 0; left: 0; right: 0; height: min(12.5vw,125px); background: #7DAD84; }
+.lp-wrapper #sec-campaign .cp .cp-tri{ top: min(12.5vw,125px); left: min(49.25vw,492.5px); width: 0; height: 0;
+  border-left: min(0.9vw,9px) solid transparent; border-right: min(0.9vw,9px) solid transparent;
+  border-top: min(1.6vw,16px) solid #7DAD84; }
+.lp-wrapper #sec-campaign .cp p.cp-ttl{ top: min(4.3vw,43px); left: 0; right: 0; text-align: center; color: #fff;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(3.8vw,38px); letter-spacing: 0.136em; padding-left: 0.136em; }
+.lp-wrapper #sec-campaign .cp svg.cp-stars{ top: min(5.6vw,56px); left: 0; width: 100%; height: min(1.3vw,13px); }
+.lp-wrapper #sec-campaign .cp img.cp-present{ top: min(9.5vw,95px); left: min(72.5vw,725px);
+  width: min(27.5vw,275px); height: auto; }
+.lp-wrapper #sec-campaign .cp .cp-icon{ top: min(22.4vw,224px); left: min(21.0vw,210px);
+  width: min(8.4vw,84px); height: min(6.0vw,60px); border-radius: min(0.8vw,8px); background: #A7D0AE; }
+.lp-wrapper #sec-campaign .cp .cp-icon i{ position: absolute; left: min(1.8vw,18px); background: #fff;
+  width: min(4.7vw,47px); height: min(0.4vw,4px); }
+.lp-wrapper #sec-campaign .cp .cp-icon .cp-i1{ top: min(2.0vw,20px); }
+.lp-wrapper #sec-campaign .cp .cp-icon .cp-i2{ top: min(3.6vw,36px); }
+.lp-wrapper #sec-campaign .cp .cp-tail{ top: min(28.3vw,283px); left: min(22.9vw,229px); width: 0; height: 0;
+  border-left: min(1.1vw,11px) solid #A7D0AE; border-bottom: min(1.6vw,16px) solid transparent; }
+.lp-wrapper #sec-campaign .cp p.cp-l1{ top: min(22.3vw,223px); left: min(31.7vw,317px); color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(6.7vw,67px); letter-spacing: 0.015em; }
+.lp-wrapper #sec-campaign .cp .cp-box{ top: min(33.6vw,336px); left: min(7.2vw,72px);
+  width: min(51.2vw,512px); height: min(12.1vw,121px); border: 2px solid #625B49; box-sizing: border-box; }
+.lp-wrapper #sec-campaign .cp p.cp-in{ top: min(36.65vw,366.5px); left: min(9.9vw,99px); color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(6.3vw,63px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-campaign .cp p.cp-out{ top: min(36.95vw,369.5px); left: min(60.0vw,600px); color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(6.3vw,63px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-campaign .cp p.cp-b1,  .lp-wrapper #sec-campaign .cp p.cp-b2{ left: 0; right: 0; text-align: center;
+  color: #3D3935; font-weight: 500; font-size: min(3.1vw,31px); letter-spacing: 0.059em;
+  padding-left: 0.059em; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-campaign .cp p.cp-b1{ top: min(53.7vw,537px); }
+.lp-wrapper #sec-campaign .cp p.cp-b2{ top: min(60.0vw,600px); }
+.lp-wrapper #sec-campaign .cp .cp-bar{ top: min(70.4vw,704px); left: min(5.0vw,50px); width: min(90.0vw,900px);
+  height: min(9.3vw,93px); background: #6D6358;
+  border-radius: min(2.4vw,24px) min(2.4vw,24px) 0 0; }
+.lp-wrapper #sec-campaign .cp p.cp-bt{ top: min(73.3vw,733px); left: 0; right: 0; text-align: center; color: #fff;
+  font-weight: 700; font-size: min(3.6vw,36px); letter-spacing: 0.046em; padding-left: 0.046em;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+
+/* ============================================================
+   #sec-refund 全額返金保証（元 26_ra-le-na.jpg y1114-2289・1000x1175）
+   実測: 地は焦げ茶の縦グラデーション（上 #1E0000 → y600あたりで #4C2303 → 下は #422005 で一定）
+     金のバッジは**円形の透過PNG**として切り出した（中心 x767 y273・直径377／外周にぼかし）
+     「使った後に／満足できなければ」明朝54px 白・左x76
+     「全額返金」明朝114px・金 #FBDE72（縦のグラデはほぼ無い＝ベタ）
+     「こんな理由でも返品OK」太ゴシック38px＋左右に1pxの罫線（#714930・各180px）
+     ✕の項目 明朝36px・✕は32x32（#AF927D）・2行×2列（送り82）
+     返品条件 ラベルは金 #F1C37A・本文は明朝31px
+   ============================================================ */
+/* 地は「縦のグラデーション」だけでは合わない。元は**左上が暗く落ちる**（2026-09-08 実測）。
+   縦は右端の列で測った値、その上に左上を暗くする陰を1枚重ねる。
+   実測: y0 左#1C0400 / 右#2E1603（比0.60）、y332 で比0.82、y498 以降は左右が同じ */
+.lp-wrapper #sec-refund{ padding: 0; background:
+  radial-gradient(72% 46% at 0% 0%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0) 100%),
+  linear-gradient(180deg,
+  #2E1603 0%, #341A05 7%, #391D07 14%, #402209 21%, #422207 28%, #432004 35%,
+  #452104 42%, #4B2204 49%, #4D2200 57%, #471B00 64%, #441800 71%, #441700 78%,
+  #422005 85%, #422005 100%); }
+.lp-wrapper #sec-refund .rf{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(117.4vw,1174px); }
+.lp-wrapper #sec-refund .rf > *{ position: absolute; }
+.lp-wrapper #sec-refund .rf p{ margin: 0; white-space: nowrap; line-height: 1; color: #fff;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-refund .rf img.rf-badge{ left: min(55.2vw,552px); top: min(5.8vw,58px);
+  width: min(43.0vw,430px); height: auto; }
+.lp-wrapper #sec-refund .rf p.rf-h1{ left: min(7.6vw,76px); top: min(11.4vw,114px);
+  font-size: min(5.4vw,54px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-refund .rf p.rf-h2{ left: min(7.6vw,76px); top: min(20.8vw,208px);
+  font-size: min(5.4vw,54px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-refund .rf p.rf-gold{ left: min(7.1vw,71px); top: min(31.0vw,310px);
+  font-size: min(11.4vw,114px); letter-spacing: 0.04em; color: #FBDE72; }
+.lp-wrapper #sec-refund .rf p.rf-b1,  .lp-wrapper #sec-refund .rf p.rf-b2{ left: 0; right: 0; text-align: center;
+  font-size: min(2.7vw,27px); letter-spacing: 0.066em; padding-left: 0.066em; }
+.lp-wrapper #sec-refund .rf p.rf-b1{ top: min(51.4vw,514px); }
+.lp-wrapper #sec-refund .rf p.rf-b2{ top: min(56.8vw,568px); }
+.lp-wrapper #sec-refund .rf p.rf-mid{ left: 0; right: 0; text-align: center; top: min(68.2vw,682px);
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 700;
+  font-size: min(3.8vw,38px); letter-spacing: 0.05em; padding-left: 0.05em; }
+.lp-wrapper #sec-refund .rf .rf-rule{ top: min(70.1vw,701px); height: 1px; background: #714930;
+  width: min(18.0vw,180px); }
+.lp-wrapper #sec-refund .rf .rf-item{ display: flex; align-items: center; }
+.lp-wrapper #sec-refund .rf .rf-item svg{ width: min(3.2vw,32px); height: min(3.2vw,32px); flex: none;
+  color: #AF927D; margin-right: min(1.3vw,13px); }
+.lp-wrapper #sec-refund .rf .rf-item p{ font-size: min(3.6vw,36px); letter-spacing: 0.03em; }
+.lp-wrapper #sec-refund .rf p.rf-lb{ left: min(7.6vw,76px); color: #F1C37A;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500;
+  font-size: min(3.2vw,32px); letter-spacing: 0.034em; }
+.lp-wrapper #sec-refund .rf p.rf-c{ left: min(21.1vw,211px); font-size: min(3.1vw,31px); letter-spacing: 0.045em; }
+.lp-wrapper #sec-refund .rf p.rf-c2{ letter-spacing: -0.003em; }
+.lp-wrapper #sec-refund .rf p.rf-c u{ text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 600; }
+.lp-wrapper #sec-refund .rf .rf-tri{ left: min(16.5vw,165px); top: min(106.3vw,1063px); width: 0; height: 0;
+  border-left: min(1.3vw,13px) solid #8A663D;
+  border-top: min(0.75vw,7.5px) solid transparent; border-bottom: min(0.75vw,7.5px) solid transparent; }
+
+/* ============================================================
+   #sec-food-safe 食品接触安全・ノンポーラス（元 09_ra-le-na.jpg y6975-9792・1000x2817）
+   ★写真カード（y253-932）は**文字が焼き込まれている**ので1枚の画像として置く
+     （赤ちゃんの写真の上に「食品接触安全を／全項目クリア」が載っている＝切ると壊れる）
+   ★丸いアイコン3つも、元の絵をそのまま**円形の透過PNG**にした（線画を描き起こさない）
+   実測: 「さらに」ink y109 幅145（太ゴシック46px・字間0.159em）
+     赤い▼ y1095-1114（27x20）／「つまり」ink y1230 幅192（明朝66px・字間0.095em）
+     白い行 3枚 高271・間5（top 1363/1639/1915）丸190px 左59・上39／文字 左277・ink +86 と +147
+     締め 明朝72px（2行目はオレンジ）
+   ============================================================ */
+.lp-wrapper #sec-food-safe{ padding: 0; background: linear-gradient(180deg, #FEF9ED 0%, #FAF3E3 40%, #FCF5E5 100%); }
+.lp-wrapper #sec-food-safe .fs{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(281.7vw,2817px); }
+.lp-wrapper #sec-food-safe .fs > *{ position: absolute; }
+.lp-wrapper #sec-food-safe .fs p{ margin: 0; white-space: nowrap; line-height: 1; color: #3D3935; }
+.lp-wrapper #sec-food-safe .fs p.fs-more{ top: min(10.55vw,105.5px); left: 0; right: 0; text-align: center;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 700;
+  font-size: min(4.6vw,46px); letter-spacing: 0.213em; padding-left: 0.213em; }
+.lp-wrapper #sec-food-safe .fs img.fs-card{ top: min(25.3vw,253px); left: 0; width: 100%; height: auto; }
+.lp-wrapper #sec-food-safe .fs .fs-tri{ top: min(109.5vw,1095px); left: min(48.65vw,486.5px); width: 0; height: 0;
+  border-left: min(1.45vw,14.5px) solid transparent; border-right: min(1.45vw,14.5px) solid transparent;
+  border-top: min(2.1vw,21px) solid #D75A41; }
+.lp-wrapper #sec-food-safe .fs p.fs-so{ top: min(122.6vw,1226px); left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(6.6vw,66px); letter-spacing: 0.095em; padding-left: 0.095em; }
+.lp-wrapper #sec-food-safe .fs .fs-row{ left: 0; right: 0; height: min(27.1vw,271px); background: #FEFDFB; }
+.lp-wrapper #sec-food-safe .fs .fs-row img.fs-ic{ position: absolute; left: min(5.9vw,59px); top: min(3.9vw,39px);
+  width: min(19.0vw,190px); height: auto; }
+.lp-wrapper #sec-food-safe .fs .fs-row p{ position: absolute; left: min(27.7vw,277px);
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500;
+  font-size: min(3.8vw,38px); letter-spacing: 0.031em; }
+.lp-wrapper #sec-food-safe .fs .fs-row p.fs-r1{ top: min(8.5vw,85px); }
+.lp-wrapper #sec-food-safe .fs .fs-row p.fs-r2{ top: min(14.7vw,147px); }
+.lp-wrapper #sec-food-safe .fs .fs-row p.fs-em{ color: #D75A41; font-weight: 700; }
+.lp-wrapper #sec-food-safe .fs p.fs-e1,  .lp-wrapper #sec-food-safe .fs p.fs-e2{ left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(7.2vw,72px); }
+.lp-wrapper #sec-food-safe .fs p.fs-e1{ top: min(232.9vw,2329px); letter-spacing: 0.056em; padding-left: 0.056em; }
+.lp-wrapper #sec-food-safe .fs p.fs-e2{ top: min(247.9vw,2479px); letter-spacing: 0.082em; padding-left: 0.082em;
+  color: #D75A41; }
+
+/* ============================================================
+   #sec-nafur NAFUR RHA-805・99%防菌（元 09_ra-le-na.jpg y2320-4189・1000x1869）
+   実測: 地は上下 #FFF9ED・中央 y350-1309 が白
+     ▼ y89-113（31x25・#D75A41）
+     オレンジ箱 y287-401 x234-765（532x115）白の太ゴシック44px
+     表 x31-969（939）／列 263・293・183・193（すき間2/2/3px）
+       見出し行 高96 #6D6359 白34px／本文行 高155 #EFEEE9・最終列だけ #D85A41 に白文字
+       列のそろえ: 1列目と3列目は**塊を中央に置いて中は左そろえ**、2列目は左そろえ、4列目は行ごとに中央
+     「99%防菌」ink y1456-1544（99はオレンジの明朝95px・%と防菌は小さく下そろえ）
+     飾りの曲線は元画像から透過PNGに（swash-brace.png）
+   ============================================================ */
+.lp-wrapper #sec-nafur{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-nafur .nf{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(186.9vw,1869px); }
+.lp-wrapper #sec-nafur .nf > *{ position: absolute; }
+.lp-wrapper #sec-nafur .nf p{ margin: 0; white-space: nowrap; line-height: 1; color: #3D3935; }
+/* 白い面は元画像でも純白（実測 255,255,255）。§10-5 とは違うが忠実再現なので残す（2026-09-08） */
+.lp-wrapper #sec-nafur .nf .nf-white{ top: min(35.0vw,350px); left: 0; right: 0; height: min(96.0vw,960px);
+  background: #fff; }
+.lp-wrapper #sec-nafur .nf .nf-tri{ top: min(8.9vw,89px); left: min(48.4vw,484px); width: 0; height: 0;
+  border-left: min(1.55vw,15.5px) solid transparent; border-right: min(1.55vw,15.5px) solid transparent;
+  border-top: min(2.5vw,25px) solid #D75A41; }
+.lp-wrapper #sec-nafur .nf p.nf-lead{ top: min(18.8vw,188px); left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(4.0vw,40px); letter-spacing: 0.07em; padding-left: 0.07em; }
+.lp-wrapper #sec-nafur .nf .nf-box{ top: min(28.7vw,287px); left: min(23.4vw,234px); width: min(53.2vw,532px);
+  height: min(11.5vw,115px); background: #D75A41; display: flex; align-items: center;
+  justify-content: center; color: #fff; font-weight: 700; font-size: min(4.7vw,47px);
+  letter-spacing: 0.073em; padding-left: 0.073em; line-height: 1; white-space: nowrap;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-nafur .nf p.nf-sub{ top: min(46.95vw,469.5px); left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Sans','ヒラギノ角ゴシック','Noto Sans JP',sans-serif; font-weight: 400;
+  font-size: min(4.0vw,40px); letter-spacing: 0.002em; }
+.lp-wrapper #sec-nafur .nf .nf-tbl{ top: min(56.1vw,561px); left: min(3.1vw,31px); width: min(93.9vw,939px);
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-nafur .nf .nf-row{ display: flex; gap: min(0.2vw,2px); margin-bottom: min(0.2vw,2px);
+  height: min(15.5vw,155px); }
+.lp-wrapper #sec-nafur .nf .nf-head{ height: min(9.6vw,96px); }
+.lp-wrapper #sec-nafur .nf .nf-cell{ background: #EFEEE9; display: flex; align-items: center;
+  font-weight: 500; font-size: min(3.4vw,34px); letter-spacing: 0.002em; line-height: min(5.1vw,51px);
+  color: #3D3935; white-space: nowrap; }
+.lp-wrapper #sec-nafur .nf .nf-c0{ width: min(26.3vw,263px); justify-content: center; }
+.lp-wrapper #sec-nafur .nf .nf-c1{ width: min(29.3vw,293px); padding-left: min(3.0vw,30px); box-sizing: border-box; }
+.lp-wrapper #sec-nafur .nf .nf-c2{ width: min(18.3vw,183px); justify-content: center; margin-left: min(0.1vw,1px); }
+.lp-wrapper #sec-nafur .nf .nf-c3{ width: min(19.3vw,193px); justify-content: center; background: #D75A41;
+  color: #fff; text-align: center; }
+.lp-wrapper #sec-nafur .nf .nf-head .nf-cell{ background: #6D6358; color: #fff; font-weight: 500;
+  font-size: min(3.6vw,36px); letter-spacing: 0.036em; justify-content: center;
+  padding-left: 0; text-align: center; }
+.lp-wrapper #sec-nafur .nf .nf-c3 b{ font-weight: 700; font-size: min(3.9vw,39px); }
+.lp-wrapper #sec-nafur .nf .nf-c3 small{ font-size: min(2.8vw,28px); }
+.lp-wrapper #sec-nafur .nf p.nf-note{ top: min(118.1vw,1181px); left: 0; right: 0; text-align: center;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500;
+  font-size: min(2.6vw,26px); letter-spacing: 0; }
+.lp-wrapper #sec-nafur .nf p.nf-big{ top: min(144.3vw,1443px); left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(11.0vw,110px); letter-spacing: 0.03em; }
+.lp-wrapper #sec-nafur .nf p.nf-big b{ font-weight: 300; color: #D75A41; }
+.lp-wrapper #sec-nafur .nf p.nf-big small{ font-size: 0.58em; letter-spacing: 0.03em; position: relative; top: min(0.2vw,2px); }
+.lp-wrapper #sec-nafur .nf p.nf-big i{ font-style: normal; font-size: 0.542em; letter-spacing: 0.05em; position: relative; top: min(0.3vw,3px); }
+.lp-wrapper #sec-nafur .nf p.nf-why{ top: min(159.7vw,1597px); left: 0; right: 0; text-align: center;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(6.2vw,62px); letter-spacing: 0.032em; padding-left: 0.032em; }
+.lp-wrapper #sec-nafur .nf img.nf-swash{ top: min(171.2vw,1712px); left: min(32.5vw,325px);
+  width: min(34.8vw,348px); height: auto; }
+
+/* ============================================================
+   #sec-story-5 開発物語5 そして、あなたのキッチンへ（元 24_ra-le-na.jpg y7936-12293・1000x4357）
+   実測（地 #FFFCF7）:
+     ★書体は**明朝**（#51・#52 と同じ）。Figma変数 `Story Text` は Hiragino Sans W3 と書いてあるが、
+       原寸で拡大すると うろこ・太細の差がある＝実際のページは明朝で組まれている（2026-09-06 訂正）
+     本文 38px・送り76（×2.0）・字間0.05em・箱の左60
+     小見出し 60px・字間0.028em・箱の左60（「500人がくれた／「使いやすい」のメール」だけ2行・送り100）
+     章題の前は 161.5px、章題の後は 50.5px あける。段落の切れ目は1行ぶん（76px）
+   ============================================================ */
+.lp-wrapper #sec-story-5{ padding: 0; background: #FFFCF7; }
+.lp-wrapper #sec-story-5 .s5 p{ margin: 0; white-space: nowrap; color: #3D3935; font-weight: 300;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+.lp-wrapper #sec-story-5 .s5 p.s5-h{ margin-left: min(6.0vw,60px); font-size: min(6.0vw,60px);
+  line-height: 1; letter-spacing: 0.028em; }
+.lp-wrapper #sec-story-5 .s5 p.s5-h2{ margin-left: min(6.0vw,60px); font-size: min(6.0vw,60px);
+  line-height: min(10.0vw,100px); letter-spacing: 0.028em; }
+.lp-wrapper #sec-story-5 .s5 p.s5-h2 .s5-n{ letter-spacing: 0.004em; }
+.lp-wrapper #sec-story-5 .s5 p.s5-tx{ margin-left: min(6.0vw,60px); font-size: min(3.8vw,38px);
+  line-height: 2.0; letter-spacing: 0.05em; }
+.lp-wrapper #sec-story-5 .s5 .p1{ padding-top: min(9.1vw,91px); }
+.lp-wrapper #sec-story-5 .s5 .p2{ padding-top: min(5.05vw,50.5px); letter-spacing: 0.0473em; }
+.lp-wrapper #sec-story-5 .s5 .p3{ padding-top: min(16.15vw,161.5px); letter-spacing: -0.0087em; }
+.lp-wrapper #sec-story-5 .s5 .p4{ padding-top: min(7.6vw,76px); }
+.lp-wrapper #sec-story-5 .s5 .p5{ padding-top: min(14.15vw,141.5px); }
+.lp-wrapper #sec-story-5 .s5 .p6{ padding-top: min(3.25vw,32.5px); }
+.lp-wrapper #sec-story-5 .s5 .p7{ padding-top: min(16.35vw,163.5px); }
+.lp-wrapper #sec-story-5 .s5 .p8{ padding-top: min(4.85vw,48.5px); padding-bottom: min(15.25vw,152.5px); }
+
+/* ============================================================
+   #sec-bleach 漂白・熱湯消毒・耐熱95℃（元 09_ra-le-na.jpg y4869-6975・1000x2106）
+   ★下の写真（y1106-2105）は**白い文字が焼き込まれている**ので1枚の画像として置く
+   実測: 上の面 #FFF9ED y0-707／明朝57px・送り130・中央／2行目だけオレンジ（最後の「で」だけ黒）
+     下の面 #F4EAE0 y708-1105／ゴシック48px・字間0.156em・送り85・中央
+   ============================================================ */
+.lp-wrapper #sec-bleach{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-bleach .bl p{ margin: 0; white-space: nowrap; text-align: center; color: #3D3935; }
+.lp-wrapper #sec-bleach .bl p.bl-1{ padding-top: min(11.75vw,117.5px); padding-bottom: min(20.0vw,200px);
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(5.7vw,57px); line-height: min(13.0vw,130px); letter-spacing: 0.069em; }
+.lp-wrapper #sec-bleach .bl p.bl-1 .bl-o{ color: #D75A41; }
+.lp-wrapper #sec-bleach .bl p.bl-1 .bl-w{ letter-spacing: 0.042em; }
+.lp-wrapper #sec-bleach .bl .bl-band{ background: #F4EAE0; padding: min(13.05vw,130.5px) 0 min(9.75vw,97.5px); }
+.lp-wrapper #sec-bleach .bl p.bl-2{ font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-weight: 700; font-size: min(4.8vw,48px); line-height: min(8.5vw,85px);
+  letter-spacing: 0.156em; padding-left: 0.156em; }
+.lp-wrapper #sec-bleach .bl img.bl-ph{ display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; }
+
+/* ============================================================
+   #sec-f04-body 特徴4 刃あたりが柔らかい（元 10_ra-le-na.jpg y1276-2269・1000x993）
+   実測: 上のクリーム y0-235（33px・送り69・中央）
+     色の面 y236-922（687）を**2px のすき間で左右に割る**（左 x0-498 #6D6359 ／ 右 x501-999 #84B28B）
+       見出し 44px 太字 白・送り74 ／ 英語の筆記体（#9BB79A）／ 本文は左30px・送り58、右28px・送り50
+     ★左右で本文の大きさが違う（右は文が長いので一回り小さい）＝**面の幅ではなく文の量で決めている**
+   ============================================================ */
+.lp-wrapper #sec-f04-body{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-f04-body .b4{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(99.2vw,992px); font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-f04-body .b4 p{ margin: 0; white-space: nowrap; }
+.lp-wrapper #sec-f04-body .b4 p.b4-lead{ position: absolute; top: min(4.95vw,49.5px); left: 0; right: 0;
+  text-align: center; color: #3D3935; font-weight: 500; font-size: min(3.3vw,33px);
+  line-height: min(6.9vw,69px); letter-spacing: 0.05em; padding-left: 0.05em; }
+.lp-wrapper #sec-f04-body .b4 .b4-pane{ position: absolute; top: min(23.6vw,236px); height: min(68.7vw,687px); }
+.lp-wrapper #sec-f04-body .b4 .b4-l{ left: 0; width: min(49.9vw,499px); background: #6D6358; }
+.lp-wrapper #sec-f04-body .b4 .b4-r{ left: min(50.1vw,501px); right: 0; background: #84B28B; }
+.lp-wrapper #sec-f04-body .b4 .b4-pane p{ position: absolute; left: 0; right: 0; text-align: center; color: #fff; }
+.lp-wrapper #sec-f04-body .b4 .b4-pane p.b4-h{ top: min(5.75vw,57.5px); font-weight: 700; font-size: min(4.4vw,44px);
+  line-height: min(7.4vw,74px); letter-spacing: 0.045em; padding-left: 0.045em; }
+.lp-wrapper #sec-f04-body .b4 .b4-pane p.b4-s{ top: min(21.7vw,217px);  font-style: italic;
+  font-family: 'Snell Roundhand','Apple Chancery',cursive; font-weight: 400;
+  /* 元のインクは w240 h51。fs54・0.02em だと w287 h55 と広かった（2026-09-08 実測） */
+  font-size: min(5.0vw,50px); line-height: 1; letter-spacing: -0.024em; }
+/* 筆記体の色は左右で違う（2026-09-08 実測）: 茶の面では地より明るい #94AC92、
+   緑の面では地より**暗い** #5D6850。両方 #9BB79A にしていたため、緑の面で沈んで読めなかった */
+.lp-wrapper #sec-f04-body .b4 .b4-l p.b4-s{ color: #94AC92; }
+.lp-wrapper #sec-f04-body .b4 .b4-r p.b4-s{ color: #5D6850; }
+.lp-wrapper #sec-f04-body .b4 .b4-l p.b4-tx{ top: min(33.9vw,339px); font-weight: 500; font-size: min(3.0vw,30px);
+  line-height: min(5.8vw,58px); letter-spacing: 0.081em; padding-left: 0.081em; }
+.lp-wrapper #sec-f04-body .b4 .b4-r p.b4-tx{ top: min(33.9vw,339px); font-weight: 500; font-size: min(2.8vw,28px);
+  line-height: min(5.0vw,50px); letter-spacing: 0.025em; padding-left: 0.025em; }
+.lp-wrapper #sec-f04-body .b4 .b4-r p.b4-note{ top: min(60.6vw,606px); font-weight: 500; font-size: min(2.4vw,24px);
+  line-height: 1; letter-spacing: 0.084em; padding-left: 0.084em; }
+
+/* ============================================================
+   #sec-f06-877g 特徴6 877g（元 12_ra-le-na.jpg y382-1238・1000x856）
+   ★写真は文字が乗っていないので1枚の画像。緑の丸だけHTMLで描き直して上に重ねる
+     （元画像にも同じ丸が焼き込まれているが、同じ色・同じ位置で覆うので継ぎ目は出ない）
+   実測(2026-09-10 更新後): 丸 直径286・左53・上508（#84B28B・旧と同じ位置）／
+         「1,060」明朝82.4px＋「g」54px／「厚み1.4cm」は明朝ではなくゴシック33.5px・ink y684
+   ============================================================ */
+.lp-wrapper #sec-f06-877g{ padding: 0; background: #FEF9ED; }
+.lp-wrapper #sec-f06-877g .g8{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  height: min(85.5vw,855px); overflow: hidden; }
+.lp-wrapper #sec-f06-877g .g8 img{ display: block; width: 100%; height: auto; }
+.lp-wrapper #sec-f06-877g .g8 .g8-c{ position: absolute; top: min(50.7vw,507px); left: min(5.3vw,53px);
+  width: min(28.6vw,286px); height: min(28.6vw,286px); border-radius: 50%; background: #84B28B; }
+.lp-wrapper #sec-f06-877g .g8 .g8-c p{ position: absolute; left: 0; right: 0; margin: 0; text-align: center;
+  color: #fff; line-height: 1; white-space: nowrap;
+  font-family: 'YuMincho','游明朝','Yu Mincho','Hiragino Mincho ProN',serif; font-weight: 400; }
+.lp-wrapper #sec-f06-877g .g8 .g8-c p.g8-n{ top: min(8.1vw,81px); font-size: min(8.5vw,85px); letter-spacing: 0.004em; padding-right: min(1.2vw,12px); }
+.lp-wrapper #sec-f06-877g .g8 .g8-c p.g8-n small{ font-size: 0.64em; letter-spacing: 0; margin-left: min(0.2vw,2px);
+  position: relative; top: max(-1.55vw,-15.5px); }
+.lp-wrapper #sec-f06-877g .g8 .g8-c p.g8-t{ top: min(17.4vw,174px); font-size: min(3.35vw,33.5px); font-family: 'YuGothic','游ゴシック','Yu Gothic','Hiragino Sans',sans-serif;
+  letter-spacing: 0.0575em; padding-left: 0.0575em; }
+/* ==@sec-zero== */
+/* #sec-zero その悩みをゼロにします（元 01_ra-le-na.jpg y4910-7740・1000x2830）
+   実測（章内相対y・1000px幅）:
+     クリーム地 y0-501 #FEF9ED（紙の粒 標準偏差7.6 → 平らな色に置き換え）
+     茶グラデ  y502-2829  #554E48 → y1105-1255 #4B4642 → y2829 #7C7062（横は一様＝縦の線形）
+     切り欠き  y502-552 底辺58 ／ チップ y613-694 x194-805・y715-796・y817-898 x268-731 高82 角丸0
+     カード    y958-2093 x20-979 角丸 実測12px → 8px へ丸めた ／ 5行 各180px 地 #C9C5C2 / #DBD6D2 交互
+     橙帯     y2501-2613 x50-949 #D75A41 角丸0 ／ 小三角 y2427-2449 x487-511
+   ★大見出しも Black(#3D3935) ではなく Grey(#6D6358)。差し色 Orange #D75A41 ／ Green #84B28B
+   ★5行の調査パネルだけ文字が純黒 #0F0E0D ＋ 長体の数字＝静間さんのパレット外 */
+.lp-wrapper #sec-zero{ padding: 0; }
+.lp-wrapper #sec-zero .zr{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 2830; overflow: hidden;
+  font-family: 'Hiragino Sans','ヒラギノ角ゴシック','Noto Sans JP',sans-serif; }
+.lp-wrapper #sec-zero .zr-top{ position: absolute; left: 0; right: 0; top: 0; height: 17.739%; background: #FEF9ED; }
+.lp-wrapper #sec-zero .zr-bot{ position: absolute; left: 0; right: 0; top: 17.739%; bottom: 0;
+  background: linear-gradient(#554E48 0%, #4B4642 26%, #4B4642 32%, #7C7062 100%); }
+.lp-wrapper #sec-zero .zr p{ margin: 0; line-height: 1; white-space: nowrap; position: absolute; }
+.lp-wrapper #sec-zero .zr em{ font-style: normal; }
+.lp-wrapper #sec-zero .zr .zr-l1,  .lp-wrapper #sec-zero .zr .zr-l2,  .lp-wrapper #sec-zero .zr .zr-l3{ color: #6D6358; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+.lp-wrapper #sec-zero .zr .zr-l1{ top: 5.830%; left: 13.300%; font-size: min(4.0vw, 40px); font-weight: 300; letter-spacing: 0.1119em; }
+.lp-wrapper #sec-zero .zr .zr-l2{ top: 8.551%; left: 12.500%; font-size: min(6.8vw, 68px); font-weight: 400; letter-spacing: 0.2655em; }
+.lp-wrapper #sec-zero .zr .zr-l3{ top: 12.120%; left: 21.000%; font-size: min(6.5vw, 65px); font-weight: 400; letter-spacing: 0.3472em; }
+.lp-wrapper #sec-zero .zr .zr-l2 em{ color: #D75A41; }
+.lp-wrapper #sec-zero .zr .zr-l3 em{ color: #84B28B; }
+.lp-wrapper #sec-zero .zr-notch{ position: absolute; top: 17.739%; left: 50%; width: 0; height: 0; transform: translateX(-50%);
+  border-left: min(2.9vw, 29px) solid transparent; border-right: min(2.9vw, 29px) solid transparent; border-top: min(5.1vw, 51px) solid #FEF9ED; }
+.lp-wrapper #sec-zero .zr .zr-chip{ height: 2.898%; background: #3C3934; color: #fff;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; font-size: min(4.7vw, 47px); text-align: center; }
+.lp-wrapper #sec-zero .zr .zr-chip span{ display: block; position: relative; top: min(1.9vw, 19px); }
+.lp-wrapper #sec-zero .zr .zr-c1{ top: 21.661%; left: 19.400%; width: 61.2%; }
+.lp-wrapper #sec-zero .zr .zr-c2{ top: 25.265%; left: 26.800%; width: 46.4%; }
+.lp-wrapper #sec-zero .zr .zr-c3{ top: 28.869%; left: 26.800%; width: 46.4%; }
+.lp-wrapper #sec-zero .zr .zr-c1 span{ letter-spacing: 0.0469em; text-indent: 0.0469em; }
+.lp-wrapper #sec-zero .zr .zr-c2 span,  .lp-wrapper #sec-zero .zr .zr-c3 span{ letter-spacing: 0.0395em; text-indent: 0.0395em; }
+.lp-wrapper #sec-zero .zr-card{ position: absolute; top: 33.852%; left: 2%; width: 96%; height: 40.141%;
+  background: #3C3934; border-radius: 8px; overflow: hidden; }
+.lp-wrapper #sec-zero .zr-card .zr-ch1,  .lp-wrapper #sec-zero .zr-card .zr-ch2{ color: #fff; }
+.lp-wrapper #sec-zero .zr-card .zr-ch1{ top: 4.754%; left: 22.812%; font-size: min(4.0vw, 40px); font-weight: 400; letter-spacing: 0.1667em; }
+.lp-wrapper #sec-zero .zr-card .zr-ch2{ top: 11.708%; left: 2.708%; font-size: min(6.5vw, 65px); font-weight: 400;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; letter-spacing: 0.0927em; }
+.lp-wrapper #sec-zero .zr-rows{ position: absolute; left: 0; right: 0; top: 20.775%; }
+.lp-wrapper #sec-zero .zr-row{ position: relative; width: 100%; aspect-ratio: 960 / 180; }
+.lp-wrapper #sec-zero .zr-row:nth-child(odd){ background: #C9C5C2; }
+.lp-wrapper #sec-zero .zr-row:nth-child(even){ background: #DBD6D2; }
+.lp-wrapper #sec-zero .zr-row img{ position: absolute; left: 0; top: 0; height: 100%; width: auto; display: block; }
+.lp-wrapper #sec-zero .zr-row b,  .lp-wrapper #sec-zero .zr-row i,  .lp-wrapper #sec-zero .zr-row u,  .lp-wrapper #sec-zero .zr-row s{
+  position: absolute; display: block; white-space: nowrap; color: #0F0E0D;
+  font-style: normal; text-decoration: none; line-height: 1; }
+.lp-wrapper #sec-zero .zr-row b{ font-weight: 500; }
+.lp-wrapper #sec-zero .zr-row i{ font-weight: 400; }
+.lp-wrapper #sec-zero .zr-row u{ top: 24.444%; font-family: 'DIN Condensed','Oswald','Arial Narrow',sans-serif;
+  font-weight: 700; font-size: min(12.9vw, 129px); transform-origin: left top; }
+.lp-wrapper #sec-zero .zr-row s{ top: 46.111%; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 700; font-size: min(6.0vw, 60px); }
+.lp-wrapper #sec-zero .zr-r1 b{ top: 24.444%; left: 27.292%; font-size: min(4.4vw, 44px); letter-spacing: 0.1227em; }
+.lp-wrapper #sec-zero .zr-r1 i{ top: 62.222%; left: 27.292%; font-size: min(3.2vw, 32px); letter-spacing: 0.0194em; }
+.lp-wrapper #sec-zero .zr-r1 u{ transform: scaleX(0.88); left: 82.6%; }
+.lp-wrapper #sec-zero .zr-r1 s{ left: 92.08%; }
+.lp-wrapper #sec-zero .zr-r2 b{ top: 25.000%; left: 27.813%; font-size: min(4.5vw, 45px); letter-spacing: 0.0793em; }
+.lp-wrapper #sec-zero .zr-r2 i{ top: 61.667%; left: 27.813%; font-size: min(3.0vw, 30px); letter-spacing: 0.0834em; }
+.lp-wrapper #sec-zero .zr-r2 u{ transform: scaleX(0.837); left: 82.6%; }
+.lp-wrapper #sec-zero .zr-r2 s{ left: 91.35%; }
+.lp-wrapper #sec-zero .zr-r3 b{ top: 23.333%; left: 27.188%; font-size: min(4.5vw, 45px); letter-spacing: 0.084em; }
+.lp-wrapper #sec-zero .zr-r3 i{ top: 62.222%; left: 27.188%; font-size: min(2.9vw, 29px); letter-spacing: 0.1353em; }
+.lp-wrapper #sec-zero .zr-r3 u{ transform: scaleX(0.837); left: 82.6%; }
+.lp-wrapper #sec-zero .zr-r3 s{ left: 91.35%; }
+.lp-wrapper #sec-zero .zr-r4 b{ top: 23.333%; left: 26.563%; font-size: min(4.5vw, 45px); letter-spacing: 0.0929em; }
+.lp-wrapper #sec-zero .zr-r4 i{ top: 62.222%; left: 26.563%; font-size: min(3.0vw, 30px); letter-spacing: 0.0714em; }
+.lp-wrapper #sec-zero .zr-r4 u{ transform: scaleX(0.872); left: 82.6%; }
+.lp-wrapper #sec-zero .zr-r4 s{ left: 91.56%; }
+.lp-wrapper #sec-zero .zr-r5 b{ top: 24.444%; left: 26.354%; font-size: min(4.4vw, 44px); letter-spacing: 0.1177em; }
+.lp-wrapper #sec-zero .zr-r5 i{ top: 61.111%; left: 26.354%; font-size: min(3.1vw, 31px); letter-spacing: 0.0586em; }
+.lp-wrapper #sec-zero .zr-r5 u{ transform: scaleX(0.872); left: 82.6%; }
+.lp-wrapper #sec-zero .zr-r5 s{ left: 91.56%; }
+.lp-wrapper #sec-zero .zr .zr-note{ top: 74.841%; left: 17.700%; font-size: min(2.3vw, 23px); font-weight: 400;
+  letter-spacing: 0.0449em; color: rgba(255,255,255,0.62); }
+.lp-wrapper #sec-zero .zr .zr-give{ top: 78.763%; left: 7.200%; font-size: min(5.5vw, 55px); font-weight: 400;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; letter-spacing: 0.0465em; color: #fff; }
+.lp-wrapper #sec-zero .zr .zr-give2{ top: 79.399%; left: 41.900%; font-size: min(3.4vw, 34px); font-weight: 400;
+  letter-spacing: 0.0756em; color: #fff; }
+.lp-wrapper #sec-zero .zr .zr-give3{ top: 81.555%; left: 15.700%; font-size: min(3.6vw, 36px); font-weight: 400;
+  letter-spacing: 0.0278em; color: #fff; }
+.lp-wrapper #sec-zero .zr-tri{ position: absolute; top: 85.760%; left: 50%; width: 0; height: 0; transform: translateX(-50%);
+  border-left: min(1.25vw, 12.5px) solid transparent; border-right: min(1.25vw, 12.5px) solid transparent; border-top: min(2.3vw, 23px) solid #D75A41; }
+.lp-wrapper #sec-zero .zr-band{ position: absolute; top: 88.375%; left: 5%; width: 90%; height: 3.993%; background: #D75A41; }
+.lp-wrapper #sec-zero .zr-band span{ display: block; position: absolute; top: 28.32%; left: 3.78%; white-space: nowrap; line-height: 1;
+  color: #fff; font-size: min(3.6vw, 36px); font-weight: 800; letter-spacing: 0.385em; }
+.lp-wrapper #sec-zero .zr img.zr-logo{ position: absolute; top: 94.099%; left: 32.1%; width: 35.8%; height: auto; display: block; }
+/* 🔴 ロゴはロゴ画像で＝市山さん指示 2026-09-11。文字で組んでいたのをFVと同じ ralena-logo.png（白版）に。元画像のインク実測 x321-678(幅358)・y2663-2730(高68) にぴったり合わせた */
+.lp-wrapper #sec-zero .zr .zr-logosub{ top: 98.269%; left: 42.900%; font-size: min(3.0vw, 30px); font-weight: 300;
+  letter-spacing: 0.2633em; color: rgba(255,255,255,0.9); }
+/* ==/sec-zero== */
+/* ==@sec-everyday== */
+/* #sec-everyday 毎日使うからこそ（元 01_ra-le-na.jpg y7740-9272・1000x1532）
+   実測: 地 y0-1011 #FFF9ED ／ y1012-1532 #FCF1DD（文字のうしろに白い淡い光）
+     写真 y50-991 x30-969（文字は乗っていない＝そのまま切り出し）
+     飾り字 Stress-free は白の筆記体 → 地との明るさの差からアルファを作った透過PNG
+     右下に次章へ続く板の写真（斜めに入る）
+   ★本文は明朝 W3・色 Black #3D3935（実測 #352F27） */
+.lp-wrapper #sec-everyday{ padding: 0; }
+.lp-wrapper #sec-everyday .ev{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1532; overflow: hidden; background: #FCF1DD; }
+.lp-wrapper #sec-everyday .ev-top{ position: absolute; left: 0; right: 0; top: 0; height: 66.057%; background: #FEF9ED; }
+.lp-wrapper #sec-everyday .ev-glow{ position: absolute; left: 0; right: 0; top: 66.057%; bottom: 0;
+  background: radial-gradient(ellipse 62% 52% at 42% 92%, rgba(255,255,255,0.80), rgba(255,255,255,0) 72%); }
+.lp-wrapper #sec-everyday .ev img{ position: absolute; display: block; }
+.lp-wrapper #sec-everyday .ev-photo{ top: 2.611%; left: 0; width: 100%; }
+.lp-wrapper #sec-everyday .ev-board{ top: 83.029%; left: 47.2%; width: 52.8%; z-index: 2; }
+/* 🔴 市山さん指示 2026-09-10「まな板画像がキレないようにして」。旧 everyday-board.jpg(390x244 @610,1288) は切り出しの矩形が板を横切っていて、板の上の角と左下が四角く欠けていた。市山さん支給の まな板.png を実測したら元画像と倍率1.00でぴったり重なる（板の高さ528px・上の角から左の角まで350px が一致）ので、白を抜いた透過PNG(528x717)を元と同じ位置・同じ大きさ（章の中で x472-1000 / y1272-1989）に1:1で置いた。影ごと1枚・最前面。右端は元写真そのものがページの右端 x1000 で切れており、続きは支給画像にも入っていない */
+.lp-wrapper #sec-everyday .ev-sf{ top: 90.339%; left: 0; width: 55.2%; }
+.lp-wrapper #sec-everyday .ev p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  color: #3D3935; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-everyday .ev .ev-e1{ top: 73.760%; left: 9.100%; font-size: min(5.5vw, 55px); letter-spacing: 0.0606em; }
+.lp-wrapper #sec-everyday .ev .ev-e2{ top: 80.548%; left: 9.000%; font-size: min(5.5vw, 55px); letter-spacing: 0.0785em; }
+.lp-wrapper #sec-everyday .ev .ev-e3{ top: 87.141%; left: 8.700%; font-size: min(5.4vw, 54px); letter-spacing: 0.0486em; }
+.lp-wrapper #sec-everyday .ev .ev-e4{ top: 96.932%; left: 9.100%; font-size: min(3.0vw, 30px); letter-spacing: 0.1121em; }
+/* ==/sec-everyday== */
+/* ==@sec-2years== */
+/* #sec-2years 主婦500名と丸2年（元 01_ra-le-na.jpg y9272-9752・1000x480）
+   実測: 地 #FCF1DD（左上に白い淡い光）／ 右上に板の写真（文字は乗っていない）
+     板は斜めなので2枚に分けて切り出した（上 x460-1000 y0-272 ／ 下 x560-1000 y272-310）
+     ＝ 文字（最大 x787）と切り出しの矩形がぶつからないため */
+.lp-wrapper #sec-2years{ padding: 0; }
+.lp-wrapper #sec-2years .ty{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 480; overflow: hidden; background: #FCF1DD; }
+.lp-wrapper #sec-2years .ty-glow{ position: absolute; inset: 0;
+  background: radial-gradient(ellipse 48% 95% at 38% 18%, rgba(255,255,255,0.75), rgba(255,255,255,0) 72%); }
+.lp-wrapper #sec-2years .ty img{ position: absolute; display: block; }
+.lp-wrapper #sec-2years .ty-b1{ top: 0; left: 47.0%; width: 53.0%; z-index: 2; }
+/* 🔴 市山さん指示 2026-09-10「まな板をトリミングしないように一番上のレイヤーに配置して」。2枚に割って影が切れていたのを、影ごと1枚の透過PNGにして最前面へ */
+.lp-wrapper #sec-2years .ty p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  color: #3D3935; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-2years .ty .ty-t1{ top: 3.750%; left: 9.100%; font-size: min(2.9vw, 29px); letter-spacing: 0.1522em; }
+.lp-wrapper #sec-2years .ty .ty-t2{ top: 17.083%; left: 9.200%; font-size: min(3.1vw, 31px); letter-spacing: 0.0613em; }
+.lp-wrapper #sec-2years .ty .ty-t3{ top: 43.542%; left: 9.000%; font-size: min(3.1vw, 31px); letter-spacing: 0.0715em; }
+.lp-wrapper #sec-2years .ty .ty-t4{ top: 57.292%; left: 9.100%; font-size: min(3.0vw, 30px); letter-spacing: 0.093em; }
+.lp-wrapper #sec-2years .ty .ty-t5{ top: 70.417%; left: 9.100%; font-size: min(3.1vw, 31px); letter-spacing: 0.0733em; }
+/* ==/sec-2years== */
+/* ==@sec-f03-body== */
+/* #sec-f03-body 色移りしにくい（元 09_ra-le-na.jpg y0-1320・1000x1320）
+   実測: クリーム #FFF9ED y0-159／写真 y160-909（全幅）／#F4EAE0 の帯 y910-1159／クリーム y1160-1319
+     縦書き「色移りしにくい」は写真に焼き込み → **地が滑らかなので横方向の補間で消して**HTMLで組み直した
+       文字 7つ y246-671 x87-134 送り65.2px 色 #655C52（≒Grey #6D6358）
+     見出し「色素が入り込まない素材」 y955-985 x296-704 Orange #D75A41 */
+.lp-wrapper #sec-f03-body{ padding: 0; }
+.lp-wrapper #sec-f03-body .cf{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1320; overflow: hidden; background: #FEF9ED; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-f03-body .cf-band{ position: absolute; left: 0; right: 0; top: 68.939%; height: 18.939%; background: #F4EAE0; }
+.lp-wrapper #sec-f03-body .cf-photo{ position: absolute; left: 0; top: 12.121%; width: 100%; display: block; }
+.lp-wrapper #sec-f03-body .cf p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-f03-body .cf .cf-v{ top: 18.485%; left: 8.500%; writing-mode: vertical-rl;
+  font-size: min(5.1vw, 51px); font-weight: 400; letter-spacing: 0.278em; color: #6D6358; line-height: 1; }
+.lp-wrapper #sec-f03-body .cf .cf-h{ top: 72.348%; left: 29.500%; font-size: min(3.2vw, 32px); font-weight: 600;
+  letter-spacing: 0.1676em; color: #D75A41; }
+.lp-wrapper #sec-f03-body .cf .cf-b1{ top: 77.348%; left: 9.600%; font-size: min(3.1vw, 31px); font-weight: 400;
+  letter-spacing: 0.0827em; color: #3D3935; }
+.lp-wrapper #sec-f03-body .cf .cf-b2{ top: 81.742%; left: 9.600%; font-size: min(3.1vw, 31px); font-weight: 400;
+  letter-spacing: 0.0768em; color: #3D3935; }
+/* ==/sec-f03-body== */
+/* ==@sec-antibac-band== */
+/* #sec-antibac-band 防菌加工で24時間後99%抗菌（元 09_ra-le-na.jpg y1320-2320・1000x1000）
+   実測: 全面が写真。白文字が焼き込まれていた → **Figma制作原本 `8_DSC02515`（figma素材/img09/r07.jpg
+   4096x4096）が文字なしの同じカット**だったのでそれを敷き、文字はHTMLで組み直した
+     見出し y104-152 x74-812 ／ 本文 y207-237・y275-305 x72- */
+.lp-wrapper #sec-antibac-band{ padding: 0; }
+.lp-wrapper #sec-antibac-band .ab{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1000; overflow: hidden; font-family: 'Hiragino Sans','ヒラギノ角ゴシック','Noto Sans JP',sans-serif; }
+.lp-wrapper #sec-antibac-band .ab-photo{ position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block; }
+.lp-wrapper #sec-antibac-band .ab p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; color: #fff; }
+.lp-wrapper #sec-antibac-band .ab .ab-h{ top: 10.300%; left: 7.100%; font-size: min(5.1vw, 51px); font-weight: 600;
+  letter-spacing: 0.0479em; }
+.lp-wrapper #sec-antibac-band .ab .ab-b1{ top: 20.700%; left: 7.100%; font-size: min(3.2vw, 32px); font-weight: 400;
+  letter-spacing: 0.1044em; }
+.lp-wrapper #sec-antibac-band .ab .ab-b2{ top: 27.300%; left: 7.000%; font-size: min(3.1vw, 31px); font-weight: 400;
+  letter-spacing: 0.0911em; }
+/* ==/sec-antibac-band== */
+/* ==@sec-antibac-inside== */
+/* #sec-antibac-inside 抗菌粒子を素材に練り込み（元 09_ra-le-na.jpg y4189-4869・1000x680）
+   ★HTMLの data-元y は 4420-4869 のままだった（#16 の境目を y4189 へ動かしたときの直し忘れ）。ここで直した
+   実測: サーモンの矩形 x0-906 y58-680 #D75A41 ／ その上に写真カード x40-1000 y0-636
+     カードは「写真＋白いベール」の一枚絵。文字はそこに焼き込み → **文字だけ拡散で塗り戻して下地を作った**
+     見出し y108-155 x122-388 ／ y196-243「素材に」x123-276 ＋「練り込み」x289-501（Orange）
+     本文 4行 y300/367/435/503（送り67.7）x122 色 Grey #6D6358 */
+.lp-wrapper #sec-antibac-inside{ padding: 0; }
+.lp-wrapper #sec-antibac-inside .ai{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 680; overflow: hidden; background: #FEF9ED; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-antibac-inside .ai-sal{ position: absolute; left: 0; top: 8.529%; width: 90.7%; bottom: 0;
+  background: #D75A41; }
+.lp-wrapper #sec-antibac-inside .ai-card{ position: absolute; left: 4%; top: 0; width: 96%; display: block; }
+.lp-wrapper #sec-antibac-inside .ai p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; color: #6D6358; }
+.lp-wrapper #sec-antibac-inside .ai .ai-h1{ top: 15.735%; left: 12.000%; font-size: min(5.0vw, 50px); font-weight: 400; letter-spacing: 0.125em; }
+.lp-wrapper #sec-antibac-inside .ai .ai-h2{ top: 28.676%; left: 12.100%; font-size: min(5.0vw, 50px); font-weight: 400; letter-spacing: 0.1117em; }
+.lp-wrapper #sec-antibac-inside .ai .ai-h2 em{ font-style: normal; font-weight: 600; color: #D75A41; }
+.lp-wrapper #sec-antibac-inside .ai .ai-b{ font-size: min(3.2vw, 32px); font-weight: 400; letter-spacing: 0.095em; }
+.lp-wrapper #sec-antibac-inside .ai .ai-b1{ top: 43.971%; left: 12.100%; }
+.lp-wrapper #sec-antibac-inside .ai .ai-b2{ top: 53.824%; left: 12.100%; }
+.lp-wrapper #sec-antibac-inside .ai .ai-b3{ top: 63.824%; left: 12.100%; }
+.lp-wrapper #sec-antibac-inside .ai .ai-b4{ top: 73.824%; left: 12.100%; }
+/* ==/sec-antibac-inside== */
+/* ==@sec-design-material== */
+/* #sec-design-material まな板専用に配合した新素材（元 23_ra-le-na.jpg y1852-2630・1000x778）
+   実測: クリーム #FFF9ED y0-108 ／ 写真 y109-778（全幅・ぼかした緑＋板の接写）
+     サーモンの矩形 x0-484 y0-333 #D75A41（角丸0）
+     白の明朝3行 y45/138/239 ／ 写真の上のゴシック5行 y397-699（送り 約68px）
+   ★写真に焼き込まれていた5行は拡散で塗り戻してからHTMLで組み直した */
+.lp-wrapper #sec-design-material{ padding: 0; }
+.lp-wrapper #sec-design-material .dm{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 778; overflow: hidden; background: #FEF9ED; }
+.lp-wrapper #sec-design-material .dm-photo{ position: absolute; left: 0; top: 14.010%; width: 100%; display: block; }
+.lp-wrapper #sec-design-material .dm-sal{ position: absolute; left: 0; top: 0; width: 48.5%; height: 42.931%; background: #D75A41; }
+.lp-wrapper #sec-design-material .dm p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-design-material .dm .dm-m{ color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-design-material .dm .dm-g{ color: #3D3935; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-size: min(3.3vw, 33px); }
+.lp-wrapper #sec-design-material .dm .dm-m1{ top: 5.656%; left: 5.600%; font-size: min(5.2vw, 52px); letter-spacing: 0.0628em; }
+.lp-wrapper #sec-design-material .dm .dm-m2{ top: 17.609%; left: 5.200%; font-size: min(5.2vw, 52px); letter-spacing: 0.0772em; }
+.lp-wrapper #sec-design-material .dm .dm-m3{ top: 30.463%; left: 2.000%; font-size: min(4.5vw, 45px); letter-spacing: 0.0505em; }
+.lp-wrapper #sec-design-material .dm .dm-g1{ top: 50.900%; left: 7.100%; letter-spacing: 0.0339em; font-weight: 400; }
+.lp-wrapper #sec-design-material .dm .dm-g2{ top: 59.512%; left: 7.100%; letter-spacing: 0.0675em; font-weight: 400; }
+.lp-wrapper #sec-design-material .dm .dm-g3{ top: 68.252%; left: 7.100%; letter-spacing: 0.0667em; font-weight: 400; }
+.lp-wrapper #sec-design-material .dm .dm-g4{ top: 76.864%; left: 7.100%; letter-spacing: 0.0677em; font-weight: 400; }
+.lp-wrapper #sec-design-material .dm .dm-g5{ top: 85.733%; left: 7.100%; letter-spacing: 0.0617em; font-weight: 700; }
+/* ==/sec-design-material== */
+/* ==@sec-design-only== */
+/* #sec-design-only Ra Le-Naだけの独自デザイン（元 23_ra-le-na.jpg y5712-7524・1000x1812）
+   ★HTMLの data-元y は 5906-7524 のままだった（境目を y5712 へ動かしたときの直し忘れ）。ここで直した
+   実測: 写真 y0-999 ／ クリーム #FBF5E7 y1000-1811
+     緑の帯（Green #84B28B・不透明）は階段状に2枚: 帯1 x0-674 y56-193 ／ 帯2 x157-999 y164-302
+     白の明朝2行（帯の上）／ 白のゴシック2行（写真の上・焼き込みを塗り戻した）
+     クリームの明朝4行 y1133/1235/1383/1531 */
+.lp-wrapper #sec-design-only{ padding: 0; }
+.lp-wrapper #sec-design-only .do{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1812; overflow: hidden; background: #FBF5E7; }
+.lp-wrapper #sec-design-only .do-photo{ position: absolute; left: 0; top: 0; width: 100%; display: block; }
+.lp-wrapper #sec-design-only .do-g1{ position: absolute; left: 0; top: 3.091%; width: 67.5%; height: 7.616%; background: #84B28B; }
+.lp-wrapper #sec-design-only .do-g2{ position: absolute; left: 15.7%; top: 9.051%; width: 84.3%; height: 7.671%; background: #84B28B; }
+.lp-wrapper #sec-design-only .do p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-design-only .do .do-t1{ top: 5.464%; left: 5.500%; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(5.3vw, 53px); letter-spacing: 0.0606em; color: #fff; }
+.lp-wrapper #sec-design-only .do .do-t2{ top: 11.424%; left: 19.700%; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300;
+  font-size: min(5.1vw, 51px); letter-spacing: 0.0934em; color: #fff; }
+.lp-wrapper #sec-design-only .do .do-p1{ top: 20.033%; left: 5.500%; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+  font-size: min(3.2vw, 32px); letter-spacing: 0.0927em; color: #fff; }
+.lp-wrapper #sec-design-only .do .do-p2{ top: 23.786%; left: 5.500%; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+  font-size: min(3.2vw, 32px); letter-spacing: 0.1068em; color: #fff; }
+.lp-wrapper #sec-design-only .do .do-p2 b{ font-weight: 700; }
+.lp-wrapper #sec-design-only .do .do-c{ font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; color: #3D3935; }
+.lp-wrapper #sec-design-only .do .do-c1{ top: 62.472%; left: 7.600%; font-size: min(4.9vw, 49px); letter-spacing: 0.0781em; }
+.lp-wrapper #sec-design-only .do .do-c2{ top: 68.102%; left: 7.700%; font-size: min(4.9vw, 49px); letter-spacing: 0.0740em; }
+.lp-wrapper #sec-design-only .do .do-c3{ top: 76.214%; left: 7.800%; font-size: min(4.6vw, 46px); letter-spacing: 0.1003em; }
+.lp-wrapper #sec-design-only .do .do-c4{ top: 84.382%; left: 5.400%; font-size: min(6.1vw, 61px); letter-spacing: 0.0969em; }
+/* ==/sec-design-only== */
+/* ==@sec-story-4== */
+/* #sec-story-4 開発物語4 転機（元 24_ra-le-na.jpg y7296-7936・1000x640）
+   実測: 文字は1つも無い。工場の外観写真だけの章 */
+.lp-wrapper #sec-story-4{ padding: 0; }
+.lp-wrapper #sec-story-4 img{ display: block; width: 100%; max-width: 1000px; margin: 0 auto; height: auto; }
+/* ==/sec-story-4== */
+/* ==@sec-eco-head== */
+/* #sec-eco-head 土に還るエコ素材（見出し・元 22_ra-le-na.jpg y0-547・1000x547）
+   実測: 地はキッチンの写真（#43 と同じカット）に**クリームのベールが上から掛かる**。
+     下 y440 あたりから写真が透けて出る → ベールごと1枚の背景画像にして、札と文字を塗り戻した
+     札 x101-223 y198-367（124x170 = .pt-head の標準寸法と一致）
+     行1「エコフレンドリー」y204-235 x274-601 ／ 行2「土に還るエコ素材」y282-351 x269-894 */
+.lp-wrapper #sec-eco-head{ padding: 0; }
+.lp-wrapper #sec-eco-head .eh{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 547; overflow: hidden; }
+.lp-wrapper #sec-eco-head .eh img{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lp-wrapper #sec-eco-head .eh .pt-head{ position: absolute; left: 0; right: 0; top: 36.197%; }
+.lp-wrapper #sec-eco-head .pt-l1{ font-size: min(3.67vw, 36.7px); letter-spacing: 0.1655em; padding-top: min(0.6vw, 6px); }
+.lp-wrapper #sec-eco-head .pt-l2{ font-size: min(7.42vw, 74.2px); letter-spacing: 0.0723em; margin-top: min(3.6vw, 36px); }
+/* ==/sec-eco-head== */
+/* ==@sec-eco-body== */
+/* #sec-eco-body 生分解性・有害ガスなし（元 22_ra-le-na.jpg y547-2314・1000x1767）
+   実測: 上 y0-705 が窓辺の写真、その下はぼかした草の写真に白いベール。
+     重なる円が3つ（緑 Green #84B28B ／ サーモン #DA6850 ／ 淡い緑 #EBF0E7）。
+     円は背景の1枚絵として残し、**中の文字だけHTML化**（円は写真に重なるので切り出すと壊れる）
+     見出し 39px・字送り 0.113em ／ 本文 28px・字送り 0.088em（3つの円で共通）
+     円の中心 x: 緑499 ／ サーモン238 ／ 淡757 */
+.lp-wrapper #sec-eco-body{ padding: 0; }
+.lp-wrapper #sec-eco-body .eb{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1767; overflow: hidden; }
+.lp-wrapper #sec-eco-body .eb > img{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lp-wrapper #sec-eco-body .eb p{ position: absolute; left: 0; right: 0; margin: 0; line-height: 1;
+  white-space: nowrap; text-align: center; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+.lp-wrapper #sec-eco-body .eb .h{ font-weight: 700; font-size: min(3.9vw, 39px); letter-spacing: 0.113em; text-indent: 0.113em; }
+.lp-wrapper #sec-eco-body .eb .b{ font-weight: 400; font-size: min(2.8vw, 28px); letter-spacing: 0.088em; text-indent: 0.088em; }
+.lp-wrapper #sec-eco-body .eb .c-g{ color: #fff; transform: translateX(-0.10%); }
+.lp-wrapper #sec-eco-body .eb .t-g0{ top: 41.822%; }
+.lp-wrapper #sec-eco-body .eb .t-g1{ top: 45.614%; }
+.lp-wrapper #sec-eco-body .eb .t-g2{ top: 50.255%; }
+.lp-wrapper #sec-eco-body .eb .t-g3{ top: 53.254%; }
+.lp-wrapper #sec-eco-body .eb .t-g4{ top: 56.310%; }
+.lp-wrapper #sec-eco-body .eb .c-r{ color: #fff; transform: translateX(-26.20%); }
+.lp-wrapper #sec-eco-body .eb .t-r0{ top: 64.856%; }
+.lp-wrapper #sec-eco-body .eb .t-r1{ top: 68.308%; }
+.lp-wrapper #sec-eco-body .eb .t-r2{ top: 73.458%; }
+.lp-wrapper #sec-eco-body .eb .t-r3{ top: 76.287%; }
+.lp-wrapper #sec-eco-body .eb .t-r4{ top: 79.570%; }
+.lp-wrapper #sec-eco-body .eb .c-p{ color: #6D6358; transform: translateX(25.70%); }
+.lp-wrapper #sec-eco-body .eb .t-p0{ top: 64.912%; }
+.lp-wrapper #sec-eco-body .eb .t-p1{ top: 68.478%; }
+.lp-wrapper #sec-eco-body .eb .t-p2{ top: 73.175%; letter-spacing: 0.066em; }
+.lp-wrapper #sec-eco-body .eb .t-p3{ top: 76.514%; }
+.lp-wrapper #sec-eco-body .eb .t-p4{ top: 79.570%; }
+/* ==/sec-eco-body== */
+/* ==@sec-story-3== */
+/* #sec-story-3 開発物語3 国内5工場、全滅（元 24_ra-le-na.jpg y4399-7296・1000x2897）
+   実測: 地は縦のグラデ #3C3930 →(y1600) #6B645C → #403C38（暖色の茶。真ん中がいちばん明るい）
+     ★書体は**明朝**（#51 #52 #55 と同じ読み物の型）。本文 38px・送り76(×2.0)・字間 0.05em・左60
+     章題 60px・字間 0.028em・左60。章題の前は 220px、章題の後は 128px */
+.lp-wrapper #sec-story-3{ padding: 0; }
+.lp-wrapper #sec-story-3 .s3{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 2897; overflow: hidden;
+  background: linear-gradient(#3C3930 0%, #4B4642 13.8%, #58534D 27.6%, #676058 41.4%,
+              #6B645C 55.2%, #5E5751 69.0%, #4E4945 82.8%, #403C38 96.6%, #3E3B36 100%); }
+.lp-wrapper #sec-story-3 .s3 p{ position: absolute; left: 6%; margin: 0; line-height: 1; white-space: nowrap;
+  color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-story-3 .s3 .h{ font-size: min(6.0vw, 60px); letter-spacing: 0.028em; }
+.lp-wrapper #sec-story-3 .s3 .t{ font-size: min(3.8vw, 38px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-story-3 .s3 .h0{ top: 4.108%; }
+.lp-wrapper #sec-story-3 .s3 .h1{ top: 26.614%; }
+.lp-wrapper #sec-story-3 .s3 .h2{ top: 43.873%; }
+.lp-wrapper #sec-story-3 .s3 .t0{ top: 8.561%; }
+.lp-wrapper #sec-story-3 .s3 .t1{ top: 11.184%; }
+.lp-wrapper #sec-story-3 .s3 .t2{ top: 13.807%; }
+.lp-wrapper #sec-story-3 .s3 .t3{ top: 16.465%; }
+.lp-wrapper #sec-story-3 .s3 .t4{ top: 19.054%; }
+.lp-wrapper #sec-story-3 .s3 .t5{ top: 31.067%; }
+.lp-wrapper #sec-story-3 .s3 .t6{ top: 33.725%; }
+.lp-wrapper #sec-story-3 .s3 .t7{ top: 36.313%; }
+.lp-wrapper #sec-story-3 .s3 .t8{ top: 48.360%; }
+.lp-wrapper #sec-story-3 .s3 .t9{ top: 50.949%; }
+.lp-wrapper #sec-story-3 .s3 .t10{ top: 53.573%; }
+.lp-wrapper #sec-story-3 .s3 .t11{ top: 56.231%; }
+.lp-wrapper #sec-story-3 .s3 .t12{ top: 58.819%; }
+.lp-wrapper #sec-story-3 .s3 .t13{ top: 61.443%; }
+.lp-wrapper #sec-story-3 .s3 .t14{ top: 64.135%; }
+.lp-wrapper #sec-story-3 .s3 .t15{ top: 66.690%; }
+.lp-wrapper #sec-story-3 .s3 .t16{ top: 69.313%; }
+.lp-wrapper #sec-story-3 .s3 .t17{ top: 71.936%; }
+.lp-wrapper #sec-story-3 .s3 .t18{ top: 74.560%; }
+.lp-wrapper #sec-story-3 .s3 .t19{ top: 79.841%; }
+.lp-wrapper #sec-story-3 .s3 .t20{ top: 85.054%; }
+.lp-wrapper #sec-story-3 .s3 .t21{ top: 87.677%; }
+.lp-wrapper #sec-story-3 .s3 .t22{ top: 90.335%; }
+.lp-wrapper #sec-story-3 .s3 .t23{ top: 92.958%; }
+/* ==/sec-story-3== */
+/* ==@sec-f07-body== */
+/* #sec-f07-body 面ごとに使い分け（元 15_ra-le-na.jpg y0-1588・1000x1588）
+   実測: クリーム #FEF9EC y0-290 ／ 写真 y291-1587（全幅）
+     グレーの円 中心(200,1350) 直径304 色 **#6D6359 ＝ Figma変数 Grey そのもの**（不透明）
+       → 写真から円を消して（円形マスクの拡散）CSSの円で描き直した
+     右の5行（写真の上・焼き込み）も塗り戻してHTML化。送り 約66.5px */
+.lp-wrapper #sec-f07-body{ padding: 0; }
+.lp-wrapper #sec-f07-body .fb{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1588; overflow: hidden; background: #FEF9EC; }
+.lp-wrapper #sec-f07-body .fb-photo{ position: absolute; left: 0; top: 18.325%; width: 100%; display: block; }
+.lp-wrapper #sec-f07-body .fb-circle{ position: absolute; left: 4.8%; top: 75.441%; width: 30.4%;
+  aspect-ratio: 1 / 1; border-radius: 50%; background: #6D6358; }
+.lp-wrapper #sec-f07-body .fb p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-f07-body .fb .fb-t{ left: 0; right: 0; text-align: center; color: #3D3935;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-f07-body .fb .fb-t1{ top: 5.668%; font-size: min(3.8vw, 38px); letter-spacing: 0.055em; text-indent: 0.055em; transform: translateX(-1.2%); }
+.lp-wrapper #sec-f07-body .fb .fb-t2{ top: 10.516%; font-size: min(3.8vw, 38px); letter-spacing: 0.055em; text-indent: 0.055em; transform: translateX(-0.9%); }
+.lp-wrapper #sec-f07-body .fb .fb-t2 b{ font-weight: 600; }
+.lp-wrapper #sec-f07-body .fb .fb-c{ left: 0; width: 40%; text-align: center; color: #fff;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500; font-size: min(4.1vw, 41px); letter-spacing: 0.055em; text-indent: 0.055em; }
+.lp-wrapper #sec-f07-body .fb .fb-c1{ top: 80.038%; }
+.lp-wrapper #sec-f07-body .fb .fb-c2{ top: 84.005%; }
+.lp-wrapper #sec-f07-body .fb .fb-c3{ top: 88.098%; }
+.lp-wrapper #sec-f07-body .fb .fb-r{ color: #3D3935; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+  font-size: min(3.3vw, 33px); letter-spacing: 0.055em; left: 39%; }
+.lp-wrapper #sec-f07-body .fb .fb-r1{ top: 76.385%; }
+.lp-wrapper #sec-f07-body .fb .fb-r2{ top: 80.542%; }
+.lp-wrapper #sec-f07-body .fb .fb-r3{ top: 84.761%; font-weight: 700; }
+.lp-wrapper #sec-f07-body .fb .fb-r4{ top: 88.917%; }
+.lp-wrapper #sec-f07-body .fb .fb-r5{ top: 93.073%; }
+/* ==/sec-f07-body== */
+/* ==@sec-f07-grip== */
+/* #sec-f07-grip 滑り止め・3mmストッパー（元 15_ra-le-na.jpg y1588-2590・1000x1002）
+   実測: クリーム #FEF8ED y0-322 ／ 写真の帯（点線の矢印つき）y323-722 ／ クリーム y723-1001
+     チップ2つ: 赤 x98-343 y166-265 #D85A41 ／ 緑 x414-789 y165-266 #84B28B（角丸 実測 約6px → 8px）
+     ★点線の矢印と三角は写真に触れているので、帯ごと画像のまま（型1） */
+.lp-wrapper #sec-f07-grip{ padding: 0; }
+.lp-wrapper #sec-f07-grip .fg{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1002; overflow: hidden; background: #FEF8ED; }
+.lp-wrapper #sec-f07-grip .fg-photo{ position: absolute; left: 0; top: 32.236%; width: 100%; display: block; }
+.lp-wrapper #sec-f07-grip .fg p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400; }
+.lp-wrapper #sec-f07-grip .fg .fg-h{ top: 7.585%; left: 0; right: 0; text-align: center; font-size: min(4.0vw, 40px);
+  letter-spacing: 0.06em; text-indent: 0.06em; font-weight: 700; }
+.lp-wrapper #sec-f07-grip .fg .fg-chip{ position: absolute; height: 9.980%; border-radius: 8px;
+  color: #fff; font-weight: 500; font-size: min(4.0vw, 40px); text-align: center; }
+.lp-wrapper #sec-f07-grip .fg .fg-chip span{ display: block; position: relative; top: min(2.8vw, 28px);
+  letter-spacing: 0.06em; text-indent: 0.06em; }
+.lp-wrapper #sec-f07-grip .fg .fg-c1{ top: 16.567%; left: 9.8%; width: 24.6%; background: #D75A41; }
+.lp-wrapper #sec-f07-grip .fg .fg-c2{ top: 16.467%; left: 41.4%; width: 37.6%; background: #84B28B; }
+.lp-wrapper #sec-f07-grip .fg .fg-amp{ top: 19.561%; left: 35.9%; font-size: min(3.8vw, 38px); }
+.lp-wrapper #sec-f07-grip .fg .fg-tsuki{ top: 19.162%; left: 80.7%; font-size: min(4.0vw, 40px); letter-spacing: 0.06em; }
+.lp-wrapper #sec-f07-grip .fg .fg-b1{ top: 80.140%; left: 0; right: 0; text-align: center; font-size: min(3.5vw, 35px);
+  letter-spacing: 0.1094em; text-indent: 0.1094em; transform: translateX(0.0%); }
+.lp-wrapper #sec-f07-grip .fg .fg-b1 b{ font-weight: 700; }
+.lp-wrapper #sec-f07-grip .fg .fg-b2{ top: 87.625%; left: 0; right: 0; text-align: center; font-size: min(3.5vw, 35px);
+  letter-spacing: 0.1027em; text-indent: 0.1027em; transform: translateX(-1.1%); }
+/* ==/sec-f07-grip== */
+/* ==@sec-f09-body== */
+/* #sec-f09-body フチで水分ストップ（元 17_ra-le-na.jpg y388-1265・1000x877）
+   実測: 写真 y0-806 ／ クリーム #FEF8ED y807-876
+     白の2行（y639・y707）は写真に焼き込み → 塗り戻してHTML化 */
+.lp-wrapper #sec-f09-body{ padding: 0; }
+.lp-wrapper #sec-f09-body .fn{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 877; overflow: hidden; background: #FEF8ED; }
+.lp-wrapper #sec-f09-body .fn img{ position: absolute; left: 0; top: 0; width: 100%; display: block; }
+.lp-wrapper #sec-f09-body .fn p{ position: absolute; left: 0; right: 0; margin: 0; line-height: 1; white-space: nowrap;
+  text-align: center; color: #fff; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400; font-size: min(3.5vw, 35px);
+  letter-spacing: 0.055em; text-indent: 0.055em; }
+.lp-wrapper #sec-f09-body .fn p b{ font-weight: 600; }
+.lp-wrapper #sec-f09-body .fn .fn-1{ top: 72.748%; transform: translateX(-0.6%); }
+.lp-wrapper #sec-f09-body .fn .fn-2{ top: 80.502%; transform: translateX(-0.5%); }
+/* ==/sec-f09-body== */
+/* ==@sec-story-cover== */
+/* #sec-story-cover 開発物語 扉（元 24_ra-le-na.jpg y0-1039・1000x1039）
+   ★HTMLの data-元y は 0-978 のままだった（境目を動かしたときの直し忘れ）→ 0-1039 に修正
+   実測: y0-38 はクリーム #FEF9ED ／ 写真 y39-1038（黒いベールが掛かっている＝そのまま残した）
+     筆記体 "Our Story" は淡い緑 #758A70 → **地との差からアルファを作った透過PNG**（y54 x70 603x191）
+     明朝の白文字4行（写真に焼き込み）は拡散で塗り戻してからHTML化 */
+.lp-wrapper #sec-story-cover{ padding: 0; }
+.lp-wrapper #sec-story-cover .sc{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1039; overflow: hidden; }
+.lp-wrapper #sec-story-cover .sc img{ position: absolute; display: block; }
+.lp-wrapper #sec-story-cover .sc-bg{ inset: 0; width: 100%; height: 100%; }
+/* 筆記体「Our Story」: 元は y2-222・x104-641（538x221）で、上のアセンダーが写真の上端すれすれまで伸びる。
+   以前の透過PNG（603x191）は**上が切れていて**位置も下だった（2026-09-08 直し）。
+   写真ごと切り出した帯に差し替え（背後の写真は同じものなので継ぎ目は出ない） */
+.lp-wrapper #sec-story-cover .sc-scr{ top: max(-0.1vw, -1px); left: 9.8%; width: 55.0%; }
+.lp-wrapper #sec-story-cover .sc p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; }
+.lp-wrapper #sec-story-cover .sc .sc-a{ top: 31.280%; left: 10.400%; font-size: min(7.1vw, 71px); letter-spacing: 0.0495em; }
+.lp-wrapper #sec-story-cover .sc .sc-b{ top: 43.792%; left: 10.500%; font-size: min(7.1vw, 71px); letter-spacing: 0.0429em; }
+.lp-wrapper #sec-story-cover .sc .sc-c{ top: 56.978%; left: 10.000%; font-size: min(7.1vw, 71px); letter-spacing: 0.0445em; }
+.lp-wrapper #sec-story-cover .sc .sc-d{ top: 74.880%; left: 10.700%; font-size: min(3.3vw, 33px); letter-spacing: 0.0654em; }
+/* ==/sec-story-cover== */
+/* ==@sec-name-cover== */
+/* #sec-name-cover 名前に込めた想い 扉（元 25_ra-le-na.jpg y0-1000・1000x1000）
+   実測: 全面が写真（文字の後ろに薄いベールあり＝そのまま残した）
+     明朝の白2行 y108・y224 は焼き込み → 拡散で塗り戻してHTML化 */
+.lp-wrapper #sec-name-cover{ padding: 0; }
+.lp-wrapper #sec-name-cover .nc{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1000; overflow: hidden; }
+.lp-wrapper #sec-name-cover .nc img{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lp-wrapper #sec-name-cover .nc p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; font-size: min(7.4vw, 74px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-name-cover .nc .nc-1{ top: 10.600%; left: 7.600%; }
+.lp-wrapper #sec-name-cover .nc .nc-2{ top: 22.200%; left: 1.800%; }
+/* ==/sec-name-cover== */
+/* ==@sec-promise== */
+/* #sec-promise あなたも毎日、毎日（元 26_ra-le-na.jpg y0-1114・1000x1114）
+   実測: 全面が写真（下に黒いグラデのベール＝そのまま残した）
+     筆記体 "Trial Free" は白 → 透過PNG（y690 x320 370x160）
+     明朝の白2行 y874・y971 は焼き込み → 拡散で塗り戻してHTML化 */
+.lp-wrapper #sec-promise{ padding: 0; }
+.lp-wrapper #sec-promise .pr{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1114; overflow: hidden; }
+.lp-wrapper #sec-promise .pr img{ position: absolute; display: block; }
+.lp-wrapper #sec-promise .pr-bg{ inset: 0; width: 100%; height: 100%; }
+/* 2026-09-08: 筆記体「Trial Free」の透過PNGをやめ、写真に焼き込まれたまま使う。
+   以前は写真の広い範囲（y682-1022・約35,000画素）を塗り戻していて、タイルの目地が白く滲んでいた。
+   いまは**2行の文章の帯だけ**（y870-1022・約15,800画素）を塗り戻している */
+.lp-wrapper #sec-promise .pr p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; font-size: min(5.4vw, 54px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-promise .pr .pr-1{ top: 78.187%; left: 7.600%; }
+.lp-wrapper #sec-promise .pr .pr-2{ top: 86.984%; left: 7.700%; }
+/* ==/sec-promise== */
+/* ==@sec-design== */
+/* #sec-design Design 扉（元 23_ra-le-na.jpg y0-1852・1000x1852）
+   実測: 地 #FFF9ED ／ 写真 y337-1277 x30-969 ／ 重なる円2つ y1119-1536（不透明 #D85A41 / #84B28B）
+     ★縦書き「ラ・レーナだけの」は **写真の上ではなく、写真に重ねたクリームの帯 x802-920 の上**にある
+       （帯の中は 83% がクリーム＝平ら）。帯を平らなクリームで塗り直して、文字はHTMLで縦組みにした
+     円の中の5つの文字は拡散で塗り戻し。円そのものは写真に重なるので画像のまま
+     飾りの弧 y238-288 x320-680 は小さな画像で切り出し */
+.lp-wrapper #sec-design{ padding: 0; }
+.lp-wrapper #sec-design .dc{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 1852; overflow: hidden; background: #FEF9ED; }
+.lp-wrapper #sec-design .dc img{ position: absolute; display: block; }
+.lp-wrapper #sec-design .dc-photo{ top: 18.197%; left: 0; width: 100%; }
+.lp-wrapper #sec-design .dc-arc{ top: 12.851%; left: 32%; width: 36%; }
+.lp-wrapper #sec-design .dc p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; color: #3D3935; }
+.lp-wrapper #sec-design .dc .dc-h{ top: 7.991%; left: 17.5%; font-size: min(4.7vw, 47px); letter-spacing: 0.072em; }
+.lp-wrapper #sec-design .dc .dc-v{ top: 19.546%; left: 80.2%; writing-mode: vertical-rl;
+  font-size: min(5.7vw, 57px); letter-spacing: 0.303em; }
+.lp-wrapper #sec-design .dc .dc-b1{ top: 85.853%; left: 8.4%; font-size: min(3.9vw, 39px); letter-spacing: 0.0732em; }
+.lp-wrapper #sec-design .dc .dc-b2{ top: 90.173%; left: 35.5%; font-size: min(3.8vw, 38px); letter-spacing: 0.0989em; }
+.lp-wrapper #sec-design .dc .dc-c{ color: #fff; }
+.lp-wrapper #sec-design .dc .dc-c1{ top: 68.467%; left: 25.1%; font-size: min(6.4vw, 64px); letter-spacing: 0.0311em; }
+.lp-wrapper #sec-design .dc .dc-c2{ top: 68.790%; left: 56.0%; font-size: min(5.7vw, 57px); letter-spacing: 0.2322em; }
+.lp-wrapper #sec-design .dc .dc-x{ top: 70.518%; left: 48.2%; font-size: min(5.8vw, 58px); color: #fff; }
+/* 筆記体は元では細く、色も白ではない（実測: Material 側 #FFEAE1／Design 側 #F7FFF8）。
+   2026-09-08: 写真に焼き込まれていた同じ筆記体を塗り戻して二重を解消し、色を実測値に合わせた */
+/* 🔴 筆記体は元画像から切り出した透過PNGに戻した＝市山さん指示 2026-09-10「円の中のテキストの完全化」。手元の筆記体はどれも別物だった（実測 元のインク12.7% 高さ56 対 Snell Roundhand 20.2% 高さ30）。
+   本プロジェクトの決定「筆記体は画像のまま」（2026-09-09 市山さん）にそろえた */
+.lp-wrapper #sec-design .dc img.dc-s{ position: absolute; display: block; height: auto; }
+.lp-wrapper #sec-design .dc img.dc-s1{ top: 71.976%; left: 23.6%; width: 17.3%; }
+.lp-wrapper #sec-design .dc img.dc-s2{ top: 72.894%; left: 62.0%; width: 13.2%; }
+/* ==/sec-design== */
+/* ==@sec-f02-body== */
+/* #sec-f02-body 汚れが落ちやすい理由（元 07_ra-le-na.jpg y0-2797・1000x2797）
+   実測: 地は3段 #FFF9ED y0-239 ／ #F8EEE5 y240-1239 ／ #FFF8ED y1240-2796
+     板の写真 y327-1142 x0-401 ／ 枠（オレンジの線）y443-515 x496-919
+     濃いチップ y1439-1509 x56-444 ／ カード2枚 x30-489・x510-969（写真460 ＋ 白カード360）
+     ★2枚のテクスチャ写真は「表／裏」の札と色チップが焼き込まれているので**画像のまま**（型1）
+     本文の字送りは +0.09em、見出しは +0.05em、「水をはじく新素材」だけ +0.167em と広い */
+.lp-wrapper #sec-f02-body{ padding: 0; }
+.lp-wrapper #sec-f02-body .fr{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 2797; overflow: hidden; background: #FEF9ED; }
+.lp-wrapper #sec-f02-body .fr-top{ position: absolute; left: 0; right: 0; top: 0; height: 8.581%; background: #FEF9ED; }
+.lp-wrapper #sec-f02-body .fr-mid{ position: absolute; left: 0; right: 0; top: 8.581%; height: 35.753%; background: #F8EEE5; }
+.lp-wrapper #sec-f02-body .fr img{ position: absolute; display: block; }
+.lp-wrapper #sec-f02-body .fr-reason{ top: 2.860%; left: 7%; width: 33%; }
+.lp-wrapper #sec-f02-body .fr-board{ top: 11.691%; left: 0; width: 40.2%; }
+.lp-wrapper #sec-f02-body .fr-tx1{ top: 56.668%; left: 3%; width: 46%; }
+.lp-wrapper #sec-f02-body .fr-tx2{ top: 56.668%; left: 51%; width: 46%; }
+/* 白いカードは元画像でも純白（実測 255,255,255）。正典 §10-5 の「面の白は #FFFEFA」とは違うが
+   忠実再現なので純白のまま残す（2026-09-08 実測・実測ノートへ） */
+.lp-wrapper #sec-f02-body .fr-card{ position: absolute; top: 73.114%; height: 12.871%; width: 46%; background: #fff; }
+.lp-wrapper #sec-f02-body .fr-card1{ left: 3%; }
+.lp-wrapper #sec-f02-body .fr-card2{ left: 51%; }
+.lp-wrapper #sec-f02-body .fr-box{ position: absolute; top: 15.838%; left: 49.6%; width: 42.4%; height: 2.610%;
+  border: 2px solid #D75A41; border-radius: 8px; }
+.lp-wrapper #sec-f02-body .fr-chip{ position: absolute; top: 51.448%; left: 5.6%; width: 38.9%; height: 2.538%;
+  background: #3D3935; border-radius: 8px; }
+.lp-wrapper #sec-f02-body .fr-chip span{ display: block; position: absolute; left: 0; right: 0; top: 28%;
+  text-align: center; color: #fff; font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; font-size: min(4.6vw, 46px);
+  letter-spacing: 0.0516em; text-indent: 0.0516em; line-height: 1; white-space: nowrap; }
+.lp-wrapper #sec-f02-body .fr p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; color: #3D3935; }
+.lp-wrapper #sec-f02-body .fr b{ font-weight: 600; }
+.lp-wrapper #sec-f02-body .fr em{ font-style: normal; color: #D75A41; font-weight: 600; }
+.lp-wrapper #sec-f02-body .fr i{ font-style: normal; color: #6E9E76; font-weight: 600; }
+.lp-wrapper #sec-f02-body .fr .fr-h{ top: 4.004%; left: 39.7%; font-size: min(5.3vw, 53px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f02-body .fr .fr-h em{ font-weight: 300; }
+.lp-wrapper #sec-f02-body .fr .fr-s1{ top: 13.264%; left: 49.4%; font-size: min(4.5vw, 45px); letter-spacing: 0.167em; }
+.lp-wrapper #sec-f02-body .fr .fr-s2{ top: 16.911%; left: 51.7%; font-size: min(4.5vw, 45px); letter-spacing: 0.0306em; color: #D75A41; }
+.lp-wrapper #sec-f02-body .fr .fr-t{ left: 48.7%; font-size: min(3.4vw, 34px); letter-spacing: 0.09em; }
+.lp-wrapper #sec-f02-body .fr .fr-more{ top: 48.910%; left: 42.8%; font-size: min(3.8vw, 38px); letter-spacing: 0.193em; }
+.lp-wrapper #sec-f02-body .fr .fr-cont{ top: 52.163%; left: 46.4%; font-size: min(4.4vw, 44px); letter-spacing: -0.0177em; }
+/* 元の実測: 左端 x72〜75・幅319〜348。0.042em だと14〜19px 広く、左に13px ずれていた（2026-09-08） */
+.lp-wrapper #sec-f02-body .fr .fr-cl{ left: 6.9%; font-size: min(3.3vw, 33px); letter-spacing: -0.006em; }
+.lp-wrapper #sec-f02-body .fr .fr-cr{ left: 55.1%; font-size: min(3.3vw, 33px); letter-spacing: -0.006em; }
+/* 元のインク: x74 w845。0.03em だと x56 w869（18px左・24px広い）→ 0.0007em・左7.4%（2026-09-08） */
+.lp-wrapper #sec-f02-body .fr .fr-e1{ top: 89.060%; left: 7.4%; font-size: min(4.3vw, 43px); letter-spacing: 0.0007em; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500; }
+.lp-wrapper #sec-f02-body .fr .fr-e2{ top: 91.884%; left: 24.5%; font-size: min(4.4vw, 44px); letter-spacing: -0.021em; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500; }
+.lp-wrapper #sec-f02-body .fr .fr-t0{ top: 22.131%; }
+.lp-wrapper #sec-f02-body .fr .fr-t1{ top: 24.741%; }
+.lp-wrapper #sec-f02-body .fr .fr-t2{ top: 27.386%; }
+.lp-wrapper #sec-f02-body .fr .fr-t3{ top: 29.853%; }
+.lp-wrapper #sec-f02-body .fr .fr-t4{ top: 32.320%; }
+.lp-wrapper #sec-f02-body .fr .fr-t5{ top: 35.073%; }
+.lp-wrapper #sec-f02-body .fr .fr-t6{ top: 37.540%; }
+.lp-wrapper #sec-f02-body .fr .fr-l0{ top: 74.508%; }
+.lp-wrapper #sec-f02-body .fr .fr-l1{ top: 76.689%; }
+.lp-wrapper #sec-f02-body .fr .fr-l2{ top: 78.727%; }
+.lp-wrapper #sec-f02-body .fr .fr-l3{ top: 80.765%; }
+.lp-wrapper #sec-f02-body .fr .fr-l4{ top: 82.946%; }
+.lp-wrapper #sec-f02-body .fr .fr-r0{ top: 74.508%; }
+.lp-wrapper #sec-f02-body .fr .fr-r1{ top: 76.689%; }
+.lp-wrapper #sec-f02-body .fr .fr-r2{ top: 78.727%; }
+.lp-wrapper #sec-f02-body .fr .fr-r3{ top: 80.765%; }
+.lp-wrapper #sec-f02-body .fr .fr-r4{ top: 82.946%; }
+/* ==/sec-f02-body== */
+/* ==@sec-f11-body== */
+/* #sec-f11-body 長方形が1番使いやすい理由（元 21_ra-le-na.jpg y379-3827・1000x3448）
+   実測: 上の写真 y0-648 ／ 地 #FEF8EC
+     茶色の帯2本 y950-1049・y1996-2115 x31-970 色 **#6D6359 ＝ Figma変数 Grey**（角丸8px）
+     キッチンの写真 y1050-1538 x31-970 ／ 白いカード y2200-2940 x32-969 #FFFEFA
+     ★比較の図は 2026-09-08 に SVG＋HTMLの文字へ組み直した（下の ==@sec-f11-body== の末尾を見る）
+     サーモンのピル y2736-2849 x202-799 #D75940（完全な丸み＝社内3段階の外・実測のまま）
+     本文は明朝 36.5px・字送り 0.05em で全行そろっている */
+.lp-wrapper #sec-f11-body{ padding: 0; }
+.lp-wrapper #sec-f11-body .fx{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 3448; overflow: hidden; background: #FEF8EC; }
+.lp-wrapper #sec-f11-body .fx img{ position: absolute; display: block; }
+.lp-wrapper #sec-f11-body .fx-top{ top: 0; left: 0; width: 100%; }
+.lp-wrapper #sec-f11-body .fx-rsn{ top: 20.302%; left: 3%; width: 27%; }
+.lp-wrapper #sec-f11-body .fx-kit{ top: 30.452%; left: 3.1%; width: 94%; }
+.lp-wrapper #sec-f11-body .fx-cmp{ top: 65.690%; left: 5.5%; width: 89%; }
+/* 白いカード: 実測 y2116-2941・x31-970（2026-09-08 直し。以前は上端が84px下で、
+   サブ行『同じ外寸…』の下半分を白い面が覆っていた。DOM順が後ろの絶対配置は文字の上に描かれる） */
+.lp-wrapper #sec-f11-body .fx-card{ position: absolute; top: 61.369%; left: 3.1%; width: 94.0%;
+  height: 23.956%; background: #FFFEFA; }
+.lp-wrapper #sec-f11-body .fx-band{ position: absolute; left: 3.1%; width: 93.9%; background: #6D6358; border-radius: 8px; }
+.lp-wrapper #sec-f11-body .fx-b1{ top: 27.552%; height: 2.900%; }
+.lp-wrapper #sec-f11-body .fx-b2{ top: 57.889%; height: 3.480%; }
+.lp-wrapper #sec-f11-body .fx-pill{ position: absolute; top: 79.350%; left: 20.2%; width: 59.8%;
+  height: 3.306%; background: #D75940; border-radius: 999px; }
+.lp-wrapper #sec-f11-body .fx p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; color: #3D3935; }
+/* 見出し: 実測 ink y815-859 x182-816（w635・h45）。2026-09-08 直し —
+   以前は7px上・3px左にあり、48pxではなく49pxだった（Reason画像に焼き込まれた『長方形』が
+   重なっていて気づけなかった）。『1番使いやすい』はオレンジ #D75A41（実測 x388-710） */
+.lp-wrapper #sec-f11-body .fx .fx-h{ top: 23.579%; left: 18.1%; font-size: min(4.8vw, 48px); letter-spacing: 0.062em; }
+.lp-wrapper #sec-f11-body .fx .fx-h em{ font-style: normal; color: #D75A41; }
+.lp-wrapper #sec-f11-body .fx .fx-n{ position: absolute; display: block; }
+.lp-wrapper #sec-f11-body .fx .fx-n1{ top: 28.626%; left: 11.6%; width: 4.9%; }
+.lp-wrapper #sec-f11-body .fx .fx-n2{ top: 58.816%; left: 6.5%; width: 6.5%; }
+.lp-wrapper #sec-f11-body .fx .fx-bt{ color: #fff; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+  font-size: min(4.0vw, 40px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f11-body .fx .fx-bt1{ top: 28.741%; left: 18.8%; }
+.lp-wrapper #sec-f11-body .fx .fx-bt2{ top: 59.078%; left: 14.5%; }
+.lp-wrapper #sec-f11-body .fx .fx-sub{ top: 63.138%; left: 15.0%; z-index: 1; font-size: min(3.4vw, 34px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f11-body .fx .fx-t{ font-size: min(3.65vw, 36.5px); letter-spacing: 0.05em; }
+/* 数字の行: 元は全体がゴシックの太字で、数字だけ大きい（2026-09-08 実測）。
+   「約」ink 41x41 ／「851」ink 122x61（697は126x61）／「cm²」ink 70x31。
+   以前は「約」と「cm²」が明朝の細字で、数字も小さかった */
+.lp-wrapper #sec-f11-body .fx .fx-num{ top: 75.377%; letter-spacing: 0;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 700;
+  font-size: min(4.29vw, 42.9px); }
+.lp-wrapper #sec-f11-body .fx .fx-num u{ text-decoration: none; font-size: min(7.54vw, 75.4px); letter-spacing: 0;
+  margin-left: min(1.0vw, 10px); }
+.lp-wrapper #sec-f11-body .fx .fx-num s{ text-decoration: none; font-size: min(4.01vw, 40.1px); letter-spacing: 0;
+  margin-left: min(1.5vw, 15px); }
+.lp-wrapper #sec-f11-body .fx .fx-num1{ left: 16.7%; }
+.lp-wrapper #sec-f11-body .fx .fx-num1 u{ color: #D75A41; }
+/* 右の 697 は数字が3つとも幅広なので、元では左の 851 より7px狭く組まれている（実測） */
+.lp-wrapper #sec-f11-body .fx .fx-num2{ left: 59.3%; top: 75.348%; }
+.lp-wrapper #sec-f11-body .fx .fx-num2 u{ letter-spacing: -0.046em; }
+.lp-wrapper #sec-f11-body .fx .fx-pt{ top: 80.104%; left: 0; right: 0; text-align: center; color: #fff;
+  font-size: min(3.4vw, 34px); letter-spacing: 0.03em; }
+.lp-wrapper #sec-f11-body .fx .fx-pt u{ text-decoration: none; font-size: min(5.0vw, 50px);
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 500; }
+/* この1行だけ元は太いゴシック（他の本文は明朝）。実測 ink y1697-1731 x146-834・塗り34.0%
+   ＝2026-09-08 直し */
+.lp-wrapper #sec-f11-body .fx .fx-t1{ top: 49.159%; left: 14.300%;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-weight: 600; font-size: min(3.6vw, 36px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f11-body .fx .fx-t2{ top: 51.305%; left: 16.900%; }
+.lp-wrapper #sec-f11-body .fx .fx-t3{ top: 53.364%; left: 25.300%; }
+.lp-wrapper #sec-f11-body .fx .fx-t4{ top: 88.109%; left: 7.100%; letter-spacing: 0.04em; }
+.lp-wrapper #sec-f11-body .fx .fx-t5{ top: 92.227%; left: 18.100%; letter-spacing: 0.0277em; }
+/* 鍵かっこの中だけ元は太いゴシック（外の「毎日の」「を」と鍵かっこは明朝の細字・2026-09-08 実測） */
+.lp-wrapper #sec-f11-body .fx .fx-t6{ top: 94.316%; left: 6.900%; letter-spacing: 0.0326em; }
+.lp-wrapper #sec-f11-body .fx .fx-t6 b{ font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-weight: 600; }
+.lp-wrapper #sec-f11-body .fx .fx-t7{ top: 96.462%; left: 21.600%; letter-spacing: 0.0343em; }
+/* 比較の図（2026-09-08 画像→HTML／SVG）実測（図の中の座標・890x300）:
+   長方形 x60-429 y4-233（370x230・角丸 最小二乗で15.5→16px）／
+   かまぼこ型 中心x665.5・横半径185・上の半径133.5・下の半径154.6を y233.5 で切った形
+   （測った左右の輪郭に対しずれ2px以内）／
+   赤の点線 x22・x868（y22-226・破線4-6・線幅2）＋両端に半径7.5の丸 #D75A41 ／
+   緑の点線 y271（x80-414 と x499-833）＋両端に半径7.5の丸 #84B28B ／
+   ラベルは白 YuGothic 34px 字間0.03em（点線が形に触れるので図と点線は同じSVGに入れる） */
+.lp-wrapper #sec-f11-body .fx-cmp{ position: absolute; display: block; top: 65.661%; left: 5.5%;
+  width: 89%; height: auto; }
+.lp-wrapper #sec-f11-body .fx .fx-cl{ color: #FFFEFA; font-weight: 400;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-size: min(3.4vw, 34px); letter-spacing: 0.03em; }
+.lp-wrapper #sec-f11-body .fx .fx-cl1{ top: 68.620%; left: 24.80%; }
+.lp-wrapper #sec-f11-body .fx .fx-cl2{ top: 68.765%; left: 63.50%; }
+/* 見出しの上の飾りの点3つ: 実測 4x4px・x499-502・y696/724/752（間隔28px）・#84B28B
+   ＝2026-09-08 追加（それまで実装に無かった） */
+.lp-wrapper #sec-f11-body .fx-dots{ position: absolute; display: block; top: 20.157%; left: 49.9%;
+  width: 0.4%; height: auto; }
+/* ==/sec-f11-body== */
+/* ==@sec-f01-body== */
+/* #sec-f01-body 置くだけでピタッと止まる安心感（元 04_ra-le-na.jpg y0-2266・1000x2266）
+   実測: 地 #F4EADF y0-1176 ／ 緑の帯 **#83B28B**（≒Green #84B28B）y1179-1338 ／ 地 #F4EAE0 y1341-2265
+     円グラフ y514-835 x60-383 ／ 吹き出し y512-757 x422-934 ／ 白いカード y1526-2156 x42-949
+   ★円グラフ・吹き出し（しっぽが本体につながる）・脱脂の手順カード（挿絵と小さな文字）は
+     **画像のまま**（型1）。それ以外の文字はHTML化した */
+.lp-wrapper #sec-f01-body{ padding: 0; }
+.lp-wrapper #sec-f01-body .fp{ position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+  aspect-ratio: 1000 / 2266; overflow: hidden; background: #F4EAE0; }
+.lp-wrapper #sec-f01-body .fp-top{ position: absolute; left: 0; right: 0; top: 0; height: 51.942%; background: #F4EADF; }
+.lp-wrapper #sec-f01-body .fp-green{ position: absolute; left: 0; right: 0; top: 51.589%; height: 7.944%; background: #83B28B; }
+/* 🔴 市山さん指示 2026-09-11「タイトル帯のpadding上下が狭いので少し開けて」＝元画像(y1178-1339・上余白22/下16)より意図的に広げた。上下へ10pxずつ伸ばして 1179-1339(160) → 1169-1349(180)。中の白文字は動かしていないので余白は 17/17 → 27/27。帯の下の本文との間は38→28pxで、詰まらない範囲に収めた（+16px案は22pxまで詰まるので採らなかった） */
+.lp-wrapper #sec-f01-body .fp img{ position: absolute; display: block; }
+.lp-wrapper #sec-f01-body .fp-donut{ top: 22.065%; left: 5%; width: 35%; }
+.lp-wrapper #sec-f01-body .fp-bubble{ top: 22.065%; left: 41.2%; width: 53%; }
+.lp-wrapper #sec-f01-body .fp-card{ top: 66.990%; left: 3.8%; width: 92%; }
+.lp-wrapper #sec-f01-body .fp p{ position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; font-weight: 300; color: #3D3935; }
+.lp-wrapper #sec-f01-body .fp b{ font-weight: 600; }
+.lp-wrapper #sec-f01-body .fp em{ font-style: normal; color: #D75A41; }
+.lp-wrapper #sec-f01-body .fp .fp-h{ top: 4.722%; left: 9.0%; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 600;
+  font-size: min(5.26vw, 52.6px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-b{ left: 5.8%; font-size: min(3.4vw, 34px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-note{ top: 35.834%; left: 42.0%; font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+  font-size: min(2.6vw, 26px); letter-spacing: 0.05em; color: #84B28B; }
+.lp-wrapper #sec-f01-body .fp .fp-m1{ top: 41.924%; left: 10.7%; font-size: min(4.7vw, 47px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-m2{ top: 46.072%; left: 35.0%; font-size: min(4.8vw, 48px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-g{ color: #fff; font-size: min(5.4vw, 54px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-g1{ top: 52.648%; left: 16.5%; letter-spacing: 0.0365em; }
+.lp-wrapper #sec-f01-body .fp .fp-g2{ top: 56.002%; left: 16.2%; letter-spacing: 0.0348em; }
+.lp-wrapper #sec-f01-body .fp .fp-c{ font-size: min(2.4vw, 24px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-b1{ top: 10.989%; left: 5.800%; }
+.lp-wrapper #sec-f01-body .fp .fp-b2{ top: 14.210%; left: 5.800%; }
+.lp-wrapper #sec-f01-body .fp .fp-b3{ top: 17.255%; left: 6.100%; letter-spacing: 0.0615em; }
+.lp-wrapper #sec-f01-body .fp .fp-c1{ top: 60.680%; left: 5.100%; letter-spacing: 0.0369em; }
+.lp-wrapper #sec-f01-body .fp .fp-c2{ top: 62.577%; left: 4.800%; }
+.lp-wrapper #sec-f01-body .fp .fp-c3{ top: 64.475%; left: 4.800%; }
+/* 吹き出し（2026-09-08 画像→HTML）実測: 白い箱 x422-934 y511-758（513x248・角丸16px・
+   まわりに柔らかい影）／しっぽ 底辺 x603-636 → 頂点(569,791)／文字 #84B28B・
+   ゴシック 48.5px・字間0.079em・w500（元のインク率28.5%に対し30.6%） */
+.lp-wrapper #sec-f01-body .fp .fp-bubble{ position: absolute; top: 22.551%; left: 42.2%;
+  width: 51.3%; height: 10.945%; background: #fff; border-radius: min(1.6vw, 16px);
+  filter: drop-shadow(0 min(0.4vw,4px) min(1.5vw,15px) rgba(61,57,53,0.14)); }
+.lp-wrapper #sec-f01-body .fp .fp-bubble::after{ content: ''; position: absolute; top: 100%;
+  left: 28.655%; width: 13.060%; height: min(3.3vw, 33px); background: #fff;
+  clip-path: polygon(50.75% 0, 100% 0, 0 100%); }
+.lp-wrapper #sec-f01-body .fp .fp-bt{ font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-weight: 600; color: #84B28B;
+  font-size: min(5.0vw, 50px); letter-spacing: 0.05em; }
+.lp-wrapper #sec-f01-body .fp .fp-bt1{ top: 25.066%; left: 50.5%; }
+.lp-wrapper #sec-f01-body .fp .fp-bt2{ top: 28.817%; left: 50.5%; }
+/* 円グラフ（2026-09-08 画像→HTML）実測: 円 中心(222,673)・半径162.5（325x325）・#84B28B ／
+   くさびは12時から反時計回りに17.3度。外側は白（rgb(250,250,248)・数字の #FFF9ED とは別の色）で、
+   中心へ向かって緑に溶ける（実測: 半径18%で透明→93%で不透明）。円弧は3点で近似（ずれ最大0.5px）／
+   数字 Avenir Next Condensed 130px w600 長体1.03・字間0.02em（元の字形＝9の尾が直線・0が角丸長方形。
+   21書体を当てて一番近かった）、% は Helvetica Neue 54px w500 長体1.043、色 #FFF9ED */
+.lp-wrapper #sec-f01-body .fp .fp-pie{ position: absolute; top: 22.529%; left: 5.95%;
+  width: 32.5%; height: min(32.5vw, 325px); border-radius: 50%; background: #84B28B; }
+.lp-wrapper #sec-f01-body .fp .fp-pie i{ position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle closest-side at 50% 50%,
+    rgba(250,250,248,0) 18.0%, rgba(250,250,248,1) 93.0%);
+  clip-path: polygon(50% 50%, 35.13% 2.26%, 42.48% 0.57%, 50% 0%); }
+.lp-wrapper #sec-f01-body .fp .fp-pn{ top: 27.096%; left: 12.80%; color: #FFF9ED; font-weight: 600;
+  font-family: 'Avenir Next Condensed','Avenir Next','Avenir','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: min(13.0vw, 130px); letter-spacing: 0.02em; }
+.lp-wrapper #sec-f01-body .fp .fp-pn .n9{ display: inline-block; transform: scaleX(1.03); transform-origin: left center; }
+.lp-wrapper #sec-f01-body .fp .fp-pn .np{ position: absolute; left: min(13.87vw, 138.7px);
+  top: min(5.23vw, 52.3px); letter-spacing: 0; font-weight: 500;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: min(5.4vw, 54px);
+  transform: scaleX(1.043); transform-origin: left center; }
+/* ==/sec-f01-body== */
+
+
+/* ============================================================
+   ページの地を、ベースの薄いベージュにする（2026-09-09 市山さん指示）
+
+   市山さん「無理やりせず、基本的にベースの薄いベージュで白いサイドを埋めてみてください」
+
+   この案件は 1000px の縦一列の設計なので、広い画面では章の左右が白く抜けていた。
+   その白を、RaLe-Na の地の色ひとつで埋める。
+     色 = #FEF9ED（正典 §2-2 S-39「画面（LP）はクリーム #FEF9ED が地」・
+                   RaLeNa_テーマ.css の --bg-white / --cream・[G] Figma の Beige）
+
+   ★章ごとの濃い面・写真は広げない。地の色ひとつだけ。
+   ★1000px の中身（位置・高さ・見た目）は1pxも変えていない。
+     章が自分で背景を持っている所はその背景が上に乗るので、中身の見え方は変わらない。
+   ★1000px 以下の画面（スマホ）では、そもそも外側が無いので見た目は変わらない。
+   ★行番号を動かさないため、本文の後ろに足してある（指さしフィードバックはソースの行番号を使う）。
+   ============================================================ */
+.lp-wrapper { background-color: var(--bg-white, #FEF9ED); }
+
+
+/* ============================================================
+   指さしフィードバック 2026-09-09 18:41 の反映（コメントのある5件）
+   元データ: LP評価_kazuki/指さしFB/20260905_ra-le-na_20260909.md
+   市山さんは 1920px 幅で見ている。
+
+   🔴 ここは**元画像より市山さんの指示を優先した**箇所。忠実再現からの意図的な変更なので、
+      `照合.py` の画素差が動く。引き継ぎ書に前後の数値を残してある。
+   ★行番号を動かさないため、本文の後ろに足してある。
+   ============================================================ */
+
+/* --- #1 12章 「ノンポーラス素材」を枠の中心へ -------------------
+   市山さん「枠の中心にテキストが来るように修正して」
+   実測（1920px・コンテナ1000px内の座標）:
+     枠 `.fr-box` の実位置 x496〜919（中心 707.5）／ y443〜515（中心 479.0）
+     元の文字の墨         x525〜882（中心 703.5）／ y475〜511（中心 493.0）
+   → 右へ 4px（left 51.7% → 52.1%。墨の左右の中心が 707.5 でぴたり合う）
+     上へ 16.5px（top 16.911% → 16.321%。45pxの文字の箱を枠の中心 479.0 にそろえる。
+                  この書体では「文字の箱の中心」と「墨の上下の中心」が一致した＝実測で確認）
+   直した後の実測: 墨 x529〜886（中心 707.5）／ 上下の中心 479.0 → ずれ 0.0px         */
+.lp-wrapper #sec-f02-body .fr .fr-s2{ top: 16.321%; left: 52.1%; }
+
+/* --- #3 44章 「ラ・レーナだけの」をクリーム帯の中央へ -------------
+   市山さん「白枠の中央に来るように修正」
+   実測: クリームの帯 x803〜921（中心 862.0）／ 縦書きの墨 x808〜855（中心 831.5）
+   → 右へ 30.5px。元は `left:80.2%`（= x802）→ x832.5                    */
+.lp-wrapper #sec-design .dc .dc-v{ left: 83.25%; }
+
+/* --- #4 48章 背景の丸を、切らずに円のまま見せる -------------------
+   市山さん「背景マルが切れているように見えるので円に修正」
+   4つの丸は元の設計どおり版面（1000px）を左右にはみ出している
+     1つめ left:-33.5px ／ 4つめ left:710.5px + 幅321px = 右へ 31.5px はみ出し
+   `.d8` の `overflow:hidden` がそれを切っていた。切るのをやめる。
+   ・章の背景 #FBE9DD は全幅に出ているので、はみ出した円はその上に乗る
+   ・丸以外に `.d8` からはみ出す要素は無い（帯 905px・パネル・中央そろえの文章のみ）
+   ・スマホでは今までどおり画面端で切れる（`.lp-wrapper` の overflow-x:hidden）＝見た目は変わらない  */
+.lp-wrapper #sec-design-support .d8{ overflow: visible; }
+
+/* --- #5 60章 セクションの上に余白を設ける -----------------------
+   市山さん「セクションの上に余白を儲けて」（＝設けて）
+   緑の帯が真上の濃い焦げ茶（59章 全額返金保証）に貼りついていたので、
+   章の地（#E3EFE5）を上に 80px ぶん敷く。他と同じ `min(◯vw, ◯px)` で書くので
+   スマホでは比例して縮む（375pxで30px）。
+   🔴 これだけは**章の高さが変わる**（796px → 876px）。市山さんの指示による例外。   */
+.lp-wrapper #sec-campaign{ padding-top: min(8vw, 80px); }
+
+/* --- #6 61章 動画の左右の余白を、上下の薄い青緑に合わせる ---------
+   市山さん「サイドの余白部分は、上下の薄い青色に合わせて」
+   真上 60章の地 #E3EFE5 → 真下 62章の地 #E5F1E7 へ渡すので、
+   どちらのつなぎ目にも段差が出ない縦のグラデーションにした。
+   動画のある中央1000pxは動画が覆うので、出るのは左右の余白だけ。            */
+.lp-wrapper #sec-scraper-movie{ background: linear-gradient(180deg, #E3EFE5 0%, #E5F1E7 100%); }
+
+
+/* ============================================================
+   画像に焼き込まれていた文字を HTML にする（2026-09-09 市山さん承認）
+   狙い: 今後 静間さんデザインで新しいページを作るとき、書体・字間・太さを
+        値として取り出して使えるようにする。
+   ★筆記体6か所（Stress-free / Reason×2 / Story / Trial Free / Present）は
+     **画像のまま**（2026-09-09 市山さん判断・Windows等で書体が変わるため）。
+   ★HTMLは既存の行の末尾に足してある（行番号を動かさないため）。CSSはここ。
+   ============================================================ */
+
+/* --- #12 特徴2 テクスチャ写真の札（表/シボ/微細な凸凹・裏/ストライプ/細い溝）----
+   素材 f02-tex-omote.jpg / f02-tex-ura.jpg から札とチップを塗り戻し、ここで組み直した。
+   実測（素材の画素・写真は 30,1585 と 510,1585 に原寸で置かれている）:
+     表   墨 x33-68 y35-70（36x36）      裏   墨 x33-68 y35-70
+     シボ 墨 x75-138 y382-411（64x30）   ストライプ 墨 x74-247 y371-412（174x42）
+     橙チップ x172-386 y365-430（215x66）／ 中の白文字 x192-364 y383-413（173x31）
+     緑チップ x278-423 y364-431（146x68）／ 中の白文字 x299-401 y382-413（103x32）
+     角丸は実測 約4px → RaLe-Na の --radius-small（正典 §6-1）
+   書体: YuGothic w600 / 35px / 字間0。21通り当てた中で幅も濃さもいちばん合った
+     （細い溝 実測インク43.3% に対し YuG600=45.0・YuG500=31.9・Hiragino500=45.1）
+   色: 正典 §2-1 のオレンジ #D75A41 ／ §2-4 の緑 #84B28B ／ 文字の白は純白（§10-5「純白は文字だけ」）
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-f02-body .fr .fr-chip{ position: absolute; border-radius: 4px; }
+.lp-wrapper #sec-f02-body .fr .fr-chip1{ left: 20.1%; top: 69.646%; width: 21.7%; height: 2.467%; background: #D75A41; }
+.lp-wrapper #sec-f02-body .fr .fr-chip2{ left: 78.5%; top: 69.575%; width: 14.9%; height: 2.538%; background: #84B28B; }
+.lp-wrapper #sec-f02-body .fr p.fr-lb{
+  position: absolute; margin: 0; line-height: 1; white-space: nowrap;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+  font-weight: 600; letter-spacing: 0;
+}
+.lp-wrapper #sec-f02-body .fr p.fr-lb-w{ color: #FFFFFF; font-size: min(3.5vw, 35px); }
+/* 元は「チップの外の白文字」のほうが細く見える（実測インク: シボ24.4% 対 細い溝43.3%）。
+   暗い写真の上なのでJPEGのにじみで細く見えている可能性もあるが、見た目に合わせて
+   外の札は w500、チップの中は w600 にした（2026-09-09 実測・正典への申し送り候補） */
+.lp-wrapper #sec-f02-body .fr p.fr-lb-o, .lp-wrapper #sec-f02-body .fr p.fr-lb-u,
+.lp-wrapper #sec-f02-body .fr p.fr-lb1, .lp-wrapper #sec-f02-body .fr p.fr-lb3{ font-weight: 500; }
+.lp-wrapper #sec-f02-body .fr p.fr-lb-o{ color: #D75A41; font-size: min(4.0vw, 40px); left: 6.1%; top: 57.881%; }
+.lp-wrapper #sec-f02-body .fr p.fr-lb-u{ color: #84B28B; font-size: min(4.0vw, 40px); left: 54.2%; top: 57.845%; }
+.lp-wrapper #sec-f02-body .fr p.fr-lb1{ left: 10.2%; top: 70.343%; }
+/* シボ */
+.lp-wrapper #sec-f02-body .fr p.fr-lb2{ left: 22.1%; top: 70.343%; }
+/* 微細な凸凹 */
+.lp-wrapper #sec-f02-body .fr p.fr-lb3{ left: 58.1%; top: 70.307%; }
+/* ストライプ */
+.lp-wrapper #sec-f02-body .fr p.fr-lb4{ left: 80.8%; top: 70.307%; }
+/* 細い溝 */
+
+/* --- #63 製品仕様 の見出し ------------------------------------
+   素材 spec-bg-kitchen.jpg から白の見出しを塗り戻し、ここで組み直した。
+   実測: 墨 x318-682（幅365） y122-194（高73） インク率22.4%／文字の色 (255,252,250)
+   書体: 明朝（うろこと太細がはっきり見える）。LPの他の明朝と同じ指定・w300     */
+.lp-wrapper #sec-spec .sp h2.sp-h{
+  position: absolute; margin: 0; left: 31.6%; top: 8.276%;
+  line-height: 1; white-space: nowrap; color: #FFFCFA;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif;
+  font-weight: 300; font-size: min(7.8vw, 78px); letter-spacing: 0.2388em;
+}
+
+/* --- #39 サイズ の寸法ラベル ----------------------------------
+   素材 size-diagram-m.jpg から6つのラベルを塗り戻し、ここで組み直した。
+   赤の点線・丸・製品写真は図そのものなので画像のまま。
+   実測（素材の画素＝コンテナの画素。画像は原寸1000x583で置かれている）:
+     高さ  x93-152 y97-127 ／ 2cm   x92-155 y145-177
+     37cm x383-469 y354-386 ／ 23cm x845-965 y306-342
+     厚さ  x126-186 y366-394 ／ 1.4cm x118-207 y538-570
+   書体: 漢字も数字も YuGothic w600（数字の縦横比 元43x33=1.30 が YuGothic と一致）
+     ※参考: 最初は別書体かと思ったが、しきい値をゆるく取って点線の赤を拾っていた誤り。旧メモ→ 数字＝Helvetica w500（元の数字は幅広で、
+     YuGothicの数字（縦横比1.30）では合わない。元は1.70・Helvetica＋字間で一致）
+     数字と cm は下そろえ（元も同じ）＝ inline のベースラインでそろう
+   色: 数字＝#D75A41（§2-1）／ 漢字と cm＝#3D3935（§2-3）
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-size .sz p.sz-k,  .lp-wrapper #sec-size .sz p.sz-d{
+  position: absolute; margin: 0; line-height: 1; white-space: nowrap; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 600;
+}
+.lp-wrapper #sec-size .sz p.sz-k{ font-size: min(3.4vw, 34px); letter-spacing: 0; }
+.lp-wrapper #sec-size .sz p.sz-d{ font-size: min(2.8vw, 28px); letter-spacing: 0; }
+.lp-wrapper #sec-size .sz p.sz-d em{
+  font-style: normal; color: #D75A41; font-weight: 600;
+  font-size: min(4.1vw, 41px); letter-spacing: 0;
+  /* 元は幅の違う数字（1 が細い）＝プロポーショナル。既定の等幅だと 1.4 が8px広くなる */
+  font-variant-numeric: proportional-nums; font-feature-settings: 'pnum' 1;
+}
+.lp-wrapper #sec-size .sz p.sz-k1{ left: min(9.1vw,91px);  top: min(9.5vw,95px); }
+.lp-wrapper #sec-size .sz p.sz-k2{ left: min(12.6vw,126px); top: min(36.3vw,363px); }
+.lp-wrapper #sec-size .sz p.sz-d1{ left: min(9.1vw,91px);  top: min(13.8vw,138px); }
+.lp-wrapper #sec-size .sz p.sz-d2{ left: min(38.2vw,382px); top: min(34.8vw,348px); }
+.lp-wrapper #sec-size .sz p.sz-d3{ left: min(83.5vw,835px); top: min(29.5vw,295px); }
+.lp-wrapper #sec-size .sz p.sz-d4{ left: min(11.4vw,114px); top: min(53.2vw,532px); }
+
+/* --- #2 18冠バッジ の文字 --------------------------------------
+   素材 badge-18kan.jpg から金の文字5つを塗り戻し、ここで組み直した。
+   **月桂冠と王冠は絵なので画像のまま**（描き起こさない）。
+   バッジは top335px・幅780px・中央置き → 画像の画素 +(110,335) がコンテナの画素。
+   実測（画像の画素）:
+     RAKUTEN x303-499 y76-108（197x33）／ RANKING x299-482 y123-156（184x34）
+     18 x173-477 y214-470（305x257）／ 冠 x480-619 y357-465（140x109）／ 獲得 x297-480 y492-555（184x64）
+   金の色（実測）: 18 は縦にほぼ平ら #D2AC58 前後で、横に中央が少し明るい
+     （0%#C5AA66 → 50%#DAB561 → 100%#CAA04D）。小さい文字は一段暗い #B79342 前後。
+     ※正典 §6-5「金は必ず縦のグラデーション」に対し、**この面は横方向のごく浅いグラデ**だった
+       → 正典への申し送り（観測）
+   書体: 18 と欧文は Times系の明朝体（元 305x257＝比1.16 が Times/Noto Serif と一致）
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-review .rv p.rv-g{
+  position: absolute; left: auto; right: auto; margin: 0; line-height: 1; white-space: nowrap;
+  text-align: left; font-weight: 400; color: #B79342;
+  font-family: 'Times New Roman', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+}
+.lp-wrapper #sec-review .rv p.rv-g18{
+  background: linear-gradient(100deg, #C5AA66 0%, #D8B360 45%, #CAA04D 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+/* 欧文2行は「細めの明朝の大文字＋広い字送り」。手元の Times は字幅が広いので
+   長体 scaleX(0.86) で細らせてから字間を足すと、元の幅（197/184）と組み方の見た目が両立する */
+.lp-wrapper #sec-review .rv p.rv-g1,  .lp-wrapper #sec-review .rv p.rv-g2{ transform: scaleX(0.86); transform-origin: left top; }
+.lp-wrapper #sec-review .rv p.rv-g1{ left: min(41.3vw,413px); top: min(40.4vw,404px); font-size: min(4.7vw,47px); letter-spacing: 0.02em; }
+.lp-wrapper #sec-review .rv p.rv-g2{ left: min(40.9vw,409px); top: min(45.1vw,451px); font-size: min(4.7vw,47px); letter-spacing: -0.009em; }
+.lp-wrapper #sec-review .rv p.rv-g18{ left: min(23.9vw,239px); top: min(49.0vw,490px); font-size: min(37.2vw,372px); letter-spacing: 0; }
+/* 冠は元が平たい（140x109）。明朝の1文字は正方形に近いので長体で寸法を合わせる */
+.lp-wrapper #sec-review .rv p.rv-gk{ left: min(58.7vw,587px); top: min(68.7vw,687px); font-size: min(12.1vw,121px); letter-spacing: 0;
+  transform: scaleX(1.217); transform-origin: left top;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+/* 獲得は2文字のあいだが大きく空いている（元184px・字だけなら約136px） */
+.lp-wrapper #sec-review .rv p.rv-gt{ left: min(40.7vw,407px); top: min(82.5vw,825px); font-size: min(6.9vw,69px); letter-spacing: 0.70em;
+  font-family: 'Hiragino Mincho ProN','ヒラギノ明朝 ProN','Noto Serif JP',serif; }
+
+/* --- #18 漂白・熱湯消毒 の写真の上の白文字3行 -------------------
+   素材 photo-bleach-sink.jpg から白文字3行を塗り戻し、ここで組み直した。
+   写真（シンク）はそのまま。写真は章の中で top1105.5px・原寸1000x1000。
+   実測（写真の画素）: 1行目 x68-699 y98-147（632x50・インク32.7%）
+                       2行目 x68-459 y202-231（392x30・インク22.9%）
+                       3行目 x68-704 y270-299（637x30・インク19.6%）
+   書体: YuGothic。1行目だけ太い（w600）、2〜3行目は w500。字間はどれも 0.115em 前後で
+     そろっている（実測から逆算。3行とも同じ値になったので設計値とみてよい）
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-bleach .bl{ position: relative; }
+.lp-wrapper #sec-bleach .bl p.bl-t{
+  position: absolute; margin: 0; line-height: 1; white-space: nowrap; text-align: left; color: #FFFFFF;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif;
+}
+.lp-wrapper #sec-bleach .bl p.bl-t1{ left: calc(50% - min(50vw,500px) + min(6.6vw,66px)); top: min(120.3vw,1203px); font-size: min(5.28vw,52.8px); font-weight: 600; letter-spacing: 0.119em; }
+.lp-wrapper #sec-bleach .bl p.bl-t2{ left: calc(50% - min(50vw,500px) + min(6.6vw,66px)); top: min(130.7vw,1307px); font-size: min(3.2vw,32px);  font-weight: 500; letter-spacing: 0.114em; }
+.lp-wrapper #sec-bleach .bl p.bl-t3{ left: calc(50% - min(50vw,500px) + min(6.6vw,66px)); top: min(137.5vw,1375px); font-size: min(3.2vw,32px);  font-weight: 500; letter-spacing: 0.120em; }
+
+/* --- #19 食品接触安全カードの文字6行 ---------------------------
+   素材 card-food-safe-baby.jpg から文字6行を塗り戻し、ここで組み直した。
+   **赤ちゃんの写真はそのまま**。カードは章の中で top253px・原寸1000x680。
+   実測（カードの画素）:
+     1行 食品接触安全を x82-459 y108-155（378x48）※「食品接触安全」だけ緑
+     2行 全項目クリア   x83-404 y196-242（322x47）
+     3行 急性経口毒性・ x84-313 y300-329（230x30）
+     4行 皮膚刺激／…   x83-516 y368-397（434x30）
+     5行 いずれも「合格」。x85-374 y435-466（290x32）
+     6行 赤ちゃん用…   x83-550 y504-533（468x30）
+   色: いちばん濃い1〜2%の実測が (97,89,79)＝**純黒でも #3D3935 でもない**。
+     正典 §2-3 の副次テキスト #6D6358 がいちばん近いのでこれを使う。緑は §2-4 の #84B28B
+   書体: YuGothic。1〜2行だけ太い（w600）、3〜6行は w400
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-food-safe .fs p.fs-t{
+  margin: 0; line-height: 1; white-space: nowrap; text-align: left; color: #6D6358;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400;
+}
+.lp-wrapper #sec-food-safe .fs .fs-gr{ color: #84B28B; }
+.lp-wrapper #sec-food-safe .fs p.fs-t1{ left: min(8.0vw,80px); top: min(35.9vw,359px); font-size: min(5.2vw,52px); font-weight: 600; letter-spacing: 0.070em; }
+.lp-wrapper #sec-food-safe .fs p.fs-t2{ left: min(8.1vw,81px); top: min(44.7vw,447px); font-size: min(5.1vw,51px); font-weight: 600; letter-spacing: 0.082em; }
+.lp-wrapper #sec-food-safe .fs p.fs-t3{ left: min(8.0vw,80px); top: min(55.1vw,551px); font-size: min(3.2vw,32px); letter-spacing: 0.122em; }
+.lp-wrapper #sec-food-safe .fs p.fs-t4{ left: min(8.0vw,80px); top: min(61.9vw,619px); font-size: min(3.2vw,32px); letter-spacing: 0.117em; }
+.lp-wrapper #sec-food-safe .fs p.fs-t5{ left: min(8.0vw,80px); top: min(68.7vw,687px); font-size: min(3.2vw,32px); letter-spacing: 0.179em; }
+.lp-wrapper #sec-food-safe .fs p.fs-t6{ left: min(8.1vw,81px); top: min(75.5vw,755px); font-size: min(3.2vw,32px); letter-spacing: 0.113em; }
+
+/* --- #9 特徴1「置くだけでピタッと止まる」の脱脂手順カード ----------
+   このページで**いちばん大きな焼き込み**（本文26行＋番号バッジ4＋罫線2＋結び1行）。
+   素材 f01-card.jpg から文字だけを塗り戻し、**線画の挿絵4つ（手・ボウル・布・スプレー）は
+   切らずに画像のまま残した**（描き起こせないため。2026-09-09 市山さん承認）。
+   カードは章の中で left38px・top1518px・原寸920x650 → 画像の画素 +(38,1518) がコンテナの画素。
+   実測（カードの画素）:
+     見出し ◆用意していただくもの x46-322 y35-57 ／ ◆手順 x46-126 y190-212
+     罫線 x46-876 y70-71 と y225-226（色 #B0A9A7）
+     箇条 1段目 y90 x85/339/568 ／ 2段目 y126 x85/339
+     番号バッジ 31x31 @(45,241)(471,241)(45,437)(471,437) 面の色は実測 **#95AE91**
+       （正典 §2-4 の緑 #84B28B とは違う。→ 正典への申し送り・観測）
+     本文 左列 x89 ／ 右列 x515、行送り31px、字の高さ17px
+     結び x31-878 y598-621（オレンジ）
+   書体: YuGothic。本文と箇条は w400、見出しと結びは w600
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-f01-body .fp{ position: relative; }
+.lp-wrapper #sec-f01-body .fp .fp-rule{ position: absolute; height: 2px; background: #B0A9A7;
+  left: min(8.4vw,84px); width: min(83.1vw,831px); }
+.lp-wrapper #sec-f01-body .fp .fp-rule1{ top: min(158.8vw,1588px); }
+.lp-wrapper #sec-f01-body .fp .fp-rule2{ top: min(174.3vw,1743px); }
+.lp-wrapper #sec-f01-body .fp p.fp-hd, .lp-wrapper #sec-f01-body .fp p.fp-li,
+.lp-wrapper #sec-f01-body .fp p.fp-s,  .lp-wrapper #sec-f01-body .fp p.fp-end{
+  position: absolute; margin: 0; line-height: 1; white-space: nowrap; text-align: left; color: #3D3935;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; font-weight: 400; }
+.lp-wrapper #sec-f01-body .fp p.fp-hd{ font-size: min(2.4vw,24px); font-weight: 600; letter-spacing: 0.042em; }
+.lp-wrapper #sec-f01-body .fp p.fp-hd2{ letter-spacing: 0.028em; }
+.lp-wrapper #sec-f01-body .fp p.fp-li{ font-size: min(2.1vw,21px); letter-spacing: 0.027em; }
+.lp-wrapper #sec-f01-body .fp p.fp-li3{ letter-spacing: 0.030em; }
+.lp-wrapper #sec-f01-body .fp p.fp-li4,  .lp-wrapper #sec-f01-body .fp p.fp-li5{ letter-spacing: 0.086em; }
+.lp-wrapper #sec-f01-body .fp p.fp-s{ font-size: min(1.9vw,19px); letter-spacing: -0.019em; }
+.lp-wrapper #sec-f01-body .fp p.fp-end{ font-size: min(2.5vw,25px); font-weight: 600; letter-spacing: -0.012em; color: #D75A41; }
+.lp-wrapper #sec-f01-body .fp b.fp-no{ position: absolute; width: min(3.1vw,31px); height: min(3.1vw,31px);
+  background: #95AE91; border-radius: 4px; color: #FFFFFF; display: flex; align-items: center;
+  justify-content: center; font-size: min(2.0vw,20px); font-weight: 600; line-height: 1;
+  font-family: 'YuGothic','游ゴシック体','Yu Gothic','Hiragino Sans',sans-serif; }
+
+.lp-wrapper #sec-f01-body .fp p.fp-hd1{ left: min(8.40vw,84px); top: min(155.30vw,1553px); }
+.lp-wrapper #sec-f01-body .fp p.fp-hd2{ left: min(8.40vw,84px); top: min(170.80vw,1708px); }
+.lp-wrapper #sec-f01-body .fp p.fp-li1{ left: min(11.40vw,114px); top: min(160.90vw,1609px); }
+.lp-wrapper #sec-f01-body .fp p.fp-li2{ left: min(36.80vw,368px); top: min(160.90vw,1609px); }
+.lp-wrapper #sec-f01-body .fp p.fp-li3{ left: min(59.70vw,597px); top: min(160.80vw,1608px); }
+.lp-wrapper #sec-f01-body .fp p.fp-li4{ left: min(11.40vw,114px); top: min(164.20vw,1642px); }
+.lp-wrapper #sec-f01-body .fp p.fp-li5{ left: min(36.80vw,368px); top: min(164.20vw,1642px); }
+.lp-wrapper #sec-f01-body .fp b.fp-no1{ left: min(8.30vw,83px); top: min(175.90vw,1759px); }
+.lp-wrapper #sec-f01-body .fp b.fp-no2{ left: min(50.90vw,509px); top: min(175.90vw,1759px); }
+.lp-wrapper #sec-f01-body .fp b.fp-no3{ left: min(8.30vw,83px); top: min(195.50vw,1955px); }
+.lp-wrapper #sec-f01-body .fp b.fp-no4{ left: min(50.90vw,509px); top: min(195.50vw,1955px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s1a{ left: min(12.50vw,125px); top: min(176.20vw,1762px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s1b{ left: min(12.50vw,125px); top: min(179.30vw,1793px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s1c{ left: min(12.50vw,125px); top: min(182.40vw,1824px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s1d{ left: min(12.50vw,125px); top: min(185.40vw,1854px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s1e{ left: min(12.50vw,125px); top: min(188.60vw,1886px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s2a{ left: min(55.20vw,552px); top: min(176.10vw,1761px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s2b{ left: min(55.20vw,552px); top: min(179.20vw,1792px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s2c{ left: min(55.20vw,552px); top: min(182.40vw,1824px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s2d{ left: min(55.20vw,552px); top: min(185.40vw,1854px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s3a{ left: min(12.50vw,125px); top: min(195.90vw,1959px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s3b{ left: min(12.50vw,125px); top: min(199.00vw,1990px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s3c{ left: min(12.50vw,125px); top: min(202.10vw,2021px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s4a{ left: min(55.20vw,552px); top: min(195.90vw,1959px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s4b{ left: min(55.20vw,552px); top: min(198.90vw,1989px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s4c{ left: min(55.20vw,552px); top: min(202.10vw,2021px); }
+.lp-wrapper #sec-f01-body .fp p.fp-s4d{ left: min(55.20vw,552px); top: min(205.20vw,2052px); }
+.lp-wrapper #sec-f01-body .fp p.fp-end{ left: min(6.80vw,68px); top: min(211.60vw,2116px); }
+/* ------------------------------------------------------------
+   #sec-f01-body 脱脂の手順カード ― スマホで縦に組み替える
+   🔴 市山さん指示 2026-09-10「スマホで小さくなるのでレスポンシブにしてカラム調整とフォントサイズを調整して」
+   ★PC（701px以上）は1pxも変えない。カードを .fp の外へ出したが、class="fp fp-cb" にして
+     .fp とまったく同じ箱を重ねているので、既存の .fp 前提のCSSがそのまま効く
+   ★700px以下だけ: 絶対配置をやめて縦1列に流し、文字を読める大きさにする（章の高さは伸びる＝許可済み）
+     挿絵4つは f01-card.jpg から切り出して表示（新しい画像ファイルは増やさない）
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-f01-body{ position: relative; }
+/* .fp-clip と .fp-cx は PC では箱を作らない＝今までとまったく同じ */
+.lp-wrapper #sec-f01-body .fp-clip{ display: contents; }
+.lp-wrapper #sec-f01-body .fp-cb .fp-cx{ display: contents; }
+.lp-wrapper #sec-f01-body .fp-cb{ position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  height: 100%; background: none; }
+.lp-wrapper #sec-f01-body .fp-cb .fp-in{ display: contents; }
+.lp-wrapper #sec-f01-body .fp-cb .fp-lis, .lp-wrapper #sec-f01-body .fp-cb .fp-steps,
+.lp-wrapper #sec-f01-body .fp-cb .fp-step, .lp-wrapper #sec-f01-body .fp-cb .fp-sx{ display: contents; }
+.lp-wrapper #sec-f01-body .fp-cb .fp-ic{ display: none; }
+
+@media (max-width: 700px) {
+  /* ★既存の絶対配置は #sec-f01-body .fp p.fp-◯◯ ＝(id1,class2,type1)。
+     ここは .fp.fp-cb と重ねて (id1,class3,type1) 以上にして勝たせる */
+  /* 🔴 .fp の縦横比は 1000/2266 のまま保つ。中の要素は「.fp の高さに対する%」で置いてあるので、
+     ここを 1526 にすると上半分が縦に33%潰れる（帯の2行が重なる原因・2026-09-10 に実際に起こした）。
+     帯の下端(y1339)で切るのは、外側の .fp-clip の仕事にする */
+  .lp-wrapper #sec-f01-body .fp:not(.fp-cb){ aspect-ratio: 1000 / 2266; }
+  .lp-wrapper #sec-f01-body .fp-clip{ display: block; width: 100%; max-width: 1000px; margin: 0 auto;
+    height: min(187.9vw,1879px); overflow: hidden; }
+/* 🔴 帯を下へ10px伸ばしたぶん、スマホの切り取り位置も10px下げる（186.9→187.9vw）。ここを直さないと帯の下端が切れる */
+  /* 説明文は流し込みにして読める大きさに（PCの1行ずつの <p> をつなげて折り返させる） */
+  /* 🔴 font-size:0 は「</p> と <p> のあいだの改行」を消すため。これが無いと
+     「残って いる場合」のように継ぎ目に余分な空白が入る（実際に出した） */
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-cx{ display: block; padding: 4.5vw 0 5.5vw; font-size: 0; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-cx p.fp-c{ position: static; display: inline; white-space: normal;
+    font-size: 13.5px; line-height: 25px; letter-spacing: 0.02em; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb{ position: static; transform: none; height: auto; aspect-ratio: auto;
+    overflow: visible; background: #F4EAE0; padding: 0 4.2vw 4.4vw; box-sizing: border-box; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb img.fp-card{ display: none; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-in{ display: block; background: #FFFFFF; border-radius: 8px;
+    padding: 5.0vw 4.6vw 5.4vw; box-sizing: border-box; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-lis,  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-steps{ display: block; }
+  /* 絶対配置をやめる（top/left の min(◯vw,◯px) は静的配置では無視される） */
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-hd, .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-li,
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-s,  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-end{
+    position: static; white-space: normal; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-rule{ position: static; display: block; width: 100%; height: 1px;
+    background: #C9C1BD; margin: 2.1vw 0 3.2vw; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-hd{ font-size: 15px; line-height: 1.4; letter-spacing: 0.03em; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-li{ font-size: 14px; line-height: 1.9; letter-spacing: 0.01em; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-hd2{ margin-top: 5.6vw; }
+  /* 手順は 2列 → 1列。番号バッジ｜本文、その下に挿絵 */
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step{ display: grid; grid-template-columns: 26px 1fr;
+    column-gap: 10px; row-gap: 5px; align-items: start; margin-top: 4.5vw; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step b.fp-no{ position: static; grid-column: 1; grid-row: 1;
+    width: 26px; height: 26px; font-size: 15px; border-radius: 4px; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-sx{ display: block; grid-column: 2; grid-row: 1; }
+  /* PCの改行（1行ずつの <p>）をつなげて、幅なりに折り返させる */
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-sx p.fp-s{ display: inline; position: static; white-space: normal;
+    font-size: 14px; line-height: 1.75; letter-spacing: 0.01em; }
+  /* 🔴 市山さん指示 2026-09-10「スマホデバイスでの画像部分が小さいので大きくして」
+       → 20:55 追加「**画質が荒いのでもう少し小さくして**」
+     挿絵は 66x51px の右下寄せ（＝元画像の0.44倍に縮めて表示）→ **本文の下に中央**で置き、
+     大きさは **元画像の等倍が上限**（min(◯vw, 元画像の実寸px)）。
+     f01-card.jpg からの background-position の切り出しでは大きくすると位置がずれるので、
+     4つを個別のPNGに切り出した（f01-ic1〜4.png・元画像の3倍でLanczos+軽い先鋭化）。
+     🔴 **元素材は1000px幅しかない**（本番CDNの ra-lena-feature1-2.jpg が原寸）。
+     挿絵の実寸は 104〜147px しかないので、**等倍を超えると線が荒れる**。
+     等倍にしておけば、PCでカード画像(920px)を920pxで出しているのと同じ画質になる */
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-ic{ grid-column: 1 / -1; grid-row: 2; display: block;
+    justify-self: center; margin-top: 2.4vw;
+    background-repeat: no-repeat; background-size: contain; background-position: center; }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-ic1{ width: min(30.4vw,114px); height: min(28.0vw,105px);
+    background-image: url(ralena-f01-ic1.png); }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-ic2{ width: min(29.3vw,110px); height: min(20.8vw,78px);
+    background-image: url(ralena-f01-ic2.png); }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-ic3{ width: min(29.6vw,111px); height: min(21.6vw,81px);
+    background-image: url(ralena-f01-ic3.png); }
+  .lp-wrapper #sec-f01-body .fp.fp-cb .fp-step .fp-ic4{ width: min(39.2vw,147px); height: min(24.8vw,93px);
+    background-image: url(ralena-f01-ic4.png); }
+  .lp-wrapper #sec-f01-body .fp.fp-cb p.fp-end{ font-size: 13.5px; line-height: 1.7; margin-top: 5.6vw; }
+
+  /* ------------------------------------------------------------
+     🔴 市山さん指示 2026-09-10「スマホデバイスでの画像部分が小さいので大きくして」
+     90%の円グラフと吹き出しは、PCでは左右に並ぶ（円325 + 吹き出し513 = 幅をほぼ使い切る）。
+     横に並べたままでは 1.14倍しか大きくできないので、**スマホだけ縦に積み替えた**。
+       円グラフ 32.5% → 46%（375pxで 122 → 172px）／吹き出し 51.3% → 62%（文字 18.75 → 22.5px）
+       しっぽは下向き → **上向き**にして、真上の円の中心（x500）を指す
+       注記「と500人の…」は 9.75 → 12.75px
+     ★.fp の縦横比 1000/2266 は触らない（中の要素が「.fp の高さに対する%」で置いてあるため。
+       2026-09-10 に一度これを変えて上半分を縦に潰した）。
+       積み替えでできた 53vw ぶんの押し出しは **margin-top** で下の要素をずらして作る。
+       .fp の高さ 226.6vw に対し、いちばん下（緑の帯の下端）は 186.9vw なので はみ出さない
+     ------------------------------------------------------------ */
+  /* 円グラフ（k = 460/325 = 1.4154 倍。中の「90%」も同じ倍率で置き直す） */
+  .lp-wrapper #sec-f01-body .fp .fp-pie{ top: 50vw; left: 27%; width: 46%; height: 46vw; }
+  .lp-wrapper #sec-f01-body .fp .fp-pn{ top: 64.65vw; left: 36.70%; font-size: 18.4vw; }
+  .lp-wrapper #sec-f01-body .fp .fp-pn .np{ left: 19.63vw; top: 7.40vw; font-size: 7.64vw; }
+  /* 吹き出し（k = 620/513 = 1.2 倍）。しっぽは上向きにして bottom:100% へ */
+  .lp-wrapper #sec-f01-body .fp .fp-bubble{ top: 101vw; left: 19%; width: 62%; height: 29.8vw;
+    border-radius: 1.9vw; }
+  .lp-wrapper #sec-f01-body .fp .fp-bubble::after{ top: auto; bottom: 100%; left: 36.90%;
+    width: 13.060%; height: 4.0vw; clip-path: polygon(0 100%, 49.25% 100%, 100% 0); }
+  .lp-wrapper #sec-f01-body .fp .fp-bt{ font-size: 6.0vw; }
+  .lp-wrapper #sec-f01-body .fp .fp-bt1{ top: 107.84vw; left: 29%; }
+  .lp-wrapper #sec-f01-body .fp .fp-bt2{ top: 118.04vw; left: 29%; }
+  .lp-wrapper #sec-f01-body .fp .fp-note{ top: 133.5vw; left: 24%; font-size: 3.4vw; }
+  /* 積み替えでできたぶん、下の要素をまとめて 53vw 押し下げる */
+  .lp-wrapper #sec-f01-body .fp .fp-m1, .lp-wrapper #sec-f01-body .fp .fp-m2,
+  .lp-wrapper #sec-f01-body .fp .fp-green,
+  .lp-wrapper #sec-f01-body .fp .fp-g1, .lp-wrapper #sec-f01-body .fp .fp-g2{ margin-top: 53vw; }
+  .lp-wrapper #sec-f01-body .fp .fp-top{ height: calc(51.942% + 53vw); }
+}
+/* ------------------------------------------------------------
+   #sec-review 楽天ランキング18行 ― スマホで行が重なるのを直す
+   🔴 市山さん指摘 2026-09-11「スマホデバイスでテキストが崩れているので修正して」
+   原因: `.rk-tx` の中身（見出し・カテゴリ）は min(◯vw,◯px) で縮むのに、
+     **行の高さの基準（strut）だけが地の文字サイズ 16px のまま**残る。
+     結果 2行の箱が 375pxで 60px（本来 35px）に膨らみ、行の高さ35pxを超えて隣の行と重なっていた。
+   直し: `.rk-tx` 自身の文字サイズも幅なりに縮める（中身は自分で大きさを持っているので見た目は変わらない）。
+   ★701px以上は1pxも動かさないため、700px以下だけに閉じ込めてある
+     （701〜999px にも同じ膨らみが弱く残るが、そこは触っていない）
+   ------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   🔴 本番（Shopify）だけで字間が広がるのを止める ― 2026-09-11 実測で発見
+   本番プレビューで測ったら、**手元では `normal` の要素に テーマの `letter-spacing: 0.63px` が
+   継承されて**いた（手元142個 → 本番39個しか normal が残らない＝**103個の要素が広がっていた**）。
+   市山さん指摘「リアルタイムランキングと1位の間が被っている」の本番側の原因はこれ
+   （カテゴリ名が 5.5〜6.0px 広がって「1」に食い込む）。
+   `body` はビルドで `.lp-wrapper` に変換されるので、**LPの中だけ**字間の継承を断ち切れる。
+   手元の body は元から normal なので、**ローカルの見え方は1pxも変わらない**。
+   ※ 字間を自分で指定している要素（このLPの大半）はそのまま効く
+   ------------------------------------------------------------ */
+.lp-wrapper{ letter-spacing: normal; }
+
+@media (max-width: 700px) {
+  .lp-wrapper #sec-review .rk-tx{ font-size: 1.7vw; }
+  /* 🔴 市山さん指摘 2026-09-11 17:10「リアルタイムランキングと1位の間がスマホで少し被っている」
+     原因: 「1位」の位置をずらしている `min(-1.0vw, -10px)` は **負の値なので min() が常に -10px を返す**
+       （min は小さいほうを採るので、-3.75vw相当より -10px のほうが小さい）。
+       ＝ 幅が縮んでも 10px のまま左へ寄り、375pxでは本来 -3.75px であるべきところが -10px。
+         6.25px ぶん「1」が左に食い込み、カテゴリ名と重なっていた（実測: 重なり 5.1px）。
+     直し: スマホ幅だけ vw そのままにする（＝幅なりに縮む）。PC(701px以上)は1pxも触らない。
+     .lp-wrapper ※ 同じ書き方が `.pt-head .pt-badge i{ top: min(-0.6vw,-6px) }` にもある（別章・今回は触らない） */
+  .lp-wrapper #sec-review .rk-no i{ left: -1.0vw; }
+  .lp-wrapper #sec-review .rk-no b{ right: -0.6vw; }
+}
+/* ------------------------------------------------------------
+   #sec-bleach 写真の上の白文字 ― 視認性を上げる
+   🔴 市山さん指示 2026-09-10「テキストが画像の上に入るように調整。視認性が低いため。」
+   ① 文字が写真の外（左）に出ていた。.bl は全幅・写真は1000px中央寄せなので、
+      left を calc(50% - min(50vw,500px) + …) にして写真の箱を基準にした（＝元と同じ位置に戻る）
+   ② 焼き込み文字を消したときの帯が写真に残っていたので、文字の後ろに柔らかい暗幕を敷いた。
+      ★これは元画像には無い＝市山さん指示で元と変えたところ
+   ------------------------------------------------------------ */
+.lp-wrapper #sec-bleach .bl::before{ content: ""; position: absolute; pointer-events: none;
+  left: calc(50% - min(50vw,500px)); width: min(100vw,1000px);
+  top: min(110.55vw,1105.5px); height: min(35vw,350px);
+  background: linear-gradient(180deg, rgba(40,30,24,0.30) 0%, rgba(40,30,24,0.32) 62%,
+                                      rgba(40,30,24,0.00) 100%); }

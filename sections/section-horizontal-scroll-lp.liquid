@@ -1,0 +1,410 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .hs-lp-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hs-lp-{{ section.id }}-title-wrapper {
+    {% if section.settings.full_width %}
+      padding: 0 5vw;
+    {% else %}
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    {% endif %}
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .hs-lp-{{ section.id }}-title-wrapper h2 {
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .hs-lp-{{ section.id }}-subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    color: #6e6e73;
+    margin-top: 0;
+    line-height: 1.8;
+  }
+  @media (max-width: 768px) {
+    .hs-lp-{{ section.id }}-title-wrapper { text-align: left; }
+    .hs-lp-{{ section.id }}-title-wrapper h2 { font-size: 28px; }
+  }
+
+  /* スクロールコンテナ */
+  .hs-lp-{{ section.id }}-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    scroll-padding-left: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .hs-lp-{{ section.id }}-scroll::-webkit-scrollbar { display: none; }
+
+  /* カード */
+  .hs-lp-{{ section.id }}-card {
+    display: block;
+    position: relative;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: {{ section.settings.card_width }}px;
+    height: {{ section.settings.card_height }}px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    outline: none;
+    text-align: left;
+  }
+  .hs-lp-{{ section.id }}-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .hs-lp-{{ section.id }}-card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+  }
+  .hs-lp-{{ section.id }}-caption {
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.1em;
+  }
+  .hs-lp-{{ section.id }}-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0 0;
+    line-height: 1.4;
+  }
+  .hs-lp-{{ section.id }}-text {
+    font-size: 16px;
+    margin: 8px 0 0;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .hs-lp-{{ section.id }}-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  /* ナビボタン */
+  .hs-lp-{{ section.id }}-nav {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  .hs-lp-{{ section.id }}-nav button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hs-lp-{{ section.id }}-nav button:hover { background: #d6d6d7; }
+  .hs-lp-{{ section.id }}-nav svg { width: 20px; height: 20px; fill: #333; }
+
+  /* ============ MODAL ============ */
+  .hs-lp-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .hs-lp-modal-overlay.is-open {
+    display: flex;
+    animation: hs-modal-fade-in 0.2s ease;
+  }
+  @keyframes hs-modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .hs-lp-modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    animation: hs-modal-slide-up 0.25s ease;
+  }
+  @keyframes hs-modal-slide-up {
+    from { transform: translateY(24px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .hs-lp-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    transition: background 0.2s;
+  }
+  .hs-lp-modal-close:hover { background: rgba(0,0,0,0.8); }
+  .hs-lp-modal-image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+  }
+  .hs-lp-modal-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hs-lp-modal-body {
+    padding: 28px 32px 36px;
+  }
+  .hs-lp-modal-caption {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9a7a4a;
+    margin-bottom: 8px;
+  }
+  .hs-lp-modal-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1d1d1f;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .hs-lp-modal-subtext {
+    font-size: 15px;
+    font-weight: 600;
+    color: #3a3a3a;
+    margin-bottom: 16px;
+  }
+  .hs-lp-modal-detail {
+    font-size: 15px;
+    color: #6e6e73;
+    line-height: 1.8;
+  }
+  @media (max-width: 600px) {
+    .hs-lp-modal { border-radius: 16px; max-height: 92vh; }
+    .hs-lp-modal-image-wrap { border-radius: 16px 16px 0 0; }
+    .hs-lp-modal-body { padding: 20px 20px 28px; }
+    .hs-lp-modal-heading { font-size: 22px; }
+  }
+  @media (max-width: 768px) {
+    .hs-lp-{{ section.id }}-card { width: min({{ section.settings.card_width }}px, 80vw); }
+  }
+{%- endstyle -%}
+
+<div class="hs-lp-{{ section.id }}-padding{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="hs-lp-{{ section.id }}-title-wrapper">
+    {%- if section.settings.section_title != blank -%}
+      <h2 class="{{ section.settings.heading_size }}">{{ section.settings.section_title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hs-lp-{{ section.id }}-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  <div id="HsLpScroll-{{ section.id }}" class="hs-lp-{{ section.id }}-scroll">
+    {%- for block in section.blocks -%}
+      <button
+        type="button"
+        class="hs-lp-{{ section.id }}-card"
+        style="background-image: url('{{ block.settings.image | image_url }}'); color: {{ block.settings.text_color }};"
+        data-hs-modal="{{ block.id }}"
+        aria-label="{{ block.settings.heading }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="hs-lp-{{ section.id }}-card-inner">
+          <div>
+            <p class="hs-lp-{{ section.id }}-caption" style="font-size: {{ block.settings.caption_font_size }}px;">{{ block.settings.caption }}</p>
+            <p class="hs-lp-{{ section.id }}-heading" style="font-size: {{ block.settings.title_font_size }}px;">{{ block.settings.heading }}</p>
+            <p class="hs-lp-{{ section.id }}-text" style="font-size: {{ block.settings.text_font_size }}px;">{{ block.settings.text }}</p>
+          </div>
+        </div>
+        <span class="hs-lp-{{ section.id }}-hint" aria-hidden="true">＋</span>
+      </button>
+    {%- endfor -%}
+  </div>
+
+  <div class="hs-lp-{{ section.id }}-nav">
+    <button type="button" onclick="hsLpScroll('{{ section.id }}','left')" aria-label="左へ">
+      <svg viewBox="0 0 20 20"><path d="M13 15l-5-5 5-5v10z"/></svg>
+    </button>
+    <button type="button" onclick="hsLpScroll('{{ section.id }}','right')" aria-label="右へ">
+      <svg viewBox="0 0 20 20"><path d="M7 5l5 5-5 5V5z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- モーダルデータ（非表示） -->
+{%- for block in section.blocks -%}
+  <template id="hs-lp-data-{{ block.id }}">
+    <div class="hs-lp-modal-image-wrap">
+      <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.heading }}" loading="lazy" />
+    </div>
+    <div class="hs-lp-modal-body">
+      <p class="hs-lp-modal-caption">{{ block.settings.caption }}</p>
+      <h3 class="hs-lp-modal-heading">{{ block.settings.heading }}</h3>
+      <p class="hs-lp-modal-subtext">{{ block.settings.text }}</p>
+      <p class="hs-lp-modal-detail">{{ block.settings.detail_text }}</p>
+    </div>
+  </template>
+{%- endfor -%}
+
+<!-- モーダルUI -->
+<div id="HsLpModalOverlay" class="hs-lp-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="hs-lp-modal" id="HsLpModal">
+    <button type="button" class="hs-lp-modal-close" id="HsLpModalClose" aria-label="閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div id="HsLpModalContent"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function hsLpOpenModal(blockId) {
+    var tpl = document.getElementById('hs-lp-data-' + blockId);
+    if (!tpl) return;
+    var content = document.getElementById('HsLpModalContent');
+    content.innerHTML = '';
+    content.appendChild(tpl.content.cloneNode(true));
+    var overlay = document.getElementById('HsLpModalOverlay');
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('HsLpModalClose').focus();
+  }
+  function hsLpCloseModal() {
+    var overlay = document.getElementById('HsLpModalOverlay');
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-hs-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () { hsLpOpenModal(this.dataset.hsModal); });
+  });
+  document.getElementById('HsLpModalClose').addEventListener('click', hsLpCloseModal);
+  document.getElementById('HsLpModalOverlay').addEventListener('click', function (e) {
+    if (e.target === this) hsLpCloseModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') hsLpCloseModal();
+  });
+})();
+
+function hsLpScroll(sectionId, direction) {
+  var container = document.getElementById('HsLpScroll-' + sectionId);
+  if (!container) return;
+  container.scrollBy({ left: direction === 'left' ? -420 : 420, behavior: 'smooth' });
+}
+</script>
+
+{% schema %}
+{
+  "name": "スクロールカード（LP用）",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "section_title", "label": "セクションタイトル" },
+    { "type": "text", "id": "subtitle", "label": "小タイトル（タイトル直下）" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "見出しサイズ",
+      "options": [
+        { "value": "h2", "label": "小" },
+        { "value": "h1", "label": "中" },
+        { "value": "h0", "label": "大" }
+      ],
+      "default": "h1"
+    },
+    { "type": "checkbox", "id": "full_width", "label": "全幅にする", "default": false },
+    { "type": "range", "id": "card_width",  "label": "カード幅(px)",  "min": 150, "max": 500, "step": 10, "default": 400 },
+    { "type": "range", "id": "card_height", "label": "カード高さ(px)", "min": 200, "max": 700, "step": 10, "default": 600 },
+    { "type": "range", "id": "padding_top",    "label": "上部余白(px)", "min": 0, "max": 100, "step": 4, "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "下部余白(px)", "min": 0, "max": 100, "step": 4, "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "カード",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "背景画像" },
+        { "type": "text", "id": "caption", "label": "キャプション（Point番号など）" },
+        { "type": "range", "id": "caption_font_size", "label": "キャプションサイズ", "min": 10, "max": 24, "default": 12 },
+        { "type": "text", "id": "heading", "label": "見出し" },
+        { "type": "range", "id": "title_font_size", "label": "見出しサイズ", "min": 14, "max": 36, "default": 24 },
+        { "type": "text", "id": "text", "label": "サブテキスト（カード上の短い説明）" },
+        { "type": "range", "id": "text_font_size", "label": "サブテキストサイズ", "min": 12, "max": 24, "default": 16 },
+        { "type": "textarea", "id": "detail_text", "label": "ポップアップ詳細テキスト" },
+        { "type": "color", "id": "background_color", "label": "背景色（画像なし時）", "default": "#000000" },
+        { "type": "color", "id": "text_color", "label": "テキスト色", "default": "#ffffff" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "スクロールカード（LP用）" }
+  ]
+}
+{% endschema %}

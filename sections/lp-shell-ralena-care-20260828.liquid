@@ -1,0 +1,572 @@
+<style>
+
+/* ================== 公式サイトと同じ書体（ralena.jp が配信している実ファイル） ================== */
+@font-face {
+  font-family: "Zen Kaku Gothic New"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("https://ralena.jp/cdn/fonts/zen_kaku_gothic_new/zenkakugothicnew_n4.04cfb790a87c2fa56f40f47191b8c05620cc5b9c.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Zen Kaku Gothic New"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("https://ralena.jp/cdn/fonts/zen_kaku_gothic_new/zenkakugothicnew_n7.c629355112e2c4394bf64889a68f5ace346cfdd0.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Serif Japanese"; font-weight: 300; font-style: normal; font-display: swap;
+  src: url("https://ralena.jp/cdn/fonts/noto_serif_japanese/notoserifjapanese_n3.66b12402bb66176447066e1ce97a0e4bd0ccb97f.woff2") format("woff2");
+}
+
+/* ================== トークン（すべて公式サイトの実測値） ================== */
+:root {
+  --serif: "Noto Serif Japanese", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+
+  --fg: #121212;                    /* 見出し・強い文字 */
+  --fg-body: rgba(18,18,18,.75);    /* 本文 */
+  --fg-mute: rgba(18,18,18,.55);    /* 注記 */
+  --bg: #ffffff;
+  --bg-soft: #f3f3f3;               /* 区切りの薄グレー（color-scheme-2） */
+  --bg-beige: #ecdfd7;              /* フッターのベージュ */
+  --dark: #242833;                  /* 濃い面（color-scheme-3） */
+  --terracotta: #d75a41;            /* CTA・強調 */
+  --line-green: #06c755;
+  --line-green-hover: #05b34c;
+  --rule: rgba(18,18,18,.12);       /* 罫線 */
+
+  --fs-body: 16.8px;                /* 公式の本文（1.5rem × 1.05） */
+  --fs-note: 14.7px;                /* 公式のQ&Aの質問と同じ */
+  --fs-micro: 12.6px;
+  --fs-h1: 40px;                    /* 公式のFV見出し */
+  --fs-h2: 28px;
+  --fs-h3: 24px;                    /* 公式のセクション見出し */
+  --ls-head: .6px;                  /* 公式の見出しの字間 */
+  --ls-body: .63px;                 /* 公式の本文の字間 */
+
+  --w-text: 740px;                  /* 本文カラム（公式FAQの見出し幅 739.19px） */
+  --btn-radius: 41px;               /* 公式のボタン */
+  --box-radius: 8px;                /* 公式の --text-boxes-radius */
+  --sec-pad: 76px;
+  --sec-pad-sp: 48px;
+}
+
+/* ================== ベース ================== */
+.lp-wrapper *,  .lp-wrapper *::before,  .lp-wrapper *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+.lp-wrapper{ scroll-behavior: smooth; }
+.lp-wrapper{
+  font-family: var(--sans); font-weight: 400; font-size: var(--fs-body);
+  letter-spacing: var(--ls-body); line-height: 1.76; color: var(--fg-body);
+  background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+.lp-wrapper img{ max-width: 100%; height: auto; display: block; border-radius: 0; }  /* 公式は画像に角丸を付けない */
+.lp-wrapper a{ color: inherit; text-decoration: none; }
+.lp-wrapper section{ width: 100%; }
+/* 見出しは明朝・細字・中央そろえ（公式サイトの h1〜h5 と同じ）。
+   color を明示するのは、本番テーマの見出し色指定に写真上・濃い面の白見出しが負けて黒くなるのを防ぐため */
+.lp-wrapper h1,  .lp-wrapper h2,  .lp-wrapper h3,  .lp-wrapper h4{
+  font-family: var(--serif); font-weight: 300; letter-spacing: var(--ls-head);
+  line-height: 1.3; color: var(--fg); text-align: center;
+}
+.lp-wrapper .section-pad{ padding-top: var(--sec-pad); padding-bottom: var(--sec-pad); }
+.lp-wrapper .inner{ max-width: var(--w-text); width: calc(100% - 105px); margin: 0 auto; }
+.lp-wrapper .hd-nowrap{ white-space: nowrap; }
+.lp-wrapper .hd-keep{ white-space: nowrap; }
+@media (max-width: 768px) {
+  :root { --fs-h1: 30px; --fs-h2: 23px; --fs-h3: 21px; }
+  /* 狭幅では塊が1行に入りきらず、行末に大きな空きが並んで逆に読みにくくなる（実測）。
+     固定を外してブラウザの折返しに戻し、狭幅でも切れ目を守りたい短い塊だけ .hd-keep で残す */
+  .lp-wrapper .hd-nowrap{ white-space: normal; }
+  .lp-wrapper .section-pad{ padding-top: var(--sec-pad-sp); padding-bottom: var(--sec-pad-sp); }
+  .lp-wrapper .inner{ width: calc(100% - 40px); }
+}
+/* 動きは控えめに1種類だけ（公式サイトにも派手な動きはない） */
+.lp-wrapper .fade-in{ opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.lp-wrapper .fade-in.visible{ opacity: 1; transform: none; }
+.lp-wrapper .delay-1{ transition-delay: .12s; } .delay-2 { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) { .fade-in { opacity: 1; transform: none; transition: none; } }
+
+/* ================== 共通部品 ================== */
+.lp-wrapper .h-chapter{ font-size: var(--fs-h2); margin-bottom: 34px; } /* 章の見出し（原稿の「■見出し」） */
+.lp-wrapper .h-sec{ font-size: var(--fs-h3); margin-bottom: 30px; }     /* 章の中の見出し（原稿の「▼」） */
+/* 本文。読み物なので左そろえ（公式FAQの答えの文も左そろえ） */
+.lp-wrapper .p{ font-size: var(--fs-body); line-height: 1.9; color: var(--fg-body); text-align: left; }
+.lp-wrapper .p + .p{ margin-top: 20px; }
+/* ボタン（公式のピル型。色だけ用途で変える） */
+.lp-wrapper .btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 49.25px; padding: 12px 31.5px; border-radius: var(--btn-radius);
+  font-family: var(--sans); font-size: 15.75px; font-weight: 400; letter-spacing: var(--ls-body);
+  color: #fff; transition: background .2s, transform .1s;
+}
+.lp-wrapper .btn svg{ width: 22px; height: 22px; flex-shrink: 0; }
+.lp-wrapper .btn-line{ background: var(--line-green); }
+.lp-wrapper .btn-line:hover{ background: var(--line-green-hover); transform: translateY(-1px); }
+/* 画像の仮枠。確定素材に見えると社内確認で見落とすため、破線と斜線で「仮」と分かる形にしている */
+.lp-wrapper .ph{ position: relative; width: 100%; border: 1px dashed rgba(18,18,18,.3);
+  background: repeating-linear-gradient(45deg, rgba(18,18,18,.03), rgba(18,18,18,.03) 12px, rgba(18,18,18,.06) 12px, rgba(18,18,18,.06) 24px);
+  display: flex; align-items: center; justify-content: center; }
+.lp-wrapper .ph span{ font-size: var(--fs-micro); color: var(--fg-mute); background: rgba(255,255,255,.9);
+  padding: 8px 12px; text-align: center; line-height: 1.8; max-width: 88%; }
+
+/* ================== S1 hero（写真全面＋中央の明朝の白見出し／公式FAQのFVと同じ組み） ================== */
+.lp-wrapper #sec-hero{ position: relative; }
+.lp-wrapper #sec-hero .hero-bg{ position: absolute; inset: 0; overflow: hidden; }
+/* 見出しは画面の中央に置くので、まな板はその下に来る位置に寄せる。
+     62%（板が画面中央）だと白い見出しが黒い板の上に重なって沈む（実測） */
+.lp-wrapper #sec-hero .hero-bg img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 34%; }
+/* 公式FAQのFVと同じく、写真全体に均一の暗幕を敷いて中央の白文字を読ませる（overlay_opacity 50%） */
+.lp-wrapper #sec-hero .hero-bg::after{ content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.42); }
+.lp-wrapper #sec-hero .hero-inner{ position: relative; z-index: 1; min-height: 588px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; padding: 80px 0; }
+.lp-wrapper #sec-hero h1{ font-size: var(--fs-h1); color: #fff; margin-bottom: 22px; }
+.lp-wrapper #sec-hero .hero-lead{ font-size: var(--fs-body); line-height: 1.9; color: rgba(255,255,255,.92); text-align: center; }
+.lp-wrapper #sec-hero .hero-lead + .hero-lead{ margin-top: 8px; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-hero .hero-inner{ min-height: 420px; padding: 64px 0; }
+  .lp-wrapper #sec-hero .hero-bg img{ object-position: 50% 40%; }
+  .lp-wrapper #sec-hero .hero-lead{ font-size: var(--fs-note); line-height: 1.85; }
+}
+
+/* ================== S2 sec-symptom（症状の照合・公式FAQのQ&A行と同じ薄グレーの角丸行） ================== */
+.lp-wrapper #sec-symptom{ background: var(--bg); }
+.lp-wrapper #sec-symptom .h-sec{ margin-bottom: 22px; }
+.lp-wrapper #sec-symptom .sym-list{ margin-bottom: 34px; }
+.lp-wrapper #sec-symptom .sym-list li{
+  list-style: none; position: relative; background: var(--bg-soft); border-radius: var(--box-radius);
+  padding: 17px 22px 17px 52px; margin-bottom: 10px;
+  font-size: var(--fs-note); line-height: 1.85; color: var(--fg); text-align: left;
+}
+.lp-wrapper #sec-symptom .sym-list li:last-child{ margin-bottom: 0; }
+/* 頭の四角（チェック欄）。公式FAQの行頭にある「?」アイコンと同じ位置・同じ大きさに置いている */
+.lp-wrapper #sec-symptom .sym-list li::before{
+  content: ""; position: absolute; left: 22px; top: 50%; margin-top: -8px;
+  width: 16px; height: 16px; border: 1px solid rgba(18,18,18,.45); border-radius: 2px;
+}
+/* 症状の実写真（板全体に白い跡が出ている状態）を1枚だけ大きく見せる。
+   2026-08-27 市山さん指示で、拡大図（引き＋アップ＋枠＋結び線）の組みは取りやめ。
+   読者がここでやることは「自分の板と見くらべる」ことなので、
+   余計な図の仕掛けを外して、写真そのものを本文幅いっぱいで見せる形にした。
+   比率は元画像のままの 3:2。
+   一度16:9に詰めたが、板の下端が24px切れていた（2026-08-28 市山さん指摘で実測して判明）。
+   板は画像の縦 8.3%〜94.5%（＝縦の86.2%）・横 1.7%〜98.3% を占めており、
+   16:9（縦84%が残る）では下が入りきらない。板の四辺が見えることを優先して元の3:2に戻した。
+   白い余白だけを落とす詰め方（比1.74）も可能だが、板が枠に接して窮屈になり、
+   3:2との見た目の差も小さいため採らない。
+   白背景で撮られた写真なので、白地のセクションに置くと輪郭が消える。
+   公式テーマも画像に1pxの枠を持っている（--media-border-width: 1px）ので、それに倣って細枠で締める
+   （公式の既定の濃さ opacity .05 は白地では見えないため、罫線トークンの濃さを使っている）。 */
+.lp-wrapper #sec-symptom .sym-photo img{
+  width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+/* 2026-08-28: 狭幅では画面幅いっぱい（フルブリード）にしていたが、
+   板は元画像の横 1.7%〜98.3% を占めるため、端まで広げると板が画面の端に接して
+   「四辺が見えている」状態にならなかった。本文カラム内に戻し、左右に余白と枠線を残す。
+   3:2 に戻したぶん縦が増えているので（16:9フルブリードの211px → カラム内3:2の223px）、
+   板の見える大きさは落ちていない。 */
+
+/* ================== S3 sec-cause（原因の説明＋断面の図解） ================== */
+.lp-wrapper #sec-cause{ background: var(--bg-soft); }
+.lp-wrapper #sec-cause .cause-photo{ margin: 30px 0; }
+.lp-wrapper #sec-cause .cause-photo img{ width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+/* 差し替えた写真は正方形（3072×3072）。ページの他の写真と枠を揃えるため 3:2 のまま縦だけ切る。
+   切る位置は目分量で決めず、色で被写体の範囲を実測してから決めた（2026-08-28）:
+     きゅうり（丸ごと＋輪切り）… 縦 7.3%〜73.7%
+     手（両手）              … 縦 42.4%〜99.2%
+     黒い面                  … 縦 5.2%〜80.2%
+   65% は元画像の y 665〜2713 を表示する位置。主役（押さえる手・包丁の刃・輪切りのきゅうり）が
+   すべて枠に入り、板の左上の角も見えて構図がまとまる。
+   包丁の柄を握る右手は下端で一部切れるが、これは料理写真として自然な切れ方（実際に4案を切り出して見比べて決定）。 */
+.lp-wrapper #sec-cause .cause-photo-cut{ object-position: 50% 65%; }
+/* 因果の図（3コマ）。まな板を横から見た断面で
+   「①成分がのる → ②中まで入らない → ③乾いて白く見える」を1本の流れにする。
+   囲みは公式の --text-boxes-radius（8px）・白地・細罫線 */
+.lp-wrapper #sec-cause .flow{ margin-top: 34px; background: var(--bg); border: 1px solid var(--rule); border-radius: var(--box-radius); padding: 32px 28px; }
+.lp-wrapper #sec-cause .flow-steps{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
+.lp-wrapper #sec-cause .flow-step{ position: relative; text-align: center; }
+.lp-wrapper #sec-cause .flow-step svg{ width: 100%; height: auto; display: block; }
+/* 図のラベルは明朝ではなくゴシック（見出しではなく図の注記のため） */
+.lp-wrapper #sec-cause .flow-step p{ font-family: var(--sans); font-size: var(--fs-micro); line-height: 1.7; color: var(--fg); margin-top: 12px; }
+/* コマ間の進行の三角。線ではなく小さな図形1つだけにして、図の中の情報を増やさない */
+.lp-wrapper #sec-cause .flow-step:not(:last-child)::after{
+  content: ""; position: absolute; right: -17px; top: 44px;
+  border-left: 7px solid rgba(18,18,18,.28); border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+}
+@media (max-width: 768px) {
+  /* 狭幅で3列のままだと1コマ88px程度まで縮んで断面の層が潰れる。縦積みにする */
+  .lp-wrapper #sec-cause .flow-steps{ grid-template-columns: 1fr; gap: 34px; }
+  .lp-wrapper #sec-cause .flow-step{ max-width: 250px; margin: 0 auto; }
+  .lp-wrapper #sec-cause .flow{ padding: 24px 20px; }
+  .lp-wrapper #sec-cause .flow-step:not(:last-child)::after{
+    right: auto; left: 50%; top: auto; bottom: -24px; margin-left: -5px;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 7px solid rgba(18,18,18,.28); border-bottom: 0;
+  }
+}
+
+/* ================== S4 sec-howto（落とし方・2ステップ） ================== */
+.lp-wrapper #sec-howto{ background: var(--bg); }
+.lp-wrapper #sec-howto .steps{ border-top: 1px solid var(--rule); }
+.lp-wrapper #sec-howto .step{ padding: 34px 0; border-bottom: 1px solid var(--rule); }
+/* 番号は明朝で丸の中に置く（公式サイトに番号バッジは無いので、書体と細罫線でトンマナを合わせている） */
+.lp-wrapper #sec-howto .step-num{
+  width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(18,18,18,.35);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+  font-family: var(--serif); font-weight: 300; font-size: 19px; color: var(--fg); letter-spacing: 0;
+}
+.lp-wrapper #sec-howto .step > p{ font-size: var(--fs-body); line-height: 1.9; color: var(--fg-body); text-align: left; }
+.lp-wrapper #sec-howto .step > p + p{ margin-top: 18px; }
+.lp-wrapper #sec-howto .step-photo{ margin-top: 22px; }
+.lp-wrapper #sec-howto .step-photo img{ width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+/* 手順2は正方形（4500×4500）の写真。手順1と枠を揃えるため 3:2 のまま縦だけ切るが、
+   主役（板・泡・手）が下寄りなので中央のままだと板の下端と手が切れる。
+   表示位置を下に寄せて、板の全体と持ち手が枠に収まる位置にした（実測で決めた値） */
+.lp-wrapper #sec-howto .step-photo-spray{ object-position: 50% 62%; }
+/* 60℃の注意。手順1に従属する注意なので別カードに切り出さず、ステップの中に置く。
+   テラコッタの縦線1本で「ここは読み飛ばさない」を示す（公式サイトの強調色と同じ色） */
+.lp-wrapper #sec-howto .caution{ display: flex; gap: 13px; align-items: flex-start; border-left: 2px solid var(--terracotta); padding: 4px 0 4px 18px; margin-top: 18px; }
+.lp-wrapper #sec-howto .caution svg{ width: 20px; height: 20px; color: var(--terracotta); flex-shrink: 0; margin-top: 4px; }
+.lp-wrapper #sec-howto .caution p{ font-size: var(--fs-note); line-height: 1.85; color: var(--fg-body); text-align: left; }
+.lp-wrapper #sec-howto .caution b{ font-weight: 700; color: var(--fg); }
+/* 手順2の時間。本文の文はそのまま残したうえで、流し読みでも「約5分」「30秒以上」が拾えるように置く。
+   文言は原稿の連続した句をそのまま引いている（説明語を新しく足していない） */
+.lp-wrapper #sec-howto .times{ display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.lp-wrapper #sec-howto .time{ display: flex; align-items: center; gap: 10px; background: var(--bg-soft); border-radius: var(--box-radius); padding: 13px 18px; }
+.lp-wrapper #sec-howto .time svg{ width: 17px; height: 17px; color: rgba(18,18,18,.5); flex-shrink: 0; }
+.lp-wrapper #sec-howto .time p{ font-size: var(--fs-micro); color: var(--fg-mute); line-height: 1.6; white-space: nowrap; }
+/* 数字だけ明朝で大きく。前置きと助詞は小さいまま＝核が立つ */
+.lp-wrapper #sec-howto .time b{ font-family: var(--serif); font-weight: 300; font-size: 23px; color: var(--fg); letter-spacing: 0; margin: 0 3px; }
+@media (max-width: 768px) {
+  /* 横に並べると1つ150px程度になり句が2行に割れる。縦積みにし、幅を揃えて右端のガタつきを消す */
+  .lp-wrapper #sec-howto .times{ flex-direction: column; gap: 8px; align-items: stretch; }
+}
+
+/* ================== S5 sec-safety（安全のため、必ずお読みください） ==================
+   原稿の装飾指示「（枠で囲んで目立たせる）」の実装。
+   面はフッターと同じベージュ、中は白の囲み（公式サイトにある色だけで「ここだけ違う」を作る） */
+.lp-wrapper #sec-safety{ background: var(--bg-beige); }
+.lp-wrapper #sec-safety .safe-card{ background: var(--bg); border-radius: var(--box-radius); padding: 40px 38px; }
+.lp-wrapper #sec-safety .safe-title{ font-size: var(--fs-h3); margin-bottom: 8px; }
+/* 見出しの上の警告アイコン。絵文字は使わない（端末ごとに絵柄と色が変わり、原色が並ぶと品が落ちるため） */
+.lp-wrapper #sec-safety .safe-icon{ width: 30px; height: 30px; color: var(--terracotta); margin: 0 auto 16px; display: block; }
+.lp-wrapper #sec-safety .safe-list{ margin-top: 26px; border-top: 1px solid var(--rule); }
+.lp-wrapper #sec-safety .safe-list li{
+  list-style: none; display: flex; gap: 15px; align-items: flex-start; padding: 22px 0;
+  border-bottom: 1px solid var(--rule); font-size: var(--fs-note); line-height: 1.85; color: var(--fg-body); text-align: left;
+}
+.lp-wrapper #sec-safety .safe-list li:last-child{ border-bottom: 0; padding-bottom: 4px; }
+.lp-wrapper #sec-safety .safe-list li svg{ width: 19px; height: 19px; color: rgba(18,18,18,.45); flex-shrink: 0; margin-top: 5px; }
+/* 1項目めだけテラコッタ。3つとも同じ強さにすると「本当に危ないのはどれか」が消える
+   （混ぜるとガスが出る＝ここだけが事故に直結する） */
+.lp-wrapper #sec-safety .safe-list li.is-danger svg{ color: var(--terracotta); }
+.lp-wrapper #sec-safety .safe-list li.is-danger b{ font-weight: 700; color: var(--terracotta); }
+@media (max-width: 768px) { #sec-safety .safe-card { padding: 28px 22px; } }
+
+/* ================== S6 sec-prevent（跡を、残りにくくするために） ================== */
+.lp-wrapper #sec-prevent{ background: var(--bg); }
+/* 締めの一文は級数を上げて読ませる。原稿の文はそのまま・順序も変えていない */
+.lp-wrapper #sec-prevent .close-line{ font-family: var(--serif); font-weight: 300; font-size: 21px; line-height: 1.7;
+  letter-spacing: var(--ls-head); color: var(--fg); text-align: left; margin-top: 26px; }
+.lp-wrapper #sec-prevent .pv-photo{ margin-top: 34px; }
+.lp-wrapper #sec-prevent .pv-photo img{ width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-prevent .close-line{ font-size: 18px; }
+  .lp-wrapper #sec-prevent .pv-photo img{ aspect-ratio: 4 / 3; }
+}
+
+/* ================== S7 sec-cta（ご相談・LINE導線） ================== */
+/* 2026-08-28: ロゴのヘッダー／フッターを外したので、このセクションがページの末端になる。
+   本番では下に Shopify テーマのフッターが付くが、テストページでは何も続かないため、
+   下の余白だけ少し厚くして「ここで終わる」ことが分かる収まりにしている（上は従来どおり） */
+.lp-wrapper #sec-cta{ background: var(--bg-soft); text-align: center; padding-bottom: calc(var(--sec-pad) + 24px); }
+.lp-wrapper #sec-cta .cta-lead{ font-size: var(--fs-h3); margin-bottom: 32px; }
+.lp-wrapper #sec-cta .btn{ min-width: 300px; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-cta .btn{ width: 100%; min-width: 0; }
+  .lp-wrapper #sec-cta{ padding-bottom: calc(var(--sec-pad-sp) + 16px); }
+}
+
+
+</style>
+
+<div id="lp-{{ section.id }}" class="lp-wrapper">
+<!-- ============ S1 ファーストビュー ============ -->
+<!-- 表現: 写真没入（下敷き実例: デザインラボ/実例集/hero/商流2FV_キャッチ主役写真型.html
+     ＋ 組みは公式サイト /pages/faq のFV（写真全面・中央の明朝の白見出し）に合わせた） -->
+<!-- 原稿の■ページタイトル＋■リード2文だけを置く。ボタン・ラベル等は原稿にない文言になるので置かない -->
+<section id="sec-hero" data-section-type="hero" data-section-name="ヒーロー（ページタイトル）" data-section-order="1">
+  <div class="hero-bg">
+    <img data-slot="hero-image" data-asset-id="RALENA_DSC03558"
+         src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/DSC03558.jpg"
+         alt="洗ったあと窓辺に立てかけた Ra Le-Na のまな板" />
+  </div>
+  <div class="hero-inner inner">
+    <h1 class="fade-in" data-slot="headline">お手入れ方法</h1>
+    <p class="hero-lead fade-in delay-1" data-slot="lead-1">Ra Le-Naをお使いいただき、<span class="hd-nowrap">ありがとうございます。</span></p>
+    <p class="hero-lead fade-in delay-2" data-slot="lead-2">このページでは、<span class="hd-nowrap">まな板の汚れが気になったときの</span><span class="hd-nowrap">落とし方をご案内しています。</span></p>
+  </div>
+</section>
+
+<!-- ============ S2 黒い面に白い跡が見えるとき／こんな見え方をしていませんか ============ -->
+<!-- 表現: 一覧（新規設計・実例集に該当種別なし）。
+     実例集の「一覧」は compatible/実写真カード型（用途の網羅を見せる型）だけで、
+     読者が自分の症状と照合するためのチェック型がない。
+     見た目は公式サイト /pages/faq のQ&A行（白地に薄グレーの角丸行）に合わせている -->
+<section id="sec-symptom" class="section-pad" data-section-type="empathy" data-section-name="黒い面に白い跡が見えるとき" data-section-order="2">
+  <div class="inner">
+    <!-- 原稿の「■見出し」＝この章の親見出し。S3〜S6の見出しは原稿の「▼」なので一段小さい級数にしている -->
+    <h2 class="h-chapter fade-in" data-slot="headline">黒い面に<span class="hd-nowrap">白い跡が見えるとき</span></h2>
+
+    <h3 class="h-sec fade-in" data-slot="check-title">こんな見え方をしていませんか</h3>
+    <ul class="sym-list fade-in" data-slot="check-list">
+      <li>黒い面に、白い曇りのような<span class="hd-nowrap">跡が出ている</span></li>
+      <li>切った野菜の形に沿っている</li>
+      <li>水で濡らすと白さが見えなくなり、乾くとまた浮き出てくる</li>
+    </ul>
+
+    <!-- 症状の実写真（2026-08-27 市山さんから受領）。リストの直後（意味の切れ目）に置く。
+         出どころ: Google Drive 会社アカウント マイドライブ/RaLeNa_LP素材/お手入れ方法/
+           RaLeNa_お手入れ_白い跡_全体.png（Drive ID 1uT6kJkBw0rXGYJSpHpuGQvQbSESjiBIN）
+         Driveの共有が「限定公開」のため、テストページでは同期フォルダをローカル相対パスで参照している。
+         本番へ出すときは Shopify の Files へ上げて CDN URL に差し替える
+         （このパスは市山さんのMacでのみ表示できる。他の人が開くと画像が出ない） -->
+    <div class="sym-photo fade-in" data-slot="symptom-photo">
+      <img data-slot="symptom-photo-whole" data-asset-id="RALENA_CARE_MARK_WHOLE" loading="lazy"
+           src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/ralena-care-mark-whole.jpg?v=1787889850"
+           alt="Ra Le-Na の黒い面の全体に白い跡が出ている状態" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ S3 何が起きているのか ============ -->
+<!-- 表現: 図解・説明（下敷き実例: デザインラボ/実例集/empathy/商流2共感_原因図解型.html） -->
+<!-- 借りたのは骨格（本文で結論 → 因果を図で見せる）のみ。元型のダーク結果パネル・煽りラベルは持ち込まない。
+     図のラベルは原稿の語をそのまま抜き出している（言い換えを新造しない） -->
+<section id="sec-cause" class="section-pad" data-section-type="solution" data-section-name="何が起きているのか" data-section-order="3">
+  <div class="inner">
+    <h3 class="h-sec fade-in" data-slot="headline">何が起きているのか</h3>
+
+    <p class="p fade-in" data-slot="cause-1">夏野菜など水分の多い野菜を切ったときに、野菜から出た成分がまな板の表面に残り、乾くときに白い跡として見えているものです。</p>
+
+    <!-- 写真は第1文（原因の説明）を読み終えた段落の切れ目に置く。因果の途中には挟まない。
+         2026-08-28 市山さん指示で、黒い面できゅうりを輪切りにしている写真に差し替え。
+         本文の「夏野菜など水分の多い野菜を切ったときに」と絵が一致する。
+         出どころ: Google Drive マイドライブ/RaLeNa_LP素材/お手入れ方法/
+         明るさ・色は加工していない。
+         本番へ出すときは Shopify の Files へ上げて CDN URL に差し替える
+         （このパスは市山さんのMacでのみ表示できる） -->
+    <div class="cause-photo fade-in" data-slot="cause-photo">
+      <img class="cause-photo-cut" data-asset-id="RALENA_CARE_CUCUMBER_CUT" loading="lazy"
+           src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/ralena-care-cucumber-cut.jpg?v=1787889850"
+           alt="Ra Le-Na の黒い面できゅうりを輪切りにしているところ" />
+    </div>
+
+    <p class="p fade-in" data-slot="cause-2">Ra Le-Naの表面は、非多孔のため<span class="hd-nowrap">穴がありません。</span></p>
+    <p class="p fade-in" data-slot="cause-3">だから水も油も、色も、ニオイも、板の中まで染み込みにくくできています。</p>
+    <p class="p fade-in" data-slot="cause-4">染み込まないぶん、切った食材から出たものは表面に残り、色の濃い黒い面では、それが<span class="hd-nowrap">はっきり見えます。</span></p>
+
+    <div class="flow fade-in" data-slot="cause-figure">
+      <div class="flow-steps">
+        <!-- コマ1: 切った野菜から出た成分が表面にのる。
+             板は厚みのある断面＋上面に1本線＝穴のない表面。
+             野菜はトマトの輪切り（外周＋放射の筋）にして、円だけの図形より「切った野菜」だと分かるようにした -->
+        <div class="flow-step">
+          <svg viewBox="0 0 200 132" role="img" aria-label="切った野菜から出た成分がまな板の表面にのっている断面図">
+            <circle cx="100" cy="38" r="22" fill="#d75a41" fill-opacity=".12" stroke="#d75a41" stroke-width="1.6"/>
+            <circle cx="100" cy="38" r="9" fill="none" stroke="#d75a41" stroke-width="1.2" opacity=".8"/>
+            <g stroke="#d75a41" stroke-width="1.1" opacity=".6" stroke-linecap="round">
+              <line x1="111" y1="38" x2="119" y2="38"/><line x1="89" y1="38" x2="81" y2="38"/>
+              <line x1="105.5" y1="47.5" x2="109.5" y2="54.5"/><line x1="94.5" y1="47.5" x2="90.5" y2="54.5"/>
+              <line x1="105.5" y1="28.5" x2="109.5" y2="21.5"/><line x1="94.5" y1="28.5" x2="90.5" y2="21.5"/>
+            </g>
+            <!-- 出た成分のしずく（落ちていく途中） -->
+            <path d="M100 66 q0 7 3.6 11 a4.6 4.6 0 1 1 -7.2 0 q3.6 -4 3.6 -11z" fill="#d75a41" opacity=".85"/>
+            <!-- 板の断面。上面の線が「穴のない表面」 -->
+            <rect x="10" y="96" width="180" height="30" rx="3" fill="#242833"/>
+            <line x1="10" y1="97.5" x2="190" y2="97.5" stroke="#ecdfd7" stroke-width="2"/>
+            <ellipse cx="62" cy="95" rx="13" ry="3.4" fill="#d75a41" opacity=".55"/>
+            <ellipse cx="140" cy="95" rx="10" ry="3" fill="#d75a41" opacity=".55"/>
+          </svg>
+          <p>野菜から出た成分</p>
+        </div>
+        <!-- コマ2: 板の中まで入らない。下向きの矢印が表面の線でぶつかって止まる形にして、
+             「穴がない＝ここから先へ行かない」を矢印と面の関係だけで見せる（×などの記号は足さない）。
+             板の中を無地のままにしているのも「入っていくものがない」ことの表現 -->
+        <div class="flow-step">
+          <svg viewBox="0 0 200 132" role="img" aria-label="成分が板の中まで染み込まず表面で止まっている断面図">
+            <line x1="100" y1="30" x2="100" y2="72" stroke="rgba(18,18,18,.55)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M92 66 l8 8 8 -8" fill="none" stroke="rgba(18,18,18,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="10" y="96" width="180" height="30" rx="3" fill="#242833"/>
+            <path d="M52 96 q48 -13 96 0z" fill="#d75a41" opacity=".65"/>
+            <!-- 表面の線は太くして「ここで止まる面」だと分かるようにする -->
+            <line x1="10" y1="97.5" x2="190" y2="97.5" stroke="#ecdfd7" stroke-width="3"/>
+          </svg>
+          <p>板の中まで染み込みにくい</p>
+        </div>
+        <!-- コマ3: 乾いて白い跡になる。抜けていく水分は破線の上向き矢印、残った成分は白い膜で見せる -->
+        <div class="flow-step">
+          <svg viewBox="0 0 200 132" role="img" aria-label="乾いた成分が黒い面に白い跡として見えている断面図">
+            <g stroke="rgba(18,18,18,.5)" stroke-width="1.8" stroke-linecap="round">
+              <line x1="74" y1="82" x2="74" y2="44" stroke-dasharray="5 6"/>
+              <path d="M68 48 l6 -7 6 7" fill="none"/>
+              <line x1="126" y1="82" x2="126" y2="54" stroke-dasharray="5 6"/>
+              <path d="M120 58 l6 -7 6 7" fill="none"/>
+            </g>
+            <rect x="10" y="96" width="180" height="30" rx="3" fill="#242833"/>
+            <line x1="10" y1="97.5" x2="190" y2="97.5" stroke="#ecdfd7" stroke-width="2"/>
+            <!-- 乾いて白く残った跡。白いカードの上に置く図なので、板の「上」に描くと白同士で消える（実測）。
+                 表面のすぐ内側＝黒地の上に薄く広げて、色の濃い黒い面ではっきり見えることを図でも同じに見せる -->
+            <ellipse cx="62" cy="102" rx="26" ry="4" fill="#ffffff" opacity=".92"/>
+            <ellipse cx="116" cy="101.5" rx="19" ry="3.4" fill="#ffffff" opacity=".85"/>
+            <ellipse cx="156" cy="102.5" rx="13" ry="3" fill="#ffffff" opacity=".78"/>
+          </svg>
+          <p>乾くときに白い跡として見える</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S4 落とし方 ============ -->
+<!-- 表現: 手順（下敷き実例: デザインラボ/実例集/howto/商流2使い方_縦タイムライン型.html）
+     縦の進行線は公式サイトに無い語彙なので、区切りは細い横罫線＋中央の番号に置き換えている -->
+<section id="sec-howto" class="section-pad" data-section-type="howto" data-section-name="落とし方（2ステップ）" data-section-order="4">
+  <div class="inner">
+    <h3 class="h-sec fade-in" data-slot="headline">落とし方</h3>
+
+    <div class="steps" data-slot="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <p data-slot="step-1-body">まず、ふだんの食器洗いと同じように、食器用洗剤とスポンジで洗ってください。</p>
+        <div class="caution" data-slot="step-1-caution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+          <p>このとき<b>60℃以上の熱いお湯は使わないでください。</b>汚れが熱で固まって、かえって落ちにくくなります。</p>
+        </div>
+        <!-- 手順1の実写真（2026-08-27 市山さん採用）。
+             それまで当てていた既存素材 board_water_drops.jpg（洗剤をかけている状態）から、
+             スポンジで洗っている手元の写真に差し替え。S6（予防）の DSC03356 と
+             斜めの構図・硬い光・チャコールの粒状面を揃えてあり、ページ前後で光と質感が響き合う。
+             出どころ: Google Drive マイドライブ/RaLeNa_LP素材/お手入れ方法/
+             明るさ・色は加工していない。元画像が 1536×1024＝3:2 なので、枠の 3:2 と一致して切れない。
+             本番へ出すときは Shopify の Files へ上げて CDN URL に差し替える
+             （このパスは市山さんのMacでのみ表示できる） -->
+        <div class="step-photo" data-slot="step-1-photo">
+          <img data-asset-id="RALENA_CARE_SPONGE_WASH" loading="lazy"
+               src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/ralena-care-sponge-wash.jpg?v=1787889850"
+               alt="食器用洗剤で泡立てたスポンジで、Ra Le-Na の黒い面を洗っているところ" />
+        </div>
+      </div>
+
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <p data-slot="step-2-body">それでも残るときは、台所用の塩素系漂白剤を、その製品の表示どおりの使い方でお使いください。白い跡を落とす場合は「漂白・ヌメリ除去」の使い方に<span class="hd-nowrap">あたります。</span></p>
+        <p data-slot="step-2-body-2">キッチン泡ハイターをスプレーして約5分おき、そのあと流水で30秒以上洗い流してください。お使いの漂白剤によって使い方も時間も違いますので、必ずその製品の表示をご確認ください。</p>
+        <div class="times" data-slot="step-2-times">
+          <div class="time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <p>スプレーして<b>約5分</b>おき</p>
+          </div>
+          <div class="time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+            <p>流水で<b>30秒以上</b>洗い流して</p>
+          </div>
+        </div>
+        <!-- 手順2の実写真（2026-08-27 市山さんから受領）。
+             出どころ: Google Drive 会社アカウント マイドライブ/RaLeNa_LP素材/お手入れ方法/
+               RaLeNa_お手入れ_漂白剤スプレー.jpg（元のDrive ID 1bpv2vGXCtqYUemJSckg4_Xt2t6wpSUfH）
+             Driveの共有が「限定公開」のため、テストページでは同期フォルダをローカル相対パスで参照している。
+             本番へ出すときは Shopify の Files へ上げて CDN URL に差し替える -->
+        <div class="step-photo" data-slot="step-2-photo">
+          <img class="step-photo-spray" data-asset-id="RALENA_CARE_BLEACH_SPRAY" loading="lazy"
+               src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/ralena-care-bleach-spray.jpg?v=1787889850"
+               alt="シンクに置いた Ra Le-Na の黒い面に泡タイプの塩素系漂白剤をスプレーしているところ" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S5 安全のため、必ずお読みください ============ -->
+<!-- 表現: 分解カード（下敷き実例: デザインラボ/実例集/empathy/商流2放置_リスクカード型.html）
+     原稿の装飾指示「（枠で囲んで目立たせる）」の実装。囲みカード＋ページで唯一の色付きの面。
+     元型のダーク背景・煽りの演出は持ち込まない（事故を防ぐための注意で、不安を煽る場所ではないため） -->
+<section id="sec-safety" class="section-pad" data-section-type="faq" data-section-name="安全のため、必ずお読みください" data-section-order="5">
+  <div class="inner">
+    <div class="safe-card fade-in" data-slot="safety">
+      <svg class="safe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+      <h3 class="safe-title" data-slot="headline">安全のため、<span class="hd-keep">必ずお読みください</span></h3>
+      <ul class="safe-list" data-slot="safety-list">
+        <li class="is-danger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
+          <span>お酢・レモン汁・クエン酸などの「酸性」のものと、塩素系漂白剤を、混ぜたり続けて<span class="hd-nowrap">使ったりしないでください。</span><b>有害なガスが発生して<span class="hd-nowrap">危険です。</span></b></span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></svg>
+          <span>ご使用中は換気をし、手袋の着用をおすすめします。</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>漂白剤は必ず、その製品の<span class="hd-nowrap">表示にある</span>使用方法・時間・「使えないもの」に<span class="hd-nowrap">従ってお使いください。</span></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S6 跡を、残りにくくするために ============ -->
+<!-- 表現: 語り（下敷き実例: デザインラボ/実例集/summary/ステートメント余白宣言型.html）
+     3文は1つづきの因果なのでカードに割らない。写真は3文を読み終えた後（意味の切れ目）に1枚だけ添える -->
+<section id="sec-prevent" class="section-pad" data-section-type="summary" data-section-name="跡を、残りにくくするために" data-section-order="6">
+  <div class="inner">
+    <h3 class="h-sec fade-in" data-slot="headline">跡を、残りにくくするために</h3>
+
+    <p class="p fade-in" data-slot="prevent-1">白い跡は、野菜から出た成分が表面で<span class="hd-nowrap">乾くときに</span>浮き出てきます。</p>
+    <p class="p fade-in" data-slot="prevent-2">ですので、水分の多い野菜を切ったあとは、<span class="hd-nowrap">そのまま置かずに、</span>乾く前に水でさっと流しておくのがおすすめです。</p>
+    <p class="close-line fade-in" data-slot="prevent-3">乾く前に流しておくと、<span class="hd-nowrap">跡として残りにくくなります。</span></p>
+
+    <div class="pv-photo fade-in" data-slot="prevent-photo">
+      <img data-asset-id="RALENA_DSC03356" loading="lazy"
+           src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/DSC03356.jpg"
+           alt="Ra Le-Na の黒い面を水で流しているところ" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ S7 解決しないときは、いつでもご相談ください ============ -->
+<!-- 表現: 宣言（下敷き実例: デザインラボ/実例集/cta/シンプル3要素型.html）
+     ボタンは公式サイトのLINEボタンと同じ（緑 #06c755・角丸41pxのピル・ゴシック15.75px） -->
+<section id="sec-cta" class="section-pad" data-section-type="cta" data-section-name="ご相談（LINE導線）" data-section-order="7">
+  <div class="inner">
+    <h3 class="cta-lead fade-in" data-slot="lead">解決しないときは、<span class="hd-keep">いつでもご相談ください</span></h3>
+    <!-- 遷移先は公式サイトのフッター「LINE登録はこちら」と同じ RaLe-Na 公式LINE -->
+    <a class="btn btn-line fade-in" data-slot="final-cta-button" href="https://lin.ee/rDDhEF8" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+      </svg>
+      <span>LINEへ</span>
+    </a>
+  </div>
+</section>
+
+<!-- LP本体のJS。ページ末尾の制作用パネルより前の、独立した script タグに置くこと。
+     パネルの script タグの中や、パネルの目印コメントより後ろに書くと、Shopify反映用のビルドが
+     パネルごと丸ごと捨てるため、公開ページだけアニメが発火しなくなる（既知の実バグ）。
+     ※ このコメント内に目印の語（除去の起点になる語）を書かないこと。
+        書くとビルドがここを起点にしてしまい、下のLP本体JSごと削除される（2026-08-28 実際に発生） -->
+<script>
+(function () {
+  var targets = document.querySelectorAll('.fade-in');
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+})();
+</script>
+</div>
+
+{% schema %}
+{"name": "LP ralena-care-20260828", "settings": [], "presets": [{"name": "LP ralena-care-20260828"}]}
+{% endschema %}

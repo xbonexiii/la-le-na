@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text_fTbcHM": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>Ra Le-Na</strong>",
+            "subtext": "<p><a href=\"/pages/ra-le-na-story\" title=\"ブランドストーリー\">ブランドストーリー</a></p><p><a href=\"/pages/company\" target=\"_blank\" title=\"会社概要\">会社概要</a></p>"
+          }
+        },
+        "text_mbWeCj": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>お届け日</strong>",
+            "subtext": "<p>ご注文確定後、<br/>1-2営業日以内に出荷<br/>※ご予約商品は除く</p><p>配送ポリシーは<a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">こちら</a></p>"
+          }
+        },
+        "text_bTnBpq": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>サポート</strong>",
+            "subtext": "<p><a href=\"/pages/faq\" title=\"よくある質問\">よくある質問</a></p><p><a href=\"/pages/how-to-use\" title=\"使い方ガイド\">使い方ガイド</a></p><p><a href=\"/pages/guide\" title=\"お買い物ガイド\">お買い物ガイド</a></p><p><a href=\"/pages/返品-交換のお問い合わせ\" title=\"返品・交換のお問い合わせ\">返品/交換のお問い合わせ</a></p>"
+          }
+        },
+        "text_CgV6Pp": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>お問い合わせ</strong>",
+            "subtext": "<p>メール：24時間受付<br/><a href=\"/pages/contact\" title=\"お問い合わせ\">お問い合わせフォーム</a></p><p>LINE：24時間受付<br/><a href=\"https://lin.ee/rDDhEF8\" target=\"_blank\" title=\"https://lin.ee/rDDhEF8\">LINE登録はこちら</a></p><p>お電話：10-17時受付／<a href=\"tel:092-260-6573\" title=\"tel:092-260-6573\">0922606573<br/></a>※土日祝お休み</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_fTbcHM",
+        "text_mbWeCj",
+        "text_bTnBpq",
+        "text_CgV6Pp"
+      ],
+      "settings": {
+        "color_scheme": "scheme-a7f371ac-288f-4b85-9199-2230c6350729",
+        "newsletter_enable": false,
+        "newsletter_heading": "メール",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

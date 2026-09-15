@@ -1,0 +1,454 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "image_banner_PmyUdh": {
+      "type": "image-banner",
+      "blocks": {
+        "text_DTfc36": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "LINE登録された方のみ200名様限定！",
+            "text_style": "body"
+          }
+        },
+        "heading_HMDgzm": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "<strong>20％OFF</strong>通常5980円→4784円",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_4xkQLi": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "登録してお得にGET",
+            "button_link_1": "https://lin.ee/rDDhEF8",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_DTfc36",
+        "heading_HMDgzm",
+        "buttons_4xkQLi"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/12_DSC02532.jpg",
+        "image_2": "shopify://shop_images/DSC02711.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-f586d717-35f3-4786-9624-0076af53d2a1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_pfwMjt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XQAMNY": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご好評につき、完売していました究極の一枚が、再び。",
+            "heading_size": "h1"
+          }
+        },
+        "text_nM4PME": {
+          "type": "text",
+          "settings": {
+            "text": "<p>RaLe-Na 再販セール — <strong>LINE先行受付スタート。</strong>  <br/>通常5,980円より20%オフ。7月上旬お届け予定。</p><p><em>在庫数に限りがあります。<br/>登録後にご案内するLINEから購入できます。</em></p>"
+          }
+        },
+        "button_3Rn3kq": {
+          "type": "button",
+          "settings": {
+            "button_label": "LINE登録でお得に購入",
+            "button_link": "https://lin.ee/rDDhEF8",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_XQAMNY",
+        "text_nM4PME",
+        "button_3Rn3kq"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-27498a5f-e77b-4c16-97c7-8e042b53e84c",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_kxDke8": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "1779342885ab0a12d3": {
+      "type": "apps",
+      "blocks": {
+        "trustshop_reviews_review_carousel_acdjLd": {
+          "type": "shopify://apps/trustshop-reviews/blocks/review-carousel/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "wrapper_class": "",
+            "carousel_style": "classic"
+          }
+        }
+      },
+      "block_order": [
+        "trustshop_reviews_review_carousel_acdjLd"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "section_horizontal_scroll_9AL3nb": {
+      "type": "section-horizontal-scroll",
+      "blocks": {
+        "card_eAGA6G": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/15_DSC02596.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "滑らない、ズレない。",
+            "title_font_size": 22,
+            "text": "プラスチックの約5倍のグリップ力",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_UgbAF6": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03356.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "お手入れラクちん",
+            "title_font_size": 22,
+            "text": "汚れもニオイものこりにくい",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_9gydKj": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03465.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "包丁の切れ味長持ち",
+            "title_font_size": 22,
+            "text": "刃あたりが柔らかい",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_MRRQxH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03500.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "美しさ長持ち",
+            "title_font_size": 22,
+            "text": "従来より2.8倍傷がつきにくい設計",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_ex6gLi": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/13_DSC02583.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "厚み1.4cmなのに軽い",
+            "title_font_size": 22,
+            "text": "洗う時も、収納時も腕がラク",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_HkNTjU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03503.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "肉も野菜も一枚で",
+            "title_font_size": 22,
+            "text": "くるっと裏返すだけ",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_mEwmrn": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/14_DSC02589.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "食材で賢く使い分け",
+            "title_font_size": 22,
+            "text": "「滑り止め」と「汚れ落ち」を切替",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_fhyGr8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03373.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "0.3mmのフチ",
+            "title_font_size": 22,
+            "text": "食材の水分がこぼれにくい",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_rtJBJa": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/size.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "家庭用食洗機に収まる",
+            "title_font_size": 22,
+            "text": "洗う時も、ベストなサイズ",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_jV6MtJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/21_DSC02637.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "長方形が使いやすい",
+            "title_font_size": 22,
+            "text": "丸型、かまも小型、色々あるけど",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_kUenTm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03558.jpg",
+            "caption": "",
+            "caption_font_size": 12,
+            "heading": "土に還るエコ素材",
+            "title_font_size": 22,
+            "text": "エコフレンドリー",
+            "text_font_size": 16,
+            "button_label": "+",
+            "button_link": "",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "card_eAGA6G",
+        "card_UgbAF6",
+        "card_9gydKj",
+        "card_MRRQxH",
+        "card_ex6gLi",
+        "card_HkNTjU",
+        "card_mEwmrn",
+        "card_fhyGr8",
+        "card_rtJBJa",
+        "card_jV6MtJ",
+        "card_kUenTm"
+      ],
+      "name": "カード横スクロール",
+      "settings": {
+        "section_title": "Ra LeNa - 11個の特徴",
+        "heading_size": "h1",
+        "full_width": true,
+        "layout_type": "scroll",
+        "card_width": 300,
+        "card_height": 520,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_gTXteC": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_rmpdiG": {
+          "type": "caption",
+          "settings": {
+            "caption": "前回は完売となりました。今回の再販では、LINEにご登録いただいた方から順にご案内します。",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "heading_w6Hthr": {
+          "type": "heading",
+          "settings": {
+            "heading": "お得に手に入れられるのは今だけ！",
+            "heading_size": "h2"
+          }
+        },
+        "text_mhiHR3": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>予約販売限定の割引</h3><ul><li>通常5,980円 → <br/>再販セール価格　<strong>限定20％OFF</strong></li><li>購入方法：LINE登録後、購入リンクを表示いたします</li><li>お届け：7月上旬頃予定</li><li>在庫：限定数のためなくなり次第終了 |</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_rmpdiG",
+        "heading_w6Hthr",
+        "text_mhiHR3"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2a7bf3a4-48a6-4b0c-9b7f-79bc631ce21f",
+        "full_width": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_nCy3Mh": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hr3N3r": {
+          "type": "heading",
+          "settings": {
+            "heading": "▼▼▼ 登録は3秒で完了 ▼▼▼",
+            "heading_size": "h2"
+          }
+        },
+        "text_wwWfWw": {
+          "type": "text",
+          "settings": {
+            "text": "<ol><li><strong>登録してお得にGETボタンを押す</strong></li><li><strong>友だちに追加</strong></li></ol><p>買い逃しがないように友達追加をお願いします</p>"
+          }
+        },
+        "button_gVjQHG": {
+          "type": "button",
+          "settings": {
+            "button_label": "LINE登録でお得に購入",
+            "button_link": "https://lin.ee/rDDhEF8",
+            "button_style_secondary": false,
+            "button_label_2": "Ra Le-Naを詳しく見る",
+            "button_link_2": "shopify://products/ra-le-na",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_hr3N3r",
+        "text_wwWfWw",
+        "button_gVjQHG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-8d76a14c-7f9d-428b-a6fc-00431a8c38c6",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_AYD8Dh": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\nstrong {\n  font-size: 1.1em;\n}\n\n.rich-text__text.rte ol {\n  counter-reset: item;\n  list-style: none;\n  padding-left: 0;\n}\n\n.rich-text__text.rte ol li {\n  counter-increment: item;\n  position: relative;\n  padding-left: 3em; /* 丸の拡大にあわせて余白も調整 */\n  margin-bottom: 1em;\n  line-height: 2;\n}\n\n.rich-text__text.rte ol li::before {\n  content: counter(item);\n  position: absolute;\n  left: 0;\n  top: 0.05em; /* 上寄せ調整 */\n  width: 2em;   /* ←ここを大きく */\n  height: 2em;  /* ←ここを大きく */\n  background-color: #D75A41; /* ゴールド */\n  color: #fff;\n  font-weight: bold;\n  font-family: sans-serif;\n  font-size: 1em;  /* 数字サイズも調整 */\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  line-height: 1;\n}\n\n/* ▼ここを追加：ulリストの・を◼️に変更 ▼ */\n.rich-text__text.rte ul {\n  list-style: none;          /* 既存の・を消す */\n  padding-left: 0;           /* 左余白調整 */\n}\n\n.rich-text__text.rte ul li {\n  position: relative;\n  padding-left: 1.5em;       /* ◼️の分だけ左余白を確保 */\n  margin-bottom: 0.8em;\n  line-height: 1.8;\n}\n\n.rich-text__text.rte ul li::before {\n  content: \"◼️\";             /* ここでマーカーを◼️に */\n  position: absolute;\n  left: 0;\n  top: 0;\n  color: #D75A41;            /* お好みで色変更 */\n  font-size: 1em;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_PmyUdh",
+    "rich_text_pfwMjt",
+    "custom_liquid_kxDke8",
+    "1779342885ab0a12d3",
+    "section_horizontal_scroll_9AL3nb",
+    "rich_text_gTXteC",
+    "rich_text_nCy3Mh",
+    "custom_liquid_AYD8Dh"
+  ]
+}

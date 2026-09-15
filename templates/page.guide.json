@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_TP4L6E": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NtPMxq": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_VJqVQn": {
+          "type": "text",
+          "settings": {
+            "text": "SHOPPING GUIDE",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NtPMxq",
+        "text_VJqVQn"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC02112.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_J9KYUm": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RtCCPg": {
+          "type": "heading",
+          "settings": {
+            "heading": "オンラインショッピングの手順",
+            "heading_size": "h1"
+          }
+        },
+        "text_zQcW6i": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ra LeNa 公式オンラインショップへようこそ。簡単、安全、安心にお買い物いただくため、お買い物される製品をお選びになった後、下記のステップでご購入ください。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RtCCPg",
+        "text_zQcW6i"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collapsible_content_DeWDTU": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_4cJGfH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "1. お気に入りの製品を見つけ、カートへ追加",
+            "icon": "none",
+            "row_content": "<ul><li>商品ページ、またはサイト内検索機能をご利用して商品をお選びください。</li><li>買い物カートへ追加のボタンを押すと製品がショッピングバッグへ追加されます。</li><li>なお、クイックショップから素早くバッグへ追加する事もできます。</li><li>カート画面では個数の増減が可能です。</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FAhxxb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "2. ショッピングバッグ（カート）",
+            "icon": "none",
+            "row_content": "<p>メニューバーのバッグのアイコンを選択すると、追加した製品をご確認いただけます。<br/>こちらの画面では、日時指定の設定や、ご要望がある場合は備考欄にご記入し「ご購入手続きへ」ボタンをクリックしてください。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VB7hUx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "3. ご購入の手続き",
+            "icon": "none",
+            "row_content": "<p>次の画面では、お届け先情報、お支払い方法をご入力ください。<br/>また、「割引コード」をお持ちの方は、コードを入力し適用してください。</p><p>利用規約等をご確認の上、今すぐ支払うボタンをクリックください。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_4cJGfH",
+        "collapsible_row_FAhxxb",
+        "collapsible_row_VB7hUx"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_RTRc6D": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rPGK6t": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご購入前のご不明点はこちらからお問い合わせください",
+            "heading_size": "h2"
+          }
+        },
+        "button_7ia9xa": {
+          "type": "button",
+          "settings": {
+            "button_label": "お問い合わせフォーム",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_rPGK6t",
+        "button_7ia9xa"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_TP4L6E",
+    "rich_text_J9KYUm",
+    "collapsible_content_DeWDTU",
+    "rich_text_RTRc6D"
+  ]
+}

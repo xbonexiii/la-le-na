@@ -1,0 +1,49 @@
+{% comment %}
+  リンクボタン
+
+  外部リンク（楽天、Yahooなど）へのボタンです。
+  テキスト色・背景色・枠線色・ボタンテキスト・リンクが設定可能です。
+  購入ボタンと同じUIで表示されます。
+
+  使用例:
+  {% render 'link-button', block: block %}
+{% endcomment %}
+
+<div {{ block.shopify_attributes }}>
+  {%- if block.settings.button_link != blank -%}
+    {%- liquid
+      assign button_text = block.settings.button_text
+      if button_text == blank
+        assign button_text = 'テキストを入力してください'
+      endif
+
+      assign button_bg_color = block.settings.button_background_color
+      if button_bg_color == blank
+        assign button_bg_color = '#ffffff'
+      endif
+
+      assign button_text_color = block.settings.button_text_color
+      if button_text_color == blank
+        assign button_text_color = '#000000'
+      endif
+    -%}
+
+    <div class="product-form__buttons">
+      <a
+        href="{{ block.settings.button_link }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button--full-width button--secondary link-button"
+        style="background-color: {{ button_bg_color }}; color: {{ button_text_color }};"
+      >
+        <span>{{ button_text }}</span>
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .button--secondary.link-button::after {
+    display: none;
+  }
+</style>

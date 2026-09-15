@@ -1,0 +1,1130 @@
+<style>
+  /* ---- Reset / Base ---- */
+  .lcr-wrap *, .lcr-wrap *::before, .lcr-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .lcr-wrap {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #1d1d1f;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .lcr-wrap img { max-width: 100%; height: auto; display: block; }
+  .lcr-wrap a { color: inherit; text-decoration: none; }
+
+  /* ---- Design Tokens ---- */
+  .lcr-wrap {
+    --gold: #C9AC82;
+    --gold-light: #d8c09a;
+    --wine: #6E1F2E;
+    --navy: #202124;
+    --text: #1d1d1f;
+    --bg-white: #ffffff;
+    --bg-gray: #f5f5f7;
+    --bg-cream: #F5EFE6;
+    --bg-dark: #202124;
+    --line-green: #06C755;
+    --line-green-hover: #04a847;
+  }
+
+  /* ---- Layout ---- */
+  .lcr-wrap section { width: 100%; }
+  .lcr-wrap .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .lcr-wrap .section-padding { padding: 100px 0; }
+
+  /* ---- Typography ---- */
+  .lcr-wrap h2.section-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Animations ---- */
+  .lcr-wrap .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .lcr-wrap .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .lcr-wrap .slide-left  { opacity: 0; transform: translateX(-48px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .lcr-wrap .slide-right { opacity: 0; transform: translateX(48px);  transition: opacity 0.8s ease, transform 0.8s ease; }
+  .lcr-wrap .slide-up    { opacity: 0; transform: translateY(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+  .lcr-wrap .slide-left.visible, .lcr-wrap .slide-right.visible, .lcr-wrap .slide-up.visible { opacity: 1; transform: none; }
+
+  /* ---- Buttons ---- */
+  .lcr-wrap .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    letter-spacing: 0.02em;
+  }
+  .lcr-wrap .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .lcr-wrap .btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--line-green);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .lcr-wrap .btn-line:hover { background: var(--line-green-hover); transform: translateY(-1px); }
+  .lcr-wrap .btn-line svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+  /* ---- Scroll Hint ---- */
+  .lcr-wrap .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.55); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; animation: lcr-scroll-bounce 2.2s infinite; cursor: default;
+  }
+  .lcr-wrap .scroll-hint svg { width: 20px; height: 20px; }
+  @keyframes lcr-scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; }
+    50%       { transform: translateX(-50%) translateY(8px); opacity: 0.9; }
+  }
+
+  /* ---- Middle CTA ---- */
+  .lcr-wrap #sec-cta-mid {
+    background: var(--bg-dark); color: #fff;
+    padding: 72px 0; text-align: center;
+  }
+  .lcr-wrap #sec-cta-mid .mid-cta-inner { max-width: 560px; margin: 0 auto; }
+  .lcr-wrap #sec-cta-mid .mid-cta-title {
+    font-size: 28px; font-weight: 700; line-height: 1.4;
+    margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .lcr-wrap #sec-cta-mid .mid-cta-sub {
+    font-size: 15px; opacity: 0.75; margin-bottom: 32px;
+  }
+  .lcr-wrap #sec-cta-mid .btn-line { font-size: 17px; }
+  .lcr-wrap #sec-cta-mid .mid-cta-note { font-size: 13px; opacity: 0.6; margin-top: 12px; }
+  @media (max-width: 768px) {
+    .lcr-wrap #sec-cta-mid { padding: 56px 0; }
+    .lcr-wrap #sec-cta-mid .mid-cta-title { font-size: 22px; }
+  }
+
+  /* ---- Mobile Sticky CTA ---- */
+  #lcr-sticky-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000;
+    padding: 12px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 80%, transparent);
+  }
+  #lcr-sticky-cta a {
+    display: block; width: 100%; text-align: center;
+    background: #06C755; color: #fff;
+    font-size: 16px; font-weight: 700; text-decoration: none;
+    padding: 16px; border-radius: 12px;
+    letter-spacing: 0.02em;
+  }
+  #lcr-sticky-cta .sticky-note {
+    text-align: center; font-size: 11px; color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+  }
+  @media (min-width: 769px) { #lcr-sticky-cta { display: none !important; } }
+
+  /* ---- Parallax BG ---- */
+  .lcr-wrap .parallax-bg {
+    top: -15% !important;
+    bottom: auto !important;
+    height: 130% !important;
+    will-change: transform;
+  }
+  @media (max-width: 768px) {
+    .lcr-wrap .parallax-bg {
+      top: 0 !important;
+      height: 100% !important;
+      will-change: auto;
+    }
+  }
+
+
+  /* ============================================
+     SEC-HERO
+  ============================================ */
+  .lcr-wrap #sec-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #202124;
+  }
+  .lcr-wrap #sec-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.6;
+  }
+  .lcr-wrap #sec-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.3) 100%);
+  }
+  .lcr-wrap #sec-hero .container { position: relative; z-index: 1; }
+  .lcr-wrap #sec-hero .eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .lcr-wrap #sec-hero h1 {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .lcr-wrap #sec-hero .subheadline {
+    font-size: 18px;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 40px;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .lcr-wrap #sec-hero .cta-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 16px;
+  }
+
+
+  /* ============================================
+     SEC-STORY
+  ============================================ */
+  .lcr-wrap #sec-story { background: var(--bg-cream); }
+  .lcr-wrap #sec-story .story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .lcr-wrap #sec-story .section-title { margin-bottom: 28px; }
+  .lcr-wrap #sec-story .story-quote {
+    font-size: 17px;
+    font-style: italic;
+    color: #3a3a3a;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+  .lcr-wrap #sec-story .story-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .lcr-wrap #sec-story .stat-item { text-align: center; }
+  .lcr-wrap #sec-story .stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--wine);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .lcr-wrap #sec-story .stat-unit {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--wine);
+  }
+  .lcr-wrap #sec-story .stat-label {
+    font-size: 13px;
+    color: #6e6e73;
+    margin-top: 4px;
+  }
+  .lcr-wrap #sec-story .story-body {
+    font-size: 17px;
+    line-height: 2;
+    color: #3a3a3a;
+  }
+  .lcr-wrap #sec-story .story-body p + p { margin-top: 16px; }
+  .lcr-wrap #sec-story .story-image-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-story .story-image-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  /* ============================================
+     SEC-FEATURES
+  ============================================ */
+  .lcr-wrap #sec-features { background: var(--bg-dark); color: #fff; }
+  .lcr-wrap #sec-features .container { text-align: center; }
+  .lcr-wrap #sec-features .section-title {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .lcr-wrap #sec-features .features-lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 56px;
+  }
+  .lcr-wrap #sec-features .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    text-align: left;
+  }
+  .lcr-wrap #sec-features .feature-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-features .feature-image-wrap img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-features .feature-content { padding: 28px; }
+  .lcr-wrap #sec-features .feature-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .lcr-wrap #sec-features .feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .lcr-wrap #sec-features .feature-body {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+
+
+  /* ============================================
+     SEC-REVIEWS
+  ============================================ */
+  .lcr-wrap #sec-reviews { background: var(--bg-gray); }
+  .lcr-wrap #sec-reviews .reviews-hero-wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 0 64px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55));
+    display: flex;
+    align-items: flex-end;
+    padding: 32px 40px;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-label {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .lcr-wrap #sec-reviews .section-title { text-align: center; margin-bottom: 48px; }
+
+
+  /* ============================================
+     SEC-SALE
+  ============================================ */
+  .lcr-wrap #sec-sale { background: var(--bg-white); }
+  .lcr-wrap #sec-sale .sale-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .lcr-wrap #sec-sale .section-title { margin-bottom: 32px; }
+  .lcr-wrap #sec-sale .sale-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .lcr-wrap #sec-sale .sale-table tr {
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .lcr-wrap #sec-sale .sale-table tr:first-child {
+    border-top: 1px solid #e8e8e8;
+  }
+  .lcr-wrap #sec-sale .sale-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #6e6e73;
+    padding: 16px 16px 16px 0;
+    white-space: nowrap;
+    vertical-align: top;
+    width: 120px;
+  }
+  .lcr-wrap #sec-sale .sale-table td {
+    padding: 16px 0;
+    color: #1d1d1f;
+    line-height: 1.6;
+  }
+  .lcr-wrap #sec-sale .sale-table .price-highlight {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--wine);
+  }
+  .lcr-wrap #sec-sale .sale-image-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-sale .sale-image-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-sale .sale-cta-wrap {
+    margin-top: 36px;
+  }
+
+
+  /* ============================================
+     SEC-LINE
+  ============================================ */
+  .lcr-wrap #sec-line { background: var(--bg-gray); }
+  .lcr-wrap #sec-line .section-title { text-align: center; margin-bottom: 16px; }
+  .lcr-wrap #sec-line .line-subtitle {
+    text-align: center;
+    color: #6e6e73;
+    margin-bottom: 56px;
+    font-size: 17px;
+  }
+  .lcr-wrap #sec-line .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .lcr-wrap #sec-line .step-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .lcr-wrap #sec-line .step-image-wrap img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-line .step-content { padding: 24px; }
+  .lcr-wrap #sec-line .step-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .lcr-wrap #sec-line .step-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .lcr-wrap #sec-line .step-body { font-size: 15px; color: #6e6e73; line-height: 1.7; }
+
+  .lcr-wrap #sec-line .line-merits {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 36px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lcr-wrap #sec-line .line-merits-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .lcr-wrap #sec-line .merit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lcr-wrap #sec-line .merit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #3a3a3a;
+    line-height: 1.6;
+  }
+  .lcr-wrap #sec-line .merit-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--line-green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .lcr-wrap #sec-line .merit-icon svg { width: 14px; height: 14px; }
+  .lcr-wrap #sec-line .line-note {
+    text-align: center;
+    font-size: 14px;
+    color: #6e6e73;
+    margin-bottom: 36px;
+  }
+  .lcr-wrap #sec-line .line-cta-wrap {
+    text-align: center;
+  }
+
+
+  /* ============================================
+     SEC-CTA（最終CTA）
+  ============================================ */
+  .lcr-wrap #sec-cta {
+    background: var(--bg-dark);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-cta .cta-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+  }
+  .lcr-wrap #sec-cta .container { position: relative; z-index: 1; text-align: center; }
+  .lcr-wrap #sec-cta .section-title {
+    color: #fff;
+    margin-bottom: 16px;
+    font-size: clamp(28px, 4vw, 48px);
+  }
+  .lcr-wrap #sec-cta .cta-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 48px;
+  }
+  .lcr-wrap #sec-cta .btn-line { font-size: 20px; padding: 22px 52px; }
+  .lcr-wrap #sec-cta .cta-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 20px;
+  }
+
+
+  /* ============================================
+     SEC-VIDEO
+  ============================================ */
+  .lcr-wrap #sec-video { background: var(--bg-white); }
+  .lcr-wrap #sec-video .container { text-align: center; }
+  .lcr-wrap #sec-video .section-title { margin-bottom: 16px; }
+  .lcr-wrap #sec-video .video-lead {
+    font-size: 17px;
+    color: #6e6e73;
+    margin-bottom: 40px;
+  }
+  .lcr-wrap #sec-video .video-wrap {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.12);
+    aspect-ratio: 16 / 9;
+  }
+  .lcr-wrap #sec-video .video-wrap iframe, .lcr-wrap #sec-video .video-wrap video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .lcr-wrap #sec-video .video-wrap { border-radius: 12px; }
+  }
+
+
+  /* ============================================
+     Responsive (768px以下)
+  ============================================ */
+  @media (max-width: 768px) {
+    .lcr-wrap { font-size: 16px; }
+    .lcr-wrap .container { padding: 0 20px; }
+    .lcr-wrap .section-padding { padding: 64px 0; }
+    .lcr-wrap h2.section-title { font-size: 28px; }
+
+    .lcr-wrap #sec-hero { min-height: 85vh; }
+    .lcr-wrap #sec-hero .container { padding-left: 24px; padding-right: 24px; }
+    .lcr-wrap #sec-hero h1 { font-size: 28px; }
+    .lcr-wrap #sec-hero .subheadline { font-size: 15px; }
+
+    .lcr-wrap #sec-story .story-inner { grid-template-columns: 1fr; gap: 40px; }
+    .lcr-wrap #sec-story .story-image-wrap img { height: 300px; }
+    .lcr-wrap #sec-story .story-stats { gap: 20px; }
+    .lcr-wrap #sec-story .stat-number { font-size: 36px; }
+
+    .lcr-wrap #sec-features .features-grid { grid-template-columns: 1fr; gap: 20px; }
+    .lcr-wrap #sec-features .feature-image-wrap img { height: 200px; }
+
+    .lcr-wrap #sec-reviews .reviews-hero-wrap { margin-bottom: 40px; }
+
+    .lcr-wrap #sec-sale .sale-inner { grid-template-columns: 1fr; gap: 40px; }
+    .lcr-wrap #sec-sale .sale-image-wrap { order: -1; }
+    .lcr-wrap #sec-sale .sale-image-wrap img { height: 280px; }
+
+    .lcr-wrap #sec-line .steps { grid-template-columns: 1fr; }
+    .lcr-wrap #sec-line .line-merits { padding: 28px 24px; }
+
+    .lcr-wrap #sec-cta .btn-line {
+      font-size: 16px;
+      padding: 18px 32px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .lcr-wrap .btn-line { width: 100%; justify-content: center; }
+  }
+</style>
+
+<div class="lcr-wrap">
+
+  <!-- SEC-HERO -->
+  <section
+    id="sec-hero"
+    data-section-type="hero"
+    data-section-name="ヒーローセクション"
+    data-section-order="1"
+  >
+    <img
+      class="hero-bg parallax-bg"
+      data-slot="hero-image"
+      src="{{ 'ralena_board_kitchen_woman.jpg' | asset_url }}"
+      alt="RaLe-Na まな板をキッチンで眺める女性"
+    />
+    <div class="hero-overlay"></div>
+    <div class="container section-padding">
+      <p data-slot="eyebrow" class="eyebrow fade-in">RESALE 2026</p>
+      <h1 data-slot="headline" class="fade-in">ご好評につき、完売していました。<br>究極の一枚が、再び。</h1>
+      <p data-slot="subheadline" class="subheadline fade-in">RaLe-Na 再販セール — LINE先行受付スタート。通常5,980円より20%オフ。7月上旬お届け予定。</p>
+      <a
+        data-slot="cta-button"
+        href="https://lin.ee/rDDhEF8"
+        class="btn-line fade-in"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+        </svg>
+        ▼ LINEで先行案内を受け取る（無料）
+      </a>
+      <p data-slot="cta-note" class="cta-note fade-in">在庫数に限りがあります。登録後にご案内するLINEから購入できます。</p>
+    </div>
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- SEC-STORY -->
+  <section
+    id="sec-story"
+    data-section-type="story"
+    data-section-name="開発ストーリーセクション"
+    data-section-order="2"
+    class="section-padding"
+  >
+    <div class="container">
+      <div class="story-inner">
+        <div class="slide-left">
+          <h2 data-slot="story-title" class="section-title" style="margin-bottom:28px">主婦500人が関わった、<br>2年間の開発。</h2>
+          <blockquote data-slot="story-quote" class="story-quote">
+            「毎日使うのに、これでいいと思えるまな板がない」
+          </blockquote>
+          <div class="story-stats">
+            <div class="stat-item">
+              <div><span class="stat-number">500</span><span class="stat-unit">人</span></div>
+              <p class="stat-label">モニター参加</p>
+            </div>
+            <div class="stat-item">
+              <div><span class="stat-number">32</span><span class="stat-unit">回</span></div>
+              <p class="stat-label">試作・改良</p>
+            </div>
+            <div class="stat-item">
+              <div><span class="stat-number">2</span><span class="stat-unit">年</span></div>
+              <p class="stat-label">開発期間</p>
+            </div>
+          </div>
+          <div data-slot="story-body" class="story-body">
+            <p>「なぜ毎日使うものなのに、満足できるまな板がないのか」—— そんな疑問から、私たちの開発はスタートしました。</p>
+            <p>実際にキッチンに立つ500人の主婦の方々と対話を重ね、32回の試作と改良を経て、RaLe-Naは誕生しました。</p>
+            <p>そして発売と同時に完売。再販を望む声に応え、今回の「再販セール」が実現しました。</p>
+          </div>
+        </div>
+        <div class="story-image-wrap slide-right">
+          <img
+            data-slot="story-image"
+            src="{{ 'ralena_board_black_front.jpg' | asset_url }}"
+            alt="RaLe-Na 黒まな板 正面"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-VIDEO -->
+  <section
+    id="sec-video"
+    data-section-type="video"
+    data-section-name="商品動画セクション"
+    data-section-order="3"
+    class="section-padding"
+  >
+    <div class="container">
+      <h2 data-slot="video-title" class="section-title slide-up">まな板の実力を、<br>動画でご覧ください。</h2>
+      <p data-slot="video-lead" class="video-lead slide-up" style="transition-delay:0.1s">素材のこだわりと日常での使いやすさを、映像でご確認ください。</p>
+      <div class="video-wrap slide-up" style="transition-delay:0.2s">
+        <video controls playsinline preload="metadata" poster="{{ 'ralena_board_video_poster.jpg' | asset_url }}">
+          <source src="{{ 'ralena_board_video_720.mp4' | asset_url }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-FEATURES -->
+  <section
+    id="sec-features"
+    data-section-type="features"
+    data-section-name="選ばれる理由セクション"
+    data-section-order="4"
+    class="section-padding"
+  >
+    <div class="container">
+      <h2 data-slot="features-title" class="section-title slide-up">毎日使えるまな板の、<br>当たり前ではない3つの理由。</h2>
+      <p data-slot="features-lead" class="features-lead slide-up" style="transition-delay:0.1s">普通のプラスチックまな板と比べて、RaLe-Naが選ばれる理由があります。</p>
+      <div class="features-grid">
+
+        <div class="feature-card slide-up" style="transition-delay:0.1s">
+          <div class="feature-image-wrap">
+            <img
+              data-slot="feature-1-image"
+              src="{{ 'cutting_meat.jpg' | asset_url }}"
+              alt="肉をカットする様子"
+            />
+          </div>
+          <div class="feature-content">
+            <div data-slot="feature-1-number" class="feature-number">PPの5倍。</div>
+            <h3 data-slot="feature-1-title" class="feature-title">傷がつきにくい特殊素材</h3>
+            <p data-slot="feature-1-body" class="feature-body">一般的なポリプロピレン製まな板の5倍の耐切傷性。包丁の傷から生まれる雑菌の繁殖を根本から防ぎます。</p>
+          </div>
+        </div>
+
+        <div class="feature-card slide-up" style="transition-delay:0.2s">
+          <div class="feature-image-wrap">
+            <img
+              data-slot="feature-2-image"
+              src="{{ 'board_surface_texture.jpg' | asset_url }}"
+              alt="表面の粒テクスチャ"
+            />
+          </div>
+          <div class="feature-content">
+            <div data-slot="feature-2-number" class="feature-number">99.9%抗菌。</div>
+            <h3 data-slot="feature-2-title" class="feature-title">素材自体が菌を増やさない</h3>
+            <p data-slot="feature-2-body" class="feature-body">素材に抗菌剤を練り込んだ特殊配合。塗装や加工が剥がれるリスクなく、永続的な抗菌効果を発揮します。</p>
+          </div>
+        </div>
+
+        <div class="feature-card slide-up" style="transition-delay:0.3s">
+          <div class="feature-image-wrap">
+            <img
+              data-slot="feature-3-image"
+              src="{{ 'spray_cleaning.jpg' | asset_url }}"
+              alt="スプレーで洗浄する様子"
+            />
+          </div>
+          <div class="feature-content">
+            <div data-slot="feature-3-number" class="feature-number">食洗機OK</div>
+            <h3 data-slot="feature-3-title" class="feature-title">手入れが驚くほど楽</h3>
+            <p data-slot="feature-3-body" class="feature-body">食洗機に対応。高温洗浄でも変形・変色しない耐熱設計。忙しい毎日でも清潔を保ちやすい設計です。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-REVIEWS -->
+  <section
+    id="sec-reviews"
+    data-section-type="reviews"
+    data-section-name="お客様の声セクション"
+    data-section-order="5"
+    class="section-padding"
+  >
+    <div class="container">
+      <div class="reviews-hero-wrap slide-up">
+        <img
+          data-slot="reviews-hero-image"
+          src="{{ 'cooking_family_three.jpg' | asset_url }}"
+          alt="家族3人で調理している様子"
+        />
+        <div class="reviews-hero-overlay">
+          <p class="reviews-hero-label">「買ってよかった」が届いています。</p>
+        </div>
+      </div>
+
+      <h2 data-slot="reviews-title" class="section-title slide-up">使い始めて、<br>手放せなくなりました。</h2>
+
+      <div style="margin-top:40px">
+        <div class="trustshop trustshop-review-wrap trustshop-widget-box" id="trustshop-review" data-product-id="{{ product.id }}"  data-review-to-display="product_reviews_only"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-CTA-MID -->
+  <section
+    id="sec-cta-mid"
+    data-section-type="cta"
+    data-section-name="中間CTAセクション"
+    data-section-order="6"
+  >
+    <div class="container">
+      <div class="mid-cta-inner">
+        <h2 data-slot="mid-cta-title" class="mid-cta-title slide-up">LINE登録で先行案内を受け取る。</h2>
+        <p data-slot="mid-cta-sub" class="mid-cta-sub slide-up" style="transition-delay:0.1s">在庫がなくなる前に、確実に手に入れるために。</p>
+        <a
+          data-slot="mid-cta-button"
+          href="https://lin.ee/rDDhEF8"
+          class="btn-line slide-up"
+          style="transition-delay:0.2s"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+          </svg>
+          LINEで先行案内を受け取る（無料）
+        </a>
+        <p data-slot="mid-cta-note" class="mid-cta-note">登録無料 · 1分で完了 · いつでも解除できます</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-SALE -->
+  <section
+    id="sec-sale"
+    data-section-type="sale"
+    data-section-name="セール概要セクション"
+    data-section-order="7"
+    class="section-padding"
+  >
+    <div class="container">
+      <div class="sale-inner">
+        <div class="slide-left">
+          <h2 data-slot="sale-title" class="section-title" style="margin-bottom:32px">再び、手に入れる機会です。</h2>
+          <table class="sale-table">
+            <tr>
+              <th>価格</th>
+              <td><span class="price-highlight">通常5,980円 → 再販セール価格（LINE登録後にご案内）</span></td>
+            </tr>
+            <tr>
+              <th>発送予定</th>
+              <td>2026年7月上旬</td>
+            </tr>
+            <tr>
+              <th>購入方法</th>
+              <td>LINE登録後、購入リンクをお送りします</td>
+            </tr>
+            <tr>
+              <th>在庫</th>
+              <td>限定数のためなくなり次第終了</td>
+            </tr>
+          </table>
+          <div class="sale-cta-wrap">
+            <a
+              data-slot="sale-cta-button"
+              href="https://lin.ee/rDDhEF8"
+              class="btn-line"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+              </svg>
+              LINEで先行案内を受け取る →
+            </a>
+          </div>
+        </div>
+        <div class="sale-image-wrap slide-right">
+          <img
+            data-slot="sale-image"
+            src="{{ 'ralena_board_hold_woman.jpg' | asset_url }}"
+            alt="RaLe-Na まな板を抱える女性"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-LINE -->
+  <section
+    id="sec-line"
+    data-section-type="howto"
+    data-section-name="LINE登録フローセクション"
+    data-section-order="8"
+    class="section-padding"
+  >
+    <div class="container">
+      <h2 data-slot="line-title" class="section-title slide-up">登録後の流れと、<br>登録するメリット。</h2>
+      <p data-slot="line-subtitle" class="line-subtitle slide-up" style="transition-delay:0.1s">LINEに登録するだけで、特別な再販価格をいち早くお知らせします。</p>
+
+      <div class="steps">
+
+        <div class="step-card slide-up" style="transition-delay:0.1s">
+          <div class="step-image-wrap">
+            <img
+              data-slot="step-1-image"
+              src="{{ 'line_add_friend_screen.jpg' | asset_url }}"
+              alt="LINEに友達追加する画面"
+            />
+          </div>
+          <div class="step-content">
+            <p class="step-number">Step 01</p>
+            <h3 data-slot="step-1-title" class="step-title">LINEを友達追加する</h3>
+            <p data-slot="step-1-body" class="step-body">ページ内のボタンからRaLe-Naの公式LINEを友達追加してください。登録は無料・1分で完了します。</p>
+          </div>
+        </div>
+
+        <div class="step-card slide-up" style="transition-delay:0.2s">
+          <div class="step-image-wrap">
+            <img
+              data-slot="step-2-image"
+              src="{{ 'line_guide_message_screen.jpg' | asset_url }}"
+              alt="LINE案内メッセージ画面"
+            />
+          </div>
+          <div class="step-content">
+            <p class="step-number">Step 02</p>
+            <h3 data-slot="step-2-title" class="step-title">先行案内を受け取る</h3>
+            <p data-slot="step-2-body" class="step-body">再販セール開始のタイミングで、LINE経由で特別価格・購入リンクをお知らせします。通常より20%オフ。</p>
+          </div>
+        </div>
+
+        <div class="step-card slide-up" style="transition-delay:0.3s">
+          <div class="step-image-wrap">
+            <img
+              data-slot="step-3-image"
+              src="{{ 'line_discount_purchase_screen.jpg' | asset_url }}"
+              alt="割引リンクから購入する画面"
+            />
+          </div>
+          <div class="step-content">
+            <p class="step-number">Step 03</p>
+            <h3 data-slot="step-3-title" class="step-title">専用リンクから購入する</h3>
+            <p data-slot="step-3-body" class="step-body">LINEで届く購入リンクから、再販セール価格でお手続きいただけます。在庫がなくなり次第、案内は終了します。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="line-merits slide-up">
+        <p class="line-merits-title">LINE登録3つのメリット</p>
+        <ul class="merit-list">
+          <li>
+            <span class="merit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </span>
+            通常価格より20%オフの再販セール価格でご購入いただけます
+          </li>
+          <li>
+            <span class="merit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </span>
+            在庫状況・追加入荷などの最新情報をいち早くお届けします
+          </li>
+          <li>
+            <span class="merit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </span>
+            将来の新商品・限定セールの先行案内も受け取れます
+          </li>
+        </ul>
+      </div>
+
+      <p data-slot="line-note" class="line-note">登録は無料・1分で完了・いつでも解除できます</p>
+      <div class="line-cta-wrap slide-up">
+        <a
+          data-slot="line-cta-button"
+          href="https://lin.ee/rDDhEF8"
+          class="btn-line"
+          style="margin: 0 auto; display: inline-flex;"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+          </svg>
+          LINEで先行案内を受け取る（無料）
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-CTA -->
+  <section
+    id="sec-cta"
+    data-section-type="cta"
+    data-section-name="最終CTAセクション"
+    data-section-order="9"
+    class="section-padding"
+  >
+    <img
+      class="cta-bg"
+      data-slot="cta-bg-image"
+      src="{{ 'cooking_mother_child.jpg' | asset_url }}"
+      alt="母子が調理する様子"
+    />
+    <div class="container">
+      <h2 data-slot="cta-title" class="section-title slide-up">究極の一枚を、ここから。</h2>
+      <p data-slot="cta-sub" class="cta-sub slide-up" style="transition-delay:0.1s">在庫に限りがあります。LINE登録で確実にご案内を受け取ってください。</p>
+      <a
+        data-slot="cta-button"
+        href="https://lin.ee/rDDhEF8"
+        class="btn-line slide-up"
+        style="transition-delay:0.2s; margin: 0 auto;"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+        </svg>
+        ▼ LINEで先行案内を受け取る（無料）
+      </a>
+      <p data-slot="cta-note" class="cta-note">登録解除はいつでも可能です</p>
+    </div>
+  </section>
+
+</div><!-- /.lcr-wrap -->
+
+
+<!-- MOBILE STICKY CTA -->
+<div id="lcr-sticky-cta">
+  <a href="https://lin.ee/rDDhEF8">▼ LINEで先行案内を受け取る（無料）</a>
+  <p class="sticky-note">再販セール限定 · 20%オフ · 在庫限定</p>
+</div>
+
+
+<script>
+(function () {
+  var targets = document.querySelectorAll('.lcr-wrap .slide-left, .lcr-wrap .slide-right, .lcr-wrap .slide-up, .lcr-wrap .fade-in');
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('visible'); }); return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function (el) { obs.observe(el); });
+})();
+</script>
+
+<script>
+(function () {
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lcr-wrap .parallax-bg'));
+  var STRENGTH = 40; var ticking = false;
+  function update() {
+    var vh = window.innerHeight;
+    els.forEach(function (img) {
+      var section = img.parentElement;
+      var rect = section.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) return;
+      var offset = (rect.top + rect.height / 2 - vh / 2) / (vh + rect.height) * STRENGTH * 2;
+      img.style.transform = 'translateY(' + offset.toFixed(2) + 'px)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();
+</script>
+
+<script>
+(function () {
+  var el = document.getElementById('lcr-sticky-cta');
+  if (!el) return;
+  var shown = false;
+  var trigger = document.getElementById('sec-story');
+  if (trigger && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting && !shown && window.scrollY > trigger.offsetTop) {
+          el.style.display = 'block'; shown = true;
+        }
+      });
+    }, { threshold: 0 }).observe(trigger);
+  }
+  var finalCta = document.getElementById('sec-cta');
+  if (finalCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        el.style.display = e.isIntersecting ? 'none' : (shown ? 'block' : 'none');
+      });
+    }, { threshold: 0.1 }).observe(finalCta);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "LINE クッション 再販セール",
+  "settings": []
+}
+{% endschema %}

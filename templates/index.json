@@ -1,0 +1,1063 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_MWcfdU": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "enable_video_autoplay": true,
+        "video": "shopify://files/videos/第2稿（コピーあり）.mp4",
+        "video_url": "",
+        "cover_image": "shopify://shop_images/DSC02976.jpg",
+        "description": "Ra Re-Na",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_CTTdWn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_g7aURQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le-Na",
+            "heading_size": "h1"
+          }
+        },
+        "caption_aJXLW7": {
+          "type": "caption",
+          "settings": {
+            "caption": "ラ・レーナ",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "text_EpG6Ux": {
+          "type": "text",
+          "settings": {
+            "text": "<p>── それは、あなたのキッチンに贈る“女王”の名を冠した一枚です。<br/>主婦500人と共に理想を追い続け、試作32回、開発に2年。<br/>素材の配合から形状までゼロから設計し、「滑らず・傷つかず・軽やかで・長く使える」唯一無二のまな板が誕生しました。</p>"
+          }
+        },
+        "button_hMTFQx": {
+          "type": "button",
+          "settings": {
+            "button_label": "ブランドストーリー",
+            "button_link": "shopify://pages/ra-le-na-story",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_g7aURQ",
+        "caption_aJXLW7",
+        "text_EpG6Ux",
+        "button_hMTFQx"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_aFJMtt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_bn4JQe": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ralena-logo.png",
+            "title": "ラレーナ",
+            "text": "<p>主婦500人と2年をかけて作ったまな板</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_bn4JQe"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_a8TjWW": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UkFg83": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Ra Le-Na",
+            "heading_size": "h1"
+          }
+        },
+        "text_yjMzFT": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>毎日、毎日、使いやすい。</p>"
+          }
+        },
+        "button_FBDCG9": {
+          "type": "button",
+          "settings": {
+            "button_label": "私たちが欲しかった、ただ一枚のまな板。",
+            "button_link": "shopify://products/ra-le-na",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_UkFg83",
+        "text_yjMzFT",
+        "button_FBDCG9"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-bb7844a6-5f21-496f-954e-e52879c6b634",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "image_banner_bMrpLj": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_pGTKre": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le-Na",
+            "heading_size": "h1"
+          }
+        },
+        "text_gfk3UL": {
+          "type": "text",
+          "settings": {
+            "text": "ラ・レーナ── それは、あなたのキッチンに贈る“女王”の名を冠した一枚です。主婦500人と共に理想を追い続け、試作32回、開発に2年。素材の配合から形状までゼロから設計し、「滑らず・傷つかず・軽やかで・長く使える」唯一無二のまな板が誕生しました。",
+            "text_style": "body"
+          }
+        },
+        "buttons_yCzTLU": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "ブランドストーリー",
+            "button_link_1": "shopify://pages/ra-le-na-story",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_pGTKre",
+        "text_gfk3UL",
+        "buttons_yCzTLU"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03558.png",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "zoom-in",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "rich_text_UrLXUq": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fCpCzk": {
+          "type": "heading",
+          "settings": {
+            "heading": "使いやすい条件を全部クリアした</br>11の特徴",
+            "heading_size": "h1"
+          }
+        },
+        "text_fmc4r8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>「毎日、毎日、使いやすい。」をテーマに独自の開発を行いました。きっと喜んでいただけるRa LeNaの特徴を紹介します。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fCpCzk",
+        "text_fmc4r8"
+      ],
+      "name": "特徴タイトル",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    },
+    "section_horizontal_scroll_kbgGb7": {
+      "type": "section-horizontal-scroll",
+      "blocks": {
+        "card_eXQkby": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/15_DSC02596.jpg",
+            "caption": "point 1",
+            "caption_font_size": 16,
+            "heading": "滑らない、ズレない。",
+            "title_font_size": 24,
+            "text": "プラスチックの約5倍のグリップ力",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-1",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_f3gXLb": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03356.jpg",
+            "caption": "point 2",
+            "caption_font_size": 16,
+            "heading": "お手入れラクちん",
+            "title_font_size": 24,
+            "text": "汚れもニオイものこりにくい",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-2",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_7DPFQH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03465.jpg",
+            "caption": "point 3",
+            "caption_font_size": 16,
+            "heading": "包丁の切れ味長持ち",
+            "title_font_size": 24,
+            "text": "刃あたりが柔らかい",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-3",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_FJkiJM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03500.jpg",
+            "caption": "point 4",
+            "caption_font_size": 16,
+            "heading": "美しさ長持ち",
+            "title_font_size": 24,
+            "text": "従来より2.8倍傷がつきにくい設計",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-4",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_j8ViK9": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/13_DSC02583.jpg",
+            "caption": "point 5",
+            "caption_font_size": 16,
+            "heading": "厚み1.4cmなのに軽い",
+            "title_font_size": 24,
+            "text": "洗う時も、収納時も腕がラク",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-5",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_9axdDH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03503.jpg",
+            "caption": "point 6",
+            "caption_font_size": 16,
+            "heading": "肉も野菜も一枚で",
+            "title_font_size": 24,
+            "text": "くるっと裏返すだけ",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-6",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_nawCWn": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/14_DSC02589.jpg",
+            "caption": "point 7",
+            "caption_font_size": 16,
+            "heading": "食材で賢く使い分け",
+            "title_font_size": 24,
+            "text": "「滑り止め」と「汚れ落ち」を切替",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-7",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_em6bai": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03373.jpg",
+            "caption": "point 8",
+            "caption_font_size": 16,
+            "heading": "0.3mmのフチ",
+            "title_font_size": 24,
+            "text": "食材の水分がこぼれにくい",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-8",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_fAPnMf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/size.jpg",
+            "caption": "point 9",
+            "caption_font_size": 16,
+            "heading": "家庭用食洗機に収まる",
+            "title_font_size": 24,
+            "text": "洗う時も、ベストなサイズ",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-9",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_eUf4ta": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/21_DSC02637.jpg",
+            "caption": "point 10",
+            "caption_font_size": 16,
+            "heading": "長方形が使いやすい",
+            "title_font_size": 24,
+            "text": "丸型、かまも小型、色々あるけど",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-10",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_rJ6qQa": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03558.jpg",
+            "caption": "point 11",
+            "caption_font_size": 16,
+            "heading": "土に還るエコ素材",
+            "title_font_size": 24,
+            "text": "エコフレンドリー",
+            "text_font_size": 18,
+            "button_label": "+",
+            "button_link": "https://ralena.jp/products/ra-le-na#features-11",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "card_eXQkby",
+        "card_f3gXLb",
+        "card_7DPFQH",
+        "card_FJkiJM",
+        "card_j8ViK9",
+        "card_9axdDH",
+        "card_nawCWn",
+        "card_em6bai",
+        "card_fAPnMf",
+        "card_eUf4ta",
+        "card_rJ6qQa"
+      ],
+      "name": "カード横スクロール",
+      "settings": {
+        "section_title": "",
+        "heading_size": "h1",
+        "full_width": false,
+        "layout_type": "scroll",
+        "card_width": 400,
+        "card_height": 600,
+        "padding_top": 60,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_tx7imM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Pf8zyK": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Ra Le-Na",
+            "heading_size": "h1"
+          }
+        },
+        "text_9X3C6g": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>毎日、毎日、使いやすい。</p>"
+          }
+        },
+        "button_9BTxAR": {
+          "type": "button",
+          "settings": {
+            "button_label": "私たちが欲しかった、ただ一枚のまな板。",
+            "button_link": "shopify://products/ra-le-na",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Pf8zyK",
+        "text_9X3C6g",
+        "button_9BTxAR"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-bb7844a6-5f21-496f-954e-e52879c6b634",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "1766331560ea67dfeb": {
+      "type": "apps",
+      "blocks": {
+        "trustshop_reviews_review_carousel_7Fgmpt": {
+          "type": "shopify://apps/trustshop-reviews/blocks/review-carousel/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "wrapper_class": "",
+            "carousel_style": "classic"
+          }
+        }
+      },
+      "block_order": [
+        "trustshop_reviews_review_carousel_7Fgmpt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "featured_blog_R6yK6E": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "heading": "最新情報",
+        "heading_size": "h2",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_jFktjJ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_f64n3T": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_z9F7mb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/19-2_DSC02627.jpg",
+            "title": "<strong>ピタッと滑らない安心感</strong>",
+            "text": "<p>新素材と裏面設計により濡れ布巾なしでもズレずに安定して使えます。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_fk4nrw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03282.jpg",
+            "title": "<strong>汚れもニオイも残りにくい</strong>",
+            "text": "<p>水を弾く素材と2種の表面加工で、色移りや臭い残りを防ぎます。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_dAfEag": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/8_DSC02515_99c44a23-188d-466b-b85a-3e42c87bc61d.jpg",
+            "title": "<strong>包丁にやさしい刃当たり</strong>",
+            "text": "<p>木のようなクッション性で刃こぼれを防ぎ、静かな切れ心地。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hVDhrq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03500.jpg",
+            "title": "傷つきにくく、美しい",
+            "text": "<p>理想の硬度バランスでキズが深くなりにくく、キレイな見た目が続く。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nLUAXF": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/14_DSC02589.jpg",
+            "title": "<strong>表裏で食材を切り替え可能</strong>",
+            "text": "<p>両面使えるから衛生的。肉と野菜で使い分けられて便利。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_8crTHJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/13_DSC02583.jpg",
+            "title": "<strong>しっかり厚み、なのに軽い</strong>",
+            "text": "<p>1.4cmの厚みでも約877g。独自構造で軽く、扱いやすさを両立。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nN3Ddy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03373.jpg",
+            "title": "<strong>汁や水分がこぼれにくい設計</strong>",
+            "text": "<p>まな板のフチをわずか0.3mm高く設計し、食材の汁をガード。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_FTzDky": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC02144.jpg",
+            "title": "<strong>食洗機にぴったり入るサイズ</strong>",
+            "text": "<p>37×23cm・厚み1.4cmで、主要機種40機種に収まる設計。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_iWPAD9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/21_DSC02637.jpg",
+            "title": "<strong>無駄のない長方形デザイン</strong>",
+            "text": "<p>キッチンや収納に無理なくフィット。作業スペースも広々。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_z9F7mb",
+        "column_fk4nrw",
+        "column_dAfEag",
+        "column_hVDhrq",
+        "column_nLUAXF",
+        "column_8crTHJ",
+        "column_nN3Ddy",
+        "column_FTzDky",
+        "column_iWPAD9"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__info .icon-wrap {display: none;}",
+        "h2 {margin: auto;}",
+        "h3 {font-size: calc(var(--font-heading-scale) * 2rem);}"
+      ],
+      "name": "特徴",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-8d76a14c-7f9d-428b-a6fc-00431a8c38c6",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "multicolumn_zJLKjQ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_iE9Dpa": {
+          "type": "column",
+          "settings": {
+            "title": "列",
+            "text": "<p>選択した商品、コレクション、ブログ記事に注目を集めるため、テキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iE9Dpa"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "ボタンのラベル",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_gf3qJP": {
+      "type": "collage",
+      "blocks": {
+        "image_JtLp84": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC03042.jpg"
+          }
+        },
+        "image_rpYfUW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC03550.jpg"
+          }
+        },
+        "image_QQwJr4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/12_DSC02532.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_JtLp84",
+        "image_rpYfUW",
+        "image_QQwJr4"
+      ],
+      "disabled": true,
+      "name": "t:sections.collage.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "none",
+        "color_scheme": "",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_fbzFzi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_ng9HxU": {
+          "type": "heading",
+          "settings": {
+            "heading": "主婦500人の理想をカタチに",
+            "heading_size": "h1"
+          }
+        },
+        "text_pWigqJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>主婦500人と共に理想を追い続け、試作32回、開発に2年。素材の配合から形状までゼロから設計し、「滑らず・傷つかず・軽やかで・長く使える」唯一無二のまな板が誕生しました。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ng9HxU",
+        "text_pWigqJ"
+      ],
+      "disabled": true,
+      "name": "製品について",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_WyUnBF": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_yVCFCy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le-Na",
+            "heading_size": "h1"
+          }
+        },
+        "text_mmH9Jy": {
+          "type": "text",
+          "settings": {
+            "text": "「毎日、毎日、使いやすい。」その一言のために、500人の主婦と2年かけて生まれたRa Le-Naのまな板。滑らず安定して切れる、汚れやニオイが残らない、包丁を傷めにくく、食洗機や漂白剤にも対応。“よくあるストレス”をすべて解消するために、素材の開発から形状まで一から設計し直しました。抗菌性や耐久性、扱いやすさを兼ね備えた独自設計で、どんな料理も快適にサポート。使うたびに「これでよかった」と思える、そんな1枚をあなたのキッチンにも。開発の裏側や、選ばれる理由をもっと知りたい方はこちらからご覧ください。",
+            "text_style": "body"
+          }
+        },
+        "buttons_ceWXRt": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Ra Le-Na 製品ページを見る",
+            "button_link_1": "shopify://products/ra-le-na",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yVCFCy",
+        "text_mmH9Jy",
+        "buttons_ceWXRt"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03558.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "zoom-in",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "image_banner_rqf9ft": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_b8Y7YC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le-Naの使い方",
+            "heading_size": "h1"
+          }
+        },
+        "text_p39U4w": {
+          "type": "text",
+          "settings": {
+            "text": "毎日の「切る・洗う・しまう」もっと心地よくなる──Ra Le-Naのまな板は、使い方まで丁寧に設計されています。野菜や肉が滑りにくい微細シボ、ドリップや汚れを流しやすいストライプ加工の両面構造で、快適な調理をサポート。洗浄・除菌も簡単で、食洗機・漂白剤・熱湯すべてOK。収納時も乾きやすく、清潔を保ちやすい設計です。Ra Le-Naの使い方を詳しくご紹介します。",
+            "text_style": "body"
+          }
+        },
+        "buttons_4r3Hrw": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Ra Le-Naの使い方を見る",
+            "button_link_1": "shopify://pages/how-to-use",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_b8Y7YC",
+        "text_p39U4w",
+        "buttons_4r3Hrw"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03213_1.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "zoom-in",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "image_banner_dBUGqE": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_ijWQEm": {
+          "type": "heading",
+          "settings": {
+            "heading": "よくある質問",
+            "heading_size": "h1"
+          }
+        },
+        "text_4yWxcn": {
+          "type": "text",
+          "settings": {
+            "text": "Ra Le-Naに関する疑問や不安は、こちらの「よくある質問」で解決できます。「ニオイや色移りは本当にしない？」「包丁を傷めないって本当？」「食洗機や漂白剤は使えるの？」など、ご購入前やご使用中にいただく質問をわかりやすくまとめました。実際のお手入れ方法や使用上の注意点、安心して長く使っていただくための情報も掲載しています。初めての方はもちろん、購入後のお手入れに不安がある方も、ぜひ一度ご覧ください。",
+            "text_style": "body"
+          }
+        },
+        "buttons_Vz87xF": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "よくある質問はこちら",
+            "button_link_1": "shopify://pages/faq",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_ijWQEm",
+        "text_4yWxcn",
+        "buttons_Vz87xF"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC02711.png",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "zoom-in",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "multicolumn_WGXQaW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_4ewVYM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/30return.png",
+            "title": "",
+            "text": "<p><strong>30日間の返品交換保証</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_PmVKjd": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/icon-deli0.png",
+            "title": "",
+            "text": "<p><strong>全国どこでも送料無料</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_DCWLEf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/icon-fast.png",
+            "title": "",
+            "text": "<p><strong>最短当日発送</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EF9krL": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/icon-gift.png",
+            "title": "",
+            "text": "<p><strong>ギフトラッピング</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_4ewVYM",
+        "column_PmVKjd",
+        "column_DCWLEf",
+        "column_EF9krL"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info .icon-wrap {display: none;}",
+        "h2 {margin: auto;}",
+        "p {font-size: calc(var(--font-heading-scale) * 2rem);}",
+        "a {background-color: #0071e3; border-radius: 50px; color: #fff; display: inline-flex; justify-content: center; align-items: center; padding: 1rem 3rem; font: inherit; font-size: 1.5rem; text-decoration: none; letter-spacing: 0.1rem; line-height: calc(1 + 0.2 / var(--font-body-scale));}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "オンラインショップが選ばれる理由",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_4qqhdr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HBgYRf": {
+          "type": "heading",
+          "settings": {
+            "heading": "LINE登録はこちら！",
+            "heading_size": "h2"
+          }
+        },
+        "text_bgdGwt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ra LeNaの最新情報を配信します</p>"
+          }
+        },
+        "button_cA44pK": {
+          "type": "button",
+          "settings": {
+            "button_label": "Ra LeNa公式LINE",
+            "button_link": "https://lin.ee/rDDhEF8",
+            "button_style_secondary": false,
+            "button_label_2": "製品ページはこちら",
+            "button_link_2": "shopify://products/ra-le-na",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_HBgYRf",
+        "text_bgdGwt",
+        "button_cA44pK"
+      ],
+      "name": "LINE",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-8d76a14c-7f9d-428b-a6fc-00431a8c38c6",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "video_MWcfdU",
+    "rich_text_CTTdWn",
+    "multicolumn_aFJMtt",
+    "rich_text_a8TjWW",
+    "image_banner_bMrpLj",
+    "rich_text_UrLXUq",
+    "section_horizontal_scroll_kbgGb7",
+    "rich_text_tx7imM",
+    "1766331560ea67dfeb",
+    "featured_blog_R6yK6E",
+    "custom_liquid_jFktjJ",
+    "multicolumn_f64n3T",
+    "multicolumn_zJLKjQ",
+    "collage_gf3qJP",
+    "rich_text_fbzFzi",
+    "image_banner_WyUnBF",
+    "image_banner_rqf9ft",
+    "image_banner_dBUGqE",
+    "multicolumn_WGXQaW",
+    "rich_text_4qqhdr"
+  ]
+}

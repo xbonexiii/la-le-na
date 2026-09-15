@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_PjxYxe": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n/* ===== minimal styling: タイトル / 目次 / LINEボタンのみ ===== */\n\n/* タイトル（h1 が無い場合は最初の h2 を見出し扱い） */\n.rln h1,\n.rln h2 {\n  margin: 0 0 12px;\n  padding-left: 8px;\n  border-left: 4px solid #84B28B; /* ブランドグリーン */\n  color: #69533D;                 /* ブラウン */\n  font-weight: 700;\n}\n\n/* 目次 */\n.rln .toc-wrapper { background: #FEF9ED; padding: 12px; margin: 12px 0 20px; }\n.rln .toc-title { margin: 0 0 6px; color: #69533D; font-weight: 700; }\n.rln .toc-list { list-style: none; padding: 0; margin: 0; }\n.rln .toc-list li { margin: 6px 0; }\n.rln .toc-list a { color: #69533D; text-decoration: underline; }\n.rln .toc-list a:hover { color: #D75A41; } /* アクセント */\n\n/* LINEボタン */\n.rln a[href*=\"lin.ee\"] {\n  display: inline-block;\n  background: #54AA3B;   /* 指定カラー */\n  color: #FFFFFF !important;\n  padding: 8px 12px;\n  border-radius: 4px;\n  text-decoration: none;\n  font-weight: 700;\n}\n.rln a[href*=\"lin.ee\"] * { color: #FFFFFF !important; } /* 子要素の色も白に固定 */\n.rln a[href*=\"lin.ee\"]:hover { opacity: .95; }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "medium"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "share",
+        "content"
+      ],
+      "custom_css": [],
+      "settings": {}
+    }
+  },
+  "order": [
+    "custom_liquid_PjxYxe",
+    "main"
+  ]
+}

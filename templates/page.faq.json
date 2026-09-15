@@ -1,0 +1,341 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_TP4L6E": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NtPMxq": {
+          "type": "heading",
+          "settings": {
+            "heading": "よくある質問",
+            "heading_size": "h1"
+          }
+        },
+        "text_VJqVQn": {
+          "type": "text",
+          "settings": {
+            "text": "FAQ",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NtPMxq",
+        "text_VJqVQn"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03213_1.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "collapsible_content_DeWDTU": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_UtjnJT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "本当に滑りませんか？",
+            "icon": "question_mark",
+            "row_content": "<p>Ra Le-Naは縁に滑らないシリコン素材を採用し、基本的に滑りにくい構造で製作しています。<br/>ただし、一部天板の素材の相性によっては滑ることがございます。<br/>また、天板の油分などの汚れによる滑りが多く確認されておりますので、天板の掃除の仕方をお試しいただけると幸いです。</p><p><a href=\"/blogs/blog/251211\" title=\"Ra Le-Naの簡単滑り対策\">Ra Le-Naの簡単滑り対策</a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4cJGfH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "どのような特徴がありますか？",
+            "icon": "question_mark",
+            "row_content": "<p>Ra Le-Naは、毎日の「切る・洗う・しまう」を快適にするために開発された高機能まな板です。主な特徴は以下の通りです：</p><ul><li>表裏で異なるテクスチャ（滑りにくい微細シボ面と、速乾性のあるストライプ面）</li><li>刃当たりがやさしく、包丁の切れ味が長持ち</li><li>抗菌素材を本体に練り込み、24時間で99%抗菌</li><li>食洗機・漂白剤・熱湯消毒対応（耐熱95℃）</li><li>軽くて扱いやすいのに、厚み1.4cmの安定感</li><li>傷がつきにくく、見た目も長くきれい</li><li>食材のニオイ・色移りがしにくい</li></ul><p>毎日使う中で感じる小さなストレスを、すべて解消するように設計されています。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FAhxxb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "素材に有害物質は含まれていませんか？",
+            "icon": "question_mark",
+            "row_content": "<p>含まれておりません。</p><p>Ra Le-Naは、<strong>BPAフリー・フタル酸フリー</strong>の安全なTPU素材を採用しており、<strong>日本の食品衛生法をすべてクリア</strong>しています。</p><p>さらに、抗菌剤も無機系抗菌剤（NAFUR® RHA-805）を使用しており、医療や食品用途にも使用されるグレードです。万が一小さな破片を誤って口にしても、<strong>生体に無害</strong>な安心素材です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VB7hUx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "名前の由来は何ですか？",
+            "icon": "question_mark",
+            "row_content": "<p>「Ra Le-Na（ラ・レーナ）」は、イタリア語の <strong>La Regina（女王）</strong> に由来します。<br/><br/>キッチンに立つすべての人を“女王”のように讃える存在でありたい、という想いから名付けられました。忙しい日々の中でも、自分らしく料理を楽しめる“王座にふさわしいまな板”として、その名が込められています。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_z6qp3y": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "どんな料理に向いていますか？",
+            "icon": "question_mark",
+            "row_content": "<p>A. Ra Le-Naは万能タイプのまな板で、以下のような幅広い料理に最適です：</p><ul><li>肉・魚など水気や脂の多い食材（ストライプ面でドリップをスッと流す）</li><li>トマトやお刺身など滑りやすい食材（シボ面でズレずに安定して切れる）</li><li>ニンニクやネギなど匂いの強いもの（ニオイ移りしにくい）</li><li>野菜やパンなど日常の調理全般（両面使い分け可能）</li></ul><p>さらに、食洗機対応・速乾性ありなので、下ごしらえから日々の調理までどんなシーンでも活躍します。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_UtjnJT",
+        "collapsible_row_4cJGfH",
+        "collapsible_row_FAhxxb",
+        "collapsible_row_VB7hUx",
+        "collapsible_row_z6qp3y"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "Features",
+        "heading": "特徴について",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_4hNxBM": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_8P486g": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "食洗機で洗っても変形しませんか？",
+            "icon": "question_mark",
+            "row_content": "<p>はい、変形の心配はほとんどありません。</p><p>Ra Le-Naは<strong>耐熱95℃まで対応</strong>しており、家庭用食洗機でも安心してお使いいただけます。さらに、芯材に木材を使用し、その周囲を独自のTPU素材で包む<strong>二層構造</strong>によって、反りや変形にも強い設計です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_y7wqJR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "両面の使い分けってどう判断する？",
+            "icon": "question_mark",
+            "row_content": "<p>表面は「微細シボ加工」、裏面は「ストライプ加工」となっており、用途によって使い分けられます。</p><ul><li>微細シボ面（表）：滑りにくく、刃が安定するため、お刺身・トマトなど繊細な食材向き。</li><li>ストライプ面（裏）：水分・油分が流れやすく、肉や魚など水気の多い食材向き。</li></ul><p>さらに、どちらの面にも滑り止めと0.3mmのフチがあり、使いやすさと衛生面の両立が可能です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_XUk8Dm": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板スタンドに立てられる厚さですか？",
+            "icon": "question_mark",
+            "row_content": "<p>はい、立てて保管できる設計になっています。</p><p>Ra Le-Naの厚みは1.4cmで、多くの市販のまな板スタンドに対応します。また、立てかけるだけでスッと乾く速乾性の高い素材を使用しており、衛生的に収納することが可能です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_NEWAdq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板のニオイや色移り、本当に防げる？",
+            "icon": "question_mark",
+            "row_content": "<p>はい、防ぎやすい設計です。</p><p>Ra Le-Naは非多孔（ノンポーラス）素材で作られており、水分・油分・色素が内部に染み込みません。さらに、抗菌剤を素材内部に練り込む構造により、雑菌の繁殖も防止。漂白剤・熱湯にも対応しているため、ニオイや色移りも簡単にリセットできます。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_8P486g",
+        "collapsible_row_y7wqJR",
+        "collapsible_row_XUk8Dm",
+        "collapsible_row_NEWAdq"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "How to Use",
+        "heading": "使い方について",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_FkmegW": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_gFwazM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "食器洗浄機・乾燥機を使って洗っても大丈夫ですか？",
+            "icon": "question_mark",
+            "row_content": "<p>はい、食洗機・乾燥機ともにご使用いただけます。</p><p>Ra Le-Naは耐熱温度95℃に対応しており、国内主要メーカーのビルトイン・卓上食洗機（パナソニック・リンナイ・東芝など）のサイズにフィットする設計です。乾燥まで含めた高温環境でも、変形や劣化の心配はありません。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ymVjpX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "きれいに保つ方法は？",
+            "icon": "question_mark",
+            "row_content": "<p>Ra Le-Naはニオイ・色移り・雑菌の繁殖を防ぎやすい素材と構造を採用していますが、より長く美しく使うためには以下の習慣がおすすめです：</p><ul><li>使用後すぐに洗う</li><li>乾いた布でしっかり水分を拭き取る</li><li>立てかけて通気の良い場所で乾燥させる</li><li>定期的に熱湯や漂白剤で除菌（耐熱95℃、塩素系・酸素系漂白剤OK）</li></ul><p>使用時は片面に偏らないよう、使う面を適宜切り替える</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_8ARM7a": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "洗うときはどのようにすればよいですか？",
+            "icon": "question_mark",
+            "row_content": "<p>洗い方のポイントは以下の通りです：</p><ul><li>つけ置きは避ける（素材劣化や膨張を防ぐため）</li><li>40℃以下のぬるま湯＋中性洗剤で手洗い</li><li>ゴシゴシこすらず、ソフトスポンジで優しく洗う</li><li>表と裏を均等に洗うことで反りを防止</li><li>洗ったあとは乾いた布で拭き取り、水滴を残さないようにする</li></ul><p>もちろん、食洗機を使用しても問題はありませんが、手洗い時はこの方法がベストです。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_gFwazM",
+        "collapsible_row_ymVjpX",
+        "collapsible_row_8ARM7a"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "Care & Maintenance",
+        "heading": "お手入れについて",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_Ufitnk": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_6UUKEN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "修理やメンテナンスはおこなっていますか？",
+            "icon": "question_mark",
+            "row_content": "<p>申し訳ありませんが、Ra Le-Naでは現在製品の修理対応は行っておりません。</p><p>ただし、通常のご使用で不具合が発生した場合には、状況に応じて交換や返金対応をさせていただく場合がございます。まずはお問い合わせフォームよりご連絡ください。</p><p>▶︎<a href=\"/pages/contact\" title=\"お問い合わせ\">お問い合わせ</a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_LzpUKX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "製品保証はありますか？",
+            "icon": "question_mark",
+            "row_content": "<p>はい、商品到着から30日間の返金保証がございます。</p><p>万が一、使い心地に満足いただけなかった場合や、製品に不備があった場合は、どのような理由でも返品をお受けいたします（開封済みでも可）。<br/>※返品時の送料のみご負担いただきます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rMjR4j": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "届いた商品に不具合がありました。どこに問い合わせをしたら良いですか？",
+            "icon": "question_mark",
+            "row_content": "<p>不具合や初期不良があった場合は、以下のいずれかの方法でご連絡ください：<br/><br/>📩 お問い合わせフォーム（24時間受付）→ お問い合わせフォームは<a href=\"/pages/contact\" title=\"お問い合わせ\">こちら</a><br/>📞 お電話：092-260-6573（受付時間 10:00〜17:00／土日祝除く）<br/>💬 LINE公式アカウント（24時間受付）→ 公式アカウントはこちら<br/><br/>迅速に対応させていただきますので、お手元の商品状態やご注文情報をご準備のうえ、ご連絡ください。<br/>※お問い合わせの返答は営業時間での返答となりますのでご了承ください。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_6UUKEN",
+        "collapsible_row_LzpUKX",
+        "collapsible_row_rMjR4j"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "Warranty & After-Sales Support",
+        "heading": "保証・アフターサービス",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_RTRc6D": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rPGK6t": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご購入前のご不明点はこちらからお問い合わせください",
+            "heading_size": "h2"
+          }
+        },
+        "button_7ia9xa": {
+          "type": "button",
+          "settings": {
+            "button_label": "お問い合わせフォーム",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_rPGK6t",
+        "button_7ia9xa"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_TP4L6E",
+    "collapsible_content_DeWDTU",
+    "collapsible_content_4hNxBM",
+    "collapsible_content_FkmegW",
+    "collapsible_content_Ufitnk",
+    "rich_text_RTRc6D"
+  ]
+}

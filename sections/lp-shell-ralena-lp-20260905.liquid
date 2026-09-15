@@ -1,0 +1,1096 @@
+{{ 'lp-common-vars.css' | asset_url | stylesheet_tag }}
+{{ 'lp-common-base.css' | asset_url | stylesheet_tag }}
+{{ 'lp-theme-ralena.css' | asset_url | stylesheet_tag }}
+{{ 'lp-ralena-lp-20260905.css' | asset_url | stylesheet_tag }}
+
+<div id="lp-{{ section.id }}" class="lp-wrapper">
+<div class="lp-wrapper">
+
+<section id="sec-fv" data-section-type="hero" data-section-name="ファーストビュー"
+         data-section-order="1" data-忠実再現="済"
+         data-元画像="01_ra-le-na.jpg" data-元y="0-1500">
+  <div class="fv">
+    <img class="fv-bg" src="{{ 'fv-ralena-board.jpg' | asset_url }}" width="1600" height="2400"
+         alt="キッチンの水切りかごに立てかけられた Ra Le-Na のまな板">
+    <h1 class="fv-l1">主婦500人と2年をかけて</h1>
+    <p class="fv-l2">究極のまな板</p>
+    <p class="fv-l3">完成しました。</p>
+    <img class="fv-logo" src="{{ 'logo-ralena-white.png' | asset_url }}" width="800" height="151" alt="Ra Le-Na">
+    <p class="fv-sub">ラレーナ</p>
+  </div>
+</section>
+
+<section id="sec-review" data-section-type="proof" data-section-name="楽天レビュー・18冠"
+         data-section-order="2" data-忠実再現="済"
+         data-元画像="01_ra-le-na.jpg" data-元y="1500-4910">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="ral-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DED4B9"/><stop offset="28%" stop-color="#E0B767"/>
+      <stop offset="62%" stop-color="#BA8B39"/><stop offset="100%" stop-color="#775A20"/>
+    </linearGradient>
+    <symbol id="ral-leaf" viewBox="0 0 28.3 93.8"><path fill="url(#ral-gold)" d="M8.36669 25.0137C8.58186 24.5146 9.07078 21.6474 7.1009 19.8089L5.13084 17.9723C5.13084 17.9723 4.22877 20.6998 5.22788 22.5931C6.22593 24.4842 8.36669 25.0137 8.36669 25.0137ZM27.923 85.9833C28.2584 83.1286 25.8085 80.1462 25.8085 80.1462L24.2274 83.4013C23.1809 85.5631 23.7112 87.7614 24.3335 89.1536C23.0586 87.7575 21.8321 86.2238 20.6593 84.5731C21.4211 84.0356 22.7828 82.8517 23.2465 81.005C23.9021 78.3844 21.9807 75.3112 21.9807 75.3112L20.1137 78.1522C19.1388 79.6432 19.0763 81.2757 19.2975 82.5729C16.9649 78.9705 14.8918 74.8991 13.1623 70.5309C13.8826 70.2036 15.8475 69.1611 16.6457 67.1769C17.6326 64.7221 15.9193 61.6043 15.9193 61.6043L13.621 64.1643C12.4875 65.4272 12.2036 66.8818 12.2501 68.1023C11.5711 66.2069 10.957 64.2673 10.4135 62.2894C10.9833 62.1297 12.9844 61.455 14.0452 59.582C15.2919 57.3816 14.322 54.1287 14.322 54.1287L11.9317 56.2279C10.3407 57.6261 10.0215 59.6001 10.0538 60.9416C9.54271 58.9494 9.10015 56.931 8.74057 54.8883C9.31636 54.7813 11.2984 54.2924 12.4794 52.577C13.8706 50.5484 13.2068 47.3156 13.2068 47.3156L10.7135 49.1502C9.08897 50.3423 8.60006 52.1748 8.50305 53.472C8.32532 52.3384 8.16765 51.1989 8.03938 50.0575C7.9262 49.0613 7.83724 48.0712 7.76361 47.0771C8.54256 46.9923 10.1144 46.667 11.256 45.4163C12.8259 43.6989 12.6238 40.5792 12.6238 40.5792L10.0457 41.9735C8.71822 42.6927 8.00609 43.8789 7.63634 44.9394C7.56147 43.2422 7.54427 41.5573 7.57966 39.8882C8.30813 39.8843 10.0043 39.7389 11.3114 38.5366C13.0198 36.9628 13.0874 33.8411 13.0874 33.8411L10.4024 35.0069C8.90712 35.6574 8.08078 36.9122 7.64548 37.9972C7.72925 36.1868 7.87782 34.3965 8.08594 32.6348C8.78298 32.6832 10.4479 32.6632 11.8055 31.5801C13.5643 30.172 13.8443 27.1552 13.8443 27.1552L11.166 28.1029C9.71237 28.6161 8.83656 29.7252 8.33338 30.7274C8.57485 29.0505 8.86987 27.4018 9.21538 25.7934C9.97305 25.9592 11.2701 26.0905 12.5138 25.4723C14.4302 24.5185 15.293 21.7748 15.293 21.7748L12.6199 22.1183C11.3278 22.282 10.3628 22.981 9.69725 23.7163C10.0204 22.4071 10.374 21.1262 10.764 19.8735C11.4883 19.9989 12.546 20.0312 13.5685 19.5301C15.3677 18.6452 16.188 16.0832 16.188 16.0832L13.6835 16.3902C12.8694 16.4893 12.1955 16.8145 11.6479 17.2245C12.1651 15.7881 12.7268 14.4021 13.326 13.0645C13.9624 13.327 15.0757 13.6382 16.2596 13.2908C18.079 12.7493 19.2501 10.4863 19.2501 10.4863L16.8627 10.3773C15.7759 10.3268 14.8726 10.7328 14.1898 11.234C14.9212 9.75897 15.702 8.36275 16.5284 7.05142C17.0164 7.27385 18.0194 7.62336 19.1015 7.30619C20.6119 6.86157 21.5876 4.98666 21.5876 4.98666L19.6107 4.88962C18.7974 4.84929 18.1094 5.12009 17.566 5.47556C17.8032 5.13625 18.0408 4.80484 18.2843 4.47959L18.2781 4.42495C19.0086 4.35625 20.9644 3.83898 21.7544 2.02866L22.6403 0C22.6403 0 20.2804 0.0445427 19.0864 1.33765C18.3327 2.15199 18.1266 3.16819 18.0741 3.80873C17.6133 4.40459 17.1608 5.02107 16.7183 5.66346C16.879 4.85741 16.879 3.73384 16.1646 2.75997L14.9938 1.15989C14.9938 1.15989 13.9674 3.00664 14.4292 4.51185C14.7757 5.63735 15.6859 6.29798 16.1233 6.56054C15.1312 8.09011 14.1979 9.74093 13.33 11.4966C13.5987 10.5309 13.7119 9.11652 12.8866 7.84763L11.5833 5.84344C11.5833 5.84344 10.2255 8.00114 10.6802 9.84192C11.0903 11.5047 12.533 12.4078 12.8127 12.5694C12.138 14.0142 11.5105 15.5336 10.9326 17.1034C10.9711 16.2044 10.7963 15.1618 10.1034 14.2323L8.59903 12.2039C8.59903 12.2039 7.30802 14.5678 7.90904 16.4812C8.36071 17.9135 9.52946 18.7482 10.0891 19.0774C9.95878 19.3279 9.87995 19.5301 9.85574 19.6372C9.85574 19.6372 9.9205 19.6633 10.0366 19.6997C9.00207 22.9163 8.1747 26.3351 7.5929 29.8951C7.26146 28.8162 6.57041 27.5513 5.19766 26.8016L2.70539 25.4419C2.70539 25.4419 2.49827 28.4605 4.0136 30.1335C5.07746 31.3095 6.54022 31.6467 7.31607 31.7458C7.01898 33.8996 6.81185 36.0958 6.70284 38.3245C6.36146 37.1404 5.50159 35.4089 3.62772 34.631L0.922352 33.5137C0.922352 33.5137 1.04443 36.6313 2.78006 38.1749C4.18138 39.4236 6.00374 39.4842 6.65132 39.46C6.58158 41.5311 6.59668 43.6263 6.70077 45.7397C6.12703 44.6285 4.92994 43.0768 2.90836 42.6766L0 42.1047C0 42.1047 0.7405 45.178 2.77304 46.366C4.33284 47.2792 6.05319 47.051 6.7676 46.8933C6.8241 47.748 6.88864 48.6006 6.97551 49.4533C7.09491 50.6535 7.24533 51.8475 7.42223 53.0396C6.8371 51.906 5.76746 50.5564 3.97928 50.0472L1.00409 49.2027C1.00409 49.2027 1.51219 52.4617 3.52365 53.874C5.11075 54.9873 6.97655 54.862 7.6949 54.759C7.99801 56.5472 8.3636 58.321 8.78298 60.0769C7.95354 59.1554 6.70594 58.2404 5.02678 58.1009L1.85461 57.8322C1.85461 57.8322 3.01036 61.0264 5.3218 62.0528C6.8787 62.7439 8.46271 62.4813 9.33145 62.2367C9.88512 64.3117 10.5166 66.3443 11.2136 68.3326C10.2972 67.3101 8.87276 66.2394 6.89875 65.9928L3.28118 65.5362C3.28118 65.5362 4.50454 68.8881 7.11 70.0742C9.05877 70.9633 11.0812 70.6479 11.9824 70.4317C12.7148 72.3451 13.5089 74.2021 14.3584 75.9942C13.2188 75.2446 11.5844 74.5899 9.71444 74.9719L6.3836 75.6466C6.3836 75.6466 8.52436 78.5723 11.2014 78.936C12.9703 79.1744 14.4888 78.4633 15.3182 77.9541C16.3899 80.0554 17.5376 82.0434 18.7459 83.9024C17.5639 83.1508 15.2777 82.193 12.9017 83.1304L9.73965 84.3831C9.73965 84.3831 12.3623 86.8885 15.0596 86.7754C17.2053 86.6824 18.7539 85.3066 19.3016 84.7448C20.2037 86.0845 21.1372 87.3413 22.0957 88.5212C20.9319 88.311 19.5884 88.3434 18.2528 88.9798L14.9868 90.5336C14.9868 90.5336 17.9528 93.0066 20.8099 92.6893C22.3423 92.5217 23.5405 91.748 24.3275 91.067C25.1984 91.9824 26.0872 92.8288 26.9874 93.5966L27.9623 92.6388C27.1055 91.9236 26.2651 91.1459 25.4417 90.3113C26.0853 89.7698 27.6561 88.2404 27.923 85.9833ZM16.5133 71.2058C14.6959 74.0769 16.2102 77.4226 16.6314 77.9622C16.6314 77.9622 19.0742 76.6327 19.6895 74.002C20.3036 71.3755 18.3306 68.3305 18.3306 68.3305L16.5133 71.2058Z"/></symbol>
+  </defs></svg>
+  <div class="rv">
+    <p class="rv-h1">楽天市場のお客様に</p>
+    <h2 class="rv-h2">使いやすさが評価されて</h2>
+    <img class="rv-badge" src="{{ 'ralena-badge-18kan.jpg' | asset_url }}" width="780" height="665"
+         alt="RAKUTEN RANKING 18冠獲得"><p class="rv-g rv-g1">RAKUTEN</p><p class="rv-g rv-g2">RANKING</p><p class="rv-g rv-g18">18</p><p class="rv-g rv-gk">冠</p><p class="rv-g rv-gt">獲得</p>
+    <div class="rk">
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.660vw,26.6px);transform:scaleX(1.0615)">【総合】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.660vw,26.6px);transform:scaleX(1.0762)">【総合(男子)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.660vw,26.6px);transform:scaleX(1.0762)">【総合(女性)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.210vw,22.1px);transform:scaleX(0.6957)">【キッチン用品・食器・調理器具】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.680vw,26.8px);transform:scaleX(0.8344)">【調理器具・製菓器具】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl">リアルタイムランキング</span><span class="rk-cat" style="font-size:min(2.190vw,21.9px);transform:scaleX(0.7544)">【まな板・カッティングボード】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.680vw,26.8px);transform:scaleX(0.8344)">【調理器具・製菓器具】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.190vw,21.9px);transform:scaleX(0.8137)">【調理器具・製菓器具(中国)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.080vw,20.8px);transform:scaleX(0.7483)">【調理器具・製菓器具(ブラック)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.190vw,21.9px);transform:scaleX(0.7544)">【まな板・カッティングボード】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.220vw,22.2px);transform:scaleX(0.6263)">【まな板・カッティングボード(中国)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.290vw,22.9px);transform:scaleX(0.5455)">【まな板・カッティングボード(ブラック)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.210vw,22.1px);transform:scaleX(0.6957)">【キッチン用品・食器・調理器具】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.410vw,24.1px);transform:scaleX(0.5428)">【キッチン用品・食器・調理器具(中国)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.470vw,24.7px);transform:scaleX(0.4787)">【キッチン用品・食器・調理器具(ブラック)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.410vw,24.1px);transform:scaleX(0.5428)">【キッチン用品・食器・調理器具(男性)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+      <div class="rk-row"><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.410vw,24.1px);transform:scaleX(0.5428)">【キッチン用品・食器・調理器具(女性)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div><div class="rk-i"><svg class="rk-lf" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg><span class="rk-tx"><span class="rk-ttl" style="transform:scaleX(0.6826)">デイリーランキング</span><span class="rk-cat" style="font-size:min(2.290vw,22.9px);transform:scaleX(0.5438)">【キッチン用品・食器・調理器具(すべて)】</span></span><span class="rk-no"><i>1</i><b>位</b></span><svg class="rk-lf rk-lf-r" viewBox="0 0 28.3 93.8" aria-hidden="true"><use href="#ral-leaf"/></svg></div></div>
+    </div>
+    <p class="rv-h3">楽天市場のお客様からの</p>
+    <h2 class="rv-h4">レビュー評価</h2>
+    <div class="rv-score">
+      <span class="rv-lab">レビュー評価<b class="rv-stars">★★★★<i>★</i></b></span>
+      <span class="rv-num">4.61</span>
+      <span class="rv-cnt">698件以上<br>のレビュー</span>
+    </div>
+    <hr class="rv-rule">
+    <div class="rv-pie">
+      <div class="rv-circle"><span class="rv-c1">星4以上</span><span class="rv-c2">96.3<i>%</i></span></div>
+      <p class="rv-txt">多くのお客様に<br><em>ご満足評価</em>を<br>いただいております。</p>
+    </div>
+  </div>
+</section>
+
+<section id="sec-zero" data-section-type="empathy" data-section-name="その悩みをゼロにします・15%"
+         data-section-order="3" data-忠実再現="済"
+         data-元画像="01_ra-le-na.jpg" data-元y="4910-7740">
+  <div class="zr">
+    <div class="zr-top">&nbsp;</div><div class="zr-bot">&nbsp;</div>
+    <p class="zr-l1">そんな究極のまな板「Ra Le-Na」は</p>
+    <p class="zr-l2">まな板の<em>ストレス</em>を</p>
+    <p class="zr-l3"><em>ゼロ</em>にします。</p>
+    <span class="zr-notch"></span>
+    <p class="zr-chip zr-c1"><span>清潔さを維持できない</span></p>
+    <p class="zr-chip zr-c2"><span>取り扱いづらい</span></p>
+    <p class="zr-chip zr-c3"><span>使い心地が悪い</span></p>
+    <div class="zr-card">
+      <p class="zr-ch1">主婦500名が感じている</p>
+      <p class="zr-ch2">「まな板のストレスって？」</p>
+      <div class="zr-rows">
+        <div class="zr-row zr-r1"><img src="{{ 'ralena-zero-row1.jpg' | asset_url }}" alt=""><b>まな板も包丁も痛む…</b><i>まな板が固くてすぐに傷つく。</i><u>24</u><s>%</s></div>
+        <div class="zr-row zr-r2"><img src="{{ 'ralena-zero-row2.jpg' | asset_url }}" alt=""><b>洗うのが大変。</b><i>汚れや衛生面も心配。</i><u>15</u><s>%</s></div>
+        <div class="zr-row zr-r3"><img src="{{ 'ralena-zero-row3.jpg' | asset_url }}" alt=""><b>重くて扱いにくい。</b><i>かさばって、収納にも困る。</i><u>15</u><s>%</s></div>
+        <div class="zr-row zr-r4"><img src="{{ 'ralena-zero-row4.jpg' | asset_url }}" alt=""><b>調理中にツルッと滑る。</b><i>ヒヤッとする。</i><u>10</u><s>%</s></div>
+        <div class="zr-row zr-r5"><img src="{{ 'ralena-zero-row5.jpg' | asset_url }}" alt=""><b>魚やニンニクのニオイ。</b><i>染み付いて取れない…。</i><u>10</u><s>%</s></div>
+      </div>
+    </div>
+    <p class="zr-note">他にも、（両面使えない、デザインがよくない、食洗機に入らないなど）</p>
+    <p class="zr-give">「仕方ない」</p>
+    <p class="zr-give2">と見過ごしていた小さな我慢が</p>
+    <p class="zr-give3">毎日の料理の楽しさや効率を奪っています。</p>
+    <span class="zr-tri"></span>
+    <div class="zr-band"><span>そんな声から開発された究極のまな板</span></div>
+    <img class="zr-logo" src="{{ 'logo-ralena-white.png' | asset_url }}" width="800" height="151" loading="lazy" alt="Ra Le-Na">
+    <p class="zr-logosub">ラレーナ</p>
+  </div>
+</section>
+
+<section id="sec-everyday" data-section-type="empathy" data-section-name="毎日使うからこそ"
+         data-section-order="4" data-忠実再現="済"
+         data-元画像="01_ra-le-na.jpg" data-元y="7740-9272">
+  <div class="ev">
+    <div class="ev-top">&nbsp;</div><div class="ev-glow">&nbsp;</div>
+    <img class="ev-photo" src="{{ 'ralena-everyday-kitchen.jpg' | asset_url }}" width="1000" height="970" loading="lazy" alt="キッチンで Ra Le-Na を拭く女性">
+    <img class="ev-sf" src="{{ 'ralena-everyday-stressfree.png' | asset_url }}" width="552" height="102" loading="lazy" alt="">
+    <img class="ev-board" src="{{ 'ralena-everyday-board.png' | asset_url }}" width="528" height="260" loading="lazy" alt="黒いまな板 Ra Le-Na">
+    <p class="ev-e1">毎日使うからこそ、</p>
+    <p class="ev-e2">プチストレスを感じない</p>
+    <p class="ev-e3">1枚を。</p>
+    <p class="ev-e4">「毎日つかう道具だからこそ、</p>
+  </div>
+</section>
+
+<section id="sec-2years" data-section-type="empathy" data-section-name="主婦500名と丸2年"
+         data-section-order="5" data-忠実再現="済"
+         data-元画像="01_ra-le-na.jpg" data-元y="9272-9752">
+  <div class="ty">
+    <div class="ty-glow">&nbsp;</div>
+    <img class="ty-b1" src="{{ 'ralena-2years-board-full.png' | asset_url }}" width="530" height="450" loading="lazy" alt="Ra Le-Na 本体">
+    
+    <p class="ty-t1">小さなストレスを</p>
+    <p class="ty-t2">丸ごとゼロにしたい」</p>
+    <p class="ty-t3">そんな想いで</p>
+    <p class="ty-t4">主婦500名と丸2年かけて、</p>
+    <p class="ty-t5">「毎日、毎日、使いやすい」まな板が誕生しました。</p>
+  </div>
+</section>
+
+<section id="sec-features-intro" data-section-type="features" data-section-name="11個の特徴（導入）"
+         data-section-order="6" data-忠実再現="済"
+         data-元画像="02_ra-le-na.jpg" data-元y="0-681">
+  <div class="rp-inner fi">
+    <img class="fi-wm" src="{{ 'logo-ralena-wm.png' | asset_url }}" width="800" height="151" loading="lazy" alt="">
+    <p class="fi-l1">使いやすい条件を全部クリアした</p>
+    <h2 class="fi-l2"><i>11</i><small>個の</small><b>特徴</b></h2>
+  </div>
+</section>
+
+<section id="sec-f01-head" data-section-type="features" data-section-name="特徴1 滑らない、ズレない（見出し）"
+         data-section-order="7" data-忠実再現="済"
+         data-元画像="02_ra-le-na.jpg" data-元y="681-1063">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>01</b></span>
+    <span class="pt-tx"><span class="pt-l1">プラスチックの約5倍のグリップ力</span>
+      <span class="pt-l2">滑らない、ズレない</span></span>
+  </div>
+</section>
+
+<section id="sec-f01-movie" data-section-type="features" data-section-name="特徴1 動画"
+         data-section-order="8" data-忠実再現="済"
+         data-元画像="03_ra-le-na.gif" data-元y="0-480">
+  <video class="ral-mov" width="1000" height="600" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-03-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-03.mp4' | asset_url }}"
+         aria-label="まな板を斜めのキッチン天板に置いても滑らない様子"></video>
+</section>
+
+<section id="sec-f01-body" data-section-type="features" data-section-name="特徴1 置くだけでピタッと止まる"
+         data-section-order="9" data-忠実再現="済"
+         data-元画像="04_ra-le-na.jpg" data-元y="0-2266">
+  <div class="fp-clip"><div class="fp">
+    <div class="fp-top">&nbsp;</div><div class="fp-green">&nbsp;</div>
+    <p class="fp-h">置くだけで<em>ピタッ</em>と止まる安心感</p>
+    <p class="fp-b fp-b1">Ra Le-Naは、新素材とデザインのダブル効果で滑りま</p>
+    <p class="fp-b fp-b2">せん。<b>キッチンに吸い付くような素材</b>で、濡れ布巾い</p>
+    <p class="fp-b fp-b3">らず。傾いた調理台にのせてもツルッと動きません。</p>
+    <div class="fp-pie"><i></i></div>
+    <p class="fp-pn"><span class="n9">90</span><span class="np">%</span></p>
+    <div class="fp-bubble">&nbsp;</div>
+    <p class="fp-bt fp-bt1">もう滑る心配が</p>
+    <p class="fp-bt fp-bt2">なくなった！</p>
+    <p class="fp-note">と500人のモニターさんの9割以上が回答</p>
+    <p class="fp-m1">切るたびに滑って動くストレスとは</p>
+    <p class="fp-m2">お別れです。</p>
+    <p class="fp-g fp-g1">万が一、滑ってしまったら</p>
+    <p class="fp-g fp-g2">こちらをお試しください。</p>
+  </div></div><div class="fp fp-cb"><div class="fp-cx">
+    <p class="fp-c fp-c1">まな板が滑る原因として、キッチン天板に目に見えない油分や洗剤の膜が残って</p>
+    <p class="fp-c fp-c2">いる場合がございます。　お手数ですが、下記の方法で一度【天板の脱脂】をお</p>
+    <p class="fp-c fp-c3">試しいただけますでしょうか。</p></div><img class="fp-card" src="{{ 'ralena-f01-card.jpg' | asset_url }}" width="920" height="650" loading="lazy" alt="天板の脱脂の手順"><div class="fp-in"><p class="fp-hd fp-hd1">◆ 用意していただくもの</p><i class="fp-rule fp-rule1"></i><div class="fp-lis"><p class="fp-li fp-li1">・食器用洗剤（中性）</p><p class="fp-li fp-li2">・柔らかい布</p><p class="fp-li fp-li3">・キッチン用アルコールスプレー</p><p class="fp-li fp-li4">・ぬるま湯</p><p class="fp-li fp-li5">・キッチンペーパー</p></div><p class="fp-hd fp-hd2">◆ 手順</p><i class="fp-rule fp-rule2"></i><div class="fp-steps"><div class="fp-step"><b class="fp-no fp-no1">1</b><div class="fp-sx"><p class="fp-s fp-s1a">ボウルなどにぬるま湯を入</p><p class="fp-s fp-s1b">れ、食器用洗剤を少しだけ</p><p class="fp-s fp-s1c">溶かします。布をひたして</p><p class="fp-s fp-s1d">固くしぼり、天板全体を</p><p class="fp-s fp-s1e">拭き洗いしてください。</p></div><span class="fp-ic fp-ic1"></span></div><div class="fp-step"><b class="fp-no fp-no2">2</b><div class="fp-sx"><p class="fp-s fp-s2a">水だけを含ませて固くし</p><p class="fp-s fp-s2b">ぼったきれいな布で、洗剤</p><p class="fp-s fp-s2c">が残らないようにもう一度</p><p class="fp-s fp-s2d">全体を拭き取ります。</p></div><span class="fp-ic fp-ic2"></span></div><div class="fp-step"><b class="fp-no fp-no3">3</b><div class="fp-sx"><p class="fp-s fp-s3a">キッチンペーパーで水気を</p><p class="fp-s fp-s3b">しっかり拭き取り、天板を</p><p class="fp-s fp-s3c">一度乾かします。</p></div><span class="fp-ic fp-ic3"></span></div><div class="fp-step"><b class="fp-no fp-no4">4</b><div class="fp-sx"><p class="fp-s fp-s4a">最後にキッチン用アルコー</p><p class="fp-s fp-s4b">ルスプレーを軽く吹きか</p><p class="fp-s fp-s4c">け、キッチンペーパーで拭</p><p class="fp-s fp-s4d">き取ってください。</p></div><span class="fp-ic fp-ic4"></span></div></div><p class="fp-end">天板が乾いた状態でまな板を置いていただき、滑り具合をお確かめください。</p></div></div>
+  
+</section>
+
+<section id="sec-f02-head" data-section-type="features" data-section-name="特徴2 お手入れラクちん（見出し）"
+         data-section-order="10" data-忠実再現="済"
+         data-元画像="05_ra-le-na.jpg" data-元y="0-413">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>02</b></span>
+    <span class="pt-tx"><span class="pt-l1">汚れもニオイも残りにくいから</span>
+      <span class="pt-l2">お手入れラクちん</span></span>
+  </div>
+</section>
+
+<section id="sec-f02-movie" data-section-type="features" data-section-name="特徴2 動画"
+         data-section-order="11" data-忠実再現="済"
+         data-元画像="06_ra-le-na.gif" data-元y="0-480">
+  <video class="ral-mov" width="1000" height="600" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-06-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-06.mp4' | asset_url }}"
+         aria-label="水で洗うと汚れがすっと落ちる様子"></video>
+</section>
+
+<section id="sec-f02-body" data-section-type="features" data-section-name="特徴2 汚れが落ちやすい理由"
+         data-section-order="12" data-忠実再現="済"
+         data-元画像="07_ra-le-na.jpg" data-元y="0-2797">
+  <div class="fr">
+    <div class="fr-top">&nbsp;</div><div class="fr-mid">&nbsp;</div>
+    <img class="fr-reason" src="{{ 'ralena-f02-reason.jpg' | asset_url }}" width="330" height="110" loading="lazy" alt="Reason">
+    <img class="fr-board" src="{{ 'ralena-f02-board.jpg' | asset_url }}" width="402" height="816" loading="lazy" alt="Ra Le-Na の表面">
+    <div class="fr-card fr-card1">&nbsp;</div><div class="fr-card fr-card2">&nbsp;</div>
+    <img class="fr-tx1" src="{{ 'ralena-f02-tex-omote.jpg' | asset_url }}" width="460" height="460" loading="lazy" alt="表面のシボ加工の拡大">
+    <img class="fr-tx2" src="{{ 'ralena-f02-tex-ura.jpg' | asset_url }}" width="460" height="460" loading="lazy" alt="裏面のストライプ加工の拡大"><i class="fr-chip fr-chip1"></i><i class="fr-chip fr-chip2"></i><p class="fr-lb fr-lb-o">表</p><p class="fr-lb fr-lb-u">裏</p><p class="fr-lb fr-lb-w fr-lb1">シボ</p><p class="fr-lb fr-lb-w fr-lb2">微細な凸凹</p><p class="fr-lb fr-lb-w fr-lb3">ストライプ</p><p class="fr-lb fr-lb-w fr-lb4">細い溝</p>
+    <p class="fr-h">汚れが落ちやすい<em>理由</em></p>
+    <p class="fr-s1">水をはじく新素材</p>
+    <span class="fr-box"></span>
+    <p class="fr-s2">ノンポーラス素材</p>
+    <p class="fr-more">さらに</p>
+    <div class="fr-chip"><span>2種類の表面加工</span></div>
+    <p class="fr-cont">で「汚れ落ち」を底上げ</p>
+    <p class="fr-t fr-t0">ノンポーラス素材は、</p>
+    <p class="fr-t fr-t1"><em>表面に小さな穴がない</em>素材</p>
+    <p class="fr-t fr-t2">のこと。</p>
+    <p class="fr-t fr-t3">木製のように穴が多い素材</p>
+    <p class="fr-t fr-t4">と違い、<b>食材の水分や油、</b></p>
+    <p class="fr-t fr-t5"><b>色、ニオイが中に入り込み</b></p>
+    <p class="fr-t fr-t6">にくいのが特長です。</p>
+    <p class="fr-cl fr-l0">食材との接地面を減ら</p>
+    <p class="fr-cl fr-l1">し、<em>色素やニオイが染み</em></p>
+    <p class="fr-cl fr-l2"><em>にくい。</em>スポンジが凹凸</p>
+    <p class="fr-cl fr-l3">に入り込み、軽くなでる</p>
+    <p class="fr-cl fr-l4">だけで汚れが取れる。</p>
+    <p class="fr-cr fr-r0">細い溝が水路のように走</p>
+    <p class="fr-cr fr-r1">る。<i>油やソースを浮かせ</i></p>
+    <p class="fr-cr fr-r2"><i>て水がスッと運ぶ。</i></p>
+    <p class="fr-cr fr-r3">こすらなくても流れ落ち</p>
+    <p class="fr-cr fr-r4">やすい。</p>
+    <p class="fr-e1">ストライプ＆シボの<em>細かな凹凸が水路</em>になり</p>
+    <p class="fr-e2">汚れを浮かせて流します。</p>
+  </div>
+</section>
+
+<section id="sec-f03-movie" data-section-type="features" data-section-name="特徴3 ニオイ 動画"
+         data-section-order="13" data-忠実再現="済"
+         data-元画像="08_ra-le-na.gif" data-元y="0-500">
+  <video class="ral-mov" width="1000" height="1000" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-08-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-08.mp4' | asset_url }}"
+         aria-label="ニオイがつきにくいことを示す比較"></video>
+</section>
+
+<section id="sec-f03-body" data-section-type="features" data-section-name="特徴3 色移りしにくい"
+         data-section-order="14" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="0-1320">
+  <div class="cf">
+    <div class="cf-band">&nbsp;</div>
+    <img class="cf-photo" src="{{ 'ralena-f03-carrot.jpg' | asset_url }}" width="1000" height="750" loading="lazy" alt="Ra Le-Na の上でにんじんを切る様子">
+    <p class="cf-v">色移りしにくい</p>
+    <p class="cf-h">色素が入り込まない素材</p>
+    <p class="cf-b1">素材に細かな穴がないので、カレーやにんじんの色が</p>
+    <p class="cf-b2">表面にとどまり、奥まで染み込まない。</p>
+  </div>
+</section>
+
+<section id="sec-antibac-band" data-section-type="proof" data-section-name="24時間後99%抗菌（帯）"
+         data-section-order="15" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="1320-2320">
+  <div class="ab">
+    <img class="ab-photo" src="{{ 'ralena-antibac-kitchen.jpg' | asset_url }}" width="1200" height="1200" loading="lazy" alt="キッチンの台に置かれた Ra Le-Na">
+    <p class="ab-h">防菌加工で24時間後99％抗菌</p>
+    <p class="ab-b1">抗菌粒子が素材に練り込まれており、</p>
+    <p class="ab-b2">24時間後の菌を1/100以下にします。</p>
+  </div>
+</section>
+
+<section id="sec-nafur" data-section-type="proof" data-section-name="NAFUR RHA-805・99%防菌（図解）"
+         data-section-order="16" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="2320-4189">
+  <div class="nf">
+    <div class="nf-white">&nbsp;</div>
+    <div class="nf-tri">&nbsp;</div>
+    <p class="nf-lead">Ra Le-Naに練り込んでいる無機抗菌剤は</p>
+    <div class="nf-box">NAFUR<sup>®</sup>&nbsp;RHA-805</div>
+    <p class="nf-sub">第三者機関※が行った試験結果</p>
+    <div class="nf-tbl">
+      <div class="nf-row nf-head"><div class="nf-cell nf-c0"><span>試験規格</span></div><div class="nf-cell nf-c1"><span>試験菌種</span></div><div class="nf-cell nf-c2"><span>条件</span></div><div class="nf-cell nf-c3"><span>抗菌率</span></div></div>
+      <div class="nf-row"><div class="nf-cell nf-c0"><span>ISO 22196<br>/GB T 31402</span></div><div class="nf-cell nf-c1"><span>大腸菌・<br>黄色ブドウ球菌</span></div><div class="nf-cell nf-c2"><span>23℃・<br>24h</span></div><div class="nf-cell nf-c3"><span><b>99</b><small>%</small><br>減少</span></div></div>
+      <div class="nf-row"><div class="nf-cell nf-c0"><span>ISO 22196<br>/GB T 31402</span></div><div class="nf-cell nf-c1"><span>大腸菌・<br>黄色ブドウ球菌</span></div><div class="nf-cell nf-c2"><span>50℃・<br>耐水16h後</span></div><div class="nf-cell nf-c3"><span><b>99</b><small>%</small><br>減少</span></div></div>
+      <div class="nf-row"><div class="nf-cell nf-c0"><span>ASTM G 21</span></div><div class="nf-cell nf-c1"><span>5種混合カビ</span></div><div class="nf-cell nf-c2"><span>28℃・<br>28日</span></div><div class="nf-cell nf-c3"><span>発育等級0<br>（完全抑制）</span></div></div>
+    </div>
+    <p class="nf-note">※試験機関：Guangdong Microbiology Center</p>
+    <p class="nf-big"><b>99</b><small>%</small><i>防菌</i></p>
+    <p class="nf-why">なぜ、ここまで効くの？</p>
+    <img class="nf-swash" src="{{ 'ralena-swash-brace.png' | asset_url }}"
+         width="348" height="44" loading="lazy" alt="">
+  </div>
+</section>
+
+<section id="sec-antibac-inside" data-section-type="features" data-section-name="素材内部まで抗菌成分"
+         data-section-order="17" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="4189-4869">
+  <div class="ai">
+    <div class="ai-sal">&nbsp;</div>
+    <img class="ai-card" src="{{ 'ralena-antibac-card.jpg' | asset_url }}" width="960" height="637" loading="lazy" alt="キャベツを切る手と Ra Le-Na">
+    <p class="ai-h1">抗菌粒子を</p>
+    <p class="ai-h2">素材に<em>練り込み</em></p>
+    <p class="ai-b ai-b1">表面コーティングではなく</p>
+    <p class="ai-b ai-b2">素材内部まで</p>
+    <p class="ai-b ai-b3">抗菌成分が行き渡るので、</p>
+    <p class="ai-b ai-b4">削れても効果が続きます。</p>
+  </div>
+</section>
+
+<section id="sec-bleach" data-section-type="features" data-section-name="漂白・熱湯消毒・耐熱95℃"
+         data-section-order="18" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="4869-6975">
+  <div class="bl">
+    <p class="bl-1">毎日使うまな板こそ、<br><span class="bl-w"><span class="bl-o">「研究室レベル」の抗菌性能</span>で</span><br>キッチンを守りましょう</p>
+    <div class="bl-band"><p class="bl-2">それでも<br>まな板の汚れが気になる方は</p></div>
+    <img class="bl-ph" src="{{ 'ralena-photo-bleach-sink.jpg' | asset_url }}"
+         width="1000" height="1000" loading="lazy" alt="シンクでまな板に漂白剤をかけている様子。漂白、熱湯消毒ができる／耐熱95℃で熱湯消毒可能／塩素系・酸素系漂白剤どちらも使用可能"><p class="bl-t bl-t1">漂白、熱湯消毒ができる</p><p class="bl-t bl-t2">耐熱95℃で熱湯消毒可能</p><p class="bl-t bl-t3">塩素系・酸素系漂白剤どちらも使用可能</p>
+  </div>
+</section>
+
+<section id="sec-food-safe" data-section-type="proof" data-section-name="食品接触安全・ノンポーラス"
+         data-section-order="19" data-忠実再現="済"
+         data-元画像="09_ra-le-na.jpg" data-元y="6975-9792">
+  <div class="fs">
+    <p class="fs-more">さらに</p>
+    <img class="fs-card" src="{{ 'ralena-card-food-safe-baby.jpg' | asset_url }}"
+         width="1000" height="680" loading="lazy" alt="離乳食を食べる赤ちゃん。食品接触安全を全項目クリア"><p class="fs-t fs-t1"><span class="fs-gr">食品接触安全</span>を</p><p class="fs-t fs-t2">全項目クリア</p><p class="fs-t fs-t3">急性経口毒性・</p><p class="fs-t fs-t4">皮膚刺激／感作・変異原性、</p><p class="fs-t fs-t5">いずれも「合格」。</p><p class="fs-t fs-t6">赤ちゃん用調理にも安心です。</p>
+    <div class="fs-tri">&nbsp;</div>
+    <p class="fs-so">つまり</p>
+    <div class="fs-row" style="top:min(136.3vw,1363px)">
+      <img class="fs-ic" src="{{ 'ralena-icon-clean-1.png' | asset_url }}" width="190" height="190" loading="lazy" alt="">
+      <p class="fs-r1">ノンポーラス素材だから、</p>
+      <p class="fs-r2 fs-em">魚のニオイ残り・野菜の色移りほぼ0</p>
+    </div>
+    <div class="fs-row" style="top:min(163.9vw,1639px)">
+      <img class="fs-ic" src="{{ 'ralena-icon-clean-2.png' | asset_url }}" width="190" height="190" loading="lazy" alt="">
+      <p class="fs-r1">研究室レベルの抗菌性で、</p>
+      <p class="fs-r2 fs-em">黒ずみやカビ、菌の繁殖の心配が激減</p>
+    </div>
+    <div class="fs-row" style="top:min(191.5vw,1915px)">
+      <img class="fs-ic" src="{{ 'ralena-icon-clean-3.png' | asset_url }}" width="190" height="190" loading="lazy" alt="">
+      <p class="fs-r1 fs-em">熱湯・漂白・食洗機</p>
+      <p class="fs-r2">どれでもお手入れOK</p>
+    </div>
+    <p class="fs-e1">だからRa Le-Naは</p>
+    <p class="fs-e2">お手入れしやすい</p>
+  </div>
+</section>
+
+<section id="sec-f04-head" data-section-type="features" data-section-name="特徴4 包丁の切れ味長持ち（見出し）"
+         data-section-order="20" data-忠実再現="済"
+         data-元画像="10_ra-le-na.jpg" data-元y="0-479">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>03</b></span>
+    <span class="pt-tx"><span class="pt-l1">刃あたりが柔らかいから</span>
+      <span class="pt-l2">包丁の切れ味長持ち</span></span>
+  </div>
+</section>
+
+<section id="sec-f04-photo" data-section-type="features" data-section-name="特徴4 写真帯"
+         data-section-order="21" data-忠実再現="済"
+         data-元画像="10_ra-le-na.jpg" data-元y="479-1276">
+  <img class="ral-band" src="{{ 'ralena-photo-cut-tomato.jpg' | asset_url }}" width="1000" height="797" loading="lazy" alt="キッチンでトマトを薄切りにしている手元。刃あたりの柔らかさが伝わるカット">
+</section>
+
+<section id="sec-f04-body" data-section-type="features" data-section-name="特徴4 刃あたりが柔らかい"
+         data-section-order="22" data-忠実再現="済"
+         data-元画像="10_ra-le-na.jpg" data-元y="1276-2269">
+  <div class="b4">
+    <p class="b4-lead">包丁の刃あたりが柔らかく「切れ味」が長持ちする素材。<br>木製の良さとプラスチックの利便性を兼ね備えています。</p>
+    <div class="b4-pane b4-l">
+      <p class="b4-h">木のように<br>柔らかい新素材</p>
+      <p class="b4-s">Soft Material</p>
+      <p class="b4-tx">包丁の刃が当たるたびに、<br>クッションのように受け止め<br>切れ味が落ちるのや<br>刃こぼれを防ぎます。</p>
+    </div>
+    <div class="b4-pane b4-r">
+      <p class="b4-h">弾力素材が<br>衝撃吸収＆静音設計</p>
+      <p class="b4-s">Silent Comfort</p>
+      <p class="b4-tx">硬いPP製よりも衝撃が約30%※少<br>なくトントントンと心地良い切り<br>心地。弾力素材と1.4cmの厚みが<br>衝撃を吸収し、包丁の「カンカ<br>ン」音をぐっと低減。</p>
+      <p class="b4-note">※自社カッティング試験</p>
+    </div>
+  </div>
+</section>
+
+<section id="sec-f05-head" data-section-type="features" data-section-name="特徴5 美しさ長持ち（見出し）"
+         data-section-order="23" data-忠実再現="済"
+         data-元画像="11_ra-le-na.jpg" data-元y="0-377">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>04</b></span>
+    <span class="pt-tx"><span class="pt-l1">従来より2.8倍傷がつきにくい設計で</span>
+      <span class="pt-l2">美しさ長持ち</span></span>
+  </div>
+</section>
+
+<section id="sec-f05-photo" data-section-type="features" data-section-name="特徴5 写真帯"
+         data-section-order="24" data-忠実再現="済"
+         data-元画像="11_ra-le-na.jpg" data-元y="377-1215">
+  <img class="ral-band" src="{{ 'ralena-photo-board-counter.jpg' | asset_url }}" width="1000" height="838" loading="lazy" alt="キッチンカウンターに置かれた Ra Le-Na。表面に傷が目立たない">
+</section>
+
+<section id="sec-f05-body" data-section-type="features" data-section-name="特徴5 2.8倍・3つの利点"
+         data-section-order="25" data-忠実再現="済"
+         data-元画像="11_ra-le-na.jpg" data-元y="1215-2637">
+  <div class="rp-inner f5">
+    <div class="f5-circle">
+      <p class="f5-c1">2.8<span>倍</span></p>
+      <p class="f5-c2">傷つきにくい</p>
+      <p class="f5-c3">※自社調べ</p>
+    </div>
+    <p class="f5-lead">まな板専用に開発した新素材は<br>従来より2.8倍傷つきにくい設計。<br>見た目が美しく保たれるため、<br>長く清潔にお使いいただけます。</p>
+    <h3 class="f5-bar f5-bar1">やわらか過ぎず硬過ぎない素材</h3>
+    <p class="f5-tx">ゴムのように衝撃を受け止め、<br><span class="f5-w">PP（プラスチック）ほどカチカチではない絶妙なバランス。</span><br><b>刃の力を分散し、キズを浅くします。</b></p>
+    <h3 class="f5-bar f5-bar2">切ってもすぐ元通り</h3>
+    <p class="f5-tx"><b>表面が復元するので、削れ・反りが起こりにくい。</b><br>1,000回カット試験でもPPの約3分の1しか傷が残りません。</p>
+    <h3 class="f5-bar f5-bar3">長く使えておサイフにも優しい</h3>
+    <p class="f5-tx f5-tx3">PPは1年で買い替えが目安ですが<b>Ra Le-Naは約3倍長持ち。</b></p>
+  </div>
+</section>
+
+<section id="sec-f06-head" data-section-type="features" data-section-name="特徴6 厚み1.4cmなのに軽い（見出し）"
+         data-section-order="26" data-忠実再現="済"
+         data-元画像="12_ra-le-na.jpg" data-元y="0-382">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>05</b></span>
+    <span class="pt-tx"><span class="pt-l1">軽いと滑る、重いと疲れる</span>
+      <span class="pt-l2">重さが<span class="pn">、</span>ちょうどいい</span></span>
+  </div>
+</section>
+
+<section id="sec-f06-877g" data-section-type="features" data-section-name="特徴6 877g"
+         data-section-order="27" data-忠実再現="済"
+         data-元画像="12_ra-le-na.jpg" data-元y="382-1238">
+  <div class="g8">
+    <img src="{{ 'ralena-photo-kitchen-cutting.jpg' | asset_url }}"
+         width="1000" height="856" loading="lazy" alt="キッチンで Ra Le-Na の上の肉を切っているところ。本体1,060g・厚み1.4cm">
+    <div class="g8-c"><p class="g8-n">1,060<small>g</small></p><p class="g8-t">厚み1.4cm</p></div>
+  </div>
+</section>
+
+<section id="sec-f06-body" data-section-type="features" data-section-name="特徴6 重さのちょうどよさ"
+         data-section-order="28" data-忠実再現="済"
+         data-元画像="12_ra-le-na.jpg" data-元y="1238-2498">
+  <div class="rp-inner f6">
+    <h3 class="f6-h f6-h1">軽いほどいい、<span class="f6-o">とは限らない</span></h3>
+    <hr class="ral-rule ral-rule1">
+    <p class="f6-tx f6-t1"><span class="l1">薄くて軽い板は、硬いものを切ると滑ります。滑りに</span><br><span class="l2">くさも切り心地も包丁の音も、まな板は厚みで変わる。</span><br>だからRa Le-Naは厚みのあるまな板を。</p>
+    <p class="f6-tx f6-t2">ただ厚いほど重く、重すぎれば使うのが億劫に。<br>厚みと重さのバランスをちょうど良く整えました。</p>
+    <h3 class="f6-h f6-h2">Ra Le-Naは<span class="f6-o">1,060g</span></h3>
+    <hr class="ral-rule ral-rule2">
+    <p class="f6-tx f6-t3">TPUだけなら1.5kg。そこで芯材を外側だけTPUで包<br>む二層成形に。厚み1.4cm、1,060g。軽すぎれば切り<br>にくく、重すぎれば洗いにくい。<br>ここがちょうどいい。</p>
+  </div>
+</section>
+
+<section id="sec-f07-head" data-section-type="features" data-section-name="特徴7 肉も野菜も一枚で（見出し）"
+         data-section-order="29" data-忠実再現="済"
+         data-元画像="13_ra-le-na.jpg" data-元y="0-402">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>06</b></span>
+    <span class="pt-tx"><span class="pt-l1">くるっと裏返すだけ</span>
+      <span class="pt-l2">肉も野菜も一枚で</span></span>
+  </div>
+</section>
+
+<section id="sec-f07-movie" data-section-type="features" data-section-name="特徴7 動画"
+         data-section-order="30" data-忠実再現="済"
+         data-元画像="14_ra-le-na.gif" data-元y="0-480">
+  <video class="ral-mov" width="1000" height="600" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-14-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-14.mp4' | asset_url }}"
+         aria-label="まな板をくるっと裏返して両面を使い分ける様子"></video>
+</section>
+
+<section id="sec-f07-body" data-section-type="features" data-section-name="特徴7 面ごとに使い分け"
+         data-section-order="31" data-忠実再現="済"
+         data-元画像="15_ra-le-na.jpg" data-元y="0-1588">
+  <div class="fb">
+    <img class="fb-photo" src="{{ 'ralena-f07-boards.jpg' | asset_url }}" width="1000" height="1297" loading="lazy" alt="肉と野菜を面で使い分けた Ra Le-Na 2枚">
+    <span class="fb-circle"></span>
+    <p class="fb-t fb-t1">片面で生肉を切ったら、</p>
+    <p class="fb-t fb-t2"><b>くるっと裏返すだけ</b>でそのまま野菜へ。</p>
+    <p class="fb-c fb-c1">面ごとに</p>
+    <p class="fb-c fb-c2">使い分け</p>
+    <p class="fb-c fb-c3">OK</p>
+    <p class="fb-r fb-r1">片側は「肉専用」、もう片側は</p>
+    <p class="fb-r fb-r2">「野菜・パン専用」にすることで</p>
+    <p class="fb-r fb-r3">交差汚染の心配をぐっと減らします。</p>
+    <p class="fb-r fb-r4">まな板をもう1枚出す手間も、</p>
+    <p class="fb-r fb-r5">洗う手間もいりません。</p>
+  </div>
+</section>
+
+<section id="sec-f07-grip" data-section-type="features" data-section-name="特徴7 滑り止め・3mmストッパー"
+         data-section-order="32" data-忠実再現="済"
+         data-元画像="15_ra-le-na.jpg" data-元y="1588-2590">
+  <div class="fg">
+    <img class="fg-photo" src="{{ 'ralena-f07-grip.jpg' | asset_url }}" width="1000" height="400" loading="lazy" alt="Ra Le-Na の滑り止めと3mmストッパー">
+    <p class="fg-h">両面とも</p>
+    <p class="fg-chip fg-c1"><span>滑り止め</span></p>
+    <p class="fg-chip fg-c2"><span>3mmストッパー</span></p>
+    <p class="fg-amp">&amp;</p>
+    <p class="fg-tsuki">付き</p>
+    <p class="fg-b1">肉汁や刻んだネギが<b>ボードの外にこぼれにくく、</b></p>
+    <p class="fg-b2">調理台が汚れません。</p>
+  </div>
+</section>
+
+<section id="sec-f08-head" data-section-type="features" data-section-name="特徴8 食材で賢く使い分け（見出し）"
+         data-section-order="33" data-忠実再現="済"
+         data-元画像="16_ra-le-na.jpg" data-元y="0-402">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>07</b></span>
+    <span class="pt-tx"><span class="pt-l1">「滑り止め」と「汚れ落ち」を切替</span>
+      <span class="pt-l2">食材で賢く使い分け</span></span>
+  </div>
+</section>
+
+<section id="sec-f08-body" data-section-type="features" data-section-name="特徴8 滑り防止・ひと拭き"
+         data-section-order="34" data-忠実再現="済"
+         data-元画像="16_ra-le-na.jpg" data-元y="402-1797">
+  <div class="rp-inner c8">
+    <div class="c8-row">
+      <img class="c8-ph" src="{{ 'ralena-photo-grip-tomato.jpg' | asset_url }}"
+           width="500" height="500" loading="lazy" alt="シボ面のうえでトマトを切っている手元。まな板がズレない">
+      <img class="c8-ph" src="{{ 'ralena-photo-stripe-meat.jpg' | asset_url }}"
+           width="500" height="500" loading="lazy" alt="ストライプ面のうえで肉を切っている手元">
+    </div>
+    <div class="c8-row">
+      <h3 class="c8-bar c8-bar-g">滑り防止</h3>
+      <h3 class="c8-bar c8-bar-o">汚れ落ち＆速乾</h3>
+    </div>
+    <div class="c8-row">
+      <div class="c8-pane c8-pane-g">
+        <h3 class="c8-ph3 c8-ph3-g">微細シボ面</h3>
+        <p class="c8-tx"><b>トマトやお刺身もピタッと</b><br><b>安定。</b>切るたびズレないの<br>で包丁ミスを防止。</p>
+      </div>
+      <div class="c8-pane c8-pane-o">
+        <h3 class="c8-ph3 c8-ph3-o">細かなストライプ面</h3>
+        <p class="c8-tx">細い溝が水をすっと逃が<br>し、<b>ソース汚れもスポンジ</b><br><span class="c8-w"><b>ひと拭き。</b>傷も目立たず、</span><br>洗ったあとすぐ乾くから次<br>の調理へサッと戻れます。</p>
+      </div>
+    </div>
+    <p class="c8-sum"><span class="c8-l1">1枚の裏表で<b class="c8-g">「滑り止め」</b><b>と</b><b class="c8-o">「汚れ落ち」</b>を切り替え</span><br>られるから、調理効率がグッと上がり、衛生管理もラ<br>クになります。</p>
+  </div>
+</section>
+
+<section id="sec-f09-head" data-section-type="features" data-section-name="特徴9 0.3mmのフチ（見出し）"
+         data-section-order="35" data-忠実再現="済"
+         data-元画像="17_ra-le-na.jpg" data-元y="0-388">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>08</b></span>
+    <span class="pt-tx"><span class="pt-l1">食材の水分がこぼれにくい</span>
+      <span class="pt-l2">0.3mmのフチ</span></span>
+  </div>
+</section>
+
+<section id="sec-f09-body" data-section-type="features" data-section-name="特徴9 フチで水分ストップ"
+         data-section-order="36" data-忠実再現="済"
+         data-元画像="17_ra-le-na.jpg" data-元y="388-1265">
+  <div class="fn">
+    <img src="{{ 'ralena-f09-tomato.jpg' | asset_url }}" width="1000" height="807" loading="lazy" alt="Ra Le-Na の上で切ったトマトと肉汁">
+    <p class="fn-1">まな板の周囲をわずか<b>0.3mmだけ高く</b>しているから、</p>
+    <p class="fn-2">切ったときに出る肉汁や野菜の水分をフチでストップ。</p>
+  </div>
+</section>
+
+<section id="sec-f10-head" data-section-type="features" data-section-name="特徴10 家庭用食洗機に収まる（見出し）"
+         data-section-order="37" data-忠実再現="済"
+         data-元画像="18_ra-le-na.jpg" data-元y="0-400">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>09</b></span>
+    <span class="pt-tx"><span class="pt-l1">洗う時も、ベストなサイズ</span>
+      <span class="pt-l2">家庭用食洗機に収まる</span></span>
+  </div>
+</section>
+
+<section id="sec-f10-movie" data-section-type="features" data-section-name="特徴10 動画"
+         data-section-order="38" data-忠実再現="済"
+         data-元画像="19_ra-le-na.gif" data-元y="0-480">
+  <video class="ral-mov" width="1000" height="600" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-19-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-19.mp4' | asset_url }}"
+         aria-label="家庭用食洗機のラックに収まる様子"></video>
+</section>
+
+<section id="sec-size" data-section-type="spec" data-section-name="サイズ 1.4cm"
+         data-section-order="39" data-忠実再現="済"
+         data-元画像="20_ra-le-na.jpg" data-元y="0-969">
+  <div class="rp-inner sz">
+    <img class="sz-fig" src="{{ 'ralena-size-diagram-m.jpg' | asset_url }}"
+         width="1000" height="583" loading="lazy" alt="Ra Le-Na Mサイズの寸法図"><p class="sz-k sz-k1">高さ</p><p class="sz-k sz-k2">厚さ</p><p class="sz-d sz-d1"><em>2</em>cm</p><p class="sz-d sz-d2"><em>37</em>cm</p><p class="sz-d sz-d3"><em>23</em>cm</p><p class="sz-d sz-d4"><em>1.4</em>cm</p>
+    <p class="sz-pill">Ra Le-Na  Mサイズ</p>
+    <p class="sz-tx">国内でよく使われるビルトイン／卓上40機種※<br>すべての庫内サイズを調べ<b>最適のサイズ</b>にしました。</p>
+    <p class="sz-note">※パナソニック・リンナイ・ミーレ・東芝ほか</p>
+  </div>
+</section>
+
+<section id="sec-f11-head" data-section-type="features" data-section-name="特徴11 長方形が使いやすい（見出し）"
+         data-section-order="40" data-忠実再現="済"
+         data-元画像="21_ra-le-na.jpg" data-元y="0-379">
+  <div class="pt-head">
+    <span class="pt-badge"><i>point</i><b>10</b></span>
+    <span class="pt-tx"><span class="pt-l1">丸型、かまぼこ型、色々あるけど</span>
+      <span class="pt-l2">長方形が使いやすい</span></span>
+  </div>
+</section>
+
+<section id="sec-f11-body" data-section-type="features" data-section-name="特徴11 長方形が1番使いやすい理由"
+         data-section-order="41" data-忠実再現="済"
+         data-元画像="21_ra-le-na.jpg" data-元y="379-3827">
+  <div class="fx">
+    <img class="fx-top" src="{{ 'ralena-f11-board.jpg' | asset_url }}" width="1000" height="649" loading="lazy" alt="ベージュの面に置かれた Ra Le-Na">
+    <img class="fx-rsn" src="{{ 'ralena-f11-reason.jpg' | asset_url }}" width="270" height="180" loading="lazy" alt="Reason">
+    <svg class="fx-dots" viewBox="0 0 4 60" width="4" height="60" aria-hidden="true"><g fill="#84B28B"><circle cx="2" cy="1.5" r="2"/><circle cx="2" cy="29.5" r="2"/><circle cx="2" cy="57.5" r="2"/></g></svg>
+    <p class="fx-h">長方形が<em>1番使いやすい</em>理由</p>
+    <div class="fx-band fx-b1">&nbsp;</div>
+    <img class="fx-n fx-n1" src="{{ 'ralena-f11-num01.png' | asset_url }}" width="49" height="50" loading="lazy" alt="01"><p class="fx-bt fx-bt1">キッチンは四角でできているから</p>
+    <img class="fx-kit" src="{{ 'ralena-f11-kitchen.jpg' | asset_url }}" width="940" height="489" loading="lazy" alt="四角い設備でそろったキッチン">
+    <div class="fx-band fx-b2">&nbsp;</div>
+    <img class="fx-n fx-n2" src="{{ 'ralena-f11-num02.png' | asset_url }}" width="65" height="57" loading="lazy" alt="02"><p class="fx-bt fx-bt2">長方形の方が作業スペースが広いから</p>
+    <p class="fx-sub">同じ外寸横37cm × 縦23cmで比較すると…</p>
+    <div class="fx-card">&nbsp;</div>
+    <svg class="fx-cmp" viewBox="0 0 890 300" width="890" height="300" role="img" aria-label="長方形とかまぼこ型の作業スペースの比較">
+      <g fill="#3D3935"><rect x="60" y="4" width="370" height="230" rx="16"/><path d="M 665.5 4.5 C 563.3 4.5 480.5 64.3 480.5 138 C 480.5 172.6 494.4 206.3 520 233.5 L 811 233.5 C 836.6 206.3 850.5 172.6 850.5 138 C 850.5 64.3 767.7 4.5 665.5 4.5 Z"/></g>
+      <g stroke="#D75A41" stroke-width="2" stroke-dasharray="4 6"><line x1="22" y1="22" x2="22" y2="226"/><line x1="868" y1="22" x2="868" y2="226"/></g>
+      <g fill="#D75A41"><circle cx="22" cy="11" r="7.5"/><circle cx="22" cy="233" r="7.5"/><circle cx="868" cy="11" r="7.5"/><circle cx="868" cy="233" r="7.5"/></g>
+      <g stroke="#84B28B" stroke-width="2" stroke-dasharray="4 6"><line x1="80" y1="271" x2="414" y2="271"/><line x1="499" y1="271" x2="833" y2="271"/></g>
+      <g fill="#84B28B"><circle cx="67" cy="271" r="7.5"/><circle cx="426" cy="271" r="7.5"/><circle cx="486" cy="271" r="7.5"/><circle cx="845" cy="271" r="7.5"/></g>
+    </svg>
+    <p class="fx-cl fx-cl1">長方形</p>
+    <p class="fx-cl fx-cl2">かまぼこ型</p>
+    <p class="fx-num fx-num1">約<u>851</u><s>cm²</s></p>
+    <p class="fx-num fx-num2">約<u>697</u><s>cm²</s></p>
+    <div class="fx-pill">&nbsp;</div>
+    <p class="fx-pt">約<u>154</u>cm² 大きい！ ＋<u>22</u>%</p>
+    <p class="fx-t fx-t1">シンクも食洗機も、収納棚も全部が四角。</p>
+    <p class="fx-t fx-t2">長方形なら ピタッと無駄なく収まり、</p>
+    <p class="fx-t fx-t3">取り出し・収納がスムーズ。</p>
+    <p class="fx-t fx-t4">長方形の方が作業スペースがこんなに広いんです。</p>
+    <p class="fx-t fx-t5">丸型やかまぼこ型は目新しいけれど、</p>
+    <p class="fx-t fx-t6">毎日の「<b>取り出す・切る・すくう・洗う・収納</b>」を</p>
+    <p class="fx-t fx-t7">考えたら、長方形が使いやすい。</p>
+  </div>
+</section>
+
+<section id="sec-eco-head" data-section-type="features" data-section-name="特徴11 土に還るエコ素材（見出し）"
+         data-section-order="42" data-忠実再現="済"
+         data-元画像="22_ra-le-na.jpg" data-元y="0-547">
+  <div class="eh">
+    <img src="{{ 'ralena-eco-head-bg.jpg' | asset_url }}" width="1000" height="547" loading="lazy" alt="">
+    <div class="pt-head">
+      <span class="pt-badge"><i>point</i><b>11</b></span>
+      <span class="pt-tx"><span class="pt-l1">エコフレンドリー</span>
+        <span class="pt-l2">土に還るエコ素材</span></span>
+    </div>
+  </div>
+</section>
+
+<section id="sec-eco-body" data-section-type="features" data-section-name="生分解性・有害ガスなし"
+         data-section-order="43" data-忠実再現="済"
+         data-元画像="22_ra-le-na.jpg" data-元y="547-2314">
+  <div class="eb">
+    <img src="{{ 'ralena-eco-body-bg.jpg' | asset_url }}" width="1000" height="1767" loading="lazy" alt="窓辺に立てた Ra Le-Na と、生分解性・有害ガスなし・BPAフリーの3つの円">
+    <p class="h c-g t-g0">生分解性グレード</p>
+    <p class="h c-g t-g1">のフィラールテック</p>
+    <p class="b c-g t-g2">活性土壌や家庭用コンポスト</p>
+    <p class="b c-g t-g3">環境で微生物に分解され</p>
+    <p class="b c-g t-g4">土に還ります</p>
+    <p class="h c-r t-r0">焼却時の</p>
+    <p class="h c-r t-r1">有害ガスなし</p>
+    <p class="b c-r t-r2">焼却しても、</p>
+    <p class="b c-r t-r3">ダイオキシンなど</p>
+    <p class="b c-r t-r4">有害ガスは検出されません</p>
+    <p class="h c-p t-p0">BPA・</p>
+    <p class="h c-p t-p1">フタル酸フリー</p>
+    <p class="b c-p t-p2">医療・食品用途にも用いられ、</p>
+    <p class="b c-p t-p3">万が一小さな破片を</p>
+    <p class="b c-p t-p4">飲み込んでも無害</p>
+  </div>
+</section>
+
+<section id="sec-design" data-section-type="brand" data-section-name="Design 扉"
+         data-section-order="44" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="0-1852">
+  <div class="dc">
+    <img class="dc-arc" src="{{ 'ralena-design-arc.png' | asset_url }}" width="360" height="50" loading="lazy" alt="">
+    <img class="dc-photo" src="{{ 'ralena-design-cover.jpg' | asset_url }}" width="1000" height="1199" loading="lazy" alt="3世代でキッチンに立つ家族と Ra Le-Na">
+    <p class="dc-h">なぜ、ここまで使いやすい？</p>
+    <p class="dc-v">ラ・レーナだけの</p>
+    <p class="dc-c dc-c1">素材</p>
+    <img class="dc-s dc-s1" src="{{ 'ralena-design-script-material.png' | asset_url }}" width="173" height="67" loading="lazy" alt="Material">
+    <p class="dc-x">×</p>
+    <p class="dc-c dc-c2">デザイン</p>
+    <img class="dc-s dc-s2" src="{{ 'ralena-design-script-design.png' | asset_url }}" width="132" height="73" loading="lazy" alt="Design">
+    <p class="dc-b1">素材の開発と知的財産を取得したデザインに</p>
+    <p class="dc-b2">秘密があります</p>
+  </div>
+</section>
+
+<section id="sec-design-material" data-section-type="features" data-section-name="まな板専用に配合した新素材"
+         data-section-order="45" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="1852-2630">
+  <div class="dm">
+    <img class="dm-photo" src="{{ 'ralena-design-material.jpg' | asset_url }}" width="1000" height="669" loading="lazy" alt="Ra Le-Na の表面と刻印">
+    <div class="dm-sal">&nbsp;</div>
+    <p class="dm-m dm-m1">まな板専用に</p>
+    <p class="dm-m dm-m2">配合した新素材</p>
+    <p class="dm-m dm-m3">「フィラールテック」</p>
+    <p class="dm-g dm-g1">Ra Le-NaはTPUという</p>
+    <p class="dm-g dm-g2">素材で出来ております。</p>
+    <p class="dm-g dm-g3">TPUと一口に言っても、</p>
+    <p class="dm-g dm-g4">硬さや弾力、性能は</p>
+    <p class="dm-g dm-g5">配合で千差万別。</p>
+  </div>
+</section>
+
+<section id="sec-filartech" data-section-type="brand" data-section-name="フィラールテック"
+         data-section-order="46" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="2630-3700">
+  <div class="fl">
+    <p class="fl-pill">Ra Le-Na独自の新素材</p>
+    <h3 class="fl-h">フィラールテック</h3>
+    <p class="fl-t1">Ra Le-Naは23回の試作で</p>
+    <div class="fl-c fl-c1"><b>硬度</b></div>
+    <div class="fl-c fl-c2"><b>復元力</b></div>
+    <div class="fl-c fl-c3"><b>品質</b></div>
+    <p class="fl-t2">を最適化したまな板専用ブレンドを完成させました</p>
+  </div>
+</section>
+
+<section id="sec-filartech-3" data-section-type="features" data-section-name="硬度・クッション性（2帯）"
+         data-section-order="47" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="3700-4542">
+  <div class="f3">
+    <div class="f3-pane" style="top:min(5.7vw,57px);left:min(4.7vw,47px);height:min(33.5vw,335px)">&nbsp;</div>
+    <h3 class="f3-bar" style="top:0;width:min(79.0vw,790px)">絶妙な硬度をピンポイントで設定</h3>
+    <p class="f3-tx" style="top:min(14.3vw,143px)">柔らか過ぎれば刃が食い込み、硬過ぎれば深い傷に。<br>テストを重ね、<span class="f3-o">刃当たりが優しくキズが浅く収まる</span><br>理想の硬度ゾーンを割り出しました。</p>
+    <div class="f3-pane" style="top:min(50.8vw,508px);left:min(4.8vw,48px);height:min(27.3vw,273px)">&nbsp;</div>
+    <h3 class="f3-bar" style="top:min(45.2vw,452px);width:min(65.9vw,659px)">クッション性を＋20％強化</h3>
+    <p class="f3-tx" style="top:min(59.5vw,595px)">ポリマー比率を微調整し、衝撃吸収力をアップ。<br><span class="f3-o">包丁が当たる音と振動をやわらげます。</span></p>
+  </div>
+</section>
+
+<section id="sec-design-support" data-section-type="brand" data-section-name="抗菌剤＋素材とデザインが支えています"
+         data-section-order="48" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="4542-5712">
+  <div class="d8">
+    <div class="d8-pane">&nbsp;</div>
+    <h3 class="d8-bar">素材に抗菌剤を練り込み抗菌機能をUP</h3>
+    <p class="d8-p1">抗菌粒子を素材に練り込み、<span class="d8-o">24h後の菌数を99％減。</span></p>
+    <p class="d8-p2">※試験機関：Guangdong Microbiology Center</p>
+    <p class="d8-mid">この独自配合により、</p>
+    <div class="d8-c" style="left:max(-3.35vw,-33.5px)"><b>滑らない</b></div>
+    <div class="d8-c" style="left:min(21.5vw,215px)"><b>軽い</b></div>
+    <div class="d8-c" style="left:min(46.25vw,462.5px)"><b>ニオイ<br>残らない</b></div>
+    <div class="d8-c" style="left:min(71.05vw,710.5px)"><b>傷つき<br>にくい</b></div>
+    <p class="d8-e1">前章で挙げたメリットは</p>
+    <p class="d8-e2">すべて素材とデザインが支えています。</p>
+  </div>
+</section>
+
+<section id="sec-design-only" data-section-type="features" data-section-name="Ra Le-Naだけの独自デザイン"
+         data-section-order="49" data-忠実再現="済"
+         data-元画像="23_ra-le-na.jpg" data-元y="5712-7524">
+  <div class="do">
+    <img class="do-photo" src="{{ 'ralena-design-only-kitchen.jpg' | asset_url }}" width="1000" height="1000" loading="lazy" alt="キッチンに立てて置かれた Ra Le-Na">
+    <div class="do-g1">&nbsp;</div><div class="do-g2">&nbsp;</div>
+    <p class="do-t1">世界５カ国で意匠登録</p>
+    <p class="do-t2">Ra Le-Naだけの独自デザイン</p>
+    <p class="do-p1">Ra Le-Naは特許庁に知的財産意匠権が登録されており、</p>
+    <p class="do-p2"><b>他社では作ることができない理由</b>はここにあります。</p>
+    <p class="do-c do-c1">素材から配合し直し、</p>
+    <p class="do-c do-c2">形までゼロから設計。</p>
+    <p class="do-c do-c3">だから Ra Le-Naは</p>
+    <p class="do-c do-c4">「毎日、毎日、使いやすい」</p>
+  </div>
+</section>
+
+<section id="sec-story-cover" data-section-type="brand" data-section-name="開発物語 扉"
+         data-section-order="50" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="0-1039">
+  <div class="sc">
+    <img class="sc-bg" src="{{ 'ralena-story-cover.jpg' | asset_url }}" width="1000" height="1039" loading="lazy" alt="家族3世代でキッチンに立つ様子">
+    <img class="sc-scr" src="{{ 'ralena-story-cover-script.jpg' | asset_url }}" width="550" height="228" loading="lazy" alt="Our Story">
+    <p class="sc-a">2年かけて完成した</p>
+    <p class="sc-b">理想を形にした</p>
+    <p class="sc-c">“まな板”の開発物語</p>
+    <p class="sc-d">500人のリアルな声と32回の失敗から生まれた1枚</p>
+  </div>
+</section>
+
+<section id="sec-story-1" data-section-type="brand" data-section-name="開発物語1 理想の一枚がどこにもない"
+         data-section-order="51" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="1039-2831">
+  <div class="rp-inner s1">
+    <p class="s1-h">ある日のキッチン</p>
+    <p class="s1-tx"><span class="s1-w">夕方17:30、仕事帰りの買い物袋を置くやいな</span><br>や、娘が宿題のプリントを差し出し、<br>息子は「お腹すいた」と冷蔵庫をガサゴソ。<br>その横で私は鶏もも肉を切りながら、ふと眉をひ<br>そめる。<br>切るたびに動く、洗ったのにニオイが残ってる、<br>この前漂白したのにもう汚れてる…</p>
+    <p class="s1-tx2">そんな小さなストレスがすべての始まりでした。</p>
+    <p class="s1-big">理想の一枚が、どこにもない</p>
+  </div>
+  <img class="s1-ph" src="{{ 'ralena-photo-wood-board-dark.jpg' | asset_url }}"
+       width="1000" height="610" loading="lazy" alt="暗いキッチンに置かれた木のカッティングボードと白いまな板">
+</section>
+
+<section id="sec-story-2" data-section-type="brand" data-section-name="開発物語2 理想がないなら作る"
+         data-section-order="52" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="2831-4399">
+  <div class="rp-inner"><div class="st-body">
+    <p>今まで色々試した。<br>木やプラスチック、エラストマー、良さそうなモ<br>ノを見つけては買い替えてみたけど、<br>結局「どれも同じ…」</p>
+    <p class="st-em">理想なモノがないなら、<br>自分で作ってみよう</p>
+    <p>SNSで呼びかけると、1週間で主婦500人がアン<br>ケートに回答してくれた。<br>その中に、代表モニターの市山さんがいた。<br>「滑らず、手入れしやすく、長く使える<br>そんなまな板があれば、毎日の料理がもっと気持<br>ちよくなりそうです。」</p>
+    <p>この一言が私たちのゴールを決定づけました。<br>毎日、毎日、使いやすい<br>それがチーム全員の合言葉になった。</p>
+  </div></div>
+</section>
+
+<section id="sec-story-3" data-section-type="brand" data-section-name="開発物語3 国内5工場、全滅"
+         data-section-order="53" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="4399-7296">
+  <div class="s3">
+    <p class="h h0">素材探しで迷路スタート</p>
+    <p class="h h1">TPUに活路、しかし重さの壁</p>
+    <p class="h h2">国内5工場、全滅</p>
+    <p class="t t0">木は包丁に優しいけれど手入れが大変。</p>
+    <p class="t t1">プラスチックは衛生的だけれど刃に悪いし、すぐ</p>
+    <p class="t t2">に黒ずむ。</p>
+    <p class="t t3">エラストマーは滑りやすいし、柔らかすぎる。</p>
+    <p class="t t4">「3つの長所を全部そなえた素材はないの？」</p>
+    <p class="t t5">TPUは柔軟性や抗菌性に優れている。</p>
+    <p class="t t6">けれど、滑りやすかったり、柔らかすぎたり、</p>
+    <p class="t t7">何より重いということはデメリットだった。</p>
+    <p class="t t8">TPUのまな板のデメリットを消すために、デザ</p>
+    <p class="t t9">インや製造方法を考え直した。</p>
+    <p class="t t10">軽くするために木芯をTPUで包む二層成形が必</p>
+    <p class="t t11">要。</p>
+    <p class="t t12">滑らないようにほど良い硬さが出るようにプロダ</p>
+    <p class="t t13">クトデザイナーたちと日夜議論しデザインを設計</p>
+    <p class="t t14">した。</p>
+    <p class="t t15">国内5社の成形工場に仕様書とプロダクトデザイ</p>
+    <p class="t t16">ンを持って尋ねた。</p>
+    <p class="t t17">しかし、答えは</p>
+    <p class="t t18">「前例がなく、難しい。」</p>
+    <p class="t t19">途方にくれた。</p>
+    <p class="t t20">そんな中、開発チームから連絡が</p>
+    <p class="t t21">「深圳に技術を持った方がいます！一度、会いに</p>
+    <p class="t t22">いきましょう！」</p>
+    <p class="t t23">私たちはすぐに深圳に飛んだ。</p>
+  </div>
+</section>
+
+<section id="sec-story-4" data-section-type="brand" data-section-name="開発物語4 深圳の工場"
+         data-section-order="54" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="7296-7936">
+  <img src="{{ 'ralena-story-factory.jpg' | asset_url }}" width="1000" height="640" loading="lazy" alt="Ra Le-Na を製造する深圳の工場">
+</section>
+
+<section id="sec-story-5" data-section-type="brand" data-section-name="開発物語5 そして、あなたのキッチンへ"
+         data-section-order="55" data-忠実再現="済"
+         data-元画像="24_ra-le-na.jpg" data-元y="7936-12293">
+  <div class="rp-inner s5">
+    <p class="s5-h p1">深センで出会った王さん</p>
+    <p class="s5-tx p2">王さんに会いに飛行機4時間、車で2時間。<br>来たのはいいけどまた断られたらどうしようと不<br>安になる。<br>私の不安をかき消した、技術者王さんの返事はシ<br>ンプルだった。<br>「面白い。挑戦しましょう」</p>
+    <p class="s5-h p3">32回の試作</p>
+    <p class="s5-tx p2">TPUを0.1%刻みで硬度を変え、何度も何度も成<br>形。<br>最初は形にすらなりませんでした。<br>機械の設定も温度・圧力・冷却を1℃刻みで調整<br>し、試作品を作ること31回。<br>実際に切り比べてみると、全て失敗。</p>
+    <p class="s5-h p3">抱きしめて眠った1枚</p>
+    <p class="s5-tx p2">今回で深圳には3度目の訪問になる。<br>私たちが訪問する日までに完成させたいと王さん<br>は2週間工場で寝泊まりしているようだ。<br>32回目の施策品、耐久・軽さ・抗菌の全てが合格<br>ラインを越えた。</p>
+    <p class="s5-tx p4">私は王さんやチームメンバーと抱き合った。<br>完成した夜、私たちは工場の片隅で何回も乾杯し<br>た。<br>飲み干したグラスの隣に、まだ温かい試作のまな<br>板。<br>私はそれを胸に抱えたまま眠りについた。</p>
+    <p class="s5-h2 p5"><span class="s5-n">500人がくれた</span><br>「使いやすい」のメール</p>
+    <p class="s5-tx p6">完成品をモニターに発送すると、次々に届く<br>LINE通知。<br>「全く滑らないし、手入れもラクです」<br>「包丁のトントン音が小さくなって、子どもが寝<br>てても安心」<br>「本当に傷がつきにくいですね！長く使えそうで<br>す！」<br>93%が「前のまな板には戻れない」と回答。<br>2年間の迷路は、やっと出口にたどり着きまし<br>た。</p>
+    <p class="s5-h p7">そして、あなたのキッチンへ</p>
+    <p class="s5-tx p8">2年の歳月、500人の声、31回の失敗<br>すべてが詰まったこの1枚は、これからあなたの<br>キッチンで活躍することを願っています。</p>
+  </div>
+</section>
+
+<section id="sec-name-cover" data-section-type="brand" data-section-name="名前に込めた想い 扉"
+         data-section-order="56" data-忠実再現="済"
+         data-元画像="25_ra-le-na.jpg" data-元y="0-1000">
+  <div class="nc">
+    <img src="{{ 'ralena-name-cover.jpg' | asset_url }}" width="1000" height="1000" loading="lazy" alt="Ra Le-Na を抱えてキッチンに立つ女性">
+    <p class="nc-1">名前に込めた想い</p>
+    <p class="nc-2">「ラ・レーナ＝女王」</p>
+  </div>
+</section>
+
+<section id="sec-name-body" data-section-type="brand" data-section-name="Ra Le-Na の由来"
+         data-section-order="57" data-忠実再現="済"
+         data-元画像="25_ra-le-na.jpg" data-元y="1000-2908">
+  <div class="rn">
+    <div class="rn-panel">
+      <p class="rn-logo">Ra Le-Na</p>
+      <p class="rn-kana">ラレーナ</p>
+      <div class="rn-sheet">
+        <p class="rn-row">Ra Le-Na（ラ・レーナ）は、</p>
+        <p class="rn-row">イタリア語 La Regina＝「女王」から生まれ</p>
+        <p class="rn-row">た名前です。</p>
+        <p class="rn-row">&nbsp;</p>
+        <p class="rn-row">毎日キッチンに立つあなたこそ女王。</p>
+        <p class="rn-row">その手元には、女王にふさわしいまな板を。</p>
+        <p class="rn-row">&nbsp;</p>
+        <p class="rn-row">切るたびに感じるピタッとした安定感、</p>
+        <p class="rn-row">洗えばすぐにわかる手入れのラクさ。</p>
+        <p class="rn-row">忙しい平日も、</p>
+        <p class="rn-row">家族で囲む週末のごちそうの日も、</p>
+        <p class="rn-row">いつでも最上級の使い心地を届けたい。</p>
+        <p class="rn-row">&nbsp;</p>
+        <p class="rn-row">そんな想いを込めて、</p>
+        <p class="rn-row">私たちはこの1枚にラ・レーナという王座の</p>
+        <p class="rn-row">名を贈りました。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sec-promise" data-section-type="cta" data-section-name="あなたも毎日、毎日、使いやすい"
+         data-section-order="58" data-忠実再現="済"
+         data-元画像="26_ra-le-na.jpg" data-元y="0-1114">
+  <div class="pr">
+    <img class="pr-bg" src="{{ 'ralena-promise-kitchen.jpg' | asset_url }}" width="1000" height="1114" loading="lazy" alt="Ra Le-Na を手に取るキッチンの様子">
+    <p class="pr-1">あなたも毎日、毎日、使いやすい</p>
+    <p class="pr-2">まな板を手にとってみませんか？</p>
+  </div>
+</section>
+
+<section id="sec-refund" data-section-type="cta" data-section-name="全額返金保証"
+         data-section-order="59" data-忠実再現="済"
+         data-元画像="26_ra-le-na.jpg" data-元y="1114-2289"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ic-cross" viewBox="0 0 32 32"><path d="M1.5 1.5L30.5 30.5M30.5 1.5L1.5 30.5" stroke="currentColor" stroke-width="2.4" fill="none"/></symbol></defs></svg>
+  <div class="rf">
+    <img class="rf-badge" src="{{ 'ralena-badge-refund-30days.png' | asset_url }}"
+         width="430" height="430" loading="lazy" alt="30日間返金保証のバッジ">
+    <p class="rf-h1">使った後に</p>
+    <p class="rf-h2">満足できなければ</p>
+    <p class="rf-gold">全額返金</p>
+    <p class="rf-b1">「本当に使いやすいの？」と不安な方にも安心して</p>
+    <p class="rf-b2">試していただけるよう、30日間の返金保証をお付けしています。</p>
+    <div class="rf-rule" style="left:min(6.0vw,60px)">&nbsp;</div>
+    <p class="rf-mid">こんな理由でも返品OK</p>
+    <div class="rf-rule" style="left:min(76.0vw,760px)">&nbsp;</div>
+    <div class="rf-item" style="left:min(7.7vw,77px);top:min(78.0vw,780px)"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-cross"/></svg><p>クオリティに満足できない</p></div>
+    <div class="rf-item" style="left:min(59.0vw,590px);top:min(78.0vw,780px)"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-cross"/></svg><p>イメージと違った</p></div>
+    <div class="rf-item" style="left:min(7.7vw,77px);top:min(86.2vw,862px)"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-cross"/></svg><p>発送が間に合わなかった</p></div>
+    <div class="rf-item" style="left:min(59.0vw,590px);top:min(86.2vw,862px)"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-cross"/></svg><p>開封してしまった</p></div>
+    <p class="rf-lb" style="top:min(102.9vw,1029px)">返品</p>
+    <p class="rf-lb" style="top:min(108.0vw,1080px)">条件</p>
+    <div class="rf-tri">&nbsp;</div>
+    <p class="rf-c" style="top:min(102.7vw,1027px)">商品到着から<u>30日以内</u>に返品いただくこと</p>
+    <p class="rf-c rf-c2" style="top:min(107.9vw,1079px)">返送時の送料のみお客様ご負担でお願いいたします</p>
+  </div>
+</section>
+
+<section id="sec-campaign" data-section-type="cta" data-section-name="新発売キャンペーン"
+         data-section-order="60" data-忠実再現="済"
+         data-元画像="27_ra-le-na.jpg" data-元y="0-797">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ic-star5" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l3.09 6.9 7.41.72-5.6 5.02 1.64 7.36L12 17.7l-6.54 3.8L7.1 14.14 1.5 9.12l7.41-.72z"/></symbol></svg>
+  <div class="cp">
+    <div class="cp-band">&nbsp;</div>
+    <svg class="cp-stars" viewBox="0 0 1000 13" preserveAspectRatio="none" style="color:#F5E5A9" aria-hidden="true"><use href="#ic-star5" x="206" y="0" width="13" height="13"/><use href="#ic-star5" x="235.5" y="0" width="13" height="13"/><use href="#ic-star5" x="265" y="0" width="13" height="13"/><use href="#ic-star5" x="722" y="0" width="13" height="13"/><use href="#ic-star5" x="751.5" y="0" width="13" height="13"/><use href="#ic-star5" x="781" y="0" width="13" height="13"/></svg>
+    <p class="cp-ttl">新発売キャンペーン</p>
+    <div class="cp-tri">&nbsp;</div>
+    <img class="cp-present" src="{{ 'ralena-script-present.png' | asset_url }}"
+         width="275" height="155" loading="lazy" alt="Present">
+    <div class="cp-icon"><i class="cp-i1"></i><i class="cp-i2"></i></div>
+    <div class="cp-tail">&nbsp;</div>
+    <p class="cp-l1">レビュー投稿で</p>
+    <div class="cp-box">&nbsp;</div>
+    <p class="cp-in">専用スクレパー</p>
+    <p class="cp-out">プレゼント</p>
+    <p class="cp-b1">Ra Le-Naをお使いになった感想をレビューに</p>
+    <p class="cp-b2">書いてくださった方に専用スクレパーをプレゼントします！</p>
+    <div class="cp-bar">&nbsp;</div>
+    <p class="cp-bt">専用スクレパーってどんなもの？</p>
+  </div>
+</section>
+
+<section id="sec-scraper-movie" data-section-type="features" data-section-name="スクレーパー 動画"
+         data-section-order="61" data-忠実再現="済"
+         data-元画像="28_ra-le-na.gif" data-元y="0-480">
+  <video class="ral-mov" width="1000" height="600" muted loop playsinline preload="none"
+         poster="{{ 'ralena-movie-28-poster.jpg' | asset_url }}" data-src="{{ 'ralena-movie-28.mp4' | asset_url }}"
+         aria-label="スクレーパーで汚れをこそげ取る様子"></video>
+</section>
+
+<section id="sec-scraper" data-section-type="features" data-section-name="スクレーパーのご案内"
+         data-section-order="62" data-忠実再現="済"
+         data-元画像="29_ra-le-na.jpg" data-元y="0-932">
+  <div class="rp-inner sc">
+    <p class="sc-i1">Ra Le-Naと同じ素材で作った手のひらサイズのスクレパー。</p>
+    <p class="sc-i2">1枚あるだけでいつもの料理がもっとスムーズに。</p>
+    <div class="sc-circles">
+      <div class="sc-c" style="left:16.1%"><h3>食材集め</h3><p>みじん切りの<br>玉ねぎなどに</p></div>
+      <div class="sc-c" style="left:49.6%"><h3>水切り</h3><p>水滴を一拭きで<br>キレイに</p></div>
+      <div class="sc-c" style="left:83.7%"><h3>掃除サポート</h3><p>柔らかいエッジが<br>調理具にフィット</p></div>
+    </div>
+    <p class="sc-e1">毎日の「切る→集める→鍋へ」が、</p>
+    <p class="sc-e2">もっとラクになる相棒を、ぜひお試しください。</p>
+  </div>
+</section>
+
+<section id="sec-spec" data-section-type="spec" data-section-name="製品仕様"
+         data-section-order="63" data-忠実再現="済"
+         data-元画像="30_ra-le-na.jpg" data-元y="0-1450">
+  <div class="sp">
+    <img class="sp-bg" src="{{ 'ralena-spec-bg-kitchen.jpg' | asset_url }}"
+         width="1000" height="1450" loading="lazy" alt="キッチンの写真"><h2 class="sp-h">製品仕様</h2>
+    <div class="sp-card">
+      <dl>
+      <div class="sp-row"><dt>サイズ</dt><dd class="sp-w">370 × 230 × 20 mm(リム含む)</dd></div>
+      <div class="sp-row"><dt>厚み</dt><dd>1.4cm</dd></div>
+      <div class="sp-row"><dt>重量</dt><dd>1,060g</dd></div>
+      <div class="sp-row"><dt>素材</dt><dd>外層：TPU(硬度3段階)、芯材：竹</dd></div>
+      <div class="sp-row"><dt>耐熱温度</dt><dd>95℃</dd></div>
+      <div class="sp-row"><dt>耐冷温度</dt><dd>−20 ℃</dd></div>
+      <div class="sp-row"><dt>表面加工</dt><dd>表：シボ、裏：ストライプ</dd></div>
+      <div class="sp-row"><dt>エッジ仕様</dt><dd>3mm ハイリム</dd></div>
+      <div class="sp-row"><dt>滑り止め</dt><dd>TPUブリッジ脚</dd></div>
+      <div class="sp-row"><dt>食洗機対応</dt><dd>縦20cm×横40cm</dd></div>
+      <div class="sp-row"><dt>抗菌性能</dt><dd>TPUに無機抗菌剤配合</dd></div>
+      <div class="sp-row"><dt>保証</dt><dd>30日間返金保証</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="sec-faq" data-section-type="faq" data-section-name="よくある質問"
+         data-section-order="64" data-忠実再現="済"
+         data-元画像="31_ra-le-na.jpg" data-元y="0-4009">
+  <div class="fq">
+    <h2 class="fq-h">よくある質問</h2>
+    <p class="fq-sub">Q&amp;A</p>
+    <div class="faq-card" style="height:min(42.6vw,426px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">食材のニオイや色は、本当に残りませ<br>んか？</p>
+      <p class="faq-a">ニオイや色が残りにくいです。Ra Le-Naの素材は木と違<br>い非多孔(ノンポーラス)。脂も色素も内部に染み込まず表<br>面にとどまります。</p>
+    </div>
+    <div class="faq-card" style="height:min(36.8vw,368px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">包丁を傷めないって本当？<br>切れ味は落ちませんか？</p>
+      <p class="faq-a">弾力を0.1％刻みで調整したクッション性が刃こぼれを防<br>止。PPまな板比で衝撃吸収率30％UP。</p>
+    </div>
+    <div class="faq-card" style="height:min(36.8vw,368px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">耐熱・漂白は大丈夫？<br>衛生管理はどうする？</p>
+      <p class="faq-a">耐熱95℃だから熱湯・食洗機乾燥OK。塩素系／酸素系漂<br>白剤もご使用いただけます。</p>
+    </div>
+    <div class="faq-card faq-1" style="height:min(33.0vw,330px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">どれくらい長持ち？買い替え目安は？</p>
+      <p class="faq-a">プラスチックより2〜3倍耐久性があり、家庭使いなら約2<br>年が目安です。</p>
+    </div>
+    <div class="faq-card faq-1" style="height:min(50.6vw,506px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">重さはどれくらいですか？</p>
+      <p class="faq-a">本体で1,060g、パッケージ込みで約1,100gです。厚みは<br>1.4cm、芯材をTPUで包む二層成形でこの重さに収めまし<br>た。500mLペットボトル約2本分。軽すぎると切るときに<br>滑って、重すぎると洗うときに疲れる。そのあいだを狙っ<br>た重さです。</p>
+    </div>
+    <div class="faq-card" style="height:min(42.7vw,427px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">両面で肉と野菜を切り替えて本当に衛<br>生的？</p>
+      <p class="faq-a">表裏でテクスチャを変え、3mmブリッジ脚が作業面を常<br>に浮かせるので裏面が汚れません。交差汚染を防ぎながら<br>1枚で完結できます。</p>
+    </div>
+    <div class="faq-card faq-1" style="height:min(33.0vw,330px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">黒いまな板は傷が目立つと聞くけど？</p>
+      <p class="faq-a">Ra Le-Naは復元力+シボ／ストライプ加工で白線キズが<br>浮きにくい設計です。</p>
+    </div>
+    <div class="faq-card faq-1" style="height:min(27.1vw,271px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">素材は安全？</p>
+      <p class="faq-a">安全です。日本の食品衛生法をクリア。</p>
+    </div>
+    <div class="faq-card faq-1" style="height:min(27.0vw,270px)">
+      <span class="faq-badge">Q</span>
+      <p class="faq-q">反りや変形の心配は？</p>
+      <p class="faq-a">木芯を枠で包む独自構造とTPUの復元弾性で変形を抑制。</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+/* 画面に入ってから動画を読み込んで再生する（autoplay を使わないため） */
+(function(){
+  var vs = document.querySelectorAll('video[data-src]');
+  if (!('IntersectionObserver' in window)) {
+    vs.forEach(function(v){ v.src = v.dataset.src; });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) { v.src = v.dataset.src; v.load(); }
+        var p = v.play(); if (p && p.catch) { p.catch(function(){}); }
+      } else if (!v.paused) { v.pause(); }
+    });
+  }, {rootMargin: '200px 0px'});
+  vs.forEach(function(v){ io.observe(v); });
+})();
+</script>
+</div>
+
+{% schema %}
+{"name": "LP ralena-lp-20260905", "settings": [], "presets": [{"name": "LP ralena-lp-20260905"}]}
+{% endschema %}

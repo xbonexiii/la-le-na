@@ -1,0 +1,19 @@
+<span class="svg-wrapper">
+  <img
+    class="icon"
+    src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/cart.svg?v=1789179839"
+    alt=""
+    width="21"
+    height="20"
+  >
+</span>
+
+<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+{%- if cart != empty -%}
+  <div class="cart-count-bubble">
+    {%- if cart.item_count < 100 -%}
+      <span aria-hidden="true">{{ cart.item_count }}</span>
+    {%- endif -%}
+    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+  </div>
+{%- endif -%}

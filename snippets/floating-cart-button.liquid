@@ -1,0 +1,487 @@
+{% comment %}
+  商品ページ用フローティングカートボタン
+
+  既存のbuy-buttons.liquidをベースにしたフローティングカートボタンです。
+  実際のフォームはセクション内に非表示で配置し、擬似的なフローティングボタンをbody直下に配置します。
+
+  使用例:
+  {% render 'floating-cart-button', product: product, product_form_id: 'floating-product-form', section_id: section.id, block: block %}
+{% endcomment %}
+
+{%- if product != blank -%}
+  {%- liquid
+    assign gift_card_recipient_feature_active = false
+    if product.gift_card?
+      assign gift_card_recipient_feature_active = false
+    endif
+  -%}
+
+  {%- comment -%} 実際のフォーム（セクション内に非表示で配置） {%- endcomment -%}
+  <div
+    class="floating-cart-button-form-wrapper"
+    style="display: none;"
+    {% if block %}
+      {{- block.shopify_attributes -}}
+    {% endif %}
+    data-section-id="{{ section_id }}"
+  >
+    <product-form
+      class="product-form"
+      data-hide-errors="{{ gift_card_recipient_feature_active }}"
+      data-section-id="{{ section_id }}"
+    >
+      <div class="product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">
+          {{- 'icon-error.svg' | inline_asset_content -}}
+        </span>
+        <span class="product-form__error-message"></span>
+      </div>
+
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+          {% if product.selected_or_first_available_variant.available == false
+            or quantity_rule_soldout
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+          class="product-variant-id"
+        >
+
+        <div class="product-form__buttons">
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit"
+            {% if product.selected_or_first_available_variant.available == false
+              or quantity_rule_soldout
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            <span>
+              {%- if product.selected_or_first_available_variant == null -%}
+                {{ 'products.product.unavailable' | t }}
+              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- else -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+        </div>
+      {%- endform -%}
+    </product-form>
+  </div>
+
+  {%- comment -%} 擬似的なフローティングボタン（JavaScriptでbody直下に移動） {%- endcomment -%}
+  {%- liquid
+    assign has_button_image = false
+    if block and block.settings.button_image != blank
+      assign has_button_image = true
+    endif
+  -%}
+
+  <div
+    class="floating-cart-button-trigger"
+    data-section-id="{{ section_id }}"
+    data-submit-button-id="ProductSubmitButton-{{ section_id }}"
+  >
+    <button
+      type="button"
+      class="floating-cart-button__button {% if has_button_image %}floating-cart-button__button--image{% endif %}"
+      aria-label="{{ 'products.product.add_to_cart' | t }}"
+      {% if product.selected_or_first_available_variant.available == false
+        or quantity_rule_soldout
+        or product.selected_or_first_available_variant == null
+      %}
+        disabled
+      {% endif %}
+    >
+      {%- if has_button_image -%}
+        {%- comment -%} 画像が設定されている場合 {%- endcomment -%}
+        <img
+          src="{{ block.settings.button_image | image_url }}"
+          srcset="
+            {%- if block.settings.button_image.width >= 200 -%}{{ block.settings.button_image | image_url: width: 200 }} 200w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 400 -%}{{ block.settings.button_image | image_url: width: 400 }} 400w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 600 -%}{{ block.settings.button_image | image_url: width: 600 }} 600w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 800 -%}{{ block.settings.button_image | image_url: width: 800 }} 800w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 1000 -%}{{ block.settings.button_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 1200 -%}{{ block.settings.button_image | image_url: width: 1200 }} 1200w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 1600 -%}{{ block.settings.button_image | image_url: width: 1600 }} 1600w,{%- endif -%}
+            {%- if block.settings.button_image.width >= 2000 -%}{{ block.settings.button_image | image_url: width: 2000 }} 2000w,{%- endif -%}
+            {{ block.settings.button_image | image_url }} {{ block.settings.button_image.width }}w
+          "
+          sizes="{{ button_size_desktop }}px"
+          alt="{{ 'products.product.add_to_cart' | t }}"
+          class="floating-cart-button__image"
+          width="{{ block.settings.button_image.width }}"
+          height="{{ block.settings.button_image.height }}"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- comment -%} 画像が設定されていない場合（既存のSVGアイコンとテキスト） {%- endcomment -%}
+        <span class="floating-cart-button__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span class="floating-cart-button__text">
+          {%- if product.selected_or_first_available_variant == null -%}
+            {{ 'products.product.unavailable' | t }}
+          {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- else -%}
+            {%- if block and block.settings.button_text != blank -%}
+              {{ block.settings.button_text }}
+            {%- else -%}
+              購入する
+            {%- endif -%}
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+    </button>
+  </div>
+
+  {%- liquid
+    assign button_bg_color = '#000000'
+    assign button_text_color = '#000000'
+    assign position_right_desktop = 24
+    assign position_bottom_desktop = 24
+    assign position_right_mobile = 24
+    assign position_bottom_mobile = 24
+    assign button_size_desktop = 64
+    assign button_size_mobile = 56
+    assign text_size_desktop = 12
+    assign text_size_mobile = 10
+
+    if block and block.settings.button_background_color != blank
+      assign button_bg_color = block.settings.button_background_color
+    endif
+
+    if block and block.settings.button_text_color != blank
+      assign button_text_color = block.settings.button_text_color
+    endif
+
+    if block and block.settings.position_right_desktop != blank
+      assign position_right_desktop = block.settings.position_right_desktop
+    endif
+
+    if block and block.settings.position_bottom_desktop != blank
+      assign position_bottom_desktop = block.settings.position_bottom_desktop
+    endif
+
+    if block and block.settings.position_right_mobile != blank
+      assign position_right_mobile = block.settings.position_right_mobile
+    endif
+
+    if block and block.settings.position_bottom_mobile != blank
+      assign position_bottom_mobile = block.settings.position_bottom_mobile
+    endif
+
+    if block and block.settings.button_size_desktop != blank
+      assign button_size_desktop = block.settings.button_size_desktop
+    endif
+
+    if block and block.settings.button_size_mobile != blank
+      assign button_size_mobile = block.settings.button_size_mobile
+    endif
+
+    if block and block.settings.text_size_desktop != blank
+      assign text_size_desktop = block.settings.text_size_desktop
+    endif
+
+    if block and block.settings.text_size_mobile != blank
+      assign text_size_mobile = block.settings.text_size_mobile
+    endif
+  -%}
+
+  {%- style -%}
+    .floating-cart-button-trigger {
+      position: fixed;
+      bottom: {{ position_bottom_desktop }}px;
+      right: {{ position_right_desktop }}px;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .floating-cart-button__button {
+      width: {{ button_size_desktop }}px;
+      height: {{ button_size_desktop }}px;
+      min-width: {{ button_size_desktop }}px;
+      min-height: {{ button_size_desktop }}px;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s ease;
+      position: relative;
+      cursor: pointer;
+      pointer-events: auto;
+      background-color: {{ button_bg_color }};
+      color: {{ button_text_color }};
+      overflow: hidden;
+    }
+
+    .floating-cart-button__button--image {
+      width: auto;
+      height: auto;
+      min-width: auto;
+      min-height: auto;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .floating-cart-button__button:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .floating-cart-button__button:not(.floating-cart-button__button--image):hover {
+      opacity: 0.9;
+    }
+
+    .floating-cart-button__button--image:hover .floating-cart-button__image {
+      opacity: 0.9;
+    }
+
+    .floating-cart-button__button:active {
+      transform: translateY(0);
+    }
+
+    .floating-cart-button__button:disabled {
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.6;
+    }
+
+    .floating-cart-button__button--image {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    .floating-cart-button__button--image:disabled {
+      background-color: transparent;
+    }
+
+    .floating-cart-button__button:not(.floating-cart-button__button--image):disabled {
+      background-color: rgba(var(--color-button), 0.5);
+    }
+
+    .floating-cart-button__image {
+      width: {{ button_size_desktop }}px;
+      height: auto;
+      max-width: {{ button_size_desktop }}px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .floating-cart-button__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 2px;
+    }
+
+    .floating-cart-button__icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .floating-cart-button__text {
+      font-size: {{ text_size_desktop }}px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+      text-align: center;
+      white-space: nowrap;
+      color: currentColor;
+    }
+
+    @media screen and (max-width: 749px) {
+      .floating-cart-button-trigger {
+        bottom: {{ position_bottom_mobile }}px;
+        right: {{ position_right_mobile }}px;
+      }
+
+      .floating-cart-button__button {
+        width: {{ button_size_mobile }}px;
+        height: {{ button_size_mobile }}px;
+        min-width: {{ button_size_mobile }}px;
+        min-height: {{ button_size_mobile }}px;
+      }
+
+      .floating-cart-button__button--image {
+        width: auto;
+        height: auto;
+        min-width: auto;
+        min-height: auto;
+      }
+
+      .floating-cart-button__image {
+        width: {{ button_size_mobile }}px;
+        max-width: {{ button_size_mobile }}px;
+      }
+
+      .floating-cart-button__icon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 1px;
+      }
+
+      .floating-cart-button__icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .floating-cart-button__text {
+        font-size: {{ text_size_mobile }}px;
+        margin-top: 4px;
+      }
+    }
+  {%- endstyle -%}
+
+  <script>
+    (function () {
+      /**
+       * フローティングカートボタンの初期化
+       */
+      function initFloatingCartButton() {
+        const trigger = document.querySelector('.floating-cart-button-trigger');
+        if (!trigger) return;
+
+        // body直下に移動
+        if (trigger.parentElement !== document.body) {
+          document.body.appendChild(trigger);
+        }
+
+        const button = trigger.querySelector('.floating-cart-button__button');
+        if (!button) return;
+
+        const sectionId = trigger.dataset.sectionId;
+        const submitButtonId = trigger.dataset.submitButtonId;
+
+        /**
+         * フローティングボタンのクリックイベントハンドラ
+         */
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (button.disabled) return;
+
+          // 実際の送信ボタンを探す
+          const submitButton = document.getElementById(submitButtonId);
+
+          if (submitButton && !submitButton.disabled && submitButton.getAttribute('aria-disabled') !== 'true') {
+            // 実際のフォームの送信ボタンをクリック
+            submitButton.click();
+          } else {
+            // フォールバック: product-form要素を探す
+            const productFormElement = document.querySelector(`product-form[data-section-id="${sectionId}"]`);
+            if (productFormElement) {
+              const fallbackButton = productFormElement.querySelector('[type="submit"]');
+              if (fallbackButton && !fallbackButton.disabled) {
+                fallbackButton.click();
+              }
+            }
+          }
+        });
+
+        /**
+         * 実際の送信ボタンの状態を監視して、フローティングボタンの状態を同期
+         */
+        const submitButton = document.getElementById(submitButtonId);
+        if (submitButton) {
+          // 初期状態を同期
+          button.disabled = submitButton.disabled || submitButton.getAttribute('aria-disabled') === 'true';
+
+          // 状態変化を監視
+          const observer = new MutationObserver(function () {
+            button.disabled = submitButton.disabled || submitButton.getAttribute('aria-disabled') === 'true';
+          });
+
+          observer.observe(submitButton, {
+            attributes: true,
+            attributeFilter: ['disabled', 'aria-disabled'],
+          });
+
+          // loading状態も同期
+          const loadingObserver = new MutationObserver(function () {
+            if (submitButton.classList.contains('loading')) {
+              button.classList.add('loading');
+              button.disabled = true;
+            } else {
+              button.classList.remove('loading');
+              button.disabled = submitButton.disabled || submitButton.getAttribute('aria-disabled') === 'true';
+            }
+          });
+
+          loadingObserver.observe(submitButton, {
+            attributes: true,
+            attributeFilter: ['class'],
+          });
+        }
+      }
+
+      // DOMContentLoadedまたは既に読み込み済みの場合
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFloatingCartButton);
+      } else {
+        initFloatingCartButton();
+      }
+    })();
+  </script>
+{%- endif -%}

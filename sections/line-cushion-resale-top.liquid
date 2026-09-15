@@ -1,0 +1,888 @@
+<style>
+  /* ---- Reset / Base ---- */
+  .lcr-wrap *, .lcr-wrap *::before, .lcr-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .lcr-wrap {
+    font-family: var(--font-body-family);
+    color: #1d1d1f;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .lcr-wrap img { max-width: 100%; height: auto; display: block; }
+  .lcr-wrap a { color: inherit; text-decoration: none; }
+
+  /* ---- Design Tokens ---- */
+  .lcr-wrap {
+    --gold: #C9AC82;
+    --gold-light: #d8c09a;
+    --wine: #6E1F2E;
+    --navy: #202124;
+    --text: #1d1d1f;
+    --bg-white: #ffffff;
+    --bg-gray: #f5f5f7;
+    --bg-cream: #F5EFE6;
+    --bg-dark: #202124;
+    --line-green: #06C755;
+    --line-green-hover: #04a847;
+  }
+
+  /* ---- Layout ---- */
+  .lcr-wrap section { width: 100%; }
+  .lcr-wrap .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .lcr-wrap .section-padding { padding: 100px 0; }
+
+  /* ---- Typography ---- */
+  .lcr-wrap h2.section-title {
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Animations ---- */
+  .lcr-wrap .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .lcr-wrap .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .lcr-wrap .slide-left  { opacity: 0; transform: translateX(-48px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .lcr-wrap .slide-right { opacity: 0; transform: translateX(48px);  transition: opacity 0.8s ease, transform 0.8s ease; }
+  .lcr-wrap .slide-up    { opacity: 0; transform: translateY(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+  .lcr-wrap .slide-left.visible, .lcr-wrap .slide-right.visible, .lcr-wrap .slide-up.visible { opacity: 1; transform: none; }
+
+  /* ---- Buttons ---- */
+  .lcr-wrap .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    letter-spacing: 0.02em;
+  }
+  .lcr-wrap .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .lcr-wrap .btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--line-green);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .lcr-wrap .btn-line:hover { background: var(--line-green-hover); transform: translateY(-1px); }
+  .lcr-wrap .btn-line svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+  /* ---- Scroll Hint ---- */
+  .lcr-wrap .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.55); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; animation: lcr-scroll-bounce 2.2s infinite; cursor: default;
+  }
+  .lcr-wrap .scroll-hint svg { width: 20px; height: 20px; }
+  @keyframes lcr-scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; }
+    50%       { transform: translateX(-50%) translateY(8px); opacity: 0.9; }
+  }
+
+  /* ---- Middle CTA ---- */
+  .lcr-wrap #sec-cta-mid {
+    background: var(--bg-dark); color: #fff;
+    padding: 72px 0; text-align: center;
+  }
+  .lcr-wrap #sec-cta-mid .mid-cta-inner { max-width: 560px; margin: 0 auto; }
+  .lcr-wrap #sec-cta-mid .mid-cta-title {
+    font-size: 28px; font-weight: 700; line-height: 1.4;
+    margin-bottom: 12px; letter-spacing: -0.02em; color: #fff;
+  }
+  .lcr-wrap #sec-cta-mid .mid-cta-sub {
+    font-size: 15px; opacity: 0.75; margin-bottom: 32px;
+  }
+  .lcr-wrap #sec-cta-mid .btn-line { font-size: 17px; }
+  .lcr-wrap #sec-cta-mid .mid-cta-note { font-size: 13px; opacity: 0.6; margin-top: 12px; }
+  @media (max-width: 768px) {
+    .lcr-wrap #sec-cta-mid { padding: 56px 0; }
+    .lcr-wrap #sec-cta-mid .mid-cta-title { font-size: 22px; }
+  }
+
+  /* ---- Mobile Sticky CTA ---- */
+  #lcr-sticky-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000;
+    padding: 12px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 80%, transparent);
+  }
+  #lcr-sticky-cta a {
+    display: block; width: 100%; text-align: center;
+    background: #06C755; color: #fff;
+    font-size: 16px; font-weight: 700; text-decoration: none;
+    padding: 16px; border-radius: 12px;
+    letter-spacing: 0.02em;
+  }
+  #lcr-sticky-cta .sticky-note {
+    text-align: center; font-size: 11px; color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+  }
+  @media (min-width: 769px) { #lcr-sticky-cta { display: none !important; } }
+
+  /* ---- Parallax BG ---- */
+  .lcr-wrap .parallax-bg {
+    top: -15% !important;
+    bottom: auto !important;
+    height: 130% !important;
+    will-change: transform;
+  }
+  @media (max-width: 768px) {
+    .lcr-wrap .parallax-bg {
+      top: 0 !important;
+      height: 100% !important;
+      will-change: auto;
+    }
+  }
+
+
+  /* ============================================
+     SEC-HERO
+  ============================================ */
+  .lcr-wrap #sec-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #202124;
+  }
+  .lcr-wrap #sec-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.6;
+  }
+  .lcr-wrap #sec-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.3) 100%);
+  }
+  .lcr-wrap #sec-hero .container { position: relative; z-index: 1; }
+  .lcr-wrap #sec-hero .eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .lcr-wrap #sec-hero h1 {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-family: var(--font-heading-family);
+  }
+  .lcr-wrap #sec-hero .subheadline {
+    font-size: 18px;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 40px;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .lcr-wrap #sec-hero .cta-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 16px;
+  }
+
+
+  /* ============================================
+     SEC-STORY
+  ============================================ */
+  .lcr-wrap #sec-story { background: var(--bg-cream); }
+  .lcr-wrap #sec-story .story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .lcr-wrap #sec-story .section-title { margin-bottom: 28px; }
+  .lcr-wrap #sec-story .story-quote {
+    font-size: 17px;
+    font-style: italic;
+    color: #3a3a3a;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+  .lcr-wrap #sec-story .story-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .lcr-wrap #sec-story .stat-item { text-align: center; }
+  .lcr-wrap #sec-story .stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--wine);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .lcr-wrap #sec-story .stat-unit {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--wine);
+  }
+  .lcr-wrap #sec-story .stat-label {
+    font-size: 13px;
+    color: #6e6e73;
+    margin-top: 4px;
+  }
+  .lcr-wrap #sec-story .story-body {
+    font-size: 17px;
+    line-height: 2;
+    color: #3a3a3a;
+  }
+  .lcr-wrap #sec-story .story-body p + p { margin-top: 16px; }
+  .lcr-wrap #sec-story .story-image-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-story .story-image-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+
+
+
+  /* ============================================
+     SEC-REVIEWS
+  ============================================ */
+  .lcr-wrap #sec-reviews { background: #FEF9ED; }
+  .lcr-wrap #sec-reviews .reviews-hero-wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 0 64px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55));
+    display: flex;
+    align-items: flex-end;
+    padding: 32px 40px;
+  }
+  .lcr-wrap #sec-reviews .reviews-hero-label {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .lcr-wrap #sec-reviews .section-title { text-align: center; margin-bottom: 48px; }
+
+
+  /* ============================================
+     SEC-SALE
+  ============================================ */
+  .lcr-wrap #sec-sale { background: var(--bg-white); }
+  .lcr-wrap #sec-sale .sale-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .lcr-wrap #sec-sale .section-title { margin-bottom: 32px; }
+  .lcr-wrap #sec-sale .sale-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .lcr-wrap #sec-sale .sale-table tr {
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .lcr-wrap #sec-sale .sale-table tr:first-child {
+    border-top: 1px solid #e8e8e8;
+  }
+  .lcr-wrap #sec-sale .sale-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #6e6e73;
+    padding: 16px 16px 16px 0;
+    white-space: nowrap;
+    vertical-align: top;
+    width: 120px;
+  }
+  .lcr-wrap #sec-sale .sale-table td {
+    padding: 16px 0;
+    color: #1d1d1f;
+    line-height: 1.6;
+  }
+  .lcr-wrap #sec-sale .sale-table .price-highlight {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--wine);
+  }
+  .lcr-wrap #sec-sale .sale-image-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-sale .sale-image-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-sale .sale-cta-wrap {
+    margin-top: 36px;
+  }
+
+
+  /* ============================================
+     SEC-LINE
+  ============================================ */
+  .lcr-wrap #sec-line { background: var(--bg-gray); }
+  .lcr-wrap #sec-line .section-title { text-align: center; margin-bottom: 16px; }
+  .lcr-wrap #sec-line .line-subtitle {
+    text-align: center;
+    color: #6e6e73;
+    margin-bottom: 56px;
+    font-size: 17px;
+  }
+  .lcr-wrap #sec-line .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .lcr-wrap #sec-line .step-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .lcr-wrap #sec-line .step-image-wrap img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+  }
+  .lcr-wrap #sec-line .step-content { padding: 24px; }
+  .lcr-wrap #sec-line .step-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .lcr-wrap #sec-line .step-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .lcr-wrap #sec-line .step-body { font-size: 15px; color: #6e6e73; line-height: 1.7; }
+
+  .lcr-wrap #sec-line .line-merits {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 36px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lcr-wrap #sec-line .line-merits-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .lcr-wrap #sec-line .merit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lcr-wrap #sec-line .merit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #3a3a3a;
+    line-height: 1.6;
+  }
+  .lcr-wrap #sec-line .merit-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--line-green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .lcr-wrap #sec-line .merit-icon svg { width: 14px; height: 14px; }
+  .lcr-wrap #sec-line .line-note {
+    text-align: center;
+    font-size: 14px;
+    color: #6e6e73;
+    margin-bottom: 36px;
+  }
+  .lcr-wrap #sec-line .line-cta-wrap {
+    text-align: center;
+  }
+
+
+  /* ============================================
+     SEC-CTA（最終CTA）
+  ============================================ */
+  .lcr-wrap #sec-cta {
+    background: var(--bg-dark);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-cta .cta-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+  }
+  .lcr-wrap #sec-cta .container { position: relative; z-index: 1; text-align: center; }
+  .lcr-wrap #sec-cta .section-title {
+    color: #fff;
+    margin-bottom: 16px;
+    font-size: clamp(28px, 4vw, 48px);
+  }
+  .lcr-wrap #sec-cta .cta-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 48px;
+  }
+  .lcr-wrap #sec-cta .btn-line { font-size: 20px; padding: 22px 52px; }
+  .lcr-wrap #sec-cta .cta-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 20px;
+  }
+
+
+  /* ============================================
+     SEC-VIDEO
+  ============================================ */
+  .lcr-wrap #sec-video { background: var(--bg-white); }
+  .lcr-wrap #sec-video .container { text-align: center; }
+  .lcr-wrap #sec-video .section-title { margin-bottom: 12px; }
+  .lcr-wrap #sec-video .video-lead {
+    font-size: 15px;
+    color: #6e6e73;
+    margin-bottom: 64px;
+  }
+  .lcr-wrap #sec-video .video-wrap {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.12);
+    aspect-ratio: 16 / 9;
+  }
+  .lcr-wrap #sec-video .video-wrap video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+    object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .lcr-wrap #sec-video .video-wrap { border-radius: 12px; }
+  }
+
+
+  /* ============================================
+     SEC-RANKING（楽天受賞実績）
+  ============================================ */
+  .lcr-wrap #sec-ranking {
+    background: #FEF9ED;
+    color: #1d1d1f;
+    position: relative;
+    overflow: hidden;
+  }
+  .lcr-wrap #sec-ranking::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,172,130,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lcr-wrap #sec-ranking .container { position: relative; z-index: 1; text-align: center; }
+  .lcr-wrap #sec-ranking .ranking-hero-badge {
+    width: 240px;
+    height: auto;
+    margin: 0 auto 40px;
+    display: block;
+    filter: drop-shadow(0 4px 24px rgba(201,172,130,0.5));
+    animation: ralena-glow-pulse 4s ease-in-out infinite;
+  }
+  @keyframes ralena-glow-pulse {
+    0%, 100% { filter: drop-shadow(0 4px 24px rgba(201,172,130,0.5)); }
+    50%       { filter: drop-shadow(0 4px 36px rgba(201,172,130,0.75)); }
+  }
+  .lcr-wrap #sec-ranking .ranking-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #9a7a4a;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .lcr-wrap #sec-ranking .section-title {
+    color: #1d1d1f;
+    margin-bottom: 12px;
+  }
+  .lcr-wrap #sec-ranking .ranking-sub {
+    font-size: 15px;
+    color: #6e6e73;
+    margin-bottom: 64px;
+    line-height: 1.8;
+  }
+  .lcr-wrap #sec-ranking .ranking-divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 64px;
+  }
+  .lcr-wrap #sec-ranking .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .lcr-wrap #sec-ranking .badge-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+  }
+  .lcr-wrap #sec-ranking .badge-item img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .lcr-wrap #sec-ranking .badges-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  @media (max-width: 768px) {
+    .lcr-wrap #sec-ranking .ranking-hero-badge { width: 180px; margin-bottom: 28px; }
+    .lcr-wrap #sec-ranking .ranking-sub { margin-bottom: 40px; }
+    .lcr-wrap #sec-ranking .ranking-divider { margin-bottom: 40px; }
+    .lcr-wrap #sec-ranking .badges-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .lcr-wrap #sec-ranking .badge-item { padding: 12px 8px; }
+  }
+  @media (max-width: 480px) {
+    .lcr-wrap #sec-ranking .badges-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* ============================================
+     Responsive (768px以下)
+  ============================================ */
+  @media (max-width: 768px) {
+    .lcr-wrap { font-size: 16px; }
+    .lcr-wrap .container { padding: 0 20px; }
+    .lcr-wrap .section-padding { padding: 64px 0; }
+    .lcr-wrap h2.section-title { font-size: 28px; }
+
+    .lcr-wrap #sec-hero { min-height: 85vh; }
+    .lcr-wrap #sec-hero .container { padding-left: 24px; padding-right: 24px; }
+    .lcr-wrap #sec-hero h1 { font-size: 28px; }
+    .lcr-wrap #sec-hero .subheadline { font-size: 15px; }
+
+    .lcr-wrap #sec-story .story-inner { grid-template-columns: 1fr; gap: 40px; }
+    .lcr-wrap #sec-story .story-image-wrap img { height: 300px; }
+    .lcr-wrap #sec-story .story-stats { gap: 20px; }
+    .lcr-wrap #sec-story .stat-number { font-size: 36px; }
+
+    .lcr-wrap #sec-features .features-grid { grid-template-columns: 1fr; gap: 20px; }
+    .lcr-wrap #sec-features .feature-image-wrap img { height: 200px; }
+
+    .lcr-wrap #sec-reviews .reviews-hero-wrap { margin-bottom: 40px; }
+
+    .lcr-wrap #sec-sale .sale-inner { grid-template-columns: 1fr; gap: 40px; }
+    .lcr-wrap #sec-sale .sale-image-wrap { order: -1; }
+    .lcr-wrap #sec-sale .sale-image-wrap img { height: 280px; }
+
+    .lcr-wrap #sec-line .steps { grid-template-columns: 1fr; }
+    .lcr-wrap #sec-line .line-merits { padding: 28px 24px; }
+
+    .lcr-wrap #sec-cta .btn-line {
+      font-size: 16px;
+      padding: 18px 32px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .lcr-wrap .btn-line { width: 100%; justify-content: center; }
+  }
+
+/* ---- eyebrow（見出し上の小ラベル）を一時非表示（2026-07-14 市山さん指示） ----
+   削除はせず表示だけ止める。復活させるときはこのブロックを消す */
+.lcr-wrap [class*="eyebrow"] { display: none !important; }
+</style>
+
+<div class="lcr-wrap">
+
+  <!-- SEC-HERO -->
+  <section
+    id="sec-hero"
+    data-section-type="hero"
+    data-section-name="ヒーローセクション"
+    data-section-order="1"
+  >
+    <img
+      class="hero-bg parallax-bg"
+      data-slot="hero-image"
+      src="{{ 'ralena_board_kitchen_woman.jpg' | asset_url }}"
+      alt="RaLe-Na まな板をキッチンで眺める女性"
+    />
+    <div class="hero-overlay"></div>
+    <div class="container section-padding">
+      <p data-slot="eyebrow" class="eyebrow fade-in">RESALE 2026 ｜ 今回のセールは終了しました</p>
+      <h1 data-slot="headline" class="fade-in">今回の再販セールは<br>終了しました。</h1>
+      <p data-slot="subheadline" class="subheadline fade-in">たくさんのご注文、ありがとうございました。次回の再販・セールは、LINE登録の方へいち早く先行案内します。</p>
+      <a
+        data-slot="cta-button"
+        href="https://lin.ee/rDDhEF8"
+        class="btn-line fade-in"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.33 5.2 3.42 6.87L5 22l4.26-2.16C10.11 20.28 11.04 20.4 12 20.4c5.52 0 10-4.03 10-9S17.52 2 12 2zm1 13h-2v-5h2v5zm0-7h-2V6h2v2z"/>
+        </svg>
+        ▼ LINEで次回の再販案内を受け取る
+      </a>
+      <p data-slot="cta-note" class="cta-note fade-in">登録無料・30秒で完了。次回のセール・再販をいち早くお知らせします。</p>
+    </div>
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- SEC-STORY -->
+  <section
+    id="sec-story"
+    data-section-type="story"
+    data-section-name="開発ストーリーセクション"
+    data-section-order="2"
+    class="section-padding"
+  >
+    <div class="container">
+      <div class="story-inner">
+        <div class="slide-left">
+          <h2 data-slot="story-title" class="section-title" style="margin-bottom:28px">主婦500人が関わった、<br>2年間の開発。</h2>
+          <blockquote data-slot="story-quote" class="story-quote">
+            「毎日使うのに、これでいいと思えるまな板がない」
+          </blockquote>
+          <div class="story-stats">
+            <div class="stat-item">
+              <div><span class="stat-number">500</span><span class="stat-unit">人</span></div>
+              <p class="stat-label">モニター参加</p>
+            </div>
+            <div class="stat-item">
+              <div><span class="stat-number">32</span><span class="stat-unit">回</span></div>
+              <p class="stat-label">試作・改良</p>
+            </div>
+            <div class="stat-item">
+              <div><span class="stat-number">2</span><span class="stat-unit">年</span></div>
+              <p class="stat-label">開発期間</p>
+            </div>
+          </div>
+          <div data-slot="story-body" class="story-body">
+            <p>「なぜ毎日使うものなのに、満足できるまな板がないのか」—— そんな疑問から、私たちの開発はスタートしました。</p>
+            <p>実際にキッチンに立つ500人の主婦の方々と対話を重ね、32回の試作と改良を経て、RaLe-Naは誕生しました。</p>
+            <p>そして発売と同時に完売。再販を望む声に応え、今回の「再販セール」が実現しました。</p>
+          </div>
+        </div>
+        <div class="story-image-wrap slide-right">
+          <img
+            data-slot="story-image"
+            src="{{ 'ralena_board_black_front.jpg' | asset_url }}"
+            alt="RaLe-Na 黒まな板 正面"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-VIDEO -->
+  <section
+    id="sec-video"
+    data-section-type="video"
+    data-section-name="商品動画セクション"
+    data-section-order="3"
+    class="section-padding"
+  >
+    <div class="container">
+      <img data-slot="video-logo" src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/ralena-logo.png?v=1753340395" alt="RaLe-Na" class="slide-up" style="height:48px;width:auto;margin:0 auto 16px;" />
+      <p data-slot="video-lead" class="video-lead slide-up" style="transition-delay:0.1s">素材のこだわりと日常での使いやすさを、映像でご確認ください。</p>
+      <div class="video-wrap slide-up" style="transition-delay:0.2s">
+        <video
+          src="https://cdn.shopify.com/videos/c/o/v/c919c1a5afa7457498ad50e16bc2a5f6.mp4"
+          autoplay muted loop playsinline
+        ></video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-RANKING -->
+  <section
+    id="sec-ranking"
+    data-section-type="proof"
+    data-section-name="楽天受賞実績セクション"
+    data-section-order="4"
+    class="section-padding"
+  >
+    <div class="container">
+      <p class="ranking-eyebrow slide-up">RAKUTEN RANKING</p>
+      <img
+        src="{{ 'ralena-18kan.png' | asset_url }}"
+        alt="楽天市場ランキング 18冠獲得"
+        class="ranking-hero-badge slide-up"
+        style="transition-delay:0.05s"
+      />
+      <h2 data-slot="ranking-title" class="section-title slide-up" style="transition-delay:0.1s">楽天市場のお客様に<br>使いやすさが評価されて</h2>
+      <p data-slot="ranking-sub" class="ranking-sub slide-up" style="transition-delay:0.15s">
+        まな板・カッティングボードやキッチン用品・調理器具など、<br class="sp-hide">18の部門でランキング1位を獲得。
+      </p>
+      <div class="ranking-divider slide-up" style="transition-delay:0.2s"></div>
+
+      <div class="badges-grid">
+        <div class="badge-item slide-up" style="transition-delay:0.05s">
+          <img src="{{ 'ralena-rank-general-1st.png' | asset_url }}" alt="リアルタイムランキング 総合 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.1s">
+          <img src="{{ 'ralena-rank-board2.png' | asset_url }}" alt="まな板・カッティングボード 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.15s">
+          <img src="{{ 'ralena-rank-board.png' | asset_url }}" alt="まな板・カッティングボード 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.2s">
+          <img src="{{ 'ralena-rank-board-black.png' | asset_url }}" alt="まな板・カッティングボード(ブラック) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.25s">
+          <img src="{{ 'ralena-rank-board-china.png' | asset_url }}" alt="まな板・カッティングボード(中国) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.3s">
+          <img src="{{ 'ralena-rank-kitchen.png' | asset_url }}" alt="キッチン用品・食器・調理器具 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.05s">
+          <img src="{{ 'ralena-rank-kitchen-1.png' | asset_url }}" alt="キッチン用品・食器・調理器具 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.1s">
+          <img src="{{ 'ralena-rank-kitchen-all.png' | asset_url }}" alt="キッチン用品・食器・調理器具(すべて) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.15s">
+          <img src="{{ 'ralena-rank-kitchen-black.png' | asset_url }}" alt="キッチン用品・食器・調理器具(ブラック) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.2s">
+          <img src="{{ 'ralena-rank-kitchen-china.png' | asset_url }}" alt="キッチン用品・食器・調理器具(中国) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.25s">
+          <img src="{{ 'ralena-rank-kitchen-women.png' | asset_url }}" alt="キッチン用品・食器・調理器具(女性) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.3s">
+          <img src="{{ 'ralena-rank-kitchen-men.png' | asset_url }}" alt="キッチン用品・食器・調理器具(男性) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.05s">
+          <img src="{{ 'ralena-rank-cooking.png' | asset_url }}" alt="調理器具・製菓器具 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.1s">
+          <img src="{{ 'ralena-rank-cooking2.png' | asset_url }}" alt="調理器具・製菓器具 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.15s">
+          <img src="{{ 'ralena-rank-cooking-black.png' | asset_url }}" alt="調理器具・製菓器具(ブラック) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.2s">
+          <img src="{{ 'ralena-rank-cooking-china.png' | asset_url }}" alt="調理器具・製菓器具(中国) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.25s">
+          <img src="{{ 'ralena-rank-general-women.png' | asset_url }}" alt="総合(女性) 1位" />
+        </div>
+        <div class="badge-item slide-up" style="transition-delay:0.3s">
+          <img src="{{ 'ralena-rank-general-men.png' | asset_url }}" alt="総合(男子) 1位" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEC-REVIEWS -->
+  <section
+    id="sec-reviews"
+    data-section-type="reviews"
+    data-section-name="お客様の声セクション"
+    data-section-order="5"
+    class="section-padding"
+  >
+    <div class="container">
+      <div class="reviews-hero-wrap slide-up">
+        <img
+          data-slot="reviews-hero-image"
+          src="{{ 'cooking_family_three.jpg' | asset_url }}"
+          alt="家族3人で調理している様子"
+        />
+        <div class="reviews-hero-overlay">
+          <p class="reviews-hero-label">「買ってよかった」が届いています。</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+</div><!-- /.lcr-wrap -->
+
+{% schema %}
+{
+  "name": "LINE クッション 再販 (上部)",
+  "settings": []
+}
+{% endschema %}

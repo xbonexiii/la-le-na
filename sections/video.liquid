@@ -1,0 +1,517 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* 音声切り替えボタンのスタイル */
+  .video-audio-toggle {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .video-audio-toggle:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .video-audio-toggle:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+  }
+
+  .video-audio-toggle:focus {
+    outline: none;
+  }
+
+  /* SVGアイコンのスタイル */
+  .video-audio-toggle .audio-icon {
+    transition: opacity 0.2s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  }
+
+  .video-section__media {
+    position: relative;
+  }
+
+    /* モバイル対応 */
+  @media screen and (max-width: 750px) {
+    .video-audio-toggle {
+      width: 36px;
+      height: 36px;
+      bottom: 8px;
+      right: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      border-width: 0.5px;
+    }
+
+    .video-audio-toggle .audio-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .video-audio-toggle:hover {
+      transform: scale(1.02);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign video_id = section.settings.video.id | default: section.settings.video_url.id
+  assign video_alt = section.settings.video.alt | default: section.settings.description
+  assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+  assign poster = section.settings.video.preview_image | default: section.settings.cover_image
+
+  if section.settings.video != null
+    assign ratio_diff = section.settings.video.aspect_ratio | minus: poster.aspect_ratio | abs
+    if ratio_diff < 0.01 and ratio_diff > 0
+      assign fix_ratio = true
+    endif
+  endif
+-%}
+
+{%- capture sizes -%}
+  {% if section.settings.full_width -%}
+    100vw
+  {%- else -%}
+    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px)
+    calc(100vw - 10rem), 100vw
+  {%- endif %}
+{%- endcapture -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="video-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+    <div
+      {% if section.settings.full_width %}
+        class="page-width"
+      {% endif %}
+    >
+      {%- unless section.settings.heading == blank -%}
+        <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        </div>
+      {%- endunless -%}
+    </div>
+    <deferred-media
+      class="video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      data-media-id="{{ video_id }}"
+      {% if section.settings.enable_video_autoplay %}
+        data-autoplay="true"
+      {% endif %}
+      {% if poster != null %}
+        style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+      {% endif %}
+    >
+      <button
+        id="Deferred-Poster-Modal-{{ video_id }}"
+        class="video-section__poster media deferred-media__poster media--landscape"
+        type="button"
+        aria-label="{{ alt }}"
+      >
+        {%- if poster != null -%}
+          {{
+            poster
+            | image_url: width: 3840
+            | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
+          }}
+        {%- else -%}
+          {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+        {%- endif -%}
+        <span class="deferred-media__poster-button motion-reduce">
+          <span class="svg-wrapper">
+            {{- 'icon-play.svg' | inline_asset_content -}}
+          </span>
+        </span>
+      </button>
+      <template>
+        {%- if section.settings.video == null and section.settings.video_url != null -%}
+          {%- liquid
+            assign loop = ''
+            if section.settings.enable_video_looping
+              assign loop = '&loop=1&playlist=' | append: video_id
+            endif
+          -%}
+          {%- if section.settings.video_url.type == 'youtube' -%}
+            <iframe
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+              class="js-youtube"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ section.settings.description | escape }}"
+            ></iframe>
+          {%- else -%}
+            <iframe
+              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+              class="js-vimeo"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ section.settings.description | escape }}"
+            ></iframe>
+          {%- endif -%}
+        {%- else -%}
+          {{
+            section.settings.video
+            | video_tag:
+              image_size: '1100x',
+              autoplay: true,
+              loop: section.settings.enable_video_looping,
+              controls: false,
+              muted: true,
+              playsinline: true
+          }}
+        {%- endif -%}
+      </template>
+    </deferred-media>
+
+    <!-- 音声切り替えボタン -->
+    {% if section.settings.enable_video_autoplay %}
+      <button
+        class="video-audio-toggle"
+        aria-label="音声を切り替える"
+        data-video-id="{{ video_id }}"
+        style="display: none;"
+      >
+        <!-- ミュートアイコン -->
+        <svg
+          class="audio-icon audio-muted"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M16.5 12C16.5 10.23 15.5 8.71 14 7.97V9.18L16.45 11.63C16.48 11.86 16.5 12.12 16.5 12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.52C15.58 18.04 14.83 18.46 14 18.7V20.77C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z" fill="white"/>
+          <path d="M2 2L22 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+        <!-- アンミュートアイコン -->
+        <svg
+          class="audio-icon audio-unmuted"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="display: none;"
+        >
+          <path d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z" fill="white"/>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.video.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.video.settings.heading.default",
+      "label": "t:sections.video.settings.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "t:sections.video.settings.enable_video_looping.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_autoplay",
+      "label": "動画の自動再生を有効にする",
+      "info": "動画が画面に表示されたときに自動的に再生を開始します（ミュート状態）",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__1.content"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.video.settings.video.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__2.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.video.settings.paragraph.content"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.video.settings.cover_image.label"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.video.settings.description.label",
+      "info": "t:sections.video.settings.description.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__3.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.video.presets.name"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  /**
+   * 動画セクション自動再生機能
+   * 設定で自動再生が有効な場合のみ動作
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+    // 自動再生が有効な動画セクションを取得
+    const autoplayVideos = document.querySelectorAll('deferred-media[data-autoplay="true"]');
+
+    if (autoplayVideos.length === 0) return;
+
+    autoplayVideos.forEach(function (deferredMedia) {
+      const isAutoplayEnabled = deferredMedia.getAttribute('data-autoplay') === 'true';
+      let hasAutoPlayed = false;
+
+      if (!isAutoplayEnabled) return;
+
+      // Intersection Observer で表示検出
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !deferredMedia.getAttribute('loaded') && !hasAutoPlayed) {
+              // 表示されたら自動的に動画を読み込み・再生
+              loadVideoContent(deferredMedia, false); // focusは不要
+              hasAutoPlayed = true;
+              observer.disconnect(); // 一度実行したら監視終了
+            }
+          });
+        },
+        {
+          threshold: 0.3, // 30%表示されたら実行
+          rootMargin: '0px 0px -10% 0px', // 少し下に余裕を持たせる
+        }
+      );
+
+      observer.observe(deferredMedia);
+    });
+
+    /**
+     * 動画コンテンツを読み込み・再生
+     * @param {Element} deferredMedia - deferred-media要素
+     * @param {boolean} focus - フォーカスを当てるかどうか
+     */
+    function loadVideoContent(deferredMedia, focus) {
+      // 他のメディアを一時停止
+      if (window.pauseAllMedia) {
+        window.pauseAllMedia();
+      }
+
+      if (!deferredMedia.getAttribute('loaded')) {
+        const content = document.createElement('div');
+        const template = deferredMedia.querySelector('template');
+        if (!template) return;
+
+        content.appendChild(template.content.firstElementChild.cloneNode(true));
+
+        deferredMedia.setAttribute('loaded', true);
+        const deferredElement = deferredMedia.appendChild(content.querySelector('video, model-viewer, iframe'));
+
+        if (focus && deferredElement) deferredElement.focus();
+
+        // 動画要素の場合の自動再生処理
+        if (deferredElement && deferredElement.nodeName === 'VIDEO' && deferredElement.getAttribute('autoplay')) {
+          // Safari用の強制自動再生
+          deferredElement.play().catch(function (error) {
+            console.log('自動再生が制限されました:', error);
+          });
+        }
+
+        // Safari iframe バグの回避
+        if (deferredElement) {
+          const formerStyle = deferredElement.getAttribute('style');
+          deferredElement.setAttribute('style', 'display: block;');
+          setTimeout(function () {
+            deferredElement.setAttribute('style', formerStyle || '');
+          }, 0);
+
+          // 自動再生時はポスター画像を非表示
+          if (!focus) {
+            const poster = deferredMedia.querySelector('.video-section__poster');
+            if (poster) {
+              poster.style.display = 'none';
+            }
+          }
+
+          // 音声ボタンの表示と設定（動画要素の場合のみ）
+          if (deferredElement && deferredElement.nodeName === 'VIDEO') {
+            setupAudioToggle(deferredMedia, deferredElement);
+          }
+        }
+      }
+    }
+
+    /**
+     * 音声切り替えボタンの設定
+     * @param {Element} deferredMedia - deferred-media要素
+     * @param {Element} videoElement - video要素
+     */
+    function setupAudioToggle(deferredMedia, videoElement) {
+      const audioToggle = deferredMedia.parentElement.querySelector('.video-audio-toggle');
+      if (!audioToggle) return;
+
+      // ボタンを表示
+      audioToggle.style.display = 'flex';
+
+      // 初期状態はミュート
+      let isMuted = true;
+      updateAudioIcon(audioToggle, isMuted);
+
+      // クリックイベントの設定
+      audioToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // 音声の切り替え
+        isMuted = !isMuted;
+        videoElement.muted = isMuted;
+
+        // アイコンの更新
+        updateAudioIcon(audioToggle, isMuted);
+
+        // アクセシビリティ用のaria-label更新
+        audioToggle.setAttribute('aria-label', isMuted ? '音声を有効にする' : '音声を無効にする');
+      });
+    }
+
+    /**
+     * 音声アイコンの表示を更新
+     * @param {Element} button - 音声ボタン要素
+     * @param {boolean} isMuted - ミュート状態
+     */
+    function updateAudioIcon(button, isMuted) {
+      const mutedIcon = button.querySelector('.audio-muted');
+      const unmutedIcon = button.querySelector('.audio-unmuted');
+
+      if (isMuted) {
+        mutedIcon.style.display = 'inline';
+        unmutedIcon.style.display = 'none';
+      } else {
+        mutedIcon.style.display = 'none';
+        unmutedIcon.style.display = 'inline';
+      }
+    }
+  });
+</script>

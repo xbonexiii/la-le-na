@@ -1,0 +1,739 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+/* テーマ既定レイアウト使用時：テーマのフッターと二重化するLP自作フッターのロゴを非表示（法務注記は残す） */
+.lp-wrapper .lp-footer .brandmark-logo { display: none !important; }
+
+/* ================== tokens.css（library/土台・インライン内包） ================== */
+:root {
+  --gold: #A37729; --gold-light: #c49535; --gold-tint: rgba(163,119,41,.1);
+  --blue: #0071e3; --text: #1d1d1f; --text-sub: #6e6e73;
+  --bg-white: #ffffff; --bg-gray: #f5f5f7; --bg-dark: #1d1d1f; --star: #f5c518;
+  --fs-hero: clamp(32px, 5.5vw, 68px); --fs-hero-compact: clamp(30px, 4.2vw, 54px);
+  --fs-h2: clamp(28px, 3.5vw, 44px); --fs-h3: 22px; --fs-stat: clamp(28px, 3.6vw, 48px);
+  --fs-lead: clamp(16px, 1.6vw, 20px); --fs-body: 17px; --fs-note: 13px; --fs-micro: 12px;
+  --ls-hero: -0.03em; --ls-heading: -0.02em; --ls-num: -0.04em;
+  --radius-card: 24px; --radius-image: 16px; --radius-badge: 12px; --radius-pill: 50px;
+  --shadow-card: 0 2px 20px rgba(0,0,0,.06);
+  --section-pad: 100px; --section-pad-sp: 64px;
+}
+/* ================== base.css（library/土台・インライン内包） ================== */
+.lp-wrapper *,  .lp-wrapper *::before,  .lp-wrapper *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+.lp-wrapper{ scroll-behavior: smooth; }
+.lp-wrapper{ font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 400; font-style: normal; color: var(--text); font-size: var(--fs-body); line-height: 1.7; overflow-x: hidden; }
+.lp-wrapper strong,  .lp-wrapper b{ font-weight: 700; }
+.lp-wrapper img{ max-width: 100%; height: auto; display: block; }
+.lp-wrapper a{ color: inherit; text-decoration: none; }
+.lp-wrapper section{ width: 100%; }
+.lp-wrapper h1,  .lp-wrapper h2,  .lp-wrapper h3,  .lp-wrapper h4,  .lp-wrapper h5,  .lp-wrapper h6{ color: inherit; font-family: "Noto Serif Japanese", "Noto Serif JP", "Zen Kaku Gothic New", serif; font-weight: 300; font-style: normal; }
+.lp-wrapper .container{ max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.lp-wrapper .section-padding{ padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.lp-wrapper h2.section-title{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.3; letter-spacing: var(--ls-heading); }
+.lp-wrapper .hd-nowrap{ white-space: nowrap; }
+@media (max-width: 768px) {
+  .lp-wrapper{ font-size: 16px; }
+  .lp-wrapper .container{ padding: 0 20px; }
+  .lp-wrapper .section-padding{ padding-top: var(--section-pad-sp); padding-bottom: var(--section-pad-sp); }
+}
+.lp-wrapper .fade-in{ opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.lp-wrapper .fade-in.visible{ opacity: 1; transform: translateY(0); }
+.lp-wrapper .slide-left{ opacity: 0; transform: translateX(-48px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.lp-wrapper .slide-right{ opacity: 0; transform: translateX(48px);  transition: opacity 0.8s ease, transform 0.8s ease; }
+.lp-wrapper .slide-up{ opacity: 0; transform: translateY(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+.lp-wrapper .slide-left.visible,  .lp-wrapper .slide-right.visible,  .lp-wrapper .slide-up.visible{ opacity: 1; transform: none; }
+.lp-wrapper .delay-1{ transition-delay: .15s; } .delay-2 { transition-delay: .3s; } .delay-3 { transition-delay: .45s; } .delay-4 { transition-delay: .6s; }
+.lp-wrapper .btn-primary{ display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #fff; font-size: 18px; font-weight: 700; padding: 18px 40px; border-radius: var(--radius-pill); cursor: pointer; transition: background 0.2s, transform 0.1s; border: none; letter-spacing: 0.02em; }
+.lp-wrapper .btn-primary:hover{ background: var(--gold-light); transform: translateY(-1px); }
+.lp-wrapper .scroll-hint{ position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.55); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; animation: scroll-bounce 2.2s infinite; }
+.lp-wrapper .scroll-hint svg{ width: 20px; height: 20px; }
+@keyframes scroll-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; } 50% { transform: translateX(-50%) translateY(8px); opacity: 0.9; } }
+.lp-wrapper #sticky-cta{ display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000; padding: 12px 20px 20px; background: linear-gradient(to top, rgba(0,0,0,0.92) 80%, transparent); transform: translateY(0); transition: transform .3s ease; }
+.lp-wrapper #sticky-cta.retract{ transform: translateY(110%); }
+.lp-wrapper #sticky-cta a{ display: block; width: 100%; text-align: center; background: var(--gold); color: #fff; font-size: 16px; font-weight: 700; padding: 16px; border-radius: var(--radius-badge); }
+.lp-wrapper #sticky-cta .sticky-note{ text-align: center; font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+@media (min-width: 769px) {
+  .lp-wrapper #sticky-cta{ display: none !important; }
+}
+
+/* ================== RaLe-Na テーマ（tokens/base の後・色の値だけ上書き） ================== */
+:root {
+  --gold: #d75a41; --gold-light: #C9AC82; --gold-tint: rgba(215,90,65,.07);
+  --cta: #d75a41; --cta-light: #e06e56; --bridge: #A86A3C;
+  --bg-white: #FBF7F0; --bg-gray: #F5EFE6; --bg-dark: #1B2845;
+  --text: #121212; --text-sub: #6E655A; --star: #E0A93B;
+  --navy: #1B2845; --wine: #d75a41; --beige: #C9AC82; --cream: #F5EFE6; --green: #8FA88A;
+}
+.lp-wrapper .btn-primary{ background: var(--cta); }
+.lp-wrapper .btn-primary:hover{ background: var(--cta-light); }
+.lp-wrapper #sticky-cta a{ background: var(--cta); }
+/* モバイルの固定バナー（scripts.jsがdisplayをinlineでblock化する）を非表示。JSに勝つため!important・1行（2026-07-24 FB） */
+.lp-wrapper #sticky-cta{ display: none !important; }
+.lp-wrapper{ line-height: 1.9; }
+
+/* eyebrow（見出し上の小ラベル）を非表示＝route-3の作法に合わせる（2026-07-22 FB。hero〜cta の data-slot="eyebrow" 全ラベル） */
+.lp-wrapper [data-slot="eyebrow"]{ display: none !important; }
+
+/* ================== 画像・動画プレースホルダー（骨格LP） ================== */
+.lp-wrapper .ph-fill{ width: 100%; height: 100%; object-fit: cover; display: block;
+  background: repeating-linear-gradient(45deg, rgba(27,40,69,.06), rgba(27,40,69,.06) 12px, rgba(27,40,69,.10) 12px, rgba(27,40,69,.10) 24px); }
+.lp-wrapper .ph-video-wrap{ position: relative; width: 100%; }
+.lp-wrapper .ph-video-wrap::after{ content: "▶"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; line-height: 54px; text-align: center; border-radius: 50%;
+  background: rgba(27,40,69,.82); color: #fff; font-size: 19px; pointer-events: none; }
+
+/* ================== sec-hero（キャッチ主役写真型・投稿入口） ================== */
+.lp-wrapper #sec-hero{ position: relative; min-height: 92vh; min-height: 92svh; display: flex; align-items: center; color: #fff; background: var(--bg-dark); }
+.lp-wrapper #sec-hero .hero-bg{ position: absolute; inset: 0; overflow: hidden; }
+.lp-wrapper #sec-hero .hero-bg img{ width: 100%; height: 100%; }
+/* 黒系オーバーレイ（2026-07-24 FB・濃度を薄めに再調整＝背景写真をもっと活かす）: 下をやや濃く・上を薄く＋左（テキスト側）をやや濃く右を薄く。白文字は明示color＋text-shadow併用で可読を確保 */
+.lp-wrapper #sec-hero .hero-bg::after{ content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,18,18,.60) 0%, rgba(18,18,18,.38) 45%, rgba(18,18,18,.18) 100%), linear-gradient(to right, rgba(18,18,18,.48) 0%, rgba(18,18,18,.14) 60%, rgba(18,18,18,0) 100%); }
+.lp-wrapper #sec-hero .hero-inner{ position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding-left: 40px; padding-right: 40px; padding-top: 96px; padding-bottom: 84px; }
+.lp-wrapper #sec-hero .hero-eyebrow{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .14em; color: var(--navy); margin-bottom: 18px; }
+/* 配色メリハリ（2026-07-24 FB）: 見出しは太く+wineキーワードで主役化・本文は一歩引く・ジャンプピルはwine塗りで強アクセント */
+/* 黒背景に映える明色テキスト（行372対策: 白見出しは継承任せにせず #fff を明示指定。テーマの h1,h2{color:#1d1d1f} に負けない） */
+.lp-wrapper #sec-hero h1{ font-size: var(--fs-hero-compact); font-weight: 600; line-height: 1.4; letter-spacing: var(--ls-heading); color: #fff; max-width: 720px; margin-bottom: 18px; text-shadow: 0 1px 4px rgba(0,0,0,.45); }
+.lp-wrapper #sec-hero h1 .hl{ color: var(--cta-light); }
+.lp-wrapper #sec-hero .hero-sub{ font-size: var(--fs-lead); font-weight: 700; line-height: 1.7; color: #fff; max-width: 640px; margin-bottom: 22px; text-shadow: 0 1px 3px rgba(0,0,0,.4); }
+.lp-wrapper #sec-hero .hero-body{ font-size: var(--fs-body); line-height: 1.95; color: rgba(255,255,255,.90); max-width: 640px; margin-bottom: 28px; text-shadow: 0 1px 3px rgba(0,0,0,.45); }
+.lp-wrapper #sec-hero .hero-jump{ display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 22px; border: none; border-radius: var(--radius-pill); background: var(--cta); box-shadow: 0 4px 16px rgba(0,0,0,.35); }
+.lp-wrapper #sec-hero .hero-jump strong{ color: #fff; font-size: var(--fs-note); font-weight: 700; letter-spacing: .01em; }
+.lp-wrapper #sec-hero .hero-jump span{ color: rgba(255,255,255,.85); font-size: var(--fs-micro); font-weight: 700; white-space: nowrap; }
+.lp-wrapper #sec-hero .scroll-hint{ color: rgba(255,255,255,.6); }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-hero .hero-inner{ padding-left: 22px; padding-right: 22px; padding-top: 84px; padding-bottom: 92px; }
+  .lp-wrapper #sec-hero h1{ font-size: calc(var(--fs-hero-compact) * 0.86); line-height: 1.45; }
+  .lp-wrapper #sec-hero .hero-jump{ width: 100%; flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+/* ================== 生声吹き出し（共通部品・B2/B3/B6で再利用） ================== */
+.lp-wrapper .voices{ display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.lp-wrapper .voice{ display: flex; align-items: flex-start; gap: 12px; min-width: 0; }
+.lp-wrapper .voice .avatar{ width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: var(--gold-tint); border: 1px solid rgba(215,90,65,.18); display: flex; align-items: center; justify-content: center; }
+.lp-wrapper .voice .avatar svg{ width: 24px; height: 24px; color: var(--wine); }
+.lp-wrapper .voice .bubble{ position: relative; flex: 1; min-width: 0; background: #fff; border: 1px solid rgba(27,40,69,.12); border-radius: var(--radius-card); padding: 15px 18px 13px; }
+.lp-wrapper .voice .bubble::before,  .lp-wrapper .voice .bubble::after{ content: ""; position: absolute; top: 16px; width: 0; height: 0; border-style: solid; border-width: 8px 10px 8px 0; }
+.lp-wrapper .voice .bubble::before{ left: -10px; border-color: transparent rgba(27,40,69,.12) transparent transparent; }
+.lp-wrapper .voice .bubble::after{ left: -9px; border-color: transparent #fff transparent transparent; }
+.lp-wrapper .voice .v-meta{ display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+.lp-wrapper .voice .v-stars{ color: var(--star); font-size: var(--fs-note); letter-spacing: 2px; line-height: 1; }
+.lp-wrapper .voice .v-src{ font-size: var(--fs-micro); color: var(--text-sub); margin-left: auto; background: var(--bg-gray); border-radius: var(--radius-pill); padding: 3px 10px; white-space: nowrap; }
+.lp-wrapper .voice .bubble p{ font-size: var(--fs-note); line-height: 1.85; color: var(--text); letter-spacing: var(--ls-heading); }
+.lp-wrapper .voice-src-note{ font-size: var(--fs-micro); color: var(--text-sub); margin-top: 12px; }
+
+/* ================== sec-empathy（プチストレス共感） ================== */
+.lp-wrapper #sec-empathy{ background: var(--bg-white); }
+.lp-wrapper #sec-empathy .em-inner{ max-width: 680px; width: calc(100% - 40px); margin: 0 auto; text-align: left; }
+.lp-wrapper #sec-empathy .em-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--wine); margin-bottom: 14px; }
+.lp-wrapper #sec-empathy h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 24px; }
+.lp-wrapper #sec-empathy .em-img{ width: 100%; height: 300px; border-radius: var(--radius-image); overflow: hidden; box-shadow: var(--shadow-card); margin-bottom: 26px; }
+.lp-wrapper #sec-empathy .em-body p{ font-size: var(--fs-body); line-height: 2.05; color: var(--text); margin-bottom: 20px; }
+.lp-wrapper #sec-empathy .em-voices{ margin: 28px 0; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-empathy .em-img{ height: 220px; }
+}
+
+/* ================== sec-solution（解消・アフター） ================== */
+.lp-wrapper #sec-solution{ background: var(--bg-gray); }
+.lp-wrapper #sec-solution .so-inner{ max-width: 680px; width: calc(100% - 40px); margin: 0 auto; text-align: left; }
+.lp-wrapper #sec-solution .so-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--wine); margin-bottom: 14px; }
+.lp-wrapper #sec-solution h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 24px; }
+.lp-wrapper #sec-solution .so-img{ width: 100%; height: 340px; border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); margin-bottom: 26px; }
+.lp-wrapper #sec-solution .so-body{ font-size: var(--fs-body); line-height: 2.05; color: var(--text); margin-bottom: 26px; }
+.lp-wrapper #sec-solution .so-body sup{ color: var(--wine); }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-solution .so-img{ height: 240px; }
+}
+
+/* ================== sec-proof（投稿正当性＋数字帯） ================== */
+.lp-wrapper #sec-proof{ background: var(--bg-white); }
+.lp-wrapper #sec-proof .pr-inner{ max-width: 720px; width: calc(100% - 40px); margin: 0 auto; text-align: left; }
+.lp-wrapper #sec-proof .pr-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--gold-light); margin-bottom: 14px; }
+.lp-wrapper #sec-proof h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 22px; }
+.lp-wrapper #sec-proof .pr-body{ font-size: var(--fs-body); line-height: 2.05; color: rgba(27,40,69,.86); margin-bottom: 30px; }
+.lp-wrapper #sec-proof .rv-summary{ background: #fff; border-radius: var(--radius-card); padding: 30px 28px; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 30px; box-shadow: var(--shadow-card); }
+.lp-wrapper #sec-proof .rv-score{ text-align: center; }
+.lp-wrapper #sec-proof .rv-avg{ font-size: var(--fs-stat); font-weight: 700; line-height: 1.05; letter-spacing: var(--ls-num); color: var(--wine); white-space: nowrap; }
+.lp-wrapper #sec-proof .rv-avg em{ font-style: normal; font-size: 0.35em; font-weight: 700; color: var(--text-sub); letter-spacing: var(--ls-heading); margin-left: 4px; }
+.lp-wrapper #sec-proof .rv-avg-stars{ color: var(--star); font-size: var(--fs-lead); letter-spacing: 3px; line-height: 1.3; margin-top: 6px; }
+.lp-wrapper #sec-proof .rv-count{ font-size: var(--fs-note); font-weight: 700; color: var(--text); white-space: nowrap; margin-top: 6px; }
+.lp-wrapper #sec-proof .rv-facts{ border-left: 1px solid rgba(27,40,69,.14); padding-left: 26px; }
+.lp-wrapper #sec-proof .rv-facts li{ list-style: none; font-size: var(--fs-note); line-height: 1.85; color: var(--text); margin-bottom: 8px; padding-left: 20px; position: relative; }
+.lp-wrapper #sec-proof .rv-facts li::before{ content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--beige); }
+.lp-wrapper #sec-proof .rv-facts .award{ color: var(--navy); font-weight: 700; }
+.lp-wrapper #sec-proof .rv-note{ font-size: var(--fs-micro); color: rgba(27,40,69,.72); margin-top: 14px; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-proof .rv-summary{ grid-template-columns: 1fr; gap: 22px; padding: 26px 20px; }
+  .lp-wrapper #sec-proof .rv-facts{ border-left: none; border-top: 1px solid rgba(27,40,69,.14); padding-left: 0; padding-top: 20px; }
+}
+
+/* ================== sec-brand（共創の大義・手紙型） ================== */
+.lp-wrapper #sec-brand{ background: var(--bg-gray); }
+.lp-wrapper #sec-brand .bd-inner{ max-width: 680px; width: calc(100% - 40px); margin: 0 auto; text-align: left; }
+.lp-wrapper #sec-brand .bd-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--wine); margin-bottom: 14px; }
+.lp-wrapper #sec-brand h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.55; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 28px; }
+.lp-wrapper #sec-brand .bd-letter{ border-left: 3px solid var(--beige); padding-left: 22px; }
+.lp-wrapper #sec-brand .bd-letter p{ font-size: var(--fs-body); line-height: 2.15; color: var(--text); }
+.lp-wrapper #sec-brand .bd-letter .bd-core{ font-size: var(--fs-lead); font-weight: 700; line-height: 1.9; color: var(--wine); margin-top: 16px; }
+
+/* ================== sec-features（撮る対象・番号カード11＋動画＋テンプレ） ================== */
+.lp-wrapper #sec-features{ background: var(--bg-white); }
+.lp-wrapper #sec-features .ft-inner{ max-width: 760px; width: calc(100% - 40px); margin: 0 auto; text-align: left; }
+.lp-wrapper #sec-features .ft-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--wine); margin-bottom: 14px; }
+.lp-wrapper #sec-features h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 20px; }
+.lp-wrapper #sec-features .ft-intro{ font-size: var(--fs-body); line-height: 2.05; color: var(--text); margin-bottom: 12px; }
+.lp-wrapper #sec-features .cluster-label{ font-size: var(--fs-note); font-weight: 700; color: var(--wine); margin: 36px 0 4px; }
+/* 横スクロール・フルワイズカード（11特徴・2026-07-22 FB。ralena.jpトップの特徴横スクロールUI参考） */
+/* カード列だけフルブリード（画面幅100%）。body横スクロールは width:100vw を使わず width:100%＋overflow-x:auto で防ぐ。左paddingでタイトル左端に揃え・スクロールバー非表示・左右矢印 */
+.lp-wrapper #sec-features .ft-cards{ position: relative; width: 100%; }
+.lp-wrapper #sec-features .ft-scroller{ width: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding-left: max(20px, calc((100% - 1040px) / 2)); -webkit-overflow-scrolling: touch; padding: 4px 20px 20px; padding-left: max(20px, calc((100% - 1040px) / 2)); margin: 22px 0 4px; scrollbar-width: none; -ms-overflow-style: none; }
+.lp-wrapper #sec-features .ft-scroller::-webkit-scrollbar{ display: none; }
+.lp-wrapper #sec-features .ft-arrow{ position: absolute; top: 80px; z-index: 3; width: 48px; height: 48px; border-radius: 50%; border: none; background: #fff; color: var(--wine); font-size: 28px; line-height: 1; cursor: pointer; box-shadow: 0 2px 14px rgba(27,40,69,.20); display: flex; align-items: center; justify-content: center; padding-bottom: 3px; transition: background .15s, color .15s, transform .1s; }
+.lp-wrapper #sec-features .ft-arrow:hover{ background: var(--wine); color: #fff; transform: translateY(-1px); }
+.lp-wrapper #sec-features .ft-prev{ left: max(12px, calc((100% - 1040px) / 2 - 24px)); }
+.lp-wrapper #sec-features .ft-next{ right: 16px; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-features .ft-arrow{ display: none; }
+}
+.lp-wrapper #sec-features .ft-track{ display: flex; gap: 16px; width: max-content; align-items: stretch; }
+.lp-wrapper #sec-features .hcard{ flex: 0 0 auto; width: min(86vw, 420px); scroll-snap-align: start; background: var(--bg-gray); border-radius: var(--radius-card); overflow: hidden; display: flex; flex-direction: column; }
+.lp-wrapper #sec-features .hc-img{ width: 100%; height: 200px; object-fit: cover; display: block; background: var(--bg-white); }
+.lp-wrapper #sec-features .hc-body{ padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+.lp-wrapper #sec-features .hc-head{ display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.lp-wrapper #sec-features .hc-num{ font-size: var(--fs-h3); font-weight: 700; letter-spacing: var(--ls-num); color: var(--wine); line-height: 1; flex-shrink: 0; }
+.lp-wrapper #sec-features .hc-title{ font-size: var(--fs-lead); font-weight: 300; line-height: 1.45; color: var(--navy); }
+.lp-wrapper #sec-features .hc-desc{ font-size: var(--fs-note); line-height: 1.8; color: var(--text); }
+.lp-wrapper #sec-features .hcard .review-card{ margin-top: 16px; }
+.lp-wrapper #sec-features .ft-scroll-hint{ font-size: var(--fs-micro); color: var(--text-sub); text-align: center; margin: 2px 0 0; letter-spacing: .04em; }
+.lp-wrapper #sec-features .review-card{ background: #fff; border-radius: var(--radius-image); padding: 15px 18px; box-shadow: var(--shadow-card); margin-top: 14px; }
+.lp-wrapper #sec-features .rc-head{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.lp-wrapper #sec-features .rc-avatar{ width: 34px; height: 34px; border-radius: var(--radius-pill); background: var(--gold-tint); display: inline-flex; align-items: center; justify-content: center; color: var(--wine); flex-shrink: 0; }
+.lp-wrapper #sec-features .rc-avatar svg{ width: 17px; height: 17px; }
+.lp-wrapper #sec-features .rc-meta{ font-size: var(--fs-micro); font-weight: 700; color: var(--text); line-height: 1.4; }
+.lp-wrapper #sec-features .rc-meta .stars{ color: var(--star); letter-spacing: 2px; }
+.lp-wrapper #sec-features .review-card p{ font-size: var(--fs-note); line-height: 1.85; color: var(--text); }
+.lp-wrapper #sec-features .post-ex{ margin-top: 14px; background: #fff; border: 1px dashed var(--beige); border-radius: var(--radius-badge); padding: 13px 15px; font-size: var(--fs-note); font-weight: 400; color: var(--text); line-height: 1.75; }
+.lp-wrapper #sec-features .post-ex .pe-text::before{ content: "投稿例"; display: block; width: fit-content; background: transparent; color: var(--wine); border: 1px solid var(--wine); font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--radius-pill); margin-bottom: 8px; }
+/* コピー機能：テキスト｜コピーボタンの2カラム整列 */
+.lp-wrapper #sec-features .has-copy{ display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.lp-wrapper #sec-features .has-copy .pe-text{ width: 100%; }
+/* 投稿例の下に改行表示するハッシュタグ・公式メンション（コピー文字列にも改行込みで含める） */
+.lp-wrapper #sec-features .has-copy .pe-tags,  .lp-wrapper #sec-features .has-copy .pe-mention{ width: 100%; display: block; font-weight: 700; line-height: 1.7; color: var(--wine); word-break: break-word; }
+.lp-wrapper #sec-features .has-copy .pe-mention{ margin-top: -4px; }
+.lp-wrapper #sec-features .copy-btn{ flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; background: var(--wine); color: #fff; border: none; border-radius: var(--radius-pill); font-size: 12px; font-weight: 700; padding: 8px 14px; cursor: pointer; transition: background .15s, transform .1s; white-space: nowrap; -webkit-tap-highlight-color: transparent; }
+.lp-wrapper #sec-features .copy-btn:hover{ background: var(--cta-light); transform: translateY(-1px); }
+.lp-wrapper #sec-features .copy-btn:active{ transform: translateY(0); }
+.lp-wrapper #sec-features .copy-btn.copied{ background: var(--green); }
+.lp-wrapper #sec-features .copy-btn svg{ width: 13px; height: 13px; flex-shrink: 0; }
+/* 動画は ft-inner(760px)内の3列グリッド（3枚横並び・4:3・小さめ＝挿入直後のサイズ） */
+.lp-wrapper #sec-features .vid-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+.lp-wrapper #sec-features .vid-card{ background: var(--bg-gray); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); }
+.lp-wrapper #sec-features .vid-card .ph-video-wrap{ aspect-ratio: 4 / 3; }
+.lp-wrapper #sec-features .vid-card .ph-video-wrap::after{ display: none; }
+.lp-wrapper #sec-features .vid-card .ph-fill{ height: 100%; width: 100%; object-fit: cover; display: block; background: var(--navy); }
+.lp-wrapper #sec-features .vid-body{ padding: 16px 16px 18px; }
+.lp-wrapper #sec-features .vid-body .v-icon{ font-size: var(--fs-body); color: var(--wine); font-weight: 700; }
+.lp-wrapper #sec-features .vid-body h3{ font-size: var(--fs-note); font-weight: 300; color: var(--navy); line-height: 1.5; margin: 6px 0 8px; }
+.lp-wrapper #sec-features .vid-body p{ font-size: var(--fs-micro); line-height: 1.8; color: var(--text-sub); }
+.lp-wrapper #sec-features .ft-tip{ font-size: var(--fs-note); color: var(--text-sub); margin-top: 16px; line-height: 1.8; }
+.lp-wrapper #sec-features .template{ background: #fff; border: 1px dashed var(--beige); border-radius: var(--radius-card); padding: 22px 24px; margin-top: 16px; }
+.lp-wrapper #sec-features .template p{ font-size: var(--fs-body); margin-bottom: 12px; }
+.lp-wrapper #sec-features .template .fill{ color: var(--wine); font-weight: 700; }
+.lp-wrapper #sec-features .template .t-note{ font-size: var(--fs-note); color: var(--text-sub); margin-bottom: 0; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-features .ft-scroller{ padding: 4px 20px 20px; }
+  .lp-wrapper #sec-features .hcard{ width: 88vw; }
+  .lp-wrapper #sec-features .hc-img{ height: 190px; }
+  .lp-wrapper #sec-features .vid-grid{ grid-template-columns: 1fr; gap: 22px; }
+  .lp-wrapper #sec-features .vid-card{ max-width: 340px; margin: 0 auto; }
+}
+
+/* ================== sec-pros（プロPR・権威枠・ダーク） ================== */
+.lp-wrapper #sec-pros{ background: var(--bg-white); }
+.lp-wrapper #sec-pros .ps-wrap{ max-width: 760px; width: calc(100% - 40px); margin: 0 auto; background: var(--bg-dark); color: #fff; border-radius: var(--radius-card); padding: 40px 34px; box-shadow: var(--shadow-card); }
+.lp-wrapper #sec-pros .ps-pr{ display: inline-block; background: var(--beige); color: var(--navy); font-size: var(--fs-micro); font-weight: 700; padding: 3px 12px; border-radius: var(--radius-pill); letter-spacing: .06em; }
+.lp-wrapper #sec-pros h2{ color: #fff; font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); margin: 16px 0 22px; }
+.lp-wrapper #sec-pros .pv{ border-left: 3px solid var(--beige); padding: 2px 0 2px 18px; margin: 18px 0; font-size: var(--fs-body); line-height: 1.95; color: rgba(255,255,255,.92); }
+.lp-wrapper #sec-pros .pv cite{ display: block; font-style: normal; color: var(--gold-light); font-size: var(--fs-note); margin-top: 8px; }
+.lp-wrapper #sec-pros .ps-note{ font-size: var(--fs-micro); color: rgba(255,255,255,.62); margin-top: 20px; line-height: 1.7; }
+
+/* ================== sec-cta（投稿導線・3ステップ＋タグ） ================== */
+.lp-wrapper #sec-cta{ background: var(--bg-gray); }
+.lp-wrapper #sec-cta .ct-inner{ max-width: 760px; width: calc(100% - 40px); margin: 0 auto; text-align: center; }
+.lp-wrapper #sec-cta .ct-label{ font-size: var(--fs-note); font-weight: 700; letter-spacing: .12em; color: var(--wine); margin-bottom: 14px; }
+.lp-wrapper #sec-cta h2{ font-size: var(--fs-h2); font-weight: 300; line-height: 1.5; letter-spacing: var(--ls-heading); color: var(--navy); margin-bottom: 20px; }
+.lp-wrapper #sec-cta .ct-body{ font-size: var(--fs-body); line-height: 2.0; color: var(--text); margin-bottom: 36px; }
+.lp-wrapper #sec-cta .ct-steps{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 30px; }
+.lp-wrapper #sec-cta .ct-step{ background: #fff; border-radius: var(--radius-card); padding: 26px 16px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.lp-wrapper #sec-cta .ct-step .st-badge{ display: inline-block; background: var(--gold-tint); color: var(--wine); font-size: var(--fs-micro); font-weight: 700; letter-spacing: .1em; padding: 5px 15px; border-radius: var(--radius-pill); }
+.lp-wrapper #sec-cta .ct-step .st-t{ font-size: var(--fs-note); font-weight: 700; color: var(--navy); line-height: 1.6; }
+.lp-wrapper #sec-cta .ct-closing{ font-size: var(--fs-body); line-height: 2.0; color: var(--text); }
+/* SNS投稿ボタン（Instagram / X） */
+.lp-wrapper #sec-cta .ct-share{ display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin: 4px 0 14px; }
+.lp-wrapper #sec-cta .share-btn{ flex: 1 1 260px; max-width: 340px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 15px 22px; border-radius: var(--radius-pill); font-size: var(--fs-lead); font-weight: 700; letter-spacing: .01em; cursor: pointer; border: none; text-decoration: none; transition: transform .1s, filter .15s; -webkit-tap-highlight-color: transparent; }
+.lp-wrapper #sec-cta .share-btn:hover{ transform: translateY(-2px); filter: brightness(1.06); }
+.lp-wrapper #sec-cta .share-btn:active{ transform: translateY(0); }
+.lp-wrapper #sec-cta .share-ic{ width: 22px; height: 22px; flex-shrink: 0; }
+.lp-wrapper #sec-cta .share-ig{ background: var(--wine); color: #fff; }
+.lp-wrapper #sec-cta .share-x{ background: var(--navy); color: #fff; }
+.lp-wrapper #sec-cta .ct-share-note{ font-size: var(--fs-micro); color: var(--text-sub); text-align: center; margin: 0 0 26px; line-height: 1.7; }
+@media (max-width: 768px) {
+  .lp-wrapper #sec-cta .ct-inner{ text-align: left; }
+  .lp-wrapper #sec-cta .ct-steps{ grid-template-columns: 1fr; gap: 10px; }
+  .lp-wrapper #sec-cta .ct-step{ padding: 20px 16px; }
+  .lp-wrapper #sec-cta .ct-share{ flex-direction: column; }
+  .lp-wrapper #sec-cta .share-btn{ flex: 0 0 auto; max-width: none; width: 100%; }
+}
+
+/* ================== フッター ================== */
+.lp-wrapper .lp-footer{ background: var(--bg-white); padding-top: 50px; }
+.lp-wrapper .lp-footer .brandmark-logo{ display: block; height: 34px; width: auto; max-width: 70%; margin: 0 auto; }
+.lp-wrapper .lp-footer .footnote{ max-width: 760px; width: calc(100% - 40px); margin: 26px auto 0; font-size: var(--fs-micro); color: var(--text-sub); line-height: 1.8; padding-bottom: 54px; }
+
+</style>
+
+<div id="lp-{{ section.id }}" class="lp-wrapper">
+<!-- ============ B1 ヒーロー：新テーマ提示＋軽い投稿入口 ============ -->
+<section id="sec-hero" data-section-type="hero" data-section-name="ヒーローセクション" data-section-order="1">
+  <div class="hero-bg">
+    <img class="ph-fill" data-slot="hero-image" data-asset-id="DSC03213_1"
+         src="https://cdn.shopify.com/s/files/1/0692/1037/4325/files/DSC03213_1.jpg?v=1753931214"
+         alt="木のあたたかみのあるキッチンで、Ra Le-Naのまな板でトマトを切る母親と、隣でサラダを作る娘（親子で料理する自然光のシーン）" />
+  </div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow fade-in" data-slot="eyebrow">毎日、毎日、使いやすい。</p>
+    <h1 class="fade-in delay-1" data-slot="headline">Ra Le-Naで解消した<br><span class="hl">"プチストレス"</span>を<br>みんなに教えてください。</h1>
+    <p class="hero-sub fade-in delay-2" data-slot="subheadline">一枚の写真でも、短い動画でも。あなたのひとことを添えて。</p>
+    <p class="hero-body fade-in delay-3" data-slot="hero-body">まな板には、声にするほどじゃない小さな面倒が、いくつもあります。滑る、洗うのが手間、重い——。それを Ra Le-Na で解消したなら、同じことで困っている誰かのために、ぜひ教えてください。</p>
+    <a class="hero-jump fade-in delay-4" data-slot="hero-jump" href="#post"><strong>#ラレーナのある暮らし</strong><span>もう投稿する方はこちら ▼</span></a>
+  </div>
+  <div class="scroll-hint"><span>scroll</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+</section>
+
+<!-- ============ B2 プチストレスの共感（生声吹き出し） ============ -->
+<section id="sec-empathy" class="section-padding" data-section-type="empathy" data-section-name="プチストレスの共感" data-section-order="2">
+  <div class="em-inner">
+    <p class="em-label fade-in" data-slot="eyebrow">たとえば</p>
+    <h2 class="fade-in" data-slot="headline">Ra Le-Naを使う前、<br>こんな悩みが<span class="hd-nowrap">きっとあったはず。</span></h2>
+    <div class="em-img slide-up"><img class="ph-fill" data-slot="empathy-before-image" data-asset-id="empathy_傷ありまな板"
+         src="{{ 'ralena-ugc-empathy.jpg' | asset_url }}"
+         alt="使い込んで傷のついた白いまな板（これまでの小さな困りごと）" /></div>
+    <div class="em-body">
+      <p class="slide-up" data-slot="body-1">濡れた手で押さえたまな板が、ツルッと動いてヒヤッとします。にんじんを刻めばうっすらオレンジの色が残りますし、ゆうべ切ったニンニクや魚のニオイは、翌朝もまだまな板に残っています。傷の溝に入った汚れは、スポンジで擦っても、なんだかスッキリ取れません。</p>
+      <p class="slide-up" data-slot="body-2">肉と野菜を分けようとすれば、まな板を何枚も出すことになって、洗い物はその分増えます。ようやく洗っても水切れが悪くて、いつまでも濡れています。重いから、シンクでの洗いも、棚へのしまいも、どこか億劫です。</p>
+      <p class="slide-up" data-slot="body-3">どれも、大したことではありません。だから、わざわざ口にも出しません。でも毎日となると、この"小さな我慢"は、ひとつ、またひとつと積もっていって、気づけば、まな板の前に立つのが、ほんの少しだけ、億劫になっているんです。</p>
+    </div>
+    <div class="em-voices voices" data-slot="voice">
+      <div class="voice slide-up">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="bubble"><div class="v-meta"><span class="v-stars">★★★★★</span><span class="v-src">2025-12-13・50代女性</span></div><p>「ずっとまな板を買い替えたかったのですが、なかなか気に入ったものに出会えませんでした。やっと出会えたこの商品は、大きさと厚みがとても良いです。」</p></div>
+      </div>
+      <div class="voice slide-up">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="bubble"><div class="v-meta"><span class="v-stars">★★★★★</span><span class="v-src">2025-12-07・50代女性</span></div><p>「まな板のストレスから解放されました。」</p></div>
+      </div>
+      <p class="voice-src-note">楽天レビュー（rale-na）より・原文のまま掲載</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B3 解消（アフター・生声吹き出し） ============ -->
+<section id="sec-solution" class="section-padding" data-section-type="solution" data-section-name="RaLe-Naで解消" data-section-order="3">
+  <div class="so-inner">
+    <p class="so-label fade-in" data-slot="eyebrow">それが</p>
+    <h2 class="fade-in" data-slot="headline">Ra Le-Naで解消<span class="hd-nowrap">したことを</span><br>ぜひ、みんなに<span class="hd-nowrap">教えてください。</span></h2>
+    <div class="so-img slide-up"><img class="ph-fill" data-slot="solution-after-image" data-asset-id="solution_食洗機親子"
+         src="{{ 'ralena-ugc-solution.jpg' | asset_url }}"
+         alt="食洗機まわりでお手入れする様子（清潔）" /></div>
+    <p class="so-body slide-up" data-slot="body">あの小さな我慢は、Ra Le-Na だと自然に消えていきます。両面で使えて、食洗機にそのまま。抗菌も第三者の試験機関で確かめられています<sup>†</sup>。難しい理屈は要りません。ひとつ解決するたびに「あ、これ地味にラク」と気づく——その気づきこそ、次に誰かへ教えてあげたい"プチストレス解消"です。</p>
+    <div class="voices" data-slot="voice">
+      <div class="voice slide-up">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="bubble"><div class="v-meta"><span class="v-stars">★★★★★</span><span class="v-src">2025-12-09・40代女性</span></div><p>「切る時にも滑らず、ストレスなく料理が出来ています。」</p></div>
+      </div>
+      <div class="voice slide-up">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="bubble"><div class="v-meta"><span class="v-stars">★★★★★</span><span class="v-src">2025-12-07・50代女性</span></div><p>「大きさの割には軽くて料理するのが楽しくなります！」</p></div>
+      </div>
+      <div class="voice slide-up">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="bubble"><div class="v-meta"><span class="v-stars">★★★★★</span><span class="v-src">2025-12-08・60代女性</span></div><p>「これまでいろいろなまな板を使用してきましたが、比べ物にならない位水切れが良いです。」</p></div>
+      </div>
+      <p class="voice-src-note">楽天レビュー（rale-na）より・原文のまま掲載。感じ方には個人差があります</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B4 投稿してよい正当性＋数字帯 ============ -->
+<section id="sec-proof" class="section-padding" data-section-type="proof" data-section-name="投稿してよい正当性" data-section-order="4">
+  <div class="pr-inner">
+    <p class="pr-label fade-in" data-slot="eyebrow">遠慮しないで</p>
+    <h2 class="fade-in" data-slot="headline">同じことで困っている誰かの役に立ちます。</h2>
+    <p class="pr-body fade-in" data-slot="body">とはいえ、まな板ごときで投稿なんて大げさ、と指が止まります。分かります。でも、あなたが見つけたその解消は、同じことで困っている誰かの役に立ちます。だから、自慢ではなく、ちょっと教えてあげるだけです。それに、あなたは一人ではありません。もうたくさんの人が、自分の"解消"を、こうして言葉にしています。</p>
+    <div class="rv-summary slide-up" data-slot="proof-stats">
+      <div class="rv-score">
+        <p class="rv-avg">4.61<em>/ 5</em></p>
+        <div class="rv-avg-stars">★★★★★</div>
+        <!-- 2026-08-09 応急修正: レビュー総件数が未確定のため非掲載。総件数と、それを分母にした割合の表記は確定後に復帰させる（景表法・優良誤認リスク回避） -->
+        <p class="rv-count">楽天レビュー 平均評価</p>
+      </div>
+      <ul class="rv-facts">
+        <li>集計期間 2025年12月6日〜2026年7月19日時点</li>
+        <li class="award">福岡デザインアワード2025 TOP50入賞（222商品中）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B5 共創の大義（手紙型） ============ -->
+<section id="sec-brand" class="section-padding" data-section-type="brand" data-section-name="共創の大義" data-section-order="5">
+  <div class="bd-inner">
+    <p class="bd-label fade-in" data-slot="eyebrow">この一枚のこと</p>
+    <h2 class="fade-in" data-slot="headline">この一枚は、<br>みんなの声から<span class="hd-nowrap">できています。</span></h2>
+    <div class="bd-letter slide-up" data-slot="body">
+      <p>その声は、実はこのまな板そのものを作ってきました。主婦500人と2年、32回の試作。使う人の「ここが地味に困る」を、ひとつずつ拾って生まれた一枚です。</p>
+      <p class="bd-core">だから、あなたが教えてくれる"プチストレス解消"も、ただの感想ではありません。次の Ra Le-Na を、もっと良くしていく一票になります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B6 撮る対象・語る言葉（番号カード11＋動画3＋テンプレ） ============ -->
+<section id="sec-features" class="section-padding" data-section-type="features" data-section-name="撮る対象・語る言葉（11特徴）" data-section-order="6">
+  <div class="ft-inner">
+    <p class="ft-label fade-in" data-slot="eyebrow">手間は、ゼロ</p>
+    <h2 class="fade-in" data-slot="headline">苦手な方のために、<br>投稿例を準備しました</h2>
+    <p class="ft-intro fade-in" data-slot="intro">とはいえ、何を撮って、どう言葉にすればいいか、迷いますよね。だから、全部用意しました。写真でも、短い動画でも大丈夫です。新しく撮らなくても、スマホの中の一枚から始められます。ここにあるのは、Ra Le-Na で消える"プチストレス"11個。あなたが「これ、地味に助かってる」と思うものを選んで、そのまま教えてあげてください。</p>
+  </div>
+
+  <!-- カード列は .ft-inner(760px) の外＝#sec-features 直下・幅100%（フルブリード）＋左右矢印 -->
+  <div class="ft-cards slide-up">
+    <button class="ft-arrow ft-prev" type="button" aria-label="前のカードへ">‹</button>
+    <div class="ft-scroller">
+      <div class="ft-track">
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-1-image" data-asset-id="DSC03503" src="https://ralena.jp/cdn/shop/files/DSC03503.jpg?v=1757258209" alt="肉も野菜も一枚で使えるRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">1</span><h3 class="hc-title">まな板、何枚も出さずに済みます</h3></div>
+            <p class="post-ex">肉と野菜でまな板を分けなくてよくなった。地味だけど、これ助かる🔪</p>
+            <p class="hc-desc">両面使えるから、裏返すだけ。使い分けた一枚を撮って。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-08・50代女性<span class="stars">★★★★★</span></span></div><p>「両面の使い分けや丁度良い大きさ、軽くて洗いやすいなど工夫がたくさんでとても気に入りました。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-2-image" data-asset-id="size" src="https://ralena.jp/cdn/shop/files/size.jpg?v=1757261107" alt="食洗機に入れられるRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">2</span><h3 class="hc-title">洗い物の手間が、ちょっと減ります</h3></div>
+            <p class="post-ex">食洗機にポンで終わり。夜の洗い物が地味にラクになった🍽️</p>
+            <p class="hc-desc">国内40機種で確かめた食洗機対応。夜、立てかけた一枚を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2026-01-19・40代女性<span class="stars">★★★★★</span></span></div><p>「我が家の食洗機にぴったり入るのがまず嬉しかったですし…」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-3-image" data-asset-id="13_DSC02583" src="https://ralena.jp/cdn/shop/files/13_DSC02583.jpg?v=1754378326" alt="厚み1.4cmでも軽いRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">3</span><h3 class="hc-title">重い・しまいにくいが、なくなります</h3></div>
+            <p class="post-ex">厚み1.4cmで引き出しにスッと。片手で出せるの、地味に嬉しい</p>
+            <p class="hc-desc">重さは877g、厚みも1.4cm。引き出しに収まる一枚、片手で持つ瞬間を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-07・50代女性<span class="stars">★★★★★</span></span></div><p>「大きさの割には軽くて料理するのが楽しくなります！」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-4-image" data-asset-id="DSC03356" src="https://ralena.jp/cdn/shop/files/DSC03356.jpg?v=1754411456" alt="お手入れがラクなRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">4</span><h3 class="hc-title">ニオイ・色移りが、気になりません</h3></div>
+            <p class="post-ex">カレーの翌日でも、色もニオイも気にならない。これ地味に感動しました</p>
+            <p class="hc-desc">塩素系・酸素系どちらの漂白剤にも対応。カレーの翌日の一枚を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-14・30代女性<span class="stars">★★★★★</span></span></div><p>「切れ味よく、何より手入れが楽で色移りもしません。買ってよかったです。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-5-image" data-asset-id="15_DSC02596" src="https://ralena.jp/cdn/shop/files/15_DSC02596.jpg?v=1757257618" alt="滑らず切れるRa Le-Naの手元" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">5</span><h3 class="hc-title">濡れた手でも、ズレません</h3></div>
+            <p class="post-ex">濡れた手でも全然ズレない。切るときの地味なストレスが消えました</p>
+            <p class="hc-desc">プラスチックの約5倍のグリップ力。トントン切る手元を動画で。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2026-01-28・30代女性<span class="stars">★★★★★</span></span></div><p>「撥水に驚きました！お手入れがとても楽にできそうです。また、滑らず調理しやすいです。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-6-image" data-asset-id="DSC03373" src="https://ralena.jp/cdn/shop/files/DSC03373.jpg?v=1754411456" alt="0.3mmのフチで汁がこぼれにくいRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">6</span><h3 class="hc-title">切った汁が、こぼれにくくなります</h3></div>
+            <p class="post-ex">切ったトマトの汁がこぼれにくい。地味だけど、これ大事</p>
+            <p class="hc-desc">0.3mmのフチで、果物や肉の汁が垂れにくくなります。食材を運ぶ瞬間を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-11・40代女性<span class="stars">★★★★★</span></span></div><p>「裏表どちらも使いやすいように、縁が少し盛り上がってるのが助かります。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-7-image" data-asset-id="14_DSC02589" src="https://ralena.jp/cdn/shop/files/14_DSC02589.jpg?v=1754378352" alt="食材で賢く使い分けるRa Le-Na（両面）" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">7</span><h3 class="hc-title">肉と野菜の使い分けが、ラクになります</h3></div>
+            <p class="post-ex">片面はすべり止め、片面は汚れが流れる面。用途で使い分けられて地味に便利</p>
+            <p class="hc-desc">片面は滑り止めの微細シボ、片面は汚れを流すストライプ加工。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-07・30代女性<span class="stars">★★★★★</span></span></div><p>「サイズ感ちょうど良く、食洗機OK、両面使用可と、理想的なまな板です。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-8-image" data-asset-id="DSC03500" src="https://ralena.jp/cdn/shop/files/DSC03500.jpg?v=1754411652" alt="傷がつきにくく美しさが長持ちするRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">8</span><h3 class="hc-title">傷んで買い替え、しなくて済みます</h3></div>
+            <p class="post-ex"><span style="color:var(--wine)">◯ヶ月</span>使ってもまだキレイ。買い替えなくていいの、地味に助かる</p>
+            <p class="hc-desc">従来より2.8倍傷がつきにくい設計＋TPUの自己修復性。数ヶ月後の"まだキレイ"を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-22・50代女性<span class="stars">★★★★★</span></span></div><p>「傷がつきにくいと思います。同じくらいの値段で買ったまな板は傷だらけになり、すぐ使わなくなりました。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-9-image" data-asset-id="DSC03465" src="https://ralena.jp/cdn/shop/files/DSC03465.jpg?v=1754408515" alt="包丁の刃あたりがやわらかいRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">9</span><h3 class="hc-title">包丁に優しくて、切り心地がいいんです</h3></div>
+            <p class="post-ex">包丁の当たりがやわらかくて、切る音がなんだか好き</p>
+            <p class="hc-desc">TPU硬度を3段階・23回の試作で調整した刃あたり。切る音を動画で。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-08・50代女性<span class="stars">★★★★★</span></span></div><p>「硬いゴム感、で、滑らないまな板です。なので刃あたりは優しいです。高い包丁を使っているので有難いです。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-10-image" data-asset-id="21_DSC02637" src="https://ralena.jp/cdn/shop/files/21_DSC02637.jpg?v=1754378294" alt="長方形で食材を並べやすいRa Le-Na" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">10</span><h3 class="hc-title">食材を並べる場所に、困りません</h3></div>
+            <p class="post-ex">長方形だと食材を並べられて、盛り付け前がスムーズ</p>
+            <p class="hc-desc">食材を並べておける長方形。盛り付け前の広い一枚を。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2026-02-14・30代女性<span class="stars">★★★★★</span></span></div><p>「オシャレで厚みもちょうど良いです！野菜も滑りません。」</p></div>
+          </div>
+        </article>
+        <article class="hcard">
+          <img class="hc-img" data-slot="feature-11-image" data-asset-id="DSC03558" src="https://ralena.jp/cdn/shop/files/DSC03558.jpg?v=1754417284" alt="長く使えるRa Le-Na（土に還るエコ素材）" loading="lazy" />
+          <div class="hc-body">
+            <div class="hc-head"><span class="hc-num">11</span><h3 class="hc-title">長く使えて、モノも増えません</h3></div>
+            <p class="post-ex">使い捨てじゃなく、長く使えるものを選びたくて。この一枚にしました</p>
+            <p class="hc-desc">公式サイトは素材を「土に還るエコ素材」とうたっています。難しい言葉より、"長く使いたい"というあなたの選び方を、そのまま。</p>
+            <div class="review-card"><div class="rc-head"><span class="rc-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="rc-meta">楽天・2025-12-13・50代女性<span class="stars">★★★★★</span></span></div><p>「傷も付きにくく、食材の色移りは全くありません。長く使いたい一品です。」</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <button class="ft-arrow ft-next" type="button" aria-label="次のカードへ">›</button>
+  </div>
+    <p class="ft-scroll-hint slide-up">← スワイプ・矢印で11個を見る →</p>
+
+  <div class="ft-inner">
+    <p class="cluster-label slide-up">▎動画で見せるなら、この3つ</p>
+    <div class="vid-grid">
+      <div class="vid-card slide-up">
+        <div class="ph-video-wrap"><video class="ph-fill" data-slot="video-1" data-asset-id="お手入れ簡単_web" autoplay muted loop playsinline preload="metadata" aria-label="切って、流して、乾かすお手入れの様子" src="{{ 'ralena-ugc-video-oteire.mp4' | asset_url }}"></video></div>
+        <div class="vid-body"><span class="v-icon">▶</span><h3>「切って、流して、乾かす」ひと続き</h3><p>切る → 水でさっと流す → 乾かす、までを10秒ほど。気持ちよく使えている一枚が、いちばんの見せ場です。</p></div>
+      </div>
+      <div class="vid-card slide-up">
+        <div class="ph-video-wrap"><video class="ph-fill" data-slot="video-2" data-asset-id="汁がこぼれない_web" autoplay muted loop playsinline preload="metadata" aria-label="切った食材の汁がこぼれにくい様子" src="{{ 'ralena-ugc-video-shiru.mp4' | asset_url }}"></video></div>
+        <div class="vid-body"><span class="v-icon">▶</span><h3>0.3mmの縁で汁がこぼれない</h3><p>切ったトマトや果物の汁が、縁でとまる瞬間を。動画だと"こぼれない"がぐっと伝わります。</p></div>
+      </div>
+      <div class="vid-card slide-up">
+        <div class="ph-video-wrap"><video class="ph-fill" data-slot="video-3" data-asset-id="滑らない_web" autoplay muted loop playsinline preload="metadata" aria-label="濡れた手でも滑らずトントン切る手元" src="{{ 'ralena-ugc-video-suberanai.mp4' | asset_url }}"></video></div>
+        <div class="vid-body"><span class="v-icon">▶</span><h3>ズレない滑らない</h3><p>切っている間も、まな板が台の上でピタッと動かない。その"滑らない・ズレない"安定感は、動画にするとよく伝わります。</p></div>
+      </div>
+    </div>
+    <p class="ft-tip slide-up">コツは、ひとつだけ。最初の数秒と、ひとことの字幕があると、見てもらいやすくなります。難しく考えず、スマホでそのまま撮って大丈夫です。</p>
+
+    <p class="cluster-label slide-up">▎言葉が浮かばないときは、この形に当てはめるだけ</p>
+    <div class="template slide-up">
+      <p>「<span class="fill">◯◯</span> のプチストレス、これで消えました」</p>
+      <p>「地味だけど、<span class="fill">◯◯</span> が助かってます」</p>
+      <p>「まな板を <span class="fill">2枚</span> から <span class="fill">1枚</span> にできました」</p>
+      <p class="t-note">うまく言葉にできなくても、大丈夫です。写真と、絵文字だけでもかまいません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B6.5 プロの料理人の声（PR枠・権威カード） ============ -->
+<section id="sec-pros" class="section-padding" data-section-type="proof" data-section-name="プロの料理人の声（PR）" data-section-order="7">
+  <div class="ps-wrap slide-up">
+    <span class="ps-pr">PR・メーカー取材協力</span>
+    <h2 data-slot="headline">プロの料理人も、<span class="hd-nowrap">選んでいます。</span></h2>
+    <p class="pv" data-slot="pro-voice-1">「刃あたりのちがいが安いまな板に比べてよく切れたし、切ったときの包丁の音も静か。材料が滑りにくくて切りやすい。使ってみてとてもよかったので同業者にすすめたいと思いました。」<cite>大福 泰之さん／味処 だいふく（掲載許諾確認中）</cite></p>
+    <p class="pv" data-slot="pro-voice-2">「濡れ布巾を敷かずとも動かないので切りやすく、切断音が静かなので落ち着いて作業に取り組める。」<cite>堀井 勉さん／Grand Chainon（掲載許諾確認中）</cite></p>
+    <p class="pv" data-slot="pro-voice-3">「全くすべらず、刃渡りが良いので切っていて楽しくなる。」<cite>市原 克彦さん（掲載許諾確認中）</cite></p>
+    <p class="ps-note">※ 本セクションはメーカーによる取材協力（PR）です。上記は料理人の方の原文のまま掲載しています。</p>
+  </div>
+</section>
+
+<!-- ============ B7 投稿導線＝最終フルCTA（#post） ============ -->
+<section id="sec-cta" class="section-padding" data-section-type="cta" data-section-name="投稿導線（最終CTA）" data-section-order="8">
+  <a id="post" style="position:relative;top:-20px;"></a>
+  <div class="ct-inner">
+    <p class="ct-label fade-in" data-slot="eyebrow">さあ</p>
+    <h2 class="fade-in" data-slot="headline">#ラレーナのある暮らし<br>で、教えてください。</h2>
+    <p class="ct-body fade-in" data-slot="body">ひとつでも「これ、私も」と思えたら、その写真や動画に、ひとこと添えて、このタグで投稿するだけ。うまく書けなくても大丈夫です。ひとことの見本は、用意しています。あなたの"プチストレス解消"が、同じことで困っている誰かに届きます。</p>
+    <div class="ct-steps">
+      <div class="ct-step slide-up"><span class="st-badge">STEP 1</span><div class="st-t">スマホの写真を選ぶ</div></div>
+      <div class="ct-step slide-up"><span class="st-badge">STEP 2</span><div class="st-t">タグを付ける</div></div>
+      <div class="ct-step slide-up"><span class="st-badge">STEP 3</span><div class="st-t">投稿する</div></div>
+    </div>
+
+    <!-- SNS投稿ボタン：リンク先はページ末尾の script の「差し替え設定」で管理 -->
+    <div class="ct-share slide-up">
+      <!-- Instagram投稿ボタン：クリックで タグ＋メンションをコピー → instagram:// 起動（未インストール時は www.instagram.com へ） -->
+      <button class="share-btn share-ig" id="share-ig" type="button" aria-label="Instagramで投稿する">
+        <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span>Instagramで投稿する</span>
+      </button>
+      <!-- X投稿ボタン：href はページ末尾 script で X Web Intent（本文空＋改行＋タグ＋メンション）に設定 -->
+      <a class="share-btn share-x" id="share-x" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener" aria-label="Xで投稿する">
+        <svg class="share-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span>Xで投稿する</span>
+      </a>
+    </div>
+    <p class="ct-share-note fade-in">Xは本文を書く画面が開きます／Instagramはタグをコピーしてアプリを開きます（貼り付けて投稿してください）。</p>
+
+    <p class="ct-closing fade-in" data-slot="closing">そして毎週、公式アカウントがみなさんの投稿を紹介します。あなたが教えてくれた小さな解消のひとつが、どこかの誰かの毎日を、ちょっとだけラクにします。あなたのその一枚を、心から待っています。</p>
+  </div>
+</section>
+
+<!-- ============ フッター ============ -->
+<footer class="lp-footer">
+  <!-- 公式ロゴPNG（透過・濃色）。フッターは明色背景のためそのまま視認可 -->
+  <img class="brandmark-logo" src="https://ralena.jp/cdn/shop/files/ralena-logo.png?v=1753340395&width=600" alt="Ra Le-Na" loading="lazy" />
+  <p class="footnote">
+    † 抗菌について：無機抗菌剤（NAFUR® RHA-805）を TPU 表面に練り込み、大腸菌・黄色ブドウ球菌において24時間後99%減少を確認（試験機関：Guangdong Microbiology Center）。食品衛生法クリア・BPA／フタル酸フリー。効果は使用環境により異なります。<br>
+    ※ 掲載のレビュー・お客様の声は、楽天市場に寄せられた実際の投稿です（集計期間 2025年12月6日〜2026年7月19日時点）。感じ方には個人差があります。
+  </p>
+</footer>
+
+<!-- ============ モバイルスティッキー（UGC転用：投稿導線へ誘導） ============ -->
+<div id="sticky-cta">
+  <a href="#post">#ラレーナのある暮らし で教える ▼</a>
+  <p class="sticky-note">スマホの写真1枚＋ひとことでOK・特典なしの自発投稿です</p>
+</div>
+
+<!-- ============ scripts.js（library/土台・インライン内包）＋スティッキー制御 ============ -->
+<script>
+/* ① スライドイン／フェードイン発火（IntersectionObserver） */
+(function () {
+  var targets = document.querySelectorAll('.slide-left, .slide-right, .slide-up, .fade-in');
+  if (!('IntersectionObserver' in window)) { targets.forEach(function (el) { el.classList.add('visible'); }); return; }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  targets.forEach(function (el) { obs.observe(el); });
+})();
+/* ② モバイルスティッキー制御（sec-solution通過で出現・sec-cta表示中は隠す・上スクロールで凹む） */
+(function () {
+  var el = document.getElementById('sticky-cta'); if (!el) return;
+  var shown = false; var lastY = window.scrollY;
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    if (shown) { if (y < lastY - 4) el.classList.add('retract'); else if (y > lastY + 4) el.classList.remove('retract'); }
+    lastY = y;
+  }, { passive: true });
+  var trigger = document.getElementById('sec-solution');
+  if (trigger && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (!e.isIntersecting && !shown && window.scrollY > trigger.offsetTop) { el.style.display = 'block'; shown = true; } });
+    }, { threshold: 0 }).observe(trigger);
+  }
+  var finalCta = document.getElementById('sec-cta');
+  if (finalCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { el.style.display = e.isIntersecting ? 'none' : (shown ? 'block' : 'none'); });
+    }, { threshold: 0.1 }).observe(finalCta);
+  }
+})();
+
+/* ③ 横スクロールカードの左右矢印スクロール */
+(function () {
+  var sc = document.querySelector('#sec-features .ft-scroller');
+  if (!sc) return;
+  function step() { var c = sc.querySelector('.hcard'); return (c ? c.getBoundingClientRect().width : 340) + 16; }
+  var prev = document.querySelector('#sec-features .ft-prev');
+  var next = document.querySelector('#sec-features .ft-next');
+  if (prev) prev.addEventListener('click', function () { sc.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function () { sc.scrollBy({ left: step(), behavior: 'smooth' }); });
+})();
+
+/* ④ 投稿例・テンプレ見本文のワンタップコピー */
+(function () {
+  var COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  var CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  function fallbackCopy(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.top = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta); done(ok);
+  }
+  function copyText(text, done) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); },
+        function () { fallbackCopy(text, done); });
+    } else { fallbackCopy(text, done); }
+  }
+  function flash(btn, ok) {
+    if (btn._t) { clearTimeout(btn._t); }
+    btn.classList.add('copied');
+    btn.innerHTML = CHECK_SVG + '<span>' + (ok ? 'コピーしました' : 'コピー失敗') + '</span>';
+    btn._t = setTimeout(function () {
+      btn.classList.remove('copied');
+      btn.innerHTML = COPY_SVG + '<span>コピー</span>';
+    }, 1600);
+  }
+
+  var TAG_LINE = '#ラレーナのある暮らし #ラレーナ';
+  var MENTION_LINE = '@ra_le_na_official';
+  var targets = document.querySelectorAll('#sec-features .post-ex, #sec-features .template p:not(.t-note)');
+  Array.prototype.forEach.call(targets, function (el) {
+    var span = document.createElement('span');
+    span.className = 'pe-text';
+    while (el.firstChild) { span.appendChild(el.firstChild); }
+    el.appendChild(span);
+    var tags = document.createElement('span');
+    tags.className = 'pe-tags'; tags.textContent = TAG_LINE;
+    var mention = document.createElement('span');
+    mention.className = 'pe-mention'; mention.textContent = MENTION_LINE;
+    el.appendChild(tags); el.appendChild(mention);
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'copy-btn';
+    btn.setAttribute('aria-label', '投稿例をコピー');
+    btn.innerHTML = COPY_SVG + '<span>コピー</span>';
+    el.appendChild(btn);
+    el.classList.add('has-copy');
+    btn.addEventListener('click', function () {
+      var body = span.textContent.replace(/\s+/g, ' ').trim();
+      var text = [body, TAG_LINE, MENTION_LINE].join('\n');
+      copyText(text, function (ok) { flash(btn, ok); });
+    });
+  });
+})();
+
+/* ============ 最終CTA：SNS投稿ボタン（X Web Intent / Instagram起動＋コピー） ============ */
+(function () {
+  /* ▼▼ 差し替え設定：投稿先・タグ・メンションを変えたい時はここだけ触る ▼▼ */
+  var SNS_TAGS        = '#ラレーナのある暮らし #ラレーナ';        // ハッシュタグ
+  var SNS_MENTION     = '@ra_le_na_official';                    // 公式メンション（X/Instagram共通）
+  var X_INTENT_BASE   = 'https://twitter.com/intent/tweet';      // ← ここがX投稿URL（x.com/intent/post でも可）
+  var IG_APP_SCHEME   = 'instagram://camera';                    // ← ここがInstagram起動URL（ディープリンク）
+  var IG_WEB_FALLBACK = 'https://www.instagram.com/';            // ← アプリ未インストール時のフォールバック
+  /* ▲▲ 差し替え設定ここまで ▲▲ */
+
+  // X：本文は空・末尾に2改行を空けてから タグ＋メンション をプリセット（本文はユーザーが上に書く）
+  var xText = '\n\n' + SNS_TAGS;  // X投稿文はハッシュタグのみ（@メンションは付けない・2026-07-24 FB。Instagram/投稿例のメンションは維持）
+  var xLink = document.getElementById('share-x');
+  if (xLink) { xLink.setAttribute('href', X_INTENT_BASE + '?text=' + encodeURIComponent(xText)); }
+
+  // Instagram：アプリ起動のみ（未インストール時はWebへ）。自動コピーは行わない
+  // （2026-07-24 FB：投稿例のコピーボタンでコピーした本文が、IGボタンの自動コピーで上書きされる害を回避）
+  var igBtn = document.getElementById('share-ig');
+  if (igBtn) {
+    igBtn.addEventListener('click', function () {
+      // アプリ起動 → 未インストール（＝ページに留まっている）ときはWebへフォールバック
+      var start = Date.now();
+      setTimeout(function () {
+        if (!document.hidden && (Date.now() - start) < 1800) { window.location.href = IG_WEB_FALLBACK; }
+      }, 1200);
+      window.location.href = IG_APP_SCHEME;
+    });
+  }
+})();
+</script>
+</div>
+
+{% schema %}
+{"name": "LP ugc-post-encourage-202", "settings": [], "presets": [{"name": "LP ugc-post-encourage-202"}]}
+{% endschema %}

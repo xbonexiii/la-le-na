@@ -1,0 +1,257 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "line-cushion-resale-top": {
+      "type": "line-cushion-resale-top",
+      "settings": {}
+    },
+    "features-11-reasons": {
+      "type": "section-horizontal-scroll-lp",
+      "blocks": {
+        "card_eXQkby": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/15_DSC02596.jpg",
+            "caption": "point 1",
+            "caption_font_size": 16,
+            "heading": "滑らない、ズレない。",
+            "title_font_size": 24,
+            "text": "プラスチックの約5倍のグリップ力",
+            "text_font_size": 18,
+            "detail_text": "特殊素材により、グリップ力はプラスチックの約5倍。まな板がズレると包丁が滑って危険ですが、RaLe-Naは濡れた手でも食材の水分があっても、しっかりとした接地力を維持します。毎日の調理が安全で、安心感のあるものになります。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_f3gXLb": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03356.jpg",
+            "caption": "point 2",
+            "caption_font_size": 16,
+            "heading": "お手入れラクちん",
+            "title_font_size": 24,
+            "text": "汚れもニオイものこりにくい",
+            "text_font_size": 18,
+            "detail_text": "汚れもニオイも残りにくい素材設計。食材の色素やニオイが繊維に入り込みにくく、さっと流すだけでスッキリきれいに。塩素系漂白剤にも対応しているので、しっかり除菌もできます。忙しい毎日のお手入れを、ぐっと楽にします。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_7DPFQH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03465.jpg",
+            "caption": "point 3",
+            "caption_font_size": 16,
+            "heading": "包丁の切れ味長持ち",
+            "title_font_size": 24,
+            "text": "刃あたりが柔らかい",
+            "text_font_size": 18,
+            "detail_text": "刃あたりが柔らかく、包丁の刃こぼれを防ぎます。適度な弾力が刃への負担を軽減するため、切れ味が長続きします。大切にしている包丁をより長く使い続けたい方にも、最適な一枚です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_FJkiJM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03500.jpg",
+            "caption": "point 4",
+            "caption_font_size": 16,
+            "heading": "美しさ長持ち",
+            "title_font_size": 24,
+            "text": "従来より2.8倍傷がつきにくい設計",
+            "text_font_size": 18,
+            "detail_text": "従来素材より2.8倍傷がつきにくい特殊設計。傷が少ないと、そこから染み込む汚れや雑菌も減ります。長く使っても見た目が劣化しにくく、清潔な状態を保ちやすい。「買い替えなくていい」と感じられる一枚です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_j8ViK9": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/13_DSC02583.jpg",
+            "caption": "point 5",
+            "caption_font_size": 16,
+            "heading": "厚み1.4cmなのに軽い",
+            "title_font_size": 24,
+            "text": "洗う時も、収納時も腕がラク",
+            "text_font_size": 18,
+            "detail_text": "厚さ1.4cmの存在感がありながら、持ち上げても腕に負担がかからない軽さ。洗うとき、収納するとき、食材を運ぶとき——毎日の動作がラクになります。重いまな板に悩んでいた方に、特に喜ばれています。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_9axdDH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03503.jpg",
+            "caption": "point 6",
+            "caption_font_size": 16,
+            "heading": "肉も野菜も一枚で",
+            "title_font_size": 24,
+            "text": "くるっと裏返すだけ",
+            "text_font_size": 18,
+            "detail_text": "両面を使い分けられる設計。くるっと裏返すだけで、肉用・野菜用と切り替えられます。まな板を複数用意する必要がなく、洗い物も減らせます。スッキリしたキッチンを保てるシンプルな答えです。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_nawCWn": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/14_DSC02589.jpg",
+            "caption": "point 7",
+            "caption_font_size": 16,
+            "heading": "食材で賢く使い分け",
+            "title_font_size": 24,
+            "text": "「滑り止め」と「汚れ落ち」を切替",
+            "text_font_size": 18,
+            "detail_text": "表面の異なる2つのテクスチャを使い分けられます。「しっかりグリップしたい食材」と「汚れが落ちやすい面が必要な食材」で、最適な面を選べます。一枚なのに、食材に合わせた使い方ができる賢い設計です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_em6bai": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03373.jpg",
+            "caption": "point 8",
+            "caption_font_size": 16,
+            "heading": "0.3mmのフチ",
+            "title_font_size": 24,
+            "text": "食材の水分がこぼれにくい",
+            "text_font_size": 18,
+            "detail_text": "周囲に0.3mmの絶妙な高さのフチを設けることで、食材から出る水分や肉汁がまな板の外にこぼれにくくなっています。キッチンカウンターを汚しにくく、後片付けも簡単。細部まで考えられた設計です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_fAPnMf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/size.jpg",
+            "caption": "point 9",
+            "caption_font_size": 16,
+            "heading": "家庭用食洗機に収まる",
+            "title_font_size": 24,
+            "text": "洗う時も、ベストなサイズ",
+            "text_font_size": 18,
+            "detail_text": "一般的な家庭用食洗機のサイズに収まるよう設計されています。食洗機で丸洗いできるので、毎日の後片付けがぐっとラクに。高温洗浄でも変形・変色しない耐熱設計です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_eUf4ta": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/21_DSC02637.jpg",
+            "caption": "point 10",
+            "caption_font_size": 16,
+            "heading": "長方形が使いやすい",
+            "title_font_size": 24,
+            "text": "丸型、かまも小型、色々あるけど",
+            "text_font_size": 18,
+            "detail_text": "丸型やかまぼこ型など様々な形があるなかで、「長方形が一番切りやすい」という実際に使う方の声から生まれた設計。食材が転がりにくく、安定した作業ができます。シンプルな長方形が、最も実用的な答えでした。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        },
+        "card_rJ6qQa": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/DSC03558.jpg",
+            "caption": "point 11",
+            "caption_font_size": 16,
+            "heading": "土に還るエコ素材",
+            "title_font_size": 24,
+            "text": "エコフレンドリー",
+            "text_font_size": 18,
+            "detail_text": "使い終わった後、適切に処理することで土に還るエコフレンドリーな素材を採用。毎日の料理から、地球に優しい選択ができます。使いやすさと環境への配慮を、同時に実現した一枚です。",
+            "background_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "card_eXQkby",
+        "card_f3gXLb",
+        "card_7DPFQH",
+        "card_FJkiJM",
+        "card_j8ViK9",
+        "card_9axdDH",
+        "card_nawCWn",
+        "card_em6bai",
+        "card_fAPnMf",
+        "card_eUf4ta",
+        "card_rJ6qQa"
+      ],
+      "settings": {
+        "section_title": "毎日使えるまな板の、11の理由。",
+        "subtitle": "使い始めて、手放せなくなりました。",
+        "heading_size": "h1",
+        "full_width": false,
+        "card_width": 400,
+        "card_height": 600,
+        "padding_top": 60,
+        "padding_bottom": 36
+      }
+    },
+    "1779522622f74ed02e": {
+      "type": "apps",
+      "blocks": {
+        "trustshop_reviews_all_reviews_jXpD86": {
+          "type": "shopify://apps/trustshop-reviews/blocks/all-reviews/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "wrapper_class": "",
+            "review_to_display": "product_reviews_only",
+            "main_tab": "auto"
+          }
+        },
+        "trustshop_reviews_review_carousel_RdMcLD": {
+          "type": "shopify://apps/trustshop-reviews/blocks/review-carousel/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "disabled": true,
+          "settings": {
+            "wrapper_class": "",
+            "carousel_style": "classic"
+          }
+        }
+      },
+      "block_order": [
+        "trustshop_reviews_all_reviews_jXpD86",
+        "trustshop_reviews_review_carousel_RdMcLD"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "line-cushion-resale-bottom": {
+      "type": "line-cushion-resale-bottom",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "line-cushion-resale-top",
+    "features-11-reasons",
+    "1779522622f74ed02e",
+    "line-cushion-resale-bottom"
+  ]
+}

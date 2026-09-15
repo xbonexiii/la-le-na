@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "multicolumn_WGqYRn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_tbP98t": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>保証期間</strong>（商品購入日より）",
+            "text": "<h3>◼️返品・交換・返金対応</h3><p>商品到着より30日間まで対応<br/>返送時の送料のみお客様ご負担<br/><br/></p><p><a href=\"/policies/refund-policy\" target=\"_blank\" title=\"Refund Policy\">返金ポリシー</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_tbP98t"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info .icon-wrap {display: none;}",
+        "h2 {margin: auto;}",
+        "h3 {font-size: calc(var(--font-heading-scale) * 3rem);}",
+        "a {background-color: #0071e3; border-radius: 50px; color: #fff; display: inline-flex; justify-content: center; align-items: center; padding: 1rem 3rem; font: inherit; font-size: 1.5rem; text-decoration: none; letter-spacing: 0.1rem; line-height: calc(1 + 0.2 / var(--font-body-scale));}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "メーカー保証について",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_mpkHAB": {
+      "type": "rich-text",
+      "blocks": {
+        "text_XPhBgY": {
+          "type": "text",
+          "settings": {
+            "text": "<h2><strong>営業時間</strong></h2><p>営業時間：平日10:00〜17:00まで<br/>休業日：土日祝</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_XPhBgY"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_contact_form_JybYQx": {
+      "type": "custom-contact-form",
+      "blocks": {
+        "text_field_e9tXEK": {
+          "type": "text_field",
+          "settings": {
+            "label": "ご購入者のお名前",
+            "field_name": "contact_name",
+            "placeholder": "姓名",
+            "required": true
+          }
+        },
+        "text_field_4keXRG": {
+          "type": "text_field",
+          "settings": {
+            "label": "ご住所",
+            "field_name": "address",
+            "placeholder": "ご住所（購入したご住所）",
+            "required": false
+          }
+        },
+        "phone_field_JNRgmn": {
+          "type": "phone_field",
+          "settings": {
+            "label": "ご連絡先の電話番号",
+            "field_name": "phone",
+            "placeholder": "000-0000-0000",
+            "required": true
+          }
+        },
+        "email_field_8EDLzn": {
+          "type": "email_field",
+          "settings": {
+            "label": "Email",
+            "placeholder": "メールアドレスをご入力ください",
+            "required": true
+          }
+        },
+        "date_field_GP8VwG": {
+          "type": "date_field",
+          "settings": {
+            "label": "購入日",
+            "field_name": "date",
+            "required": false
+          }
+        },
+        "radio_group_8k7DT3": {
+          "type": "radio_group",
+          "settings": {
+            "label": "購入した場所",
+            "field_name": "contact_method",
+            "options": "楽天市場店, Amazon店,Yahoo!ショッピング店,Ra Le-Na公式サイト",
+            "required": true
+          }
+        },
+        "text_field_QY9qTq": {
+          "type": "text_field",
+          "settings": {
+            "label": "ご注文番号",
+            "field_name": "order_number",
+            "placeholder": "ご注文番号をご入力ください",
+            "required": false
+          }
+        },
+        "textarea_6iypbr": {
+          "type": "textarea",
+          "settings": {
+            "label": "どのような状態でしょうか？",
+            "placeholder": "状況の詳細をご入力ください",
+            "rows": 6,
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "text_field_e9tXEK",
+        "text_field_4keXRG",
+        "phone_field_JNRgmn",
+        "email_field_8EDLzn",
+        "date_field_GP8VwG",
+        "radio_group_8k7DT3",
+        "text_field_QY9qTq",
+        "textarea_6iypbr"
+      ],
+      "name": "お問い合わせフォーム",
+      "settings": {
+        "form_identifier": "Ra Le-Na返品・交換フォーム",
+        "heading": "返品交換フォーム",
+        "submit_button_text": "送信する",
+        "success_heading": "お問い合わせありがとうございます",
+        "success_message": "送信完了しました！\n内容を確認のうえ、担当者よりメールでご連絡させていただきます。今しばらくお待ちください。",
+        "redirect_url": "",
+        "error_message": "申し訳ありません。送信に失敗しました。\n時間をおいて、もう一度お試しください。"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multicolumn_WGqYRn",
+    "rich_text_mpkHAB",
+    "custom_contact_form_JybYQx"
+  ]
+}

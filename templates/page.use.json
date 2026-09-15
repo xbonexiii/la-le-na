@@ -1,0 +1,615 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_TP4L6E": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NtPMxq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le Naの使い方",
+            "heading_size": "h1"
+          }
+        },
+        "text_VJqVQn": {
+          "type": "text",
+          "settings": {
+            "text": "毎日の「切る・洗う・しまう」が、少しずつ心地よくなる。",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NtPMxq",
+        "text_VJqVQn"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/14_DSC02589.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "multicolumn_z6t4RJ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NGyttz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03465.jpg",
+            "title": "<strong>STEP1：切る</strong>",
+            "text": "<p>野菜、肉、パンをしっかり固定。刃当たりやさしく静かにトントン。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kfWWWj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC02711.jpg",
+            "title": "<strong>STEP２：洗う</strong>",
+            "text": "<p>水を弾く素材＋加工で汚れスッと。スポンジで軽くなでるだけ。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TFGW6V": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03550.jpg",
+            "title": "<strong>STEP３：しまう</strong>",
+            "text": "<p>立てかけてスッと乾く。収納しやすい厚み＆形状。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_NGyttz",
+        "column_kfWWWj",
+        "column_TFGW6V"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info .icon-wrap {display: none;}",
+        "h2 {margin: auto;}",
+        "h3 {font-size: calc(var(--font-heading-scale) * 2rem);}",
+        "a {background-color: #0071e3; border-radius: 50px; color: #fff; display: inline-flex; justify-content: center; align-items: center; padding: 1rem 3rem; font: inherit; font-size: 1.5rem; text-decoration: none; letter-spacing: 0.1rem; line-height: calc(1 + 0.2 / var(--font-body-scale));}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>使い方は、とてもシンプル。毎日、毎日、使いやすい</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "image_banner_RziEkN": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03465.jpg",
+        "image_2": "shopify://shop_images/14_DSC02589.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "ambient",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_Xxgy68": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dWfXnL": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>STEP１：切る</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "heading_Nfcppi": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>表と裏で、使い分けてもっと便利に。</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_jhp9QB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>計算された「微細シボ」「ストライプ」</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dWfXnL",
+        "heading_Nfcppi",
+        "text_jhp9QB"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn_bTmhjz": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_8xikQK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/16-8_DSC02611.jpg",
+            "title": "<strong>微細シボ</strong>",
+            "text": "<h2>◯ 滑りにくく、ズレない</h2><p><br/>シボ面は、<br/><strong>「安定感を求める調理」</strong>や<strong>「刃先のコントロールが重要な食材」</strong><br/>に特におすすめの面です。<br/><br/>この微細な凹凸が、食材とまな板の間に適度な摩擦を生み出し、滑りやすい野菜や果物などもピタッと安定してカットできます。包丁の刃がスッと入りやすくなるため、余計な力をかけず、手元がぶれにくいのもポイントです。<br/><br/>滑らず安心して使えることで、調理中のストレスやヒヤッとするような場面を防ぎ、毎日の「切る」という作業に、静かで確かな心地よさを与えてくれます。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_zfcQUP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/16-7_DSC02610.jpg",
+            "title": "<strong>ストライプ</strong>",
+            "text": "<h2>◯ 汚れ落ちやすく速乾性が高い</h2><p><br/>ストライプ面は、<br/><strong>「お手入れのしやすさ」</strong>や<strong>「水気の多い食材を調理したいとき」</strong><br/>にぴったりな使い方ができる面です。<br/><br/>この溝が水路のように機能し、肉や魚のドリップ、ソースのような液体汚れをすばやく流してくれるため、まな板に汚れが留まりにくい設計になっています。<br/><br/>また、この加工によって洗ったあとの水切れも非常によく、速乾性にも優れています。水分や油分を含む食材を扱ったあとでも、サッと洗ってそのまま乾かせば、清潔を簡単に保つことができます。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_8xikQK",
+        "column_zfcQUP"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "circle",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_apddqr": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image_2": "shopify://shop_images/DSC02711.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "ambient",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_Q3kXAz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WpXeDT": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>STEP２：洗う</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "heading_6BHDy8": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>汚れをサッと洗い流す</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_iCw8GL": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>長く使い、清潔をずっと保つためのコツ</h3>"
+          }
+        },
+        "text_bnQFK3": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>【洗うときの推奨】</h3><ul><li>つけ置きしない</li><li>40 ℃以下のぬるま湯＋中性洗剤で手洗い</li><li>できるだけゴシゴシ擦らずソフトスポンジで表裏同じ時間洗う</li></ul><h3>【拭き取る時】</h3><ul><li>乾いた布で拭き取る</li><li>水滴を残さない</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WpXeDT",
+        "heading_6BHDy8",
+        "text_iCw8GL",
+        "text_bnQFK3"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn_hHjxJ7": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Tt6nXa": {
+          "type": "column",
+          "settings": {
+            "title": "食洗機OK（耐熱95℃）",
+            "text": "<p>食洗機対応。毎日ラクに清潔キープ。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RXNmKk": {
+          "type": "column",
+          "settings": {
+            "title": "塩素系・酸素系漂白剤使用OK",
+            "text": "<p>ニオイ・色移りもスッキリ落とせる。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_X3TMhY": {
+          "type": "column",
+          "settings": {
+            "title": "熱湯消毒OK",
+            "text": "<p>お湯をかけるだけで簡単に除菌・安心。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cK48GQ": {
+          "type": "column",
+          "settings": {
+            "title": "流すだけでニオイ残りにくい",
+            "text": "<p>脂や水分が染み込みにくい。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Nd7inA": {
+          "type": "column",
+          "settings": {
+            "title": "表面にキズがつきにくい",
+            "text": "<p>刃当たりやさしく、キレイなまま。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Tt6nXa",
+        "column_RXNmKk",
+        "column_X3TMhY",
+        "column_cK48GQ",
+        "column_Nd7inA"
+      ],
+      "custom_css": [],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "image_banner_ryXtR4": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03550.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "ambient",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_yXHjaH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cY7JMK": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>STEP３：しまう</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "heading_PDyeGw": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>長く使うための保管方法</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_nBCzhk": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><strong>【乾燥・保管】</strong></h3><ul><li>直射日光を当てない</li><li>立てて保管</li><li>できれば立てて保管する際も使用都度、向きを変更(偏らせない)</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cY7JMK",
+        "heading_PDyeGw",
+        "text_nBCzhk"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_mPcXE3": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_r7hHDP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>一緒に使いたい｜専用スクレパーの活用法</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_jk9BGf": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Ra Le-Na購入者先着4000名限定</strong><br/>刻んだ野菜をすくってそのまま鍋へ<br/>水気を押し出してドレッシングや炒め物に<br/>まな板や調理器具の掃除にもぴったり</p>"
+          }
+        },
+        "button_Y67bKm": {
+          "type": "button",
+          "settings": {
+            "button_label": "レビュー投稿でプレゼント中（購入者限定）",
+            "button_link": "shopify://pages/review-campaign",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_r7hHDP",
+        "text_jk9BGf",
+        "button_Y67bKm"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_DeWDTU": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_4cJGfH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板が滑ります",
+            "icon": "question_mark",
+            "row_content": "<h3>A. 油分のお掃除をお試しください</h3><p>Ra Le-Naは縁に滑らないシリコン素材を採用し、基本的に滑りにくい構造になっています。<br/>ただし、一部天板の素材によっては滑ることがございます。<br/>また、天板の油分の汚れによる滑りが多く確認されておりますので、天板の掃除の仕方をお試しいただけると幸いです。</p><p><a href=\"/blogs/blog/251211\" title=\"Ra Le-Naの簡単滑り対策\">Ra Le-Naの簡単滑り対策</a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Gmf3x4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "食洗機で洗っても変形しませんか？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、大丈夫です。</strong></h3><p>Ra Le-Naは耐熱温度95℃、高耐水設計ですので、家庭用食洗機での洗浄・乾燥にも対応しています。<br/><br/>高温の洗浄・乾燥工程でも、変形や劣化が起きにくい素材を採用しており、実使用テストでも問題はありません。<br/><br/>「いつものお手入れ」で、長く清潔にご使用いただけます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FAhxxb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "両面の使い分けってどう判断する？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. 表裏でテクスチャが異なるので、用途に合わせてお選びください。</strong></h3><ul><li>微細な凸凹で滑りにくく、トマトやお刺身など、ズレやすい食材におすすめ。<br/></li><li>細い溝で水分や油分をスッと流しやすく、肉やソースのついた食材におすすめです。<br/></li></ul><p>日々の調理で「使いやすさ」が自然と分かれる設計になっておりますので、特に覚えなくても感覚でお使いいただけます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VB7hUx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板スタンドに立てられる厚さですか？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、ほとんどの市販スタンドに対応しています。</strong></h3><p>Ra Le-Naは**厚さ1.4cm**で、一般的なステンレス製や木製のまな板スタンドに問題なく収まります。<br/><br/>また、本体重量も約877gと軽量なため、立てかけた状態でも安定しやすく、乾燥も早いため衛生的です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_z6qp3y": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板のニオイや色移り、本当に防げる？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、素材と構造の両面からしっかり対策されています。</strong></h3><ul><li>Ra Le-Naは木とは異なり、内部にすき間がない「ノンポーラス構造」です。<br/><br/>　魚やにんにくなどの油分・臭い成分も、素材表面にとどまり染み込みません。さらに抗菌剤を素材に練り込むことで、雑菌の繁殖も抑えています。<br/></li></ul><p></p><ul><li>カレーや人参のような色素も、表面のシボ＆ストライプ加工により接地面積が少なく、サッと落ちやすいのが特徴です。<br/><br/>　漂白剤も使用可能なので、いつでも清潔な状態にリセットできます。</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_4cJGfH",
+        "collapsible_row_Gmf3x4",
+        "collapsible_row_FAhxxb",
+        "collapsible_row_VB7hUx",
+        "collapsible_row_z6qp3y"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "よくあるご質問",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_fgTghf": {
+      "type": "rich-text",
+      "blocks": {
+        "button_4bJThb": {
+          "type": "button",
+          "settings": {
+            "button_label": "もっと見る",
+            "button_link": "shopify://pages/faq",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_4bJThb"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_qGdkAL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DekwkP": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご購入前のご不明点はこちらからお問い合わせください",
+            "heading_size": "h2"
+          }
+        },
+        "button_QVYWPf": {
+          "type": "button",
+          "settings": {
+            "button_label": "お問い合わせフォーム",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_DekwkP",
+        "button_QVYWPf"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_TP4L6E",
+    "multicolumn_z6t4RJ",
+    "image_banner_RziEkN",
+    "rich_text_Xxgy68",
+    "multicolumn_bTmhjz",
+    "image_banner_apddqr",
+    "rich_text_Q3kXAz",
+    "multicolumn_hHjxJ7",
+    "image_banner_ryXtR4",
+    "rich_text_yXHjaH",
+    "rich_text_mPcXE3",
+    "collapsible_content_DeWDTU",
+    "rich_text_fgTghf",
+    "rich_text_qGdkAL"
+  ]
+}

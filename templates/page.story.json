@@ -1,0 +1,629 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_TP4L6E": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NtPMxq": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_VJqVQn": {
+          "type": "text",
+          "settings": {
+            "text": "500人の声と2年の挑戦から生まれました",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NtPMxq",
+        "text_VJqVQn"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/12_DSC02532.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "multicolumn_PBrXg3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_gWbjE7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ralena-logo.png",
+            "title": "毎日、毎日、使いやすい",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_gWbjE7"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_Kzcq4A": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BzEiha": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>はじまり ─ 小さな違和感から始まった挑戦</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_RRCdaB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>夕方、仕事帰りに買い物袋を下ろしたキッチンで、私は鶏肉を切りながらふと眉をひそめました。<br/>「また滑った」「洗ったのにニオイが残ってる」<br/>毎日使うものなのに、毎回小さなストレスが積み重なる。</p><p><strong>その瞬間、「理想のまな板って、どこにもない」と気づいたのです。</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BzEiha",
+        "text_RRCdaB"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_e9bfac": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6zpT6a": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>ないなら、作ろう ─ 500人の声が原点</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_jtVdcE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>「滑らず、手入れしやすく、長く使えるまな板があればいいのに」<br/>そんな思いをSNSで投げかけると、1週間で500人以上の主婦がアンケートに回答してくれました。</p><p>その中にいた市山さんのひと言が、プロジェクトを動かすきっかけになります。</p><p><em>「毎日キッチンに立つ自分たちが、本当に気持ちよく使えるものがほしい」</em></p><p><strong>こうして、私たちの合言葉は決まりました。── 毎日、毎日、使いやすい。</strong></p><h3></h3>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6zpT6a",
+        "text_jtVdcE"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_cjEqPY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_wc8P6M": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/11-3_DSC02525.jpg",
+            "title": "<strong>まな板の問題点 | トップ５</strong>",
+            "text": "<p><strong>すぐに傷がつく</strong>・・・23.9%</p><p><strong>洗うのが大変</strong>・・・14.9％</p><p><strong>重い・かさばる</strong>・・・14.3%</p><p><strong>まな板自体が滑る</strong>・・・10.1%</p><p><strong>匂いがつきやすい</strong>・・・9.7%</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JtyebL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/11-1_DSC02523.jpg",
+            "title": "<strong>欲しい機能や特性｜トップ５</strong>",
+            "text": "<p><strong>手入れが簡単</strong>・・・21.4%</p><p><strong>使い勝手 / まな板が滑らない</strong>・・・17.9%</p><p><strong>耐久性 / 長持ちする</strong>・・・14.3％</p><p><strong>匂いや色が移りにくい</strong>・・・14.3%</p><p><strong>収納が便利</strong>・・・7.1%</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_wc8P6M",
+        "column_JtyebL"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>500人のアンケートの一部を紹介</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_Lm8xU6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GrGAde": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>理想の素材はどこにある？ ─ 迷路の始まり</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_XhWhzM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>木は刃にやさしいけれど、すぐ黒ずんで手入れが大変。<br/>プラスチックは衛生的だけれど、硬くて刃こぼれしやすい。<br/>エラストマーは柔らかすぎて滑りやすい。</p><p>「3つの良さを全部持った素材はないの？」</p><p>その問いにたどり着いたのがTPUという素材でした。<br/>しかし、滑る・重い・柔らかすぎる──問題は山積み。</p>"
+          }
+        },
+        "heading_VtLBrV": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>日本ではつくれない ─ 断られた5工場</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_XYWb6U": {
+          "type": "text",
+          "settings": {
+            "text": "<p>軽さと硬さのバランス、滑らなさ、そして特殊な二層成形。<br/>国内5社の成形工場を訪ねましたが、答えは「前例がなく難しい」。</p><p>光が見えないまま、時間だけが過ぎていきました。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GrGAde",
+        "text_XhWhzM",
+        "heading_VtLBrV",
+        "text_XYWb6U"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_NipFtB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_eMgkDt": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>中国深圳で出会った技術者、そして32回の試作</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_EEPxTq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>そんな中、開発チームの一人が言いました。<br/>「中国・深圳に技術を持った方がいます。一度会いに行きましょう」</p><p>飛行機で4時間、車で2時間。たどり着いた先で出会った王さん。<br/>不安そうな私たちに、彼はこう言いました。</p><p>「面白い。挑戦しましょう」</p><p>それから32回の試作が始まります。<br/>0.1％刻みでの素材調整、1℃単位での温度管理、そして手作業での検証。</p><p>ついに32回目。滑らない、軽い、キズがつきにくい、抗菌性──すべてを満たした1枚が誕生したのです。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eMgkDt",
+        "text_EEPxTq"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "video_XakLDC": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "enable_video_autoplay": true,
+        "video": "shopify://files/videos/第2稿（コピーあり）.mp4",
+        "video_url": "",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_MB8qm8": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9jtghT": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>名前に込めた想い ─ La Regina＝女王</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_Q8EJDr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ra Le-Na（ラ・レーナ）は、イタリア語で“女王”を意味する「La Regina」から名付けました。</p><p>毎日キッチンに立つあなたこそ、家族のために時間を捧げる「女王」だと、私たちは考えています。<br/>その手にふさわしい一枚を──そんな想いを込めて、Ra Le-Naという名前を贈りました。</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9jtghT",
+        "text_Q8EJDr"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_fA6NYF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_RCiHCm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC02976.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_RCiHCm"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_rXLzWf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YKCQG6": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>そして、あなたのキッチンへ</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_Hjcwdp": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>2年の歳月、500人の声、32回の試作。</strong><br/>そのすべてを込めて完成したRa Le-Naは、ただのまな板ではありません。<br/>あなたの毎日にそっと寄り添い、「切る・洗う・しまう」のすべてを心地よく整える存在です。</p><p>どうか、Ra Le-Naがあなたのキッチンに届いたとき、<br/>その手触り、音、洗い心地で、“使いやすさ”の意味が変わることを願っています</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YKCQG6",
+        "text_Hjcwdp"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "multicolumn_NiXdpN": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_JK9xhn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/12_DSC02532.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_JK9xhn"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_z6t4RJ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NGyttz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03465.jpg",
+            "title": "<strong>STEP1：切る</strong>",
+            "text": "<p>野菜、肉、パンをしっかり固定。刃当たりやさしく静かにトントン。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kfWWWj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC02711.jpg",
+            "title": "<strong>STEP２：洗う</strong>",
+            "text": "<p>水を弾く素材＋加工で汚れスッと。スポンジで軽くなでるだけ。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TFGW6V": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC03550.jpg",
+            "title": "<strong>STEP３：しまう</strong>",
+            "text": "<p>立てかけてスッと乾く。収納しやすい厚み＆形状。</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_NGyttz",
+        "column_kfWWWj",
+        "column_TFGW6V"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>使い方は、とてもシンプル。</br>毎日、毎日、使いやすい。</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Ra Le-Na製品ページはこちら",
+        "button_link": "shopify://products/ra-le-na",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_DeWDTU": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_4cJGfH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "食洗機で洗っても変形しませんか？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、大丈夫です。</strong></h3><p>Ra Le-Naは耐熱温度95℃、高耐水設計ですので、家庭用食洗機での洗浄・乾燥にも対応しています。<br/><br/>高温の洗浄・乾燥工程でも、変形や劣化が起きにくい素材を採用しており、実使用テストでも問題はありません。<br/><br/>「いつものお手入れ」で、長く清潔にご使用いただけます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FAhxxb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "両面の使い分けってどう判断する？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. 表裏でテクスチャが異なるので、用途に合わせてお選びください。</strong></h3><ul><li>微細な凸凹で滑りにくく、トマトやお刺身など、ズレやすい食材におすすめ。<br/></li><li>細い溝で水分や油分をスッと流しやすく、肉やソースのついた食材におすすめです。<br/></li></ul><p>日々の調理で「使いやすさ」が自然と分かれる設計になっておりますので、特に覚えなくても感覚でお使いいただけます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VB7hUx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板スタンドに立てられる厚さですか？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、ほとんどの市販スタンドに対応しています。</strong></h3><p>Ra Le-Naは**厚さ1.4cm**で、一般的なステンレス製や木製のまな板スタンドに問題なく収まります。<br/><br/>また、本体重量も約877gと軽量なため、立てかけた状態でも安定しやすく、乾燥も早いため衛生的です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_z6qp3y": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "まな板のニオイや色移り、本当に防げる？",
+            "icon": "question_mark",
+            "row_content": "<h3><strong>A. はい、素材と構造の両面からしっかり対策されています。</strong></h3><ul><li>Ra Le-Naは木とは異なり、内部にすき間がない「ノンポーラス構造」です。<br/><br/>　魚やにんにくなどの油分・臭い成分も、素材表面にとどまり染み込みません。さらに抗菌剤を素材に練り込むことで、雑菌の繁殖も抑えています。<br/></li></ul><p></p><ul><li>カレーや人参のような色素も、表面のシボ＆ストライプ加工により接地面積が少なく、サッと落ちやすいのが特徴です。<br/><br/>　漂白剤も使用可能なので、いつでも清潔な状態にリセットできます。</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_4cJGfH",
+        "collapsible_row_FAhxxb",
+        "collapsible_row_VB7hUx",
+        "collapsible_row_z6qp3y"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "よくあるご質問",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_tJiYAH": {
+      "type": "rich-text",
+      "blocks": {
+        "button_qK8ddW": {
+          "type": "button",
+          "settings": {
+            "button_label": "もっと見る",
+            "button_link": "shopify://pages/faq",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_qK8ddW"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_qGdkAL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DekwkP": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご購入前のご不明点はこちらからお問い合わせください",
+            "heading_size": "h2"
+          }
+        },
+        "button_QVYWPf": {
+          "type": "button",
+          "settings": {
+            "button_label": "お問い合わせフォーム",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_DekwkP",
+        "button_QVYWPf"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_TP4L6E",
+    "multicolumn_PBrXg3",
+    "rich_text_Kzcq4A",
+    "rich_text_e9bfac",
+    "multicolumn_cjEqPY",
+    "rich_text_Lm8xU6",
+    "rich_text_NipFtB",
+    "video_XakLDC",
+    "rich_text_MB8qm8",
+    "multicolumn_fA6NYF",
+    "rich_text_rXLzWf",
+    "multicolumn_NiXdpN",
+    "multicolumn_z6t4RJ",
+    "collapsible_content_DeWDTU",
+    "rich_text_tJiYAH",
+    "rich_text_qGdkAL"
+  ]
+}

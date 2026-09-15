@@ -1,0 +1,237 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_mVEqem": {
+      "type": "custom-liquid",
+      "name": "商品説明",
+      "settings": {
+        "custom_liquid": "{% render 'table-of-contents' , table_of_contents_enable: product.metafields.custom.show_table_of_contents %}\n\n<div style=\"max-width: 840px;margin: auto;\">\n{{product.description}}\n<div>",
+        "color_scheme": "scheme-2a7bf3a4-48a6-4b0c-9b7f-79bc631ce21f",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_9p4LA4": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "LINE誘導ボタン",
+      "settings": {
+        "custom_liquid": "<a href=\"https://lin.ee/rDDhEF8\" class=\"line-sticky-banner\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0692/1037/4325/files/251212_01__Shopify-RaLeNa.png?v=1765524018\" alt=\"LINE誘導バナー\" class=\"banner-image\">\n</a>\n\n<style>\n/* LINE誘導バナー */\n.line-sticky-banner {\n  position: fixed;\n  bottom: 30px;\n  right: 30px;\n  z-index: 1000;\n  display: block;\n  max-width: 350px;\n  width: 100%;\n  box-sizing: border-box;\n\n  /* 角丸を“親”に持たせる（pill形状） */\n  border-radius: 9.84px;           /* ← ここが肝。画像のradius=170px相当でもOK */\n  overflow: hidden;                 /* はみ出し防止（光沢も内側に） */\n  box-shadow: 0 4px 15px rgba(0,0,0,0.2);\n\n  /* 拡大は親に適用、右下を基点に */\n  transform-origin: right bottom;\n  transition: transform .3s ease, box-shadow .3s ease;\n  will-change: transform;\n  text-decoration: none;\n\n  /* Safariで角が角ばる場合の保険（任意） */\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n}\n\n@media screen and (max-width: 500px) {\n  .line-sticky-banner {\n    bottom: 5px;\n    right: 0;\n    padding: 0px;\nmargin:0 10px 5px 0;\n    max-width: 250px;\n  }\n}\n\n.line-sticky-banner .banner-image {\n  width: 100%;\n  height: auto;\n  display: block;\n  border-radius: inherit;           /* 親と同じ角丸を継承 */\n  box-shadow: none;\n}\n\n.line-sticky-banner:hover {\n  transform: translateY(-2px) scale(1.04);  /* お好みで1.02〜1.06 */\n  box-shadow: 0 6px 20px rgba(0,0,0,0.3);\n}\n\n/* 子画像側の拡大はしない（親で拡大） */\n.line-sticky-banner:hover .banner-image {\n  transform: none;\n}\n\n/* 光沢エフェクト */\n.line-sticky-banner::before {\n  content: '';\n  position: absolute;\n  top: -50%;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(255,255,255,0));\n  transform: rotate(45deg);\n  animation: shine-left-to-right 3s linear infinite;\n  opacity: 1;\n  z-index: 1;\n  pointer-events: none;\n}\n\n@keyframes shine-left-to-right {\n  0%   { left: -100%; }\n  100% { left: 100%; }\n}\n\n@supports (-webkit-touch-callout: none) {\n  .line-sticky-banner { -webkit-mask-image: -webkit-radial-gradient(white, black); }\n}\n\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_yaQ9Uj": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "楽天誘導ボタン",
+      "settings": {
+        "custom_liquid": "<a href=\"https://item.rakuten.co.jp/rale-na/ralena-m01/\" class=\"line-sticky-banner\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0692/1037/4325/files/251212_01__Shopify-RaLeNa.png?v=1765524018\" alt=\"LINE誘導バナー\" class=\"banner-image\">\n</a>\n\n<style>\n/* LINE誘導バナー */\n.line-sticky-banner {\n  position: fixed;\n  bottom: 30px;\n  right: 30px;\n  z-index: 1000;\n  display: block;\n  max-width: 350px;\n  width: 100%;\n  box-sizing: border-box;\n\n  /* 角丸を“親”に持たせる（pill形状） */\n  border-radius: 9.84px;           /* ← ここが肝。画像のradius=170px相当でもOK */\n  overflow: hidden;                 /* はみ出し防止（光沢も内側に） */\n  box-shadow: 0 4px 15px rgba(0,0,0,0.2);\n\n  /* 拡大は親に適用、右下を基点に */\n  transform-origin: right bottom;\n  transition: transform .3s ease, box-shadow .3s ease;\n  will-change: transform;\n  text-decoration: none;\n\n  /* Safariで角が角ばる場合の保険（任意） */\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n}\n\n@media screen and (max-width: 500px) {\n  .line-sticky-banner {\n    bottom: 5px;\n    right: 0;\n    padding: 0px;\nmargin:0 10px 5px 0;\n    max-width: 250px;\n  }\n}\n\n.line-sticky-banner .banner-image {\n  width: 100%;\n  height: auto;\n  display: block;\n  border-radius: inherit;           /* 親と同じ角丸を継承 */\n  box-shadow: none;\n}\n\n.line-sticky-banner:hover {\n  transform: translateY(-2px) scale(1.04);  /* お好みで1.02〜1.06 */\n  box-shadow: 0 6px 20px rgba(0,0,0,0.3);\n}\n\n/* 子画像側の拡大はしない（親で拡大） */\n.line-sticky-banner:hover .banner-image {\n  transform: none;\n}\n\n/* 光沢エフェクト */\n.line-sticky-banner::before {\n  content: '';\n  position: absolute;\n  top: -50%;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(255,255,255,0));\n  transform: rotate(45deg);\n  animation: shine-left-to-right 3s linear infinite;\n  opacity: 1;\n  z-index: 1;\n  pointer-events: none;\n}\n\n@keyframes shine-left-to-right {\n  0%   { left: -100%; }\n  100% { left: 100%; }\n}\n\n@supports (-webkit-touch-callout: none) {\n  .line-sticky-banner { -webkit-mask-image: -webkit-radial-gradient(white, black); }\n}\n\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_hzRLLg": {
+      "type": "custom-liquid",
+      "name": "Amazon誘導ボタン",
+      "settings": {
+        "custom_liquid": "<a href=\"https://ralena.jp/pages/2026-june-ra-lena-resale\" class=\"line-sticky-banner\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0692/1037/4325/files/260521_01__20off-RaLeNa.png?v=1779414054\" alt=\"Amazon誘導バナー\" class=\"banner-image\">\n</a>\n\n<style>\n/* LINE誘導バナー */\n.line-sticky-banner {\n  position: fixed;\n  bottom: 30px;\n  right: 30px;\n  z-index: 1000;\n  display: block;\n  max-width: 350px;\n  width: 100%;\n  box-sizing: border-box;\n\n  /* 角丸を“親”に持たせる（pill形状） */\n  border-radius: 9.84px;           /* ← ここが肝。画像のradius=170px相当でもOK */\n  overflow: hidden;                 /* はみ出し防止（光沢も内側に） */\n  box-shadow: 0 4px 15px rgba(0,0,0,0.2);\n\n  /* 拡大は親に適用、右下を基点に */\n  transform-origin: right bottom;\n  transition: transform .3s ease, box-shadow .3s ease;\n  will-change: transform;\n  text-decoration: none;\n\n  /* Safariで角が角ばる場合の保険（任意） */\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n}\n\n@media screen and (max-width: 500px) {\n  .line-sticky-banner {\n    bottom: 5px;\n    right: 0;\n    padding: 0px;\nmargin:0 10px 5px 0;\n    max-width: 250px;\n  }\n}\n\n.line-sticky-banner .banner-image {\n  width: 100%;\n  height: auto;\n  display: block;\n  border-radius: inherit;           /* 親と同じ角丸を継承 */\n  box-shadow: none;\n}\n\n.line-sticky-banner:hover {\n  transform: translateY(-2px) scale(1.04);  /* お好みで1.02〜1.06 */\n  box-shadow: 0 6px 20px rgba(0,0,0,0.3);\n}\n\n/* 子画像側の拡大はしない（親で拡大） */\n.line-sticky-banner:hover .banner-image {\n  transform: none;\n}\n\n/* 光沢エフェクト */\n.line-sticky-banner::before {\n  content: '';\n  position: absolute;\n  top: -50%;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(255,255,255,0));\n  transform: rotate(45deg);\n  animation: shine-left-to-right 3s linear infinite;\n  opacity: 1;\n  z-index: 1;\n  pointer-events: none;\n}\n\n@keyframes shine-left-to-right {\n  0%   { left: -100%; }\n  100% { left: 100%; }\n}\n\n@supports (-webkit-touch-callout: none) {\n  .line-sticky-banner { -webkit-mask-image: -webkit-radial-gradient(white, black); }\n}\n\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_b8Lmk9": {
+          "type": "text",
+          "settings": {
+            "text": "<a href=\"https://lin.ee/rDDhEF8\" target=\"_blank\" title=\"https://lin.ee/rDDhEF8\"><strong>LINE友達追加</strong></a>で最新情報をGET",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "trustshop_reviews_review_snippets_kUKCpw": {
+          "type": "shopify://apps/trustshop-reviews/blocks/review-snippets/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "selected_product": "ra-le-na",
+            "wrapper_class": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "シェアする"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "text_b8Lmk9",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "trustshop_reviews_review_snippets_kUKCpw",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "17543202779957d5f9": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_wVXwte": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_wVXwte"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_UkGJLK": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% if template == 'products.line_pre-launch' %}\n    <style>\n        .main-page-title {\n            display: none !important;\n        }\n        body {\n            background-color: #000000 !important;\n        \n  padding-top: 110px; /* デスクトップでのヘッダーの高さ分 */\n}\n\n@media screen and (max-width: 749px) {\n  body{\n    padding-top: 70px; /* モバイル用のヘッダーの高さ分 */\n  }\n}\n\n        /* 画像の上下の隙間を詰める & スマホでフルワイズにする */\n        img {\n            margin-bottom: 0 !important;\n            margin-top: 0 !important;\n            width: 100% !important;\n            height: auto !important;\n            display: block;\n            max-width: 100%; /* デスクトップでは適切な幅に */\n        }\n\n        /* GIF画像のフルワイズ対応 */\n        .gif-img {\n            width: 100%;\n        }\n\n        /* スマホ用のフルワイズ調整 */\n        @media screen and (max-width: 768px) {\n            img {\n                width: 100% !important;\n                height: auto !important;\n            }\n\n            /* スマホでは .page-width の padding を 0 に（ヘッダー・フッターは影響なし） */\n            .page-width.page-width--narrow.section-template--16930819833907__main-padding {\n                padding: 0px !important;\n            }\n        }\n\n        /* スクロール時にフェードインする画像アニメーション（メインセクション） */\n        .shopify-section-template--16930819833907__main img.scroll-fade-in {\n            opacity: 0;\n            transform: translateY(30px);\n            transition: opacity 0.8s ease-out, transform 0.8s ease-out;\n        }\n\n        /* スクロールで表示されたとき（メインセクション） */\n        .shopify-section-template--16930819833907__main img.fade-in-visible {\n            opacity: 1;\n            transform: translateY(0);\n        }\n\n        /* スクロール時にフェードインする画像アニメーション（rteセクション専用） */\n        .rte.scroll-trigger.animate--slide-in img.scroll-fade-in {\n            opacity: 0;\n            transform: translateY(30px);\n            transition: opacity 0.8s ease-out, transform 0.8s ease-out;\n        }\n\n        /* スクロールで表示されたとき（rteセクション専用） */\n        .rte.scroll-trigger.animate--slide-in img.fade-in-visible {\n            opacity: 1;\n            transform: translateY(0);\n        }\n    </style>\n\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function() {\n            // メインセクションのフェードイン処理\n            const mainSection = document.querySelector(\".shopify-section-template--16930819833907__main\");\n\n            if (mainSection) {\n                const images = mainSection.querySelectorAll(\"img\");\n\n                const observer = new IntersectionObserver((entries, observer) => {\n                    entries.forEach(entry => {\n                        if (entry.isIntersecting) {\n                            entry.target.classList.add(\"fade-in-visible\");\n                            observer.unobserve(entry.target);\n                        }\n                    });\n                }, {\n                    rootMargin: \"50px 0px\", // 50pxの余白を設定して早めに表示\n                    threshold: 0.05  // 画像が5%表示されたらフェードイン\n                });\n\n                images.forEach(image => {\n                    image.classList.add(\"scroll-fade-in\");\n                    observer.observe(image);\n                });\n            }\n\n            // `.rte.scroll-trigger.animate--slide-in` 内の画像に適用\n            const rteSection = document.querySelector(\".rte.scroll-trigger.animate--slide-in\");\n\n            if (rteSection) {\n                const rteImages = rteSection.querySelectorAll(\"img\");\n\n                const rteObserver = new IntersectionObserver((entries, observer) => {\n                    entries.forEach(entry => {\n                        if (entry.isIntersecting) {\n                            entry.target.classList.add(\"fade-in-visible\");\n                            observer.unobserve(entry.target);\n                        }\n                    });\n                }, {\n                    rootMargin: \"50px 0px\", // 50pxの余白を設定して早めに表示\n                    threshold: 0.05  // 画像が5%表示されたらフェードイン\n                });\n\n                rteImages.forEach(image => {\n                    image.classList.add(\"scroll-fade-in\");\n                    rteObserver.observe(image);\n                });\n            }\n        });\n    </script>\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_T9DJpc": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n/* 余白の初期化（任意） */\nhtml, body { margin: 0; padding: 0; }\n\n/* 画像をブロック化＋行間ゼロで隙間なし */\n.container { line-height: 0; }\n.container > div { margin: 0; padding: 0; }\n.container img {\n  display: block;      /* インラインのベースライン隙間を消す */\n  width: 100%;         /* 必要に応じて。原寸表示なら削除 */\n  height: auto;\n  margin: 0;\n  border: 0;           /* 念のため */\n}\n\nimg[src$=\".gif\"] {\n  width: 100%;\n  height: auto;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "176612234844c4dc25": {
+      "type": "apps",
+      "blocks": {
+        "trustshop_reviews_widget_box_fE7XMn": {
+          "type": "shopify://apps/trustshop-reviews/blocks/widget-box/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "selected_product": "ra-le-na",
+            "wrapper_class": "",
+            "review_to_display": "product_reviews_only",
+            "main_tab": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "trustshop_reviews_widget_box_fE7XMn"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_mVEqem",
+    "custom_liquid_9p4LA4",
+    "custom_liquid_yaQ9Uj",
+    "custom_liquid_hzRLLg",
+    "main",
+    "related-products",
+    "17543202779957d5f9",
+    "custom_liquid_UkGJLK",
+    "custom_liquid_T9DJpc",
+    "176612234844c4dc25"
+  ]
+}

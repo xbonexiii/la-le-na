@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "amp_delivery_datetime_mQEUH4": {
+          "type": "shopify://apps/amp/blocks/delivery-datetime/96f4dffc-26ce-430c-9359-005a406614b8",
+          "settings": {
+            "background_color": "",
+            "border_color": "",
+            "font_color": "",
+            "font_size": 14,
+            "min_delivery_date_font_color": "#4455ac",
+            "min_delivery_date_font_size": 14,
+            "icon_color": "#4455ac",
+            "condition_description_font_color": "#8f6900",
+            "condition_description_font_size": 12,
+            "prefecture_caution_font_color": "rgb(223, 93, 93)",
+            "prefecture_caution_background_color": "#f8d7da",
+            "description_font_color": "",
+            "description_font_size": 12
+          }
+        },
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "amp_delivery_datetime_mQEUH4",
+        "subtotal",
+        "buttons"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer"
+  ]
+}

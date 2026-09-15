@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "line-cushion-resale-line-top": {
+      "type": "line-cushion-resale-line-top",
+      "settings": {}
+    },
+    "trustshop-app-line": {
+      "type": "apps",
+      "blocks": {
+        "trustshop_reviews_all_reviews_line": {
+          "type": "shopify://apps/trustshop-reviews/blocks/all-reviews/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+          "settings": {
+            "wrapper_class": "",
+            "review_to_display": "product_reviews_only",
+            "main_tab": "auto"
+          }
+        }
+      },
+      "block_order": ["trustshop_reviews_all_reviews_line"],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "line-cushion-resale-line-bottom": {
+      "type": "line-cushion-resale-line-bottom",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "line-cushion-resale-line-top",
+    "trustshop-app-line",
+    "line-cushion-resale-line-bottom"
+  ]
+}

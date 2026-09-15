@@ -1,0 +1,180 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_LAwDcJ": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DSC03550.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_ATQjiV": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_iwKpmn": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ra Le-Naを取り扱いたい法人様",
+            "heading_size": "h1"
+          }
+        },
+        "text_LiVHYG": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>販売店：お問い合わせフォーム</h3><p>店舗でのお取り扱いを希望される販売店様、代理店様はこちらからご連絡ください。<br/>店頭販売のみお取引可能です。<br/>お申込み後、担当のものより折り返しご連絡させていただきます。<br/></p><h3><strong>営業時間</strong></h3><p>営業時間：平日10:00〜18:00まで<br/>休業日：土日祝日</p><p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iwKpmn",
+        "text_LiVHYG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_contact_form_hTteM8": {
+      "type": "custom-contact-form",
+      "blocks": {
+        "text_field_U6YP39": {
+          "type": "text_field",
+          "settings": {
+            "label": "会社名 / 団体名",
+            "field_name": "company_name",
+            "placeholder": "会社名をご入力ください",
+            "required": true
+          }
+        },
+        "text_field_V7MFca": {
+          "type": "text_field",
+          "settings": {
+            "label": "部署名 / 役職名",
+            "field_name": "department",
+            "placeholder": "部署名をご入力ください",
+            "required": false
+          }
+        },
+        "text_field_JBDV7N": {
+          "type": "text_field",
+          "settings": {
+            "label": "ご担当者様名",
+            "field_name": "contact_name",
+            "placeholder": "担当者様をフルネームでご入力ください",
+            "required": true
+          }
+        },
+        "email_field_U9rYR7": {
+          "type": "email_field",
+          "settings": {
+            "label": "Email",
+            "placeholder": "メールアドレスをご入力ください",
+            "required": true
+          }
+        },
+        "phone_field_k4UzBL": {
+          "type": "phone_field",
+          "settings": {
+            "label": "ご連絡先の電話番号",
+            "field_name": "phone",
+            "placeholder": "000-0000-0000",
+            "required": true
+          }
+        },
+        "radio_group_48yVgR": {
+          "type": "radio_group",
+          "settings": {
+            "label": "ご連絡方法",
+            "field_name": "contact_method",
+            "options": "メール, 電話, どちらでも可",
+            "required": true
+          }
+        },
+        "textarea_Y6yjfa": {
+          "type": "textarea",
+          "settings": {
+            "label": "お問い合わせ内容",
+            "placeholder": "お問い合わせ内容をご入力ください",
+            "rows": 6,
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "text_field_U6YP39",
+        "text_field_V7MFca",
+        "text_field_JBDV7N",
+        "email_field_U9rYR7",
+        "phone_field_k4UzBL",
+        "radio_group_48yVgR",
+        "textarea_Y6yjfa"
+      ],
+      "name": "お問い合わせフォーム",
+      "settings": {
+        "form_identifier": "お問い合わせフォーム",
+        "heading": "こちらをご入力ください。",
+        "submit_button_text": "送信する",
+        "success_heading": "お問い合わせありがとうございます",
+        "success_message": "送信完了しました！\n内容を確認のうえ、担当者よりメールでご連絡させていただきます。今しばらくお待ちください。",
+        "redirect_url": "",
+        "error_message": "申し訳ありません。送信に失敗しました。\n時間をおいて、もう一度お試しください。"
+      }
+    },
+    "featured_blog_ENkcMM": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "media",
+        "post_limit": 3,
+        "heading": "ブログ記事",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner_LAwDcJ",
+    "main",
+    "rich_text_ATQjiV",
+    "custom_contact_form_hTteM8",
+    "featured_blog_ENkcMM"
+  ]
+}
