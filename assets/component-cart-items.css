@@ -4,6 +4,10 @@ cart-items .title-wrapper-with-link {
   text-align: center;
 }
 
+cart-items .title--primary {
+  font-family: var(--font-body-family);
+}
+
 .cart-items td,
 .cart-items th {
   padding: 0;

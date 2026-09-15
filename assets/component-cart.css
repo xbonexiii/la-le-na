@@ -189,6 +189,10 @@ cart-items {
 }
 
 .cart__checkout-button {
+  --color-button: 0, 91, 209;
+  --color-button-text: 255, 255, 255;
+
+  background: #005bd1;
   max-width: 36rem;
 }
 
