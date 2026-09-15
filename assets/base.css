@@ -2564,6 +2564,11 @@ input[type='checkbox'] {
   margin-right: -1.2rem;
 }
 
+.header__icon--cart .icon {
+  width: 3.2rem;
+  height: auto;
+}
+
 .header__icon--menu[aria-expanded='true']::before {
   content: '';
   top: 100%;
